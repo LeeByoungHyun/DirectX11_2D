@@ -15,12 +15,15 @@ namespace cc::graphics
 		GraphicDevice_Dx11();
 		~GraphicDevice_Dx11();
 
+		bool CreateSwapChain(const DXGI_SWAP_CHAIN_DESC* desc, HWND hWnd);
+		bool CreateTexture(const D3D11_TEXTURE2D_DESC* desc, void* data);
+		void Draw();
+
 	private:
 		// 실제 그래픽카드 하드웨어 객체
 		Microsoft::WRL::ComPtr<ID3D11Device> mDevice; 
-		
 
-		//  dx11에서 직접적으로 디바이스객체 접근하지않고
+		// dx11에서 직접적으로 디바이스객체 접근하지않고
 		// 이객체를 이용하여 명령을 내린다.
 		Microsoft::WRL::ComPtr<ID3D11DeviceContext> mContext; 
 		
