@@ -1,5 +1,6 @@
 #include "ccGraphicDevice_Dx11.h"
 #include "ccApplication.h"
+#include "ccRenderer.h"
 
 extern cc::Application application;
 
@@ -7,6 +8,21 @@ namespace cc::graphics
 {
 	GraphicDevice_Dx11::GraphicDevice_Dx11()
 	{
+		// 1. graphic device, context 생성
+
+		// 2. 화면에 렌더링 할수 있게 도와주는
+		// swapchain 생성
+
+		// 3. rendertarget,view 생성하고 
+		// 4. 깊이버퍼와 깊이버퍼 뷰 생성해주고
+
+		// 5. 렌더타겟 클리어 ( 화면 지우기 )
+		// 6. present 함수로 렌더타겟에 있는 텍스쳐를
+		//    모니터에 그려준다.
+
+		//mRenderTarget->
+		//mRenderTargetView->GetResource();
+		
 		// Device, Context 생성
 		HWND hWnd = application.GetHwnd();
 		UINT deviceFlag = D3D11_CREATE_DEVICE_DEBUG;
@@ -60,6 +76,7 @@ namespace cc::graphics
 	{
 
 	}
+
 	bool GraphicDevice_Dx11::CreateSwapChain(const DXGI_SWAP_CHAIN_DESC* desc, HWND hWnd)
 	{
 		DXGI_SWAP_CHAIN_DESC dxgiDesc = {};
@@ -99,6 +116,50 @@ namespace cc::graphics
 
 		return true;
 	}
+
+	bool GraphicDevice_Dx11::CreateBuffer(ID3D11Buffer** buffer, D3D11_BUFFER_DESC* desc, D3D11_SUBRESOURCE_DATA* data)
+	{
+		if (FAILED(mDevice->CreateBuffer(desc, data, buffer)))
+			return false;
+
+		return true;
+	}
+
+	bool GraphicDevice_Dx11::CreateShader()
+	{
+		// /* [annotation] */
+		// _In_reads_(BytecodeLength)  const void* pShaderBytecode,
+		// 	/* [annotation] */
+		// 	_In_  SIZE_T BytecodeLength,
+		// 	/* [annotation] */
+		// 	_In_opt_  ID3D11ClassLinkage* pClassLinkage,
+		// 	/* [annotation] */
+		// 	_COM_Outptr_opt_  ID3D11VertexShader** ppVertexShader
+
+		ID3DBlob* vsBlob = nullptr;
+		std::filesystem::path shaderPath
+			= std::filesystem::current_path().parent_path();
+		shaderPath += L"\\Shader_SOURCE\\";
+
+		std::filesystem::path vsPath(shaderPath.c_str());
+		vsPath += L"TriangleVS.hlsl";
+
+		D3DCompileFromFile(vsPath.c_str(), nullptr, D3D_COMPILE_STANDARD_FILE_INCLUDE
+			, "main", "vs_5_0", 0, 0, &cc::renderer::triangleVSBlob, &cc::renderer::errorBlob);
+
+		if (cc::renderer::errorBlob)
+		{
+			OutputDebugStringA((char*)cc::renderer::errorBlob->GetBufferPointer());
+			cc::renderer::errorBlob->Release();
+		}
+
+		mDevice->CreateVertexShader(cc::renderer::triangleVSBlob->GetBufferPointer()
+			, cc::renderer::triangleVSBlob->GetBufferSize()
+			, nullptr, &cc::renderer::triangleVSShader);
+
+		return false;
+	}
+
 	bool GraphicDevice_Dx11::CreateTexture(const D3D11_TEXTURE2D_DESC* desc, void* data)
 	{
 		D3D11_TEXTURE2D_DESC dxgiDesc = {};

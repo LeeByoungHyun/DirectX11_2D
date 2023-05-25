@@ -66,6 +66,9 @@
     <ClInclude Include="$(MSBuildThisFileDirectory)ccResourceManager.h">
       <Filter>Resource\ResourceManager</Filter>
     </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)ccRenderer.h">
+      <Filter>Graphics</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="$(MSBuildThisFileDirectory)ccEntity.cpp">
@@ -91,6 +94,9 @@
     </ClCompile>
     <ClCompile Include="$(MSBuildThisFileDirectory)ccResourceManager.cpp">
       <Filter>Resource\ResourceManager</Filter>
+    </ClCompile>
+    <ClCompile Include="$(MSBuildThisFileDirectory)ccRenderer.cpp">
+      <Filter>Graphics</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>

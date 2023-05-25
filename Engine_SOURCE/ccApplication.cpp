@@ -1,5 +1,7 @@
 #include "ccApplication.h"
-
+#include "ccInput.h"
+#include "ccTime.h"
+#include "ccRenderer.h"
 
 namespace cc
 {
@@ -25,10 +27,16 @@ namespace cc
 
 	void Application::Initialize()
 	{
+		Time::Initiailize();
+		Input::Initialize();
+
+		renderer::Initialize();
 	}
 
 	void Application::Update()
 	{
+		Time::Update();
+		Input::Update();
 	}
 
 	void Application::LateUpdate()
@@ -37,6 +45,8 @@ namespace cc
 
 	void Application::Render()
 	{
+		Time::Render();
+
 		graphicDevice->Draw();
 	}
 
@@ -49,6 +59,7 @@ namespace cc
 			mHeight = height;
 
 			graphicDevice = std::make_unique<cc::graphics::GraphicDevice_Dx11>();
+			cc::graphics::GetDevice() = graphicDevice.get();
 		}
 
 		RECT rt = { 0, 0, (LONG)width , (LONG)height };
