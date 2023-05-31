@@ -49,5 +49,14 @@ namespace cc::renderer
 	extern ID3DBlob* starPSBlob;
 	extern ID3D11PixelShader* starPSShader;
 
+	// ¿ø
+	extern Vertex circleVertexes[];
+	extern ID3D11InputLayout* circleLayout;
+	extern ID3D11Buffer* circleBuffer;
+	extern ID3DBlob* circleVSBlob;
+	extern ID3D11VertexShader* circleVSShader;
+	extern ID3DBlob* circlePSBlob;
+	extern ID3D11PixelShader* circlePSShader;
+
 	void Initialize();
 }

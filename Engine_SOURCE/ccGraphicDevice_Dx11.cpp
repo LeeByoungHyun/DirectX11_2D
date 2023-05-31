@@ -176,19 +176,24 @@ namespace cc::graphics
 		std::filesystem::path starVSPath(shaderPath.c_str());
 		starVSPath += L"StarVS.hlsl";
 
+		std::filesystem::path circleVSPath(shaderPath.c_str());
+		circleVSPath += L"CircleVS.hlsl";
+
 		// 정점 셰이더 컴파일
-		/*
 		D3DCompileFromFile(triangleVSPath.c_str(), nullptr, D3D_COMPILE_STANDARD_FILE_INCLUDE
 			, "main", "vs_5_0", 0, 0, &cc::renderer::triangleVSBlob, &cc::renderer::errorBlob);	// 삼각형
 
 		D3DCompileFromFile(rectangleVSPath.c_str(), nullptr, D3D_COMPILE_STANDARD_FILE_INCLUDE
 			, "main", "vs_5_0", 0, 0, &cc::renderer::rectangleVSBlob, &cc::renderer::errorBlob);	// 사각형
-		*/
+
 		D3DCompileFromFile(hexagonVSPath.c_str(), nullptr, D3D_COMPILE_STANDARD_FILE_INCLUDE
 			, "main", "vs_5_0", 0, 0, &cc::renderer::hexagonVSBlob, &cc::renderer::errorBlob);	// 육각형
 
 		D3DCompileFromFile(starVSPath.c_str(), nullptr, D3D_COMPILE_STANDARD_FILE_INCLUDE
 			, "main", "vs_5_0", 0, 0, &cc::renderer::starVSBlob, &cc::renderer::errorBlob);	// 별
+
+		D3DCompileFromFile(circleVSPath.c_str(), nullptr, D3D_COMPILE_STANDARD_FILE_INCLUDE
+			, "main", "vs_5_0", 0, 0, &cc::renderer::circleVSBlob, &cc::renderer::errorBlob);	// 원
 
 		if (cc::renderer::errorBlob)
 		{
@@ -197,7 +202,6 @@ namespace cc::graphics
 		}
 
 		// 정점 데이터 생성
-		/*
 		mDevice->CreateVertexShader(cc::renderer::triangleVSBlob->GetBufferPointer()
 			, cc::renderer::triangleVSBlob->GetBufferSize()
 			, nullptr, &cc::renderer::triangleVSShader);	// 삼각형
@@ -209,13 +213,16 @@ namespace cc::graphics
 		mDevice->CreateVertexShader(cc::renderer::hexagonVSBlob->GetBufferPointer()
 			, cc::renderer::hexagonVSBlob->GetBufferSize()
 			, nullptr, &cc::renderer::hexagonVSShader);	// 육각형
-		*/
+
 		mDevice->CreateVertexShader(cc::renderer::starVSBlob->GetBufferPointer()
 			, cc::renderer::starVSBlob->GetBufferSize()
 			, nullptr, &cc::renderer::starVSShader);	// 별
 
+		mDevice->CreateVertexShader(cc::renderer::circleVSBlob->GetBufferPointer()
+			, cc::renderer::circleVSBlob->GetBufferSize()
+			, nullptr, &cc::renderer::circleVSShader);	// 원
+
 		// 픽셀 셰이더 경로
-		/*
 		std::filesystem::path trialglePSPath(shaderPath.c_str());
 		trialglePSPath += L"TrianglePS.hlsl";
 
@@ -224,12 +231,14 @@ namespace cc::graphics
 
 		std::filesystem::path hexagonPSPath(shaderPath.c_str());
 		hexagonPSPath += L"HexagonPS.hlsl";
-		*/
+
 		std::filesystem::path starPSPath(shaderPath.c_str());
 		starPSPath += L"StarPS.hlsl";
 
+		std::filesystem::path circlePSPath(shaderPath.c_str());
+		circlePSPath += L"CirclePS.hlsl";
+
 		// 픽셀 셰이더 컴파일
-		/*
 		D3DCompileFromFile(trialglePSPath.c_str(), nullptr, D3D_COMPILE_STANDARD_FILE_INCLUDE
 			, "main", "ps_5_0", 0, 0, &cc::renderer::trianglePSBlob, &cc::renderer::errorBlob);	// 삼각형
 
@@ -238,10 +247,12 @@ namespace cc::graphics
 		
 		D3DCompileFromFile(hexagonPSPath.c_str(), nullptr, D3D_COMPILE_STANDARD_FILE_INCLUDE
 			, "main", "ps_5_0", 0, 0, &cc::renderer::hexagonPSBlob, &cc::renderer::errorBlob);	// 육각형
-		*/
 
 		D3DCompileFromFile(starPSPath.c_str(), nullptr, D3D_COMPILE_STANDARD_FILE_INCLUDE
 			, "main", "ps_5_0", 0, 0, &cc::renderer::starPSBlob, &cc::renderer::errorBlob);	// 별
+
+		D3DCompileFromFile(circlePSPath.c_str(), nullptr, D3D_COMPILE_STANDARD_FILE_INCLUDE
+			, "main", "ps_5_0", 0, 0, &cc::renderer::circlePSBlob, &cc::renderer::errorBlob);	// 원
 
 		if (cc::renderer::errorBlob)
 		{
@@ -250,27 +261,25 @@ namespace cc::graphics
 		}
 
 		// 픽셀 셰이더 생성
-		/*
 		mDevice->CreatePixelShader(cc::renderer::trianglePSBlob->GetBufferPointer()
 			, cc::renderer::trianglePSBlob->GetBufferSize()
 			, nullptr, &cc::renderer::trianglePSShader);
-		*/
 
-		/*
 		mDevice->CreatePixelShader(cc::renderer::rectanglePSBlob->GetBufferPointer()
 			, cc::renderer::rectanglePSBlob->GetBufferSize()
 			, nullptr, &cc::renderer::rectanglePSShader);
-		*/
 
-		/*
 		mDevice->CreatePixelShader(cc::renderer::hexagonPSBlob->GetBufferPointer()
 			, cc::renderer::hexagonPSBlob->GetBufferSize()
 			, nullptr, &cc::renderer::hexagonPSShader);
-		*/
 
 		mDevice->CreatePixelShader(cc::renderer::starPSBlob->GetBufferPointer()
 			, cc::renderer::starPSBlob->GetBufferSize()
 			, nullptr, &cc::renderer::starPSShader);
+
+		mDevice->CreatePixelShader(cc::renderer::circlePSBlob->GetBufferPointer()
+			, cc::renderer::circlePSBlob->GetBufferSize()
+			, nullptr, &cc::renderer::circlePSShader);
 
 		// Input layout 정점 구조 정보를 넘겨줘야한다.
 		D3D11_INPUT_ELEMENT_DESC arrLayout[2] = {};
@@ -291,33 +300,34 @@ namespace cc::graphics
 
 		// Input layout 설정
 		// 삼각형
-		/*
 		mDevice->CreateInputLayout(arrLayout, 2
 		 	, renderer::triangleVSBlob->GetBufferPointer()
 		 	, renderer::triangleVSBlob->GetBufferSize()
 		 	, &renderer::triangleLayout);
-		*/
 
 		// 사각형
-		/*
 		mDevice->CreateInputLayout(arrLayout, 2
 			, renderer::rectangleVSBlob->GetBufferPointer()
 			, renderer::rectangleVSBlob->GetBufferSize()
 			, &renderer::rectangleLayout);
-		*/
 
 		// hexagon
-		/*
 		mDevice->CreateInputLayout(arrLayout, 2
 			, renderer::hexagonVSBlob->GetBufferPointer()
 			, renderer::hexagonVSBlob->GetBufferSize()
 			, &renderer::hexagonLayout);
-		*/
 
+		// star
 		mDevice->CreateInputLayout(arrLayout, 2
 			, renderer::starVSBlob->GetBufferPointer()
 			, renderer::starVSBlob->GetBufferSize()
 			, &renderer::starLayout);
+
+		// star
+		mDevice->CreateInputLayout(arrLayout, 2
+			, renderer::circleVSBlob->GetBufferPointer()
+			, renderer::circleVSBlob->GetBufferSize()
+			, &renderer::circleLayout);
 
 		return true;
 	}
@@ -382,41 +392,46 @@ namespace cc::graphics
 		UINT vertexsize = sizeof(renderer::Vertex);
 		UINT offset = 0;
 
-		/*
 		// triangle
 		mContext->IASetVertexBuffers(0, 1, &renderer::triangleBuffer, &vertexsize, &offset);	// 정점 버퍼 설정
 		mContext->IASetInputLayout(renderer::triangleLayout);	// input layout 설정
 		mContext->IASetPrimitiveTopology(D3D11_PRIMITIVE_TOPOLOGY::D3D10_PRIMITIVE_TOPOLOGY_TRIANGLELIST);	// 프리미티브 유형 설정
+		mContext->VSSetShader(renderer::triangleVSShader, 0, 0);	// Bind VS, PS 
+		mContext->PSSetShader(renderer::trianglePSShader, 0, 0);
+		mContext->Draw(3, 0);		// Draw Render Target
 
 		// rectangle
-		mContext->IASetVertexBuffers(0, 1, &renderer::rectangleBuffer, &vertexsize, &offset);	// 정점 버퍼 설정
-		mContext->IASetInputLayout(renderer::rectangleLayout);	// input layout 설정
-		mContext->IASetPrimitiveTopology(D3D11_PRIMITIVE_TOPOLOGY::D3D10_PRIMITIVE_TOPOLOGY_TRIANGLELIST);	// 프리미티브 유형 설정
-
-		// hexagon
-		mContext->IASetVertexBuffers(0, 1, &renderer::hexagonBuffer, &vertexsize, &offset);	// 정점 버퍼 설정
-		mContext->IASetInputLayout(renderer::hexagonLayout);	// input layout 설정
-		mContext->IASetPrimitiveTopology(D3D11_PRIMITIVE_TOPOLOGY::D3D10_PRIMITIVE_TOPOLOGY_TRIANGLELIST);	// 프리미티브 유형 설정
-		*/
-
-		mContext->IASetVertexBuffers(0, 1, &renderer::starBuffer, &vertexsize, &offset);	// 정점 버퍼 설정
-		mContext->IASetInputLayout(renderer::starLayout);	// input layout 설정
-		mContext->IASetPrimitiveTopology(D3D11_PRIMITIVE_TOPOLOGY::D3D10_PRIMITIVE_TOPOLOGY_TRIANGLELIST);	// 프리미티브 유형 설정
-
-		// Bind VS, PS 
-		/*
-		mContext->VSSetShader(renderer::triangleVSShader, 0, 0);
-		mContext->PSSetShader(renderer::trianglePSShader, 0, 0);
+		mContext->IASetVertexBuffers(0, 1, &renderer::rectangleBuffer, &vertexsize, &offset);	
+		mContext->IASetInputLayout(renderer::rectangleLayout);	
+		mContext->IASetPrimitiveTopology(D3D11_PRIMITIVE_TOPOLOGY::D3D10_PRIMITIVE_TOPOLOGY_TRIANGLELIST);
 		mContext->VSSetShader(renderer::rectangleVSShader, 0, 0);
 		mContext->PSSetShader(renderer::rectanglePSShader, 0, 0);
+		mContext->Draw(6, 0);
+
+		// hexagon
+		mContext->IASetVertexBuffers(0, 1, &renderer::hexagonBuffer, &vertexsize, &offset);	
+		mContext->IASetInputLayout(renderer::hexagonLayout);	
+		mContext->IASetPrimitiveTopology(D3D11_PRIMITIVE_TOPOLOGY::D3D10_PRIMITIVE_TOPOLOGY_TRIANGLELIST);	
 		mContext->VSSetShader(renderer::hexagonVSShader, 0, 0);
 		mContext->PSSetShader(renderer::hexagonPSShader, 0, 0);
-		*/
+		mContext->Draw(12, 0);
+
+		// star
+		mContext->IASetVertexBuffers(0, 1, &renderer::starBuffer, &vertexsize, &offset);	
+		mContext->IASetInputLayout(renderer::starLayout);
+		mContext->IASetPrimitiveTopology(D3D11_PRIMITIVE_TOPOLOGY::D3D10_PRIMITIVE_TOPOLOGY_TRIANGLELIST);	
 		mContext->VSSetShader(renderer::starVSShader, 0, 0);
 		mContext->PSSetShader(renderer::starPSShader, 0, 0);
-		// Draw Render Target
 		mContext->Draw(15, 0);
 
+		// star
+		mContext->IASetVertexBuffers(0, 1, &renderer::circleBuffer, &vertexsize, &offset);
+		mContext->IASetInputLayout(renderer::circleLayout);
+		mContext->IASetPrimitiveTopology(D3D11_PRIMITIVE_TOPOLOGY::D3D_PRIMITIVE_TOPOLOGY_LINESTRIP);
+		mContext->VSSetShader(renderer::circleVSShader, 0, 0);
+		mContext->PSSetShader(renderer::circlePSShader, 0, 0);
+		mContext->Draw(360, 0);
+		
 		// 렌더타겟에 있는 이미지를 화면에 그려준다
 		mSwapChain->Present(0, 0);
 	}
