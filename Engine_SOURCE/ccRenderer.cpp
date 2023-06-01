@@ -1,6 +1,6 @@
 #include "ccRenderer.h"
-
-
+#include "ccInput.h"
+#include "ccTime.h"
 
 namespace cc::renderer
 {
@@ -60,6 +60,8 @@ namespace cc::renderer
 
 	// Constant Buffer
 	ID3D11Buffer* triangleConstantBuffer = nullptr;
+
+	Vector4 pos(0.0f, 0.0f, 0.0f, 1.0f);
 
 	void SetupState()
 	{
@@ -149,10 +151,8 @@ namespace cc::renderer
 		triangleCSDesc.CPUAccessFlags = D3D11_CPU_ACCESS_WRITE;
 
 		cc::graphics::GetDevice()->CreateBuffer(&triangleConstantBuffer, &triangleCSDesc, nullptr);
-
-		Vector4 pos(0.3f, 0.0f, 0.0f, 1.0f);
-		cc::graphics::GetDevice()->SetConstantBuffer(triangleConstantBuffer, &pos, sizeof(Vector4));
-		cc::graphics::GetDevice()->BindConstantBuffer(eShaderStage::VS, eCBType::Transform, triangleConstantBuffer);
+		
+		
 	}
 
 	void LoadShader()
@@ -290,6 +290,22 @@ namespace cc::renderer
 		SetupState();
 		LoadBuffer();
 		LoadShader();
+	}
+
+	void Update()
+	{
+		
+		if (Input::GetKey(eKeyCode::W))
+			pos += Vector4(0.0f, 0.1f * Time::DeltaTime(), 0.0f, 1.0f);
+		if (Input::GetKey(eKeyCode::S))
+			pos += Vector4(0.0f, -0.1f * Time::DeltaTime(), 0.0f, 1.0f);
+		if (Input::GetKey(eKeyCode::A))
+			pos += Vector4(-0.1f * Time::DeltaTime(), 0.0f, 0.0f, 1.0f);
+		if (Input::GetKey(eKeyCode::D))
+			pos += Vector4(0.1f * Time::DeltaTime(), 0.0f, 0.0f, 1.0f);
+
+		cc::graphics::GetDevice()->SetConstantBuffer(triangleConstantBuffer, &pos, sizeof(Vector4));
+		cc::graphics::GetDevice()->BindConstantBuffer(eShaderStage::VS, eCBType::Transform, triangleConstantBuffer);
 	}
 }
 

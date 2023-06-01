@@ -61,4 +61,5 @@ namespace cc::renderer
 	extern ID3D11PixelShader* circlePSShader;
 
 	void Initialize();
+	void Update();
 }

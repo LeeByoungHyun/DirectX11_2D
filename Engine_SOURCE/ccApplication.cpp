@@ -37,6 +37,8 @@ namespace cc
 	{
 		Time::Update();
 		Input::Update();
+
+		renderer::Update();
 	}
 
 	void Application::LateUpdate()
