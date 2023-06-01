@@ -21,6 +21,8 @@ namespace cc::renderer
 	extern ID3D11VertexShader* triangleVSShader;
 	extern ID3DBlob* trianglePSBlob;
 	extern ID3D11PixelShader* trianglePSShader;
+	extern ID3D11Buffer* triangleIdxBuffer;
+	extern ID3D11Buffer* triangleConstantBuffer;
 
 	// »ç°¢Çü
 	extern Vertex rectangleVertexes[];

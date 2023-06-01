@@ -364,6 +364,53 @@ namespace cc::graphics
 		mContext->RSSetViewports(1, viewPort);
 	}
 
+	void GraphicDevice_Dx11::SetConstantBuffer(ID3D11Buffer* buffer, void* data, UINT size)
+	{
+		D3D11_MAPPED_SUBRESOURCE subRes = {};
+		mContext->Map(buffer, 0, D3D11_MAP_WRITE_DISCARD, 0, &subRes);
+		memcpy(subRes.pData, data, size);
+		mContext->Unmap(buffer, 0);
+	}
+
+	void GraphicDevice_Dx11::BindConstantBuffer(eShaderStage stage, eCBType type, ID3D11Buffer* buffer)
+	{
+		switch (stage)
+		{
+		case eShaderStage::VS:
+			mContext->VSSetConstantBuffers((UINT)type, 1, &buffer);
+			break;
+		case eShaderStage::HS:
+			mContext->HSSetConstantBuffers((UINT)type, 1, &buffer);
+			break;
+		case eShaderStage::DS:
+			mContext->DSSetConstantBuffers((UINT)type, 1, &buffer);
+			break;
+		case eShaderStage::GS:
+			mContext->GSSetConstantBuffers((UINT)type, 1, &buffer);
+			break;
+		case eShaderStage::PS:
+			mContext->PSSetConstantBuffers((UINT)type, 1, &buffer);
+			break;
+		case eShaderStage::CS:
+			mContext->CSSetConstantBuffers((UINT)type, 1, &buffer);
+			break;
+		case eShaderStage::End:
+			break;
+		default:
+			break;
+		}
+	}
+
+	void GraphicDevice_Dx11::BindsConstantBuffer(eShaderStage stage, eCBType type, ID3D11Buffer* buffer)
+	{
+		mContext->VSSetConstantBuffers((UINT)type, 1, &buffer);
+		mContext->HSSetConstantBuffers((UINT)type, 1, &buffer);
+		mContext->DSSetConstantBuffers((UINT)type, 1, &buffer);
+		mContext->GSSetConstantBuffers((UINT)type, 1, &buffer);
+		mContext->PSSetConstantBuffers((UINT)type, 1, &buffer);
+		mContext->CSSetConstantBuffers((UINT)type, 1, &buffer);
+	}
+
 	void GraphicDevice_Dx11::Draw()
 	{
 		// render target clear
@@ -394,11 +441,13 @@ namespace cc::graphics
 
 		// triangle
 		mContext->IASetVertexBuffers(0, 1, &renderer::triangleBuffer, &vertexsize, &offset);	// 정점 버퍼 설정
+		mContext->IASetIndexBuffer(renderer::triangleIdxBuffer, DXGI_FORMAT_R32_UINT, 0);
 		mContext->IASetInputLayout(renderer::triangleLayout);	// input layout 설정
 		mContext->IASetPrimitiveTopology(D3D11_PRIMITIVE_TOPOLOGY::D3D10_PRIMITIVE_TOPOLOGY_TRIANGLELIST);	// 프리미티브 유형 설정
 		mContext->VSSetShader(renderer::triangleVSShader, 0, 0);	// Bind VS, PS 
 		mContext->PSSetShader(renderer::trianglePSShader, 0, 0);
-		mContext->Draw(3, 0);		// Draw Render Target
+		//mContext->Draw(3, 0);		// Draw Render Target
+		mContext->DrawIndexed(3, 0, 0);
 
 		// rectangle
 		mContext->IASetVertexBuffers(0, 1, &renderer::rectangleBuffer, &vertexsize, &offset);	
