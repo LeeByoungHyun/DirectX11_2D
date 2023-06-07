@@ -181,46 +181,46 @@ namespace cc::graphics
 
 		// Á¤Á¡ ¼ÎÀÌ´õ ÄÄÆÄÀÏ
 		D3DCompileFromFile(triangleVSPath.c_str(), nullptr, D3D_COMPILE_STANDARD_FILE_INCLUDE
-			, "main", "vs_5_0", 0, 0, &cc::renderer::triangleVSBlob, &cc::renderer::errorBlob);	// »ï°¢Çü
+			, "main", "vs_5_0", 0, 0, &renderer::triangleVSBlob, &renderer::errorBlob);	// »ï°¢Çü
 
 		D3DCompileFromFile(rectangleVSPath.c_str(), nullptr, D3D_COMPILE_STANDARD_FILE_INCLUDE
-			, "main", "vs_5_0", 0, 0, &cc::renderer::rectangleVSBlob, &cc::renderer::errorBlob);	// »ç°¢Çü
+			, "main", "vs_5_0", 0, 0, &renderer::rectangleVSBlob, &renderer::errorBlob);	// »ç°¢Çü
 
 		D3DCompileFromFile(hexagonVSPath.c_str(), nullptr, D3D_COMPILE_STANDARD_FILE_INCLUDE
-			, "main", "vs_5_0", 0, 0, &cc::renderer::hexagonVSBlob, &cc::renderer::errorBlob);	// À°°¢Çü
+			, "main", "vs_5_0", 0, 0, &renderer::hexagonVSBlob, &renderer::errorBlob);	// À°°¢Çü
 
 		D3DCompileFromFile(starVSPath.c_str(), nullptr, D3D_COMPILE_STANDARD_FILE_INCLUDE
-			, "main", "vs_5_0", 0, 0, &cc::renderer::starVSBlob, &cc::renderer::errorBlob);	// º°
+			, "main", "vs_5_0", 0, 0, &renderer::starVSBlob, &renderer::errorBlob);	// º°
 
 		D3DCompileFromFile(circleVSPath.c_str(), nullptr, D3D_COMPILE_STANDARD_FILE_INCLUDE
-			, "main", "vs_5_0", 0, 0, &cc::renderer::circleVSBlob, &cc::renderer::errorBlob);	// ¿ø
+			, "main", "vs_5_0", 0, 0, &renderer::circleVSBlob, &renderer::errorBlob);	// ¿ø
 
-		if (cc::renderer::errorBlob)
+		if (renderer::errorBlob)
 		{
-			OutputDebugStringA((char*)cc::renderer::errorBlob->GetBufferPointer());
-			cc::renderer::errorBlob->Release();
+			OutputDebugStringA((char*)renderer::errorBlob->GetBufferPointer());
+			renderer::errorBlob->Release();
 		}
 
 		// Á¤Á¡ µ¥ÀÌÅÍ »ý¼º
-		mDevice->CreateVertexShader(cc::renderer::triangleVSBlob->GetBufferPointer()
-			, cc::renderer::triangleVSBlob->GetBufferSize()
-			, nullptr, &cc::renderer::triangleVSShader);	// »ï°¢Çü
+		mDevice->CreateVertexShader(renderer::triangleVSBlob->GetBufferPointer()
+			, renderer::triangleVSBlob->GetBufferSize()
+			, nullptr, &renderer::triangleVSShader);	// »ï°¢Çü
 
-		mDevice->CreateVertexShader(cc::renderer::rectangleVSBlob->GetBufferPointer()
-			, cc::renderer::rectangleVSBlob->GetBufferSize()
-			, nullptr, &cc::renderer::rectangleVSShader);	// »ç°¢Çü
+		mDevice->CreateVertexShader(renderer::rectangleVSBlob->GetBufferPointer()
+			, renderer::rectangleVSBlob->GetBufferSize()
+			, nullptr, &renderer::rectangleVSShader);	// »ç°¢Çü
 
-		mDevice->CreateVertexShader(cc::renderer::hexagonVSBlob->GetBufferPointer()
-			, cc::renderer::hexagonVSBlob->GetBufferSize()
-			, nullptr, &cc::renderer::hexagonVSShader);	// À°°¢Çü
+		mDevice->CreateVertexShader(renderer::hexagonVSBlob->GetBufferPointer()
+			, renderer::hexagonVSBlob->GetBufferSize()
+			, nullptr, &renderer::hexagonVSShader);	// À°°¢Çü
 
-		mDevice->CreateVertexShader(cc::renderer::starVSBlob->GetBufferPointer()
-			, cc::renderer::starVSBlob->GetBufferSize()
-			, nullptr, &cc::renderer::starVSShader);	// º°
+		mDevice->CreateVertexShader(renderer::starVSBlob->GetBufferPointer()
+			, renderer::starVSBlob->GetBufferSize()
+			, nullptr, &renderer::starVSShader);	// º°
 
-		mDevice->CreateVertexShader(cc::renderer::circleVSBlob->GetBufferPointer()
-			, cc::renderer::circleVSBlob->GetBufferSize()
-			, nullptr, &cc::renderer::circleVSShader);	// ¿ø
+		mDevice->CreateVertexShader(renderer::circleVSBlob->GetBufferPointer()
+			, renderer::circleVSBlob->GetBufferSize()
+			, nullptr, &renderer::circleVSShader);	// ¿ø
 
 		// ÇÈ¼¿ ¼ÎÀÌ´õ °æ·Î
 		std::filesystem::path trialglePSPath(shaderPath.c_str());
@@ -240,46 +240,46 @@ namespace cc::graphics
 
 		// ÇÈ¼¿ ¼ÎÀÌ´õ ÄÄÆÄÀÏ
 		D3DCompileFromFile(trialglePSPath.c_str(), nullptr, D3D_COMPILE_STANDARD_FILE_INCLUDE
-			, "main", "ps_5_0", 0, 0, &cc::renderer::trianglePSBlob, &cc::renderer::errorBlob);	// »ï°¢Çü
+			, "main", "ps_5_0", 0, 0, &renderer::trianglePSBlob, &renderer::errorBlob);	// »ï°¢Çü
 
 		D3DCompileFromFile(rectanglePSPath.c_str(), nullptr, D3D_COMPILE_STANDARD_FILE_INCLUDE
-			, "main", "ps_5_0", 0, 0, &cc::renderer::rectanglePSBlob, &cc::renderer::errorBlob);	// »ç°¢Çü
+			, "main", "ps_5_0", 0, 0, &renderer::rectanglePSBlob, &renderer::errorBlob);	// »ç°¢Çü
 		
 		D3DCompileFromFile(hexagonPSPath.c_str(), nullptr, D3D_COMPILE_STANDARD_FILE_INCLUDE
-			, "main", "ps_5_0", 0, 0, &cc::renderer::hexagonPSBlob, &cc::renderer::errorBlob);	// À°°¢Çü
+			, "main", "ps_5_0", 0, 0, &renderer::hexagonPSBlob, &renderer::errorBlob);	// À°°¢Çü
 
 		D3DCompileFromFile(starPSPath.c_str(), nullptr, D3D_COMPILE_STANDARD_FILE_INCLUDE
-			, "main", "ps_5_0", 0, 0, &cc::renderer::starPSBlob, &cc::renderer::errorBlob);	// º°
+			, "main", "ps_5_0", 0, 0, &renderer::starPSBlob, &renderer::errorBlob);	// º°
 
 		D3DCompileFromFile(circlePSPath.c_str(), nullptr, D3D_COMPILE_STANDARD_FILE_INCLUDE
-			, "main", "ps_5_0", 0, 0, &cc::renderer::circlePSBlob, &cc::renderer::errorBlob);	// ¿ø
+			, "main", "ps_5_0", 0, 0, &renderer::circlePSBlob, &renderer::errorBlob);	// ¿ø
 
-		if (cc::renderer::errorBlob)
+		if (renderer::errorBlob)
 		{
-			OutputDebugStringA((char*)cc::renderer::errorBlob->GetBufferPointer());
-			cc::renderer::errorBlob->Release();
+			OutputDebugStringA((char*)renderer::errorBlob->GetBufferPointer());
+			renderer::errorBlob->Release();
 		}
 
 		// ÇÈ¼¿ ¼ÎÀÌ´õ »ý¼º
-		mDevice->CreatePixelShader(cc::renderer::trianglePSBlob->GetBufferPointer()
-			, cc::renderer::trianglePSBlob->GetBufferSize()
-			, nullptr, &cc::renderer::trianglePSShader);
+		mDevice->CreatePixelShader(renderer::trianglePSBlob->GetBufferPointer()
+			, renderer::trianglePSBlob->GetBufferSize()
+			, nullptr, &renderer::trianglePSShader);
 
-		mDevice->CreatePixelShader(cc::renderer::rectanglePSBlob->GetBufferPointer()
-			, cc::renderer::rectanglePSBlob->GetBufferSize()
-			, nullptr, &cc::renderer::rectanglePSShader);
+		mDevice->CreatePixelShader(renderer::rectanglePSBlob->GetBufferPointer()
+			, renderer::rectanglePSBlob->GetBufferSize()
+			, nullptr, &renderer::rectanglePSShader);
 
-		mDevice->CreatePixelShader(cc::renderer::hexagonPSBlob->GetBufferPointer()
-			, cc::renderer::hexagonPSBlob->GetBufferSize()
-			, nullptr, &cc::renderer::hexagonPSShader);
+		mDevice->CreatePixelShader(renderer::hexagonPSBlob->GetBufferPointer()
+			, renderer::hexagonPSBlob->GetBufferSize()
+			, nullptr, &renderer::hexagonPSShader);
 
-		mDevice->CreatePixelShader(cc::renderer::starPSBlob->GetBufferPointer()
-			, cc::renderer::starPSBlob->GetBufferSize()
-			, nullptr, &cc::renderer::starPSShader);
+		mDevice->CreatePixelShader(renderer::starPSBlob->GetBufferPointer()
+			, renderer::starPSBlob->GetBufferSize()
+			, nullptr, &renderer::starPSShader);
 
-		mDevice->CreatePixelShader(cc::renderer::circlePSBlob->GetBufferPointer()
-			, cc::renderer::circlePSBlob->GetBufferSize()
-			, nullptr, &cc::renderer::circlePSShader);
+		mDevice->CreatePixelShader(renderer::circlePSBlob->GetBufferPointer()
+			, renderer::circlePSBlob->GetBufferSize()
+			, nullptr, &renderer::circlePSShader);
 
 		// Input layout Á¤Á¡ ±¸Á¶ Á¤º¸¸¦ ³Ñ°ÜÁà¾ßÇÑ´Ù.
 		D3D11_INPUT_ELEMENT_DESC arrLayout[2] = {};

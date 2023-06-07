@@ -3,7 +3,7 @@
 #include "ccGraphicDevice_Dx11.h"
 
 using namespace cc::math;
-namespace cc::renderer
+namespace renderer
 {
 	struct Vertex
 	{
@@ -62,4 +62,5 @@ namespace cc::renderer
 
 	void Initialize();
 	void Update();
+	void Release();
 }

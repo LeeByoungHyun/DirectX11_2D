@@ -2,7 +2,7 @@
 #include "ccInput.h"
 #include "ccTime.h"
 
-namespace cc::renderer
+namespace renderer
 {
 	Vertex triangleVertexes[3] = {};
 	Vertex rectangleVertexes[6] = {};
@@ -294,18 +294,22 @@ namespace cc::renderer
 
 	void Update()
 	{
-		
-		if (Input::GetKey(eKeyCode::W))
-			pos += Vector4(0.0f, 0.1f * Time::DeltaTime(), 0.0f, 1.0f);
-		if (Input::GetKey(eKeyCode::S))
-			pos += Vector4(0.0f, -0.1f * Time::DeltaTime(), 0.0f, 1.0f);
-		if (Input::GetKey(eKeyCode::A))
-			pos += Vector4(-0.1f * Time::DeltaTime(), 0.0f, 0.0f, 1.0f);
-		if (Input::GetKey(eKeyCode::D))
-			pos += Vector4(0.1f * Time::DeltaTime(), 0.0f, 0.0f, 1.0f);
+		if (cc::Input::GetKey(cc::eKeyCode::W))
+			pos += Vector4(0.0f, 0.1f * cc::Time::DeltaTime(), 0.0f, 1.0f);
+		if (cc::Input::GetKey(cc::eKeyCode::S))
+			pos += Vector4(0.0f, -0.1f * cc::Time::DeltaTime(), 0.0f, 1.0f);
+		if (cc::Input::GetKey(cc::eKeyCode::A))
+			pos += Vector4(-0.1f * cc::Time::DeltaTime(), 0.0f, 0.0f, 1.0f);
+		if (cc::Input::GetKey(cc::eKeyCode::D))
+			pos += Vector4(0.1f * cc::Time::DeltaTime(), 0.0f, 0.0f, 1.0f);
 
 		cc::graphics::GetDevice()->SetConstantBuffer(triangleConstantBuffer, &pos, sizeof(Vector4));
 		cc::graphics::GetDevice()->BindConstantBuffer(eShaderStage::VS, eCBType::Transform, triangleConstantBuffer);
+	}
+
+	void Release()
+	{
+
 	}
 }
 
