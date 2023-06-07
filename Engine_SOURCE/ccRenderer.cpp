@@ -4,62 +4,36 @@
 
 namespace renderer
 {
-	Vertex triangleVertexes[3] = {};
-	Vertex rectangleVertexes[6] = {};
-	Vertex hexagonVertexes[12] = {};
-	Vertex starVertexes[15] = {};
-	Vertex circleVertexes[360] = {};
+	Vertex vertexes[4] = {};
 
 	// Input Layout (정점 정보)
 	ID3D11InputLayout* triangleLayout = nullptr;
-	ID3D11InputLayout* rectangleLayout = nullptr;
-	ID3D11InputLayout* hexagonLayout = nullptr;
-	ID3D11InputLayout* starLayout = nullptr;
-	ID3D11InputLayout* circleLayout = nullptr;
 
 	// Vertex Buffer
-	ID3D11Buffer* triangleBuffer = nullptr;
-	ID3D11Buffer* rectangleBuffer = nullptr;
-	ID3D11Buffer* hexagonBuffer = nullptr;
-	ID3D11Buffer* starBuffer = nullptr;
-	ID3D11Buffer* circleBuffer = nullptr;
-
-	// error blob
-	ID3DBlob* errorBlob = nullptr;
-	
-	// Vertex Shader code -> Binary Code
-	ID3DBlob* triangleVSBlob = nullptr;
-	ID3DBlob* rectangleVSBlob = nullptr;
-	ID3DBlob* hexagonVSBlob = nullptr;
-	ID3DBlob* starVSBlob = nullptr;
-	ID3DBlob* circleVSBlob = nullptr;
-
-	// Vertex Shader
-	ID3D11VertexShader* triangleVSShader = nullptr;
-	ID3D11VertexShader* rectangleVSShader = nullptr;
-	ID3D11VertexShader* hexagonVSShader = nullptr;
-	ID3D11VertexShader* starVSShader = nullptr;
-	ID3D11VertexShader* circleVSShader = nullptr;
-
-	// Pixel Shader code -> Binary Code
-	ID3DBlob* trianglePSBlob = nullptr;
-	ID3DBlob* rectanglePSBlob = nullptr;
-	ID3DBlob* hexagonPSBlob = nullptr;
-	ID3DBlob* starPSBlob = nullptr;
-	ID3DBlob* circlePSBlob = nullptr;
-
-	// Vertex Shader
-	ID3D11PixelShader* trianglePSShader = nullptr;
-	ID3D11PixelShader* rectanglePSShader = nullptr;
-	ID3D11PixelShader* hexagonPSShader = nullptr;
-	ID3D11PixelShader* starPSShader = nullptr;
-	ID3D11PixelShader* circlePSShader = nullptr;
-
-	// Index Buffer
-	ID3D11Buffer* triangleIdxBuffer = nullptr;
+	cc::Mesh* mesh = nullptr;
 
 	// Constant Buffer
 	ID3D11Buffer* triangleConstantBuffer = nullptr;
+
+	cc::Shader* shader = nullptr;
+
+	// error blob
+	//ID3DBlob* errorBlob = nullptr;
+	
+	// Vertex Shader code -> Binary Code
+	//ID3DBlob* triangleVSBlob = nullptr;
+	
+	// Vertex Shader
+	//ID3D11VertexShader* triangleVSShader = nullptr;
+
+	// Pixel Shader code -> Binary Code
+	//ID3DBlob* trianglePSBlob = nullptr;
+
+	// Vertex Shader
+	//ID3D11PixelShader* trianglePSShader = nullptr;
+
+	// Index Buffer
+	//ID3D11Buffer* triangleIdxBuffer = nullptr;
 
 	Vector4 pos(0.0f, 0.0f, 0.0f, 1.0f);
 
@@ -70,78 +44,17 @@ namespace renderer
 
 	void LoadBuffer()
 	{
-		// 삼각형 정점 버퍼
-		D3D11_BUFFER_DESC triangleDesc = {};
-		triangleDesc.Usage = D3D11_USAGE::D3D11_USAGE_DYNAMIC;
-		triangleDesc.ByteWidth = sizeof(Vertex) * 3;
-		triangleDesc.BindFlags = D3D11_BIND_FLAG::D3D11_BIND_VERTEX_BUFFER;
-		triangleDesc.CPUAccessFlags = D3D11_CPU_ACCESS_FLAG::D3D11_CPU_ACCESS_WRITE;
-
-		// 사각형 정점 버퍼
-		D3D11_BUFFER_DESC rectangleDesc = {};
-		rectangleDesc.Usage = D3D11_USAGE::D3D11_USAGE_DYNAMIC;
-		rectangleDesc.ByteWidth = sizeof(Vertex) * 6;
-		rectangleDesc.BindFlags = D3D11_BIND_FLAG::D3D11_BIND_VERTEX_BUFFER;
-		rectangleDesc.CPUAccessFlags = D3D11_CPU_ACCESS_FLAG::D3D11_CPU_ACCESS_WRITE;
-
-		// 육각형 정점 버퍼
-		D3D11_BUFFER_DESC hexagonDesc = {};
-		hexagonDesc.Usage = D3D11_USAGE::D3D11_USAGE_DYNAMIC;
-		hexagonDesc.ByteWidth = sizeof(Vertex) * 12;
-		hexagonDesc.BindFlags = D3D11_BIND_FLAG::D3D11_BIND_VERTEX_BUFFER;
-		hexagonDesc.CPUAccessFlags = D3D11_CPU_ACCESS_FLAG::D3D11_CPU_ACCESS_WRITE;
-
-		// 별 정점 버퍼
-		D3D11_BUFFER_DESC starDesc = {};
-		starDesc.Usage = D3D11_USAGE::D3D11_USAGE_DYNAMIC;
-		starDesc.ByteWidth = sizeof(Vertex) * 15;
-		starDesc.BindFlags = D3D11_BIND_FLAG::D3D11_BIND_VERTEX_BUFFER;
-		starDesc.CPUAccessFlags = D3D11_CPU_ACCESS_FLAG::D3D11_CPU_ACCESS_WRITE;
-
-		// 원 정점 버퍼
-		D3D11_BUFFER_DESC circleDesc = {};
-		circleDesc.Usage = D3D11_USAGE::D3D11_USAGE_DYNAMIC;
-		circleDesc.ByteWidth = sizeof(Vertex) * 360;
-		circleDesc.BindFlags = D3D11_BIND_FLAG::D3D11_BIND_VERTEX_BUFFER;
-		circleDesc.CPUAccessFlags = D3D11_CPU_ACCESS_FLAG::D3D11_CPU_ACCESS_WRITE;
-
-		// 정점 버퍼 생성
-		D3D11_SUBRESOURCE_DATA triangleData = {};
-		triangleData.pSysMem = triangleVertexes;
-		cc::graphics::GetDevice()->CreateBuffer(&triangleBuffer, &triangleDesc, &triangleData);
-
-		D3D11_SUBRESOURCE_DATA rectangleData = {};
-		rectangleData.pSysMem = rectangleVertexes;
-		cc::graphics::GetDevice()->CreateBuffer(&rectangleBuffer, &rectangleDesc, &rectangleData);
-		
-		D3D11_SUBRESOURCE_DATA hexagonData = {};
-		hexagonData.pSysMem = hexagonVertexes;
-		cc::graphics::GetDevice()->CreateBuffer(&hexagonBuffer, &hexagonDesc, &hexagonData);
-
-		D3D11_SUBRESOURCE_DATA starData = {};
-		starData.pSysMem = starVertexes;
-		cc::graphics::GetDevice()->CreateBuffer(&starBuffer, &starDesc, &starData);
-
-		D3D11_SUBRESOURCE_DATA circleData = {};
-		circleData.pSysMem = circleVertexes;
-		cc::graphics::GetDevice()->CreateBuffer(&circleBuffer, &circleDesc, &circleData);
+		mesh = new cc::Mesh();
+		mesh->CreateVertexBuffer(vertexes, 4);
 
 		std::vector<UINT> indexes = {};
 		indexes.push_back(0);
 		indexes.push_back(1);
 		indexes.push_back(2);
-
-
-		// Index Buffer
-		D3D11_BUFFER_DESC triangleIdxDesc = {};
-		triangleIdxDesc.ByteWidth = sizeof(UINT) * indexes.size();
-		triangleIdxDesc.BindFlags = D3D11_BIND_FLAG::D3D11_BIND_INDEX_BUFFER;
-		triangleIdxDesc.Usage = D3D11_USAGE_DEFAULT;
-		triangleIdxDesc.CPUAccessFlags = 0;
-
-		D3D11_SUBRESOURCE_DATA triangleIdxData = {};
-		triangleIdxData.pSysMem = indexes.data();
-		cc::graphics::GetDevice()->CreateBuffer(&triangleIdxBuffer, &triangleIdxDesc, &triangleIdxData);
+		indexes.push_back(0);
+		indexes.push_back(2);
+		indexes.push_back(3);
+		mesh->CreateIndexBuffer(indexes.data(), indexes.size());
 
 		// Constant Buffer
 		D3D11_BUFFER_DESC triangleCSDesc = {};
@@ -151,17 +64,20 @@ namespace renderer
 		triangleCSDesc.CPUAccessFlags = D3D11_CPU_ACCESS_WRITE;
 
 		cc::graphics::GetDevice()->CreateBuffer(&triangleConstantBuffer, &triangleCSDesc, nullptr);
-		
-		
 	}
 
 	void LoadShader()
 	{
 		cc::graphics::GetDevice()->CreateShader();
+
+		shader = new cc::Shader();
+		shader->Create(eShaderStage::VS, L"TriangleVS.hlsl", "main");
+		shader->Create(eShaderStage::PS, L"TrianglePS.hlsl", "main");
 	}
 
 	void Initialize()
 	{
+		/*
 		// 삼각형 정점
 		triangleVertexes[0].pos = Vector3(-0.5f, 0.75f, 0.0f);
 		triangleVertexes[0].color = Vector4(1.0f, 0.0f, 0.0f, 1.0f);
@@ -285,7 +201,19 @@ namespace renderer
 			circleVertexes[360 - i].pos = Vector3(newX, newY, 0.0f);
 			circleVertexes[360 - i].color = Vector4(1.0f, 1.0f, 1.0f, 1.0f);
 		}
+		*/
 
+		vertexes[0].pos = Vector3(-0.5f, 0.5f, 0.0f);
+		vertexes[0].color = Vector4(1.0f, 0.0f, 0.0f, 1.0f);
+
+		vertexes[1].pos = Vector3(0.5f, 0.5f, 0.0f);
+		vertexes[1].color = Vector4(0.0f, 1.0f, 0.0f, 1.0f);
+
+		vertexes[2].pos = Vector3(0.5f, -0.5f, 0.0f);
+		vertexes[2].color = Vector4(0.0f, 0.0f, 1.0f, 1.0f);
+
+		vertexes[3].pos = Vector3(-0.5f, -0.5f, 0.0f);
+		vertexes[3].color = Vector4(1.0f, 1.0f, 1.0f, 1.0f);
 
 		SetupState();
 		LoadBuffer();
@@ -309,7 +237,11 @@ namespace renderer
 
 	void Release()
 	{
+		if (triangleLayout != nullptr)
+			triangleLayout->Release();
 
+		if (triangleConstantBuffer != nullptr)
+			triangleConstantBuffer->Release();
 	}
 }
 

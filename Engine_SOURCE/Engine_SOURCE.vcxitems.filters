@@ -69,6 +69,8 @@
     <ClInclude Include="$(MSBuildThisFileDirectory)ccRenderer.h">
       <Filter>Graphics</Filter>
     </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)ccShader.h" />
+    <ClInclude Include="$(MSBuildThisFileDirectory)ccMesh.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="$(MSBuildThisFileDirectory)ccEntity.cpp">
@@ -98,6 +100,8 @@
     <ClCompile Include="$(MSBuildThisFileDirectory)ccRenderer.cpp">
       <Filter>Graphics</Filter>
     </ClCompile>
+    <ClCompile Include="$(MSBuildThisFileDirectory)ccShader.cpp" />
+    <ClCompile Include="$(MSBuildThisFileDirectory)ccMesh.cpp" />
   </ItemGroup>
   <ItemGroup>
     <None Include="$(MSBuildThisFileDirectory)ccMath.inl">

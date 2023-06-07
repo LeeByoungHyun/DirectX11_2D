@@ -155,179 +155,41 @@ namespace cc::graphics
 
 	bool GraphicDevice_Dx11::CreateShader()
 	{
-		// 셰이더 폴더 경로
-		std::filesystem::path shaderPath
-			= std::filesystem::current_path().parent_path();
-		shaderPath += L"\\Shader_SOURCE\\";
+		return true;
+	}
 
-		//std::filesystem::path vsPath(shaderPath.c_str());
-		//vsPath += L"TriangleVS.hlsl";
+	bool GraphicDevice_Dx11::CompileFromfile(const std::wstring& fileName, const std::string& funcName, const std::string& version, ID3DBlob** ppCode)
+	{
+		ID3DBlob* errorBlob = nullptr;
+		D3DCompileFromFile(fileName.c_str(), nullptr, D3D_COMPILE_STANDARD_FILE_INCLUDE
+			, funcName.c_str(), version.c_str(), 0, 0, ppCode, &errorBlob);
 
-		// 정점 셰이더 경로
-		std::filesystem::path triangleVSPath(shaderPath.c_str());
-		triangleVSPath += L"TriangleVS.hlsl";
-
-		std::filesystem::path rectangleVSPath(shaderPath.c_str());
-		rectangleVSPath += L"RectangleVS.hlsl";
-
-		std::filesystem::path hexagonVSPath(shaderPath.c_str());
-		hexagonVSPath += L"HexagonVS.hlsl";
-
-		std::filesystem::path starVSPath(shaderPath.c_str());
-		starVSPath += L"StarVS.hlsl";
-
-		std::filesystem::path circleVSPath(shaderPath.c_str());
-		circleVSPath += L"CircleVS.hlsl";
-
-		// 정점 셰이더 컴파일
-		D3DCompileFromFile(triangleVSPath.c_str(), nullptr, D3D_COMPILE_STANDARD_FILE_INCLUDE
-			, "main", "vs_5_0", 0, 0, &renderer::triangleVSBlob, &renderer::errorBlob);	// 삼각형
-
-		D3DCompileFromFile(rectangleVSPath.c_str(), nullptr, D3D_COMPILE_STANDARD_FILE_INCLUDE
-			, "main", "vs_5_0", 0, 0, &renderer::rectangleVSBlob, &renderer::errorBlob);	// 사각형
-
-		D3DCompileFromFile(hexagonVSPath.c_str(), nullptr, D3D_COMPILE_STANDARD_FILE_INCLUDE
-			, "main", "vs_5_0", 0, 0, &renderer::hexagonVSBlob, &renderer::errorBlob);	// 육각형
-
-		D3DCompileFromFile(starVSPath.c_str(), nullptr, D3D_COMPILE_STANDARD_FILE_INCLUDE
-			, "main", "vs_5_0", 0, 0, &renderer::starVSBlob, &renderer::errorBlob);	// 별
-
-		D3DCompileFromFile(circleVSPath.c_str(), nullptr, D3D_COMPILE_STANDARD_FILE_INCLUDE
-			, "main", "vs_5_0", 0, 0, &renderer::circleVSBlob, &renderer::errorBlob);	// 원
-
-		if (renderer::errorBlob)
+		if (errorBlob)
 		{
-			OutputDebugStringA((char*)renderer::errorBlob->GetBufferPointer());
-			renderer::errorBlob->Release();
+			OutputDebugStringA((char*)(errorBlob->GetBufferPointer()));
+			errorBlob->Release();
+			errorBlob = nullptr;
 		}
 
-		// 정점 데이터 생성
-		mDevice->CreateVertexShader(renderer::triangleVSBlob->GetBufferPointer()
-			, renderer::triangleVSBlob->GetBufferSize()
-			, nullptr, &renderer::triangleVSShader);	// 삼각형
+		return false;
+	}
 
-		mDevice->CreateVertexShader(renderer::rectangleVSBlob->GetBufferPointer()
-			, renderer::rectangleVSBlob->GetBufferSize()
-			, nullptr, &renderer::rectangleVSShader);	// 사각형
+	bool GraphicDevice_Dx11::CreateVertexShader(const void* pShaderBytecode
+		, SIZE_T BytecodeLength
+		, ID3D11VertexShader** ppVertexShader)
+	{
+		if (FAILED(mDevice->CreateVertexShader(pShaderBytecode, BytecodeLength, nullptr, ppVertexShader)))
+			return false;
 
-		mDevice->CreateVertexShader(renderer::hexagonVSBlob->GetBufferPointer()
-			, renderer::hexagonVSBlob->GetBufferSize()
-			, nullptr, &renderer::hexagonVSShader);	// 육각형
+		return true;
+	}
 
-		mDevice->CreateVertexShader(renderer::starVSBlob->GetBufferPointer()
-			, renderer::starVSBlob->GetBufferSize()
-			, nullptr, &renderer::starVSShader);	// 별
-
-		mDevice->CreateVertexShader(renderer::circleVSBlob->GetBufferPointer()
-			, renderer::circleVSBlob->GetBufferSize()
-			, nullptr, &renderer::circleVSShader);	// 원
-
-		// 픽셀 셰이더 경로
-		std::filesystem::path trialglePSPath(shaderPath.c_str());
-		trialglePSPath += L"TrianglePS.hlsl";
-
-		std::filesystem::path rectanglePSPath(shaderPath.c_str());
-		rectanglePSPath += L"RectanglePS.hlsl";
-
-		std::filesystem::path hexagonPSPath(shaderPath.c_str());
-		hexagonPSPath += L"HexagonPS.hlsl";
-
-		std::filesystem::path starPSPath(shaderPath.c_str());
-		starPSPath += L"StarPS.hlsl";
-
-		std::filesystem::path circlePSPath(shaderPath.c_str());
-		circlePSPath += L"CirclePS.hlsl";
-
-		// 픽셀 셰이더 컴파일
-		D3DCompileFromFile(trialglePSPath.c_str(), nullptr, D3D_COMPILE_STANDARD_FILE_INCLUDE
-			, "main", "ps_5_0", 0, 0, &renderer::trianglePSBlob, &renderer::errorBlob);	// 삼각형
-
-		D3DCompileFromFile(rectanglePSPath.c_str(), nullptr, D3D_COMPILE_STANDARD_FILE_INCLUDE
-			, "main", "ps_5_0", 0, 0, &renderer::rectanglePSBlob, &renderer::errorBlob);	// 사각형
-		
-		D3DCompileFromFile(hexagonPSPath.c_str(), nullptr, D3D_COMPILE_STANDARD_FILE_INCLUDE
-			, "main", "ps_5_0", 0, 0, &renderer::hexagonPSBlob, &renderer::errorBlob);	// 육각형
-
-		D3DCompileFromFile(starPSPath.c_str(), nullptr, D3D_COMPILE_STANDARD_FILE_INCLUDE
-			, "main", "ps_5_0", 0, 0, &renderer::starPSBlob, &renderer::errorBlob);	// 별
-
-		D3DCompileFromFile(circlePSPath.c_str(), nullptr, D3D_COMPILE_STANDARD_FILE_INCLUDE
-			, "main", "ps_5_0", 0, 0, &renderer::circlePSBlob, &renderer::errorBlob);	// 원
-
-		if (renderer::errorBlob)
-		{
-			OutputDebugStringA((char*)renderer::errorBlob->GetBufferPointer());
-			renderer::errorBlob->Release();
-		}
-
-		// 픽셀 셰이더 생성
-		mDevice->CreatePixelShader(renderer::trianglePSBlob->GetBufferPointer()
-			, renderer::trianglePSBlob->GetBufferSize()
-			, nullptr, &renderer::trianglePSShader);
-
-		mDevice->CreatePixelShader(renderer::rectanglePSBlob->GetBufferPointer()
-			, renderer::rectanglePSBlob->GetBufferSize()
-			, nullptr, &renderer::rectanglePSShader);
-
-		mDevice->CreatePixelShader(renderer::hexagonPSBlob->GetBufferPointer()
-			, renderer::hexagonPSBlob->GetBufferSize()
-			, nullptr, &renderer::hexagonPSShader);
-
-		mDevice->CreatePixelShader(renderer::starPSBlob->GetBufferPointer()
-			, renderer::starPSBlob->GetBufferSize()
-			, nullptr, &renderer::starPSShader);
-
-		mDevice->CreatePixelShader(renderer::circlePSBlob->GetBufferPointer()
-			, renderer::circlePSBlob->GetBufferSize()
-			, nullptr, &renderer::circlePSShader);
-
-		// Input layout 정점 구조 정보를 넘겨줘야한다.
-		D3D11_INPUT_ELEMENT_DESC arrLayout[2] = {};
-
-		arrLayout[0].AlignedByteOffset = 0;
-		arrLayout[0].Format = DXGI_FORMAT_R32G32B32_FLOAT;
-		arrLayout[0].InputSlot = 0;
-		arrLayout[0].InputSlotClass = D3D11_INPUT_PER_VERTEX_DATA;
-		arrLayout[0].SemanticName = "POSITION";
-		arrLayout[0].SemanticIndex = 0;
-
-		arrLayout[1].AlignedByteOffset = 12;
-		arrLayout[1].Format = DXGI_FORMAT_R32G32B32A32_FLOAT;
-		arrLayout[1].InputSlot = 0;
-		arrLayout[1].InputSlotClass = D3D11_INPUT_PER_VERTEX_DATA;
-		arrLayout[1].SemanticName = "COLOR";
-		arrLayout[1].SemanticIndex = 0;
-
-		// Input layout 설정
-		// 삼각형
-		mDevice->CreateInputLayout(arrLayout, 2
-		 	, renderer::triangleVSBlob->GetBufferPointer()
-		 	, renderer::triangleVSBlob->GetBufferSize()
-		 	, &renderer::triangleLayout);
-
-		// 사각형
-		mDevice->CreateInputLayout(arrLayout, 2
-			, renderer::rectangleVSBlob->GetBufferPointer()
-			, renderer::rectangleVSBlob->GetBufferSize()
-			, &renderer::rectangleLayout);
-
-		// hexagon
-		mDevice->CreateInputLayout(arrLayout, 2
-			, renderer::hexagonVSBlob->GetBufferPointer()
-			, renderer::hexagonVSBlob->GetBufferSize()
-			, &renderer::hexagonLayout);
-
-		// star
-		mDevice->CreateInputLayout(arrLayout, 2
-			, renderer::starVSBlob->GetBufferPointer()
-			, renderer::starVSBlob->GetBufferSize()
-			, &renderer::starLayout);
-
-		// star
-		mDevice->CreateInputLayout(arrLayout, 2
-			, renderer::circleVSBlob->GetBufferPointer()
-			, renderer::circleVSBlob->GetBufferSize()
-			, &renderer::circleLayout);
+	bool GraphicDevice_Dx11::CreatePixelShader(const void* pShaderBytecode
+		, SIZE_T BytecodeLength
+		, ID3D11PixelShader** ppPixelShader)
+	{
+		if (FAILED(mDevice->CreatePixelShader(pShaderBytecode, BytecodeLength, nullptr, ppPixelShader)))
+			return false;
 
 		return true;
 	}
@@ -362,6 +224,32 @@ namespace cc::graphics
 	void GraphicDevice_Dx11::BindViewPort(D3D11_VIEWPORT* viewPort)
 	{
 		mContext->RSSetViewports(1, viewPort);
+	}
+
+	void GraphicDevice_Dx11::BindVertexBuffer(UINT StartSlot
+		, ID3D11Buffer* const* ppVertexBuffers
+		, const UINT* pStrides
+		, const UINT* pOffsets)
+	{
+		mContext->IASetVertexBuffers(StartSlot, 1, ppVertexBuffers, pStrides, pOffsets);
+	}
+
+	void GraphicDevice_Dx11::BindIndexBuffer(ID3D11Buffer* pIndexBuffer
+		, DXGI_FORMAT Format
+		, UINT Offset)
+	{
+		mContext->IASetIndexBuffer(pIndexBuffer, Format, Offset);
+	}
+
+	void GraphicDevice_Dx11::BindVertexShader(ID3D11VertexShader* pVetexShader)
+	{
+		mContext->VSSetShader(pVetexShader, 0, 0);
+
+	}
+
+	void GraphicDevice_Dx11::BindPixelShader(ID3D11PixelShader* pPixelShader)
+	{
+		mContext->PSSetShader(pPixelShader, 0, 0);
 	}
 
 	void GraphicDevice_Dx11::SetConstantBuffer(ID3D11Buffer* buffer, void* data, UINT size)
@@ -435,52 +323,16 @@ namespace cc::graphics
 		// 렌더 타겟 설정
 		mContext->OMSetRenderTargets(1, mRenderTargetView.GetAddressOf(), mDepthStencilView.Get());
 
-		// input assembler 정점데이터 정보 지정
-		UINT vertexsize = sizeof(renderer::Vertex);
-		UINT offset = 0;
+		renderer::mesh->BindBuffer();
 
-		// triangle
-		mContext->IASetVertexBuffers(0, 1, &renderer::triangleBuffer, &vertexsize, &offset);	// 정점 버퍼 설정
-		mContext->IASetIndexBuffer(renderer::triangleIdxBuffer, DXGI_FORMAT_R32_UINT, 0);
-		mContext->IASetInputLayout(renderer::triangleLayout);	// input layout 설정
-		mContext->IASetPrimitiveTopology(D3D11_PRIMITIVE_TOPOLOGY::D3D10_PRIMITIVE_TOPOLOGY_TRIANGLELIST);	// 프리미티브 유형 설정
-		mContext->VSSetShader(renderer::triangleVSShader, 0, 0);	// Bind VS, PS 
-		mContext->PSSetShader(renderer::trianglePSShader, 0, 0);
-		//mContext->Draw(3, 0);		// Draw Render Target
-		mContext->DrawIndexed(3, 0, 0);
+		mContext->IASetInputLayout(renderer::triangleLayout);
+		mContext->IASetPrimitiveTopology(D3D11_PRIMITIVE_TOPOLOGY::D3D11_PRIMITIVE_TOPOLOGY_TRIANGLELIST);
 
-		// rectangle
-		mContext->IASetVertexBuffers(0, 1, &renderer::rectangleBuffer, &vertexsize, &offset);	
-		mContext->IASetInputLayout(renderer::rectangleLayout);	
-		mContext->IASetPrimitiveTopology(D3D11_PRIMITIVE_TOPOLOGY::D3D10_PRIMITIVE_TOPOLOGY_TRIANGLELIST);
-		mContext->VSSetShader(renderer::rectangleVSShader, 0, 0);
-		mContext->PSSetShader(renderer::rectanglePSShader, 0, 0);
-		mContext->Draw(6, 0);
+		renderer::shader->Binds();
 
-		// hexagon
-		mContext->IASetVertexBuffers(0, 1, &renderer::hexagonBuffer, &vertexsize, &offset);	
-		mContext->IASetInputLayout(renderer::hexagonLayout);	
-		mContext->IASetPrimitiveTopology(D3D11_PRIMITIVE_TOPOLOGY::D3D10_PRIMITIVE_TOPOLOGY_TRIANGLELIST);	
-		mContext->VSSetShader(renderer::hexagonVSShader, 0, 0);
-		mContext->PSSetShader(renderer::hexagonPSShader, 0, 0);
-		mContext->Draw(12, 0);
+		// Draw Render Target
+		mContext->DrawIndexed(renderer::mesh->GetIndexCount(), 0, 0);
 
-		// star
-		mContext->IASetVertexBuffers(0, 1, &renderer::starBuffer, &vertexsize, &offset);	
-		mContext->IASetInputLayout(renderer::starLayout);
-		mContext->IASetPrimitiveTopology(D3D11_PRIMITIVE_TOPOLOGY::D3D10_PRIMITIVE_TOPOLOGY_TRIANGLELIST);	
-		mContext->VSSetShader(renderer::starVSShader, 0, 0);
-		mContext->PSSetShader(renderer::starPSShader, 0, 0);
-		mContext->Draw(15, 0);
-
-		// star
-		mContext->IASetVertexBuffers(0, 1, &renderer::circleBuffer, &vertexsize, &offset);
-		mContext->IASetInputLayout(renderer::circleLayout);
-		mContext->IASetPrimitiveTopology(D3D11_PRIMITIVE_TOPOLOGY::D3D_PRIMITIVE_TOPOLOGY_LINESTRIP);
-		mContext->VSSetShader(renderer::circleVSShader, 0, 0);
-		mContext->PSSetShader(renderer::circlePSShader, 0, 0);
-		mContext->Draw(360, 0);
-		
 		// 렌더타겟에 있는 이미지를 화면에 그려준다
 		mSwapChain->Present(0, 0);
 	}
