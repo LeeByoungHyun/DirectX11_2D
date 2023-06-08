@@ -12,7 +12,7 @@ namespace cc
 
 	Shader::~Shader()
 	{
-
+		//mInputLayout->Release();
 	}
 
 	HRESULT Shader::Load(const std::wstring& path)

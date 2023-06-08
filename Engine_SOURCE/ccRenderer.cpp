@@ -8,8 +8,8 @@ namespace renderer
 
 	ID3D11InputLayout* triangleLayout = nullptr;
 	cc::Mesh* mesh = nullptr;
-	ID3D11Buffer* triangleConstantBuffer = nullptr;
 	cc::Shader* shader = nullptr;
+	cc::graphics::ConstantBuffer* constantBuffer = nullptr;
 
 	Vector4 pos(0.0f, 0.0f, 0.0f, 1.0f);
 
@@ -53,14 +53,10 @@ namespace renderer
 		indexes.push_back(3);
 		mesh->CreateIndexBuffer(indexes.data(), indexes.size());
 
-		// Constant Buffer
-		D3D11_BUFFER_DESC triangleCSDesc = {};
-		triangleCSDesc.ByteWidth = sizeof(Vector4);
-		triangleCSDesc.BindFlags = D3D11_BIND_FLAG::D3D11_BIND_CONSTANT_BUFFER;
-		triangleCSDesc.Usage = D3D11_USAGE::D3D11_USAGE_DYNAMIC;
-		triangleCSDesc.CPUAccessFlags = D3D11_CPU_ACCESS_WRITE;
+		constantBuffer = new cc::graphics::ConstantBuffer(eCBType::Transform);
+		constantBuffer->Create(sizeof(Vector4));
 
-		cc::graphics::GetDevice()->CreateBuffer(&triangleConstantBuffer, &triangleCSDesc, nullptr);
+		
 	}
 
 	void LoadShader()
@@ -100,14 +96,15 @@ namespace renderer
 		if (cc::Input::GetKey(cc::eKeyCode::D))
 			pos += Vector4(0.1f * cc::Time::DeltaTime(), 0.0f, 0.0f, 1.0f);
 
-		cc::graphics::GetDevice()->SetConstantBuffer(triangleConstantBuffer, &pos, sizeof(Vector4));
-		cc::graphics::GetDevice()->BindConstantBuffer(eShaderStage::VS, eCBType::Transform, triangleConstantBuffer);
+		constantBuffer->SetData(&pos);
+		constantBuffer->Bind(eShaderStage::VS);
 	}
 
 	void Release()
 	{
-		if (triangleConstantBuffer != nullptr)
-			triangleConstantBuffer->Release();
+		delete mesh;
+		delete shader;
+		delete constantBuffer;
 	}
 }
 

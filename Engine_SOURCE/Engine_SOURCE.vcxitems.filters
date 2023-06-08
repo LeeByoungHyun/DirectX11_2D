@@ -71,6 +71,7 @@
     </ClInclude>
     <ClInclude Include="$(MSBuildThisFileDirectory)ccShader.h" />
     <ClInclude Include="$(MSBuildThisFileDirectory)ccMesh.h" />
+    <ClInclude Include="$(MSBuildThisFileDirectory)ccConstantBuffer.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="$(MSBuildThisFileDirectory)ccEntity.cpp">
@@ -102,6 +103,7 @@
     </ClCompile>
     <ClCompile Include="$(MSBuildThisFileDirectory)ccShader.cpp" />
     <ClCompile Include="$(MSBuildThisFileDirectory)ccMesh.cpp" />
+    <ClCompile Include="$(MSBuildThisFileDirectory)ccConstantBuffer.cpp" />
   </ItemGroup>
   <ItemGroup>
     <None Include="$(MSBuildThisFileDirectory)ccMath.inl">

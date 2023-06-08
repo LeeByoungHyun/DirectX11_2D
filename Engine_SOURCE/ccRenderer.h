@@ -3,6 +3,7 @@
 #include "ccGraphicDevice_Dx11.h"
 #include "ccMesh.h"
 #include "ccShader.h"
+#include "ccConstantBuffer.h"
 
 using namespace cc::math;
 namespace renderer
@@ -17,6 +18,7 @@ namespace renderer
 	extern cc::Mesh* mesh;
 	extern ID3D11Buffer* triangleConstantBuffer;
 	extern cc::Shader* shader;
+	extern cc::graphics::ConstantBuffer* constantBuffer;
 
 	void Initialize();
 	void Update();

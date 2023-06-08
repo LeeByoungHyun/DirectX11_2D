@@ -15,6 +15,7 @@
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="$(MSBuildThisFileDirectory)ccApplication.cpp" />
+    <ClCompile Include="$(MSBuildThisFileDirectory)ccConstantBuffer.cpp" />
     <ClCompile Include="$(MSBuildThisFileDirectory)ccEntity.cpp" />
     <ClCompile Include="$(MSBuildThisFileDirectory)ccGraphicDevice_Dx11.cpp" />
     <ClCompile Include="$(MSBuildThisFileDirectory)ccInput.cpp" />
@@ -28,6 +29,7 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="$(MSBuildThisFileDirectory)ccApplication.h" />
+    <ClInclude Include="$(MSBuildThisFileDirectory)ccConstantBuffer.h" />
     <ClInclude Include="$(MSBuildThisFileDirectory)CCEngine.h" />
     <ClInclude Include="$(MSBuildThisFileDirectory)ccEntity.h" />
     <ClInclude Include="$(MSBuildThisFileDirectory)ccEnums.h" />
