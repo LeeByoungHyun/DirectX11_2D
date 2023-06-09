@@ -15,32 +15,44 @@
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="$(MSBuildThisFileDirectory)ccApplication.cpp" />
+    <ClCompile Include="$(MSBuildThisFileDirectory)ccComponent.cpp" />
     <ClCompile Include="$(MSBuildThisFileDirectory)ccConstantBuffer.cpp" />
     <ClCompile Include="$(MSBuildThisFileDirectory)ccEntity.cpp" />
+    <ClCompile Include="$(MSBuildThisFileDirectory)ccGameObject.cpp" />
     <ClCompile Include="$(MSBuildThisFileDirectory)ccGraphicDevice_Dx11.cpp" />
     <ClCompile Include="$(MSBuildThisFileDirectory)ccInput.cpp" />
+    <ClCompile Include="$(MSBuildThisFileDirectory)ccLayer.cpp" />
     <ClCompile Include="$(MSBuildThisFileDirectory)ccMath.cpp" />
     <ClCompile Include="$(MSBuildThisFileDirectory)ccMesh.cpp" />
     <ClCompile Include="$(MSBuildThisFileDirectory)ccRenderer.cpp" />
     <ClCompile Include="$(MSBuildThisFileDirectory)ccResource.cpp" />
     <ClCompile Include="$(MSBuildThisFileDirectory)ccResourceManager.cpp" />
+    <ClCompile Include="$(MSBuildThisFileDirectory)ccScene.cpp" />
+    <ClCompile Include="$(MSBuildThisFileDirectory)ccSceneManager.cpp" />
+    <ClCompile Include="$(MSBuildThisFileDirectory)ccScript.cpp" />
     <ClCompile Include="$(MSBuildThisFileDirectory)ccShader.cpp" />
     <ClCompile Include="$(MSBuildThisFileDirectory)ccTime.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="$(MSBuildThisFileDirectory)ccApplication.h" />
+    <ClInclude Include="$(MSBuildThisFileDirectory)ccComponent.h" />
     <ClInclude Include="$(MSBuildThisFileDirectory)ccConstantBuffer.h" />
     <ClInclude Include="$(MSBuildThisFileDirectory)CCEngine.h" />
     <ClInclude Include="$(MSBuildThisFileDirectory)ccEntity.h" />
     <ClInclude Include="$(MSBuildThisFileDirectory)ccEnums.h" />
+    <ClInclude Include="$(MSBuildThisFileDirectory)ccGameObject.h" />
     <ClInclude Include="$(MSBuildThisFileDirectory)ccGraphicDevice_Dx11.h" />
     <ClInclude Include="$(MSBuildThisFileDirectory)ccGraphics.h" />
     <ClInclude Include="$(MSBuildThisFileDirectory)ccInput.h" />
+    <ClInclude Include="$(MSBuildThisFileDirectory)ccLayer.h" />
     <ClInclude Include="$(MSBuildThisFileDirectory)ccMath.h" />
     <ClInclude Include="$(MSBuildThisFileDirectory)ccMesh.h" />
     <ClInclude Include="$(MSBuildThisFileDirectory)ccRenderer.h" />
     <ClInclude Include="$(MSBuildThisFileDirectory)ccResource.h" />
     <ClInclude Include="$(MSBuildThisFileDirectory)ccResourceManager.h" />
+    <ClInclude Include="$(MSBuildThisFileDirectory)ccScene.h" />
+    <ClInclude Include="$(MSBuildThisFileDirectory)ccSceneManager.h" />
+    <ClInclude Include="$(MSBuildThisFileDirectory)ccScript.h" />
     <ClInclude Include="$(MSBuildThisFileDirectory)ccShader.h" />
     <ClInclude Include="$(MSBuildThisFileDirectory)ccTime.h" />
     <ClInclude Include="$(MSBuildThisFileDirectory)CommonInclude.h" />

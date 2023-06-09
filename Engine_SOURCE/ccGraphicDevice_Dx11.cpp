@@ -285,6 +285,11 @@ namespace cc::graphics
 		mContext->RSSetViewports(1, viewPort);
 	}
 
+	void GraphicDevice_Dx11::DrawIndexed(UINT IndexCount, UINT StartIndexLocation, INT BaseVertexLocation)
+	{
+		mContext->DrawIndexed(IndexCount, StartIndexLocation, BaseVertexLocation);
+	}
+
 	void GraphicDevice_Dx11::Draw()
 	{
 		// render target clear
@@ -304,12 +309,19 @@ namespace cc::graphics
 			, 0.0f, 1.0f
 		};
 
+		
 		BindViewPort(&mViewPort);
 		mContext->OMSetRenderTargets(1, mRenderTargetView.GetAddressOf(), mDepthStencilView.Get());
+
 		renderer::mesh->BindBuffer();
-		mContext->IASetInputLayout(renderer::shader->GetInputLayout());
 		renderer::shader->Binds();
 		mContext->DrawIndexed(renderer::mesh->GetIndexCount(), 0, 0);
+
+		mSwapChain->Present(0, 0);
+		
+	}
+	void GraphicDevice_Dx11::Present()
+	{
 		mSwapChain->Present(0, 0);
 	}
 }

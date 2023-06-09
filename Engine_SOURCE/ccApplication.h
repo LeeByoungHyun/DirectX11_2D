@@ -1,6 +1,7 @@
 #pragma once
 #include "CCEngine.h"
 #include "ccGraphicDevice_Dx11.h"
+#include "ccScene.h"
 
 namespace cc
 {
@@ -30,5 +31,7 @@ namespace cc
 		HWND mHwnd;
 		UINT mWidth;
 		UINT mHeight;
+
+		Scene* mScene;
 	};
 }

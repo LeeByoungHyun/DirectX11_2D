@@ -28,6 +28,27 @@
     <Filter Include="Resource\ResourceManager">
       <UniqueIdentifier>{66a1331d-89f0-4f09-ad08-115ddd680272}</UniqueIdentifier>
     </Filter>
+    <Filter Include="GameObject">
+      <UniqueIdentifier>{bea8051c-34c2-49cc-8941-59ad14cb3b56}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Buffer">
+      <UniqueIdentifier>{16ae7e16-ee6a-44af-86c6-60655e5f8ddf}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Component">
+      <UniqueIdentifier>{1006c2ab-8610-4ee7-9902-56debc3ce002}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Scene">
+      <UniqueIdentifier>{434e7fe3-9202-4cf5-a228-58227ae59f82}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Scene\SceneManager">
+      <UniqueIdentifier>{716821ac-4189-4fa2-8fe2-e46655a10fd1}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Component\Script">
+      <UniqueIdentifier>{a1eb7364-3ff8-4ea4-b8cf-83e743ca93cf}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Layer">
+      <UniqueIdentifier>{331e81c8-2199-44a9-be99-b6fe1f7f33b3}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="$(MSBuildThisFileDirectory)CommonInclude.h">
@@ -69,9 +90,33 @@
     <ClInclude Include="$(MSBuildThisFileDirectory)ccRenderer.h">
       <Filter>Graphics</Filter>
     </ClInclude>
-    <ClInclude Include="$(MSBuildThisFileDirectory)ccShader.h" />
-    <ClInclude Include="$(MSBuildThisFileDirectory)ccMesh.h" />
-    <ClInclude Include="$(MSBuildThisFileDirectory)ccConstantBuffer.h" />
+    <ClInclude Include="$(MSBuildThisFileDirectory)ccGameObject.h">
+      <Filter>GameObject</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)ccConstantBuffer.h">
+      <Filter>Buffer</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)ccMesh.h">
+      <Filter>Buffer</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)ccShader.h">
+      <Filter>Buffer</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)ccComponent.h">
+      <Filter>Component</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)ccScene.h">
+      <Filter>Scene</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)ccSceneManager.h">
+      <Filter>Scene\SceneManager</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)ccScript.h">
+      <Filter>Component\Script</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)ccLayer.h">
+      <Filter>Layer</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="$(MSBuildThisFileDirectory)ccEntity.cpp">
@@ -101,9 +146,33 @@
     <ClCompile Include="$(MSBuildThisFileDirectory)ccRenderer.cpp">
       <Filter>Graphics</Filter>
     </ClCompile>
-    <ClCompile Include="$(MSBuildThisFileDirectory)ccShader.cpp" />
-    <ClCompile Include="$(MSBuildThisFileDirectory)ccMesh.cpp" />
-    <ClCompile Include="$(MSBuildThisFileDirectory)ccConstantBuffer.cpp" />
+    <ClCompile Include="$(MSBuildThisFileDirectory)ccGameObject.cpp">
+      <Filter>GameObject</Filter>
+    </ClCompile>
+    <ClCompile Include="$(MSBuildThisFileDirectory)ccConstantBuffer.cpp">
+      <Filter>Buffer</Filter>
+    </ClCompile>
+    <ClCompile Include="$(MSBuildThisFileDirectory)ccMesh.cpp">
+      <Filter>Buffer</Filter>
+    </ClCompile>
+    <ClCompile Include="$(MSBuildThisFileDirectory)ccShader.cpp">
+      <Filter>Buffer</Filter>
+    </ClCompile>
+    <ClCompile Include="$(MSBuildThisFileDirectory)ccComponent.cpp">
+      <Filter>Component</Filter>
+    </ClCompile>
+    <ClCompile Include="$(MSBuildThisFileDirectory)ccScene.cpp">
+      <Filter>Scene</Filter>
+    </ClCompile>
+    <ClCompile Include="$(MSBuildThisFileDirectory)ccSceneManager.cpp">
+      <Filter>Scene\SceneManager</Filter>
+    </ClCompile>
+    <ClCompile Include="$(MSBuildThisFileDirectory)ccScript.cpp">
+      <Filter>Component\Script</Filter>
+    </ClCompile>
+    <ClCompile Include="$(MSBuildThisFileDirectory)ccLayer.cpp">
+      <Filter>Layer</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <None Include="$(MSBuildThisFileDirectory)ccMath.inl">

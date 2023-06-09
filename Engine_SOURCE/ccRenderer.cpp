@@ -4,6 +4,9 @@
 
 namespace renderer
 {
+	using namespace cc;
+	using namespace cc::graphics;
+
 	Vertex vertexes[4] = {};
 
 	ID3D11InputLayout* triangleLayout = nullptr;
@@ -55,8 +58,6 @@ namespace renderer
 
 		constantBuffer = new cc::graphics::ConstantBuffer(eCBType::Transform);
 		constantBuffer->Create(sizeof(Vector4));
-
-		
 	}
 
 	void LoadShader()

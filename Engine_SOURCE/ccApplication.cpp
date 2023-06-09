@@ -2,6 +2,7 @@
 #include "ccInput.h"
 #include "ccTime.h"
 #include "ccRenderer.h"
+#include "ccSceneManager.h"
 
 namespace cc
 {
@@ -31,6 +32,9 @@ namespace cc
 		Input::Initialize();
 
 		renderer::Initialize();
+
+		mScene = new Scene();
+		mScene->Initialize();
 	}
 
 	void Application::Update()
@@ -39,10 +43,12 @@ namespace cc
 		Input::Update();
 
 		renderer::Update();
+		mScene->Update();
 	}
 
 	void Application::LateUpdate()
 	{
+		mScene->LateUpdate();
 	}
 
 	void Application::Render()
@@ -50,6 +56,8 @@ namespace cc
 		Time::Render();
 
 		graphicDevice->Draw();
+		mScene->Render();
+		graphicDevice->Present();
 	}
 
 	void Application::SetWindow(HWND hwnd, UINT width, UINT height)
