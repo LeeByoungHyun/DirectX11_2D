@@ -31,7 +31,5 @@ namespace cc
 		HWND mHwnd;
 		UINT mWidth;
 		UINT mHeight;
-
-		Scene* mScene;
 	};
 }

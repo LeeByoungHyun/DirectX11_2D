@@ -290,14 +290,16 @@ namespace cc::graphics
 		mContext->DrawIndexed(IndexCount, StartIndexLocation, BaseVertexLocation);
 	}
 
-	void GraphicDevice_Dx11::Draw()
+	void GraphicDevice_Dx11::ClearTarget()
 	{
-		// render target clear
 		FLOAT bgColor[4] = { 0.2f, 0.2f, 0.2f, 1.0f };
 		mContext->ClearRenderTargetView(mRenderTargetView.Get(), bgColor);
 		mContext->ClearDepthStencilView(mDepthStencilView.Get(), D3D11_CLEAR_DEPTH | D3D11_CLEAR_STENCIL, 1.0f, 0.0f);
+		mContext->OMSetRenderTargets(1, mRenderTargetView.GetAddressOf(), mDepthStencilView.Get());
+	}
 
-		// viewport update
+	void GraphicDevice_Dx11::UpdateViewPort()
+	{
 		HWND hWnd = application.GetHwnd();
 		RECT winRect = {};
 		GetClientRect(hWnd, &winRect);
@@ -309,17 +311,14 @@ namespace cc::graphics
 			, 0.0f, 1.0f
 		};
 
-		
 		BindViewPort(&mViewPort);
-		mContext->OMSetRenderTargets(1, mRenderTargetView.GetAddressOf(), mDepthStencilView.Get());
+	}
 
-		renderer::mesh->BindBuffer();
-		renderer::shader->Binds();
-		mContext->DrawIndexed(renderer::mesh->GetIndexCount(), 0, 0);
-
-		mSwapChain->Present(0, 0);
+	void GraphicDevice_Dx11::Draw()
+	{
 		
 	}
+
 	void GraphicDevice_Dx11::Present()
 	{
 		mSwapChain->Present(0, 0);

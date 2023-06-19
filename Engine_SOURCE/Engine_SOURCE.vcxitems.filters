@@ -49,6 +49,12 @@
     <Filter Include="Layer">
       <UniqueIdentifier>{331e81c8-2199-44a9-be99-b6fe1f7f33b3}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Component\Transform">
+      <UniqueIdentifier>{c41598da-7ae1-4011-80e0-dfd2ef56f1bb}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Component\MeshRenderer">
+      <UniqueIdentifier>{0df4f621-58d4-4d8d-bf51-4b52cf4bede4}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="$(MSBuildThisFileDirectory)CommonInclude.h">
@@ -118,6 +124,12 @@
       <Filter>Layer</Filter>
     </ClInclude>
     <ClInclude Include="$(MSBuildThisFileDirectory)ccTestScene.h" />
+    <ClInclude Include="$(MSBuildThisFileDirectory)ccMeshRenderer.h">
+      <Filter>Component\MeshRenderer</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)ccTransform.h">
+      <Filter>Component\Transform</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="$(MSBuildThisFileDirectory)ccEntity.cpp">
@@ -175,6 +187,12 @@
       <Filter>Layer</Filter>
     </ClCompile>
     <ClCompile Include="$(MSBuildThisFileDirectory)ccTestScene.cpp" />
+    <ClCompile Include="$(MSBuildThisFileDirectory)ccMeshRenderer.cpp">
+      <Filter>Component\MeshRenderer</Filter>
+    </ClCompile>
+    <ClCompile Include="$(MSBuildThisFileDirectory)ccTransform.cpp">
+      <Filter>Component\Transform</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <None Include="$(MSBuildThisFileDirectory)ccMath.inl">

@@ -4,7 +4,7 @@ namespace cc
 {
 	Scene::Scene()
 	{
-
+		mLayers.resize((int)cc::enums::eLayerType::End);
 	}
 
 	Scene::~Scene()
@@ -19,20 +19,30 @@ namespace cc
 
 	void Scene::Update()
 	{
-		for (Layer* layer : mLayers)
+		for (Layer& layer : mLayers)
 		{
-			layer->Update();
+			layer.Update();
 		}
 	}
 
 	void Scene::LateUpdate()
 	{
+		for (Layer& layer : mLayers)
+		{
+			layer.LateUpdate();
+		}
 	}
+
 	void Scene::Render()
 	{
-		for (Layer* layer : mLayers)
+		for (Layer& layer : mLayers)
 		{
-			layer->Render();
+			layer.Render();
 		}
+	}
+
+	void Scene::AddGameObject(eLayerType type, GameObject* gameObj)
+	{
+		mLayers[(int)type].AddGameObject(gameObj);
 	}
 }

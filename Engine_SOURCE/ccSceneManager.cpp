@@ -8,6 +8,7 @@ namespace cc
 	void SceneManager::Initialize()
 	{
 		mActiveScene = new TestScene();
+		mActiveScene->Initialize();
 	}
 
 	void SceneManager::Update()

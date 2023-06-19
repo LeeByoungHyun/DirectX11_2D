@@ -14,5 +14,7 @@ namespace cc
 
 	private:
 		static Scene* mActiveScene;
+
+		//std::map<std::wstring, Scene*> mScenes;
 	};
 }

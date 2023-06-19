@@ -1,14 +1,15 @@
 #pragma once
-#include "ccScene.h"
-
+#include "ccComponent.h"
+#include "ccMesh.h"
+#include "ccShader.h"
 
 namespace cc
 {
-	class TestScene : public Scene
+	class MeshRenderer : public Component
 	{
 	public:
-		TestScene();
-		virtual ~TestScene();
+		MeshRenderer();
+		~MeshRenderer();
 
 		virtual void Initialize() override;
 		virtual void Update() override;
@@ -16,6 +17,7 @@ namespace cc
 		virtual void Render() override;
 
 	private:
-
+		Mesh* mMesh;
+		Shader* mShader;
 	};
 }

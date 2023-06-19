@@ -28,7 +28,7 @@ namespace cc
 		T* GetComponent()
 		{
 			T* component;
-			for (T* comp : mComponents)
+			for (Component* comp : mComponents)
 			{
 				component = dynamic_cast<T*>(comp);
 				if (component != nullptr)
@@ -50,6 +50,7 @@ namespace cc
 				return nullptr;
 
 			mComponents.push_back(buff);
+			comp->SetOwner(this);
 
 			return comp;
 		}
