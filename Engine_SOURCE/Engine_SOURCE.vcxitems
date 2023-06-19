@@ -31,6 +31,7 @@
     <ClCompile Include="$(MSBuildThisFileDirectory)ccSceneManager.cpp" />
     <ClCompile Include="$(MSBuildThisFileDirectory)ccScript.cpp" />
     <ClCompile Include="$(MSBuildThisFileDirectory)ccShader.cpp" />
+    <ClCompile Include="$(MSBuildThisFileDirectory)ccTestScene.cpp" />
     <ClCompile Include="$(MSBuildThisFileDirectory)ccTime.cpp" />
   </ItemGroup>
   <ItemGroup>
@@ -54,6 +55,7 @@
     <ClInclude Include="$(MSBuildThisFileDirectory)ccSceneManager.h" />
     <ClInclude Include="$(MSBuildThisFileDirectory)ccScript.h" />
     <ClInclude Include="$(MSBuildThisFileDirectory)ccShader.h" />
+    <ClInclude Include="$(MSBuildThisFileDirectory)ccTestScene.h" />
     <ClInclude Include="$(MSBuildThisFileDirectory)ccTime.h" />
     <ClInclude Include="$(MSBuildThisFileDirectory)CommonInclude.h" />
   </ItemGroup>

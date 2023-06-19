@@ -1,6 +1,6 @@
 #pragma once
 #include "ccEntity.h"
-#include "ccGameObject.h"
+#include "ccLayer.h"
 
 namespace cc
 {
@@ -16,6 +16,6 @@ namespace cc
 		virtual void Render();
 
 	private:
-		std::vector<GameObject*> mGameObjects;
+		std::vector<Layer*> mLayers;
 	};
 }
