@@ -12,6 +12,7 @@ namespace renderer
 	{
 		Vector3 pos;
 		Vector4 color;
+		Vector2 uv;
 	};
 
 	extern Vertex Vertexes[];
@@ -21,6 +22,5 @@ namespace renderer
 	extern cc::graphics::ConstantBuffer* constantBuffer;
 
 	void Initialize();
-	void Update();
 	void Release();
 }

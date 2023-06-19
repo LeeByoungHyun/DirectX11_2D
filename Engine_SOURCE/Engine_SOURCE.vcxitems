@@ -33,6 +33,7 @@
     <ClCompile Include="$(MSBuildThisFileDirectory)ccScript.cpp" />
     <ClCompile Include="$(MSBuildThisFileDirectory)ccShader.cpp" />
     <ClCompile Include="$(MSBuildThisFileDirectory)ccTestScene.cpp" />
+    <ClCompile Include="$(MSBuildThisFileDirectory)ccTexture.cpp" />
     <ClCompile Include="$(MSBuildThisFileDirectory)ccTime.cpp" />
     <ClCompile Include="$(MSBuildThisFileDirectory)ccTransform.cpp" />
   </ItemGroup>
@@ -59,6 +60,7 @@
     <ClInclude Include="$(MSBuildThisFileDirectory)ccScript.h" />
     <ClInclude Include="$(MSBuildThisFileDirectory)ccShader.h" />
     <ClInclude Include="$(MSBuildThisFileDirectory)ccTestScene.h" />
+    <ClInclude Include="$(MSBuildThisFileDirectory)ccTexture.h" />
     <ClInclude Include="$(MSBuildThisFileDirectory)ccTime.h" />
     <ClInclude Include="$(MSBuildThisFileDirectory)ccTransform.h" />
     <ClInclude Include="$(MSBuildThisFileDirectory)CommonInclude.h" />

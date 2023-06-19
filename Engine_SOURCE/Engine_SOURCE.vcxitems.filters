@@ -130,6 +130,7 @@
     <ClInclude Include="$(MSBuildThisFileDirectory)ccTransform.h">
       <Filter>Component\Transform</Filter>
     </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)ccTexture.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="$(MSBuildThisFileDirectory)ccEntity.cpp">
@@ -193,6 +194,7 @@
     <ClCompile Include="$(MSBuildThisFileDirectory)ccTransform.cpp">
       <Filter>Component\Transform</Filter>
     </ClCompile>
+    <ClCompile Include="$(MSBuildThisFileDirectory)ccTexture.cpp" />
   </ItemGroup>
   <ItemGroup>
     <None Include="$(MSBuildThisFileDirectory)ccMath.inl">
