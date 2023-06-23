@@ -9,6 +9,8 @@ namespace cc
 	void SceneManager::Initialize()
 	{
 		mActiveScene = new TestScene();
+		mScenes.insert(std::make_pair(L"TestScene", mActiveScene));
+
 		mActiveScene->Initialize();
 	}
 
@@ -25,6 +27,15 @@ namespace cc
 	void SceneManager::Render()
 	{
 		mActiveScene->Render();
+	}
+
+	void SceneManager::Release()
+	{
+		for (auto iter : mScenes)
+		{
+			delete iter.second;
+			iter.second = nullptr;
+		}
 	}
 
 	Scene* SceneManager::LoadScene(std::wstring name)
