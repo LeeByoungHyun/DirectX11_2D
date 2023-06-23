@@ -1,7 +1,7 @@
 #pragma once
 #include "ccComponent.h"
 #include "ccMesh.h"
-#include "ccShader.h"
+#include "ccMaterial.h"
 
 namespace cc
 {
@@ -16,8 +16,11 @@ namespace cc
 		virtual void LateUpdate() override;
 		virtual void Render() override;
 
+		void SetMesh(Mesh* mesh) { mMesh = mesh; }
+		void SetMaterial(Material* material) { mMaterial = material; }
+
 	private:
 		Mesh* mMesh;
-		Shader* mShader;
+		Material* mMaterial;
 	};
 }

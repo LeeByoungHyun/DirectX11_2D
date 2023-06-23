@@ -1,6 +1,7 @@
 #include "ccRenderer.h"
 #include "ccResourceManager.h"
 #include "ccTexture.h"
+#include "ccMaterial.h"
 
 namespace renderer
 {
@@ -9,10 +10,7 @@ namespace renderer
 
 	Vertex vertexes[4] = {};
 
-	ID3D11InputLayout* triangleLayout = nullptr;
-	cc::Mesh* mesh = nullptr;
-	cc::Shader* shader = nullptr;
-	cc::graphics::ConstantBuffer* constantBuffer = nullptr;
+	cc::graphics::ConstantBuffer* constantBuffer[(UINT)eCBType::End] = {};
 	Microsoft::WRL::ComPtr<ID3D11SamplerState> samplerState[(UINT)eSamplerType::End] = {};
 
 	Vector4 pos(0.0f, 0.0f, 0.0f, 1.0f);
@@ -43,6 +41,11 @@ namespace renderer
 		arrLayout[2].SemanticName = "TEXCOORD";
 		arrLayout[2].SemanticIndex = 0;
 
+		Shader* shader = cc::ResourceManager::Find<Shader>(L"SpriteShader");
+		cc::graphics::GetDevice()->CreateInputLayout(arrLayout, 3
+			, shader->GetVSCode()
+			, shader->GetInputLayoutAddressOf());
+		shader = cc::ResourceManager::Find<Shader>(L"SpriteShader");
 
 		cc::graphics::GetDevice()->CreateInputLayout(arrLayout, 3
 			, shader->GetVSCode()
@@ -65,7 +68,9 @@ namespace renderer
 	void LoadBuffer()
 	{
 		// Vertex Buffer
-		mesh = new cc::Mesh();
+		Mesh* mesh = new cc::Mesh();
+		ResourceManager::Insert(L"RectMesh", mesh);
+
 		mesh->CreateVertexBuffer(vertexes, 4);
 
 		std::vector<UINT> indexes = {};
@@ -77,15 +82,30 @@ namespace renderer
 		indexes.push_back(3);
 		mesh->CreateIndexBuffer(indexes.data(), indexes.size());
 
-		constantBuffer = new cc::graphics::ConstantBuffer(eCBType::Transform);
-		constantBuffer->Create(sizeof(Vector4));
+		// Constant Buffer
+		constantBuffer[(UINT)eCBType::Transform] = new cc::graphics::ConstantBuffer(eCBType::Transform);
+		constantBuffer[(UINT)eCBType::Transform]->Create(sizeof(Vector4));
 	}
 
 	void LoadShader()
 	{
-		shader = new cc::Shader();
+		Shader* shader = new cc::Shader();
 		shader->Create(eShaderStage::VS, L"TriangleVS.hlsl", "main");
 		shader->Create(eShaderStage::PS, L"TrianglePS.hlsl", "main");
+		cc::ResourceManager::Insert(L"TriangleShader", shader);
+
+		Shader* spriteShader = new cc::Shader();
+		spriteShader->Create(eShaderStage::VS, L"SpriteVS.hlsl", "main");
+		spriteShader->Create(eShaderStage::PS, L"SpritePS.hlsl", "main");
+		cc::ResourceManager::Insert(L"SpriteShader", spriteShader);
+
+		Texture* texture
+			= ResourceManager::Load<Texture>(L"Link", L"..\\Resources\\Texture\\Link.png");
+
+		Material* spriteMateiral = new cc::graphics::Material();
+		spriteMateiral->SetShader(spriteShader);
+		spriteMateiral->SetTexture(texture);
+		ResourceManager::Insert(L"SpriteMaterial", spriteMateiral);
 	}
 
 	void Initialize()
@@ -121,9 +141,14 @@ namespace renderer
 
 	void Release()
 	{
-		delete mesh;
-		delete shader;
-		delete constantBuffer;
+		for (ConstantBuffer* buff : constantBuffer)
+		{
+			if (buff == nullptr)
+				continue;
+
+			delete buff;
+			buff = nullptr;
+		}
 	}
 }
 

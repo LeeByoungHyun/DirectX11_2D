@@ -17,7 +17,8 @@ namespace cc
 		bool CreateVertexBuffer(void* data, UINT Count);
 		bool CreateIndexBuffer(void* data, UINT Count);
 
-		void BindBuffer(); //Buffer 파이프라인에 묶어준다.
+		void BindBuffer(); 
+		void Render();
 
 		UINT GetIndexCount() { return mIndexCount; }
 

@@ -6,6 +6,7 @@
 #include "ccConstantBuffer.h"
 
 using namespace cc::math;
+using namespace cc::graphics;
 namespace renderer
 {
 	struct Vertex
@@ -16,10 +17,7 @@ namespace renderer
 	};
 
 	extern Vertex Vertexes[];
-	extern cc::Mesh* mesh;
-	extern ID3D11Buffer* triangleConstantBuffer;
-	extern cc::Shader* shader;
-	extern cc::graphics::ConstantBuffer* constantBuffer;
+	extern cc::graphics::ConstantBuffer* constantBuffer[(UINT)eCBType::End];
 
 	void Initialize();
 	void Release();

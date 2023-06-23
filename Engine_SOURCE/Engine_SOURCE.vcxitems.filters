@@ -55,6 +55,18 @@
     <Filter Include="Component\MeshRenderer">
       <UniqueIdentifier>{0df4f621-58d4-4d8d-bf51-4b52cf4bede4}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Resource\Material">
+      <UniqueIdentifier>{57fea431-8ae5-4bfc-84ba-c83f47e58fae}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Resource\Mesh">
+      <UniqueIdentifier>{2ac88d9b-9294-4323-94fa-c31d99ad6a94}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Resource\Shader">
+      <UniqueIdentifier>{87c17d22-0b6e-4a53-b359-a3636c8fb609}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Resource\Texture">
+      <UniqueIdentifier>{838fe3a8-7451-44a4-92b7-e252321721f3}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="$(MSBuildThisFileDirectory)CommonInclude.h">
@@ -102,12 +114,6 @@
     <ClInclude Include="$(MSBuildThisFileDirectory)ccConstantBuffer.h">
       <Filter>Buffer</Filter>
     </ClInclude>
-    <ClInclude Include="$(MSBuildThisFileDirectory)ccMesh.h">
-      <Filter>Buffer</Filter>
-    </ClInclude>
-    <ClInclude Include="$(MSBuildThisFileDirectory)ccShader.h">
-      <Filter>Buffer</Filter>
-    </ClInclude>
     <ClInclude Include="$(MSBuildThisFileDirectory)ccComponent.h">
       <Filter>Component</Filter>
     </ClInclude>
@@ -130,7 +136,18 @@
     <ClInclude Include="$(MSBuildThisFileDirectory)ccTransform.h">
       <Filter>Component\Transform</Filter>
     </ClInclude>
-    <ClInclude Include="$(MSBuildThisFileDirectory)ccTexture.h" />
+    <ClInclude Include="$(MSBuildThisFileDirectory)ccMaterial.h">
+      <Filter>Resource\Material</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)ccMesh.h">
+      <Filter>Resource\Mesh</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)ccShader.h">
+      <Filter>Resource\Shader</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)ccTexture.h">
+      <Filter>Resource\Texture</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="$(MSBuildThisFileDirectory)ccEntity.cpp">
@@ -166,12 +183,6 @@
     <ClCompile Include="$(MSBuildThisFileDirectory)ccConstantBuffer.cpp">
       <Filter>Buffer</Filter>
     </ClCompile>
-    <ClCompile Include="$(MSBuildThisFileDirectory)ccMesh.cpp">
-      <Filter>Buffer</Filter>
-    </ClCompile>
-    <ClCompile Include="$(MSBuildThisFileDirectory)ccShader.cpp">
-      <Filter>Buffer</Filter>
-    </ClCompile>
     <ClCompile Include="$(MSBuildThisFileDirectory)ccComponent.cpp">
       <Filter>Component</Filter>
     </ClCompile>
@@ -194,7 +205,18 @@
     <ClCompile Include="$(MSBuildThisFileDirectory)ccTransform.cpp">
       <Filter>Component\Transform</Filter>
     </ClCompile>
-    <ClCompile Include="$(MSBuildThisFileDirectory)ccTexture.cpp" />
+    <ClCompile Include="$(MSBuildThisFileDirectory)ccMaterial.cpp">
+      <Filter>Resource\Material</Filter>
+    </ClCompile>
+    <ClCompile Include="$(MSBuildThisFileDirectory)ccMesh.cpp">
+      <Filter>Resource\Mesh</Filter>
+    </ClCompile>
+    <ClCompile Include="$(MSBuildThisFileDirectory)ccShader.cpp">
+      <Filter>Resource\Shader</Filter>
+    </ClCompile>
+    <ClCompile Include="$(MSBuildThisFileDirectory)ccTexture.cpp">
+      <Filter>Resource\Texture</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <None Include="$(MSBuildThisFileDirectory)ccMath.inl">

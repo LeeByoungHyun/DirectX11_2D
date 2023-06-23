@@ -15,28 +15,10 @@
     <FxCompile Include="$(MSBuildThisFileDirectory)TrianglePS.hlsl">
       <Filter>PS</Filter>
     </FxCompile>
-    <FxCompile Include="$(MSBuildThisFileDirectory)RectangleVS.hlsl">
-      <Filter>VS</Filter>
-    </FxCompile>
-    <FxCompile Include="$(MSBuildThisFileDirectory)RectanglePS.hlsl">
+    <FxCompile Include="$(MSBuildThisFileDirectory)SpritePS.hlsl">
       <Filter>PS</Filter>
     </FxCompile>
-    <FxCompile Include="$(MSBuildThisFileDirectory)HexagonPS.hlsl">
-      <Filter>PS</Filter>
-    </FxCompile>
-    <FxCompile Include="$(MSBuildThisFileDirectory)HexagonVS.hlsl">
-      <Filter>VS</Filter>
-    </FxCompile>
-    <FxCompile Include="$(MSBuildThisFileDirectory)StarPS.hlsl">
-      <Filter>PS</Filter>
-    </FxCompile>
-    <FxCompile Include="$(MSBuildThisFileDirectory)StarVS.hlsl">
-      <Filter>VS</Filter>
-    </FxCompile>
-    <FxCompile Include="$(MSBuildThisFileDirectory)CirclePS.hlsl">
-      <Filter>PS</Filter>
-    </FxCompile>
-    <FxCompile Include="$(MSBuildThisFileDirectory)CircleVS.hlsl">
+    <FxCompile Include="$(MSBuildThisFileDirectory)SpriteVS.hlsl">
       <Filter>VS</Filter>
     </FxCompile>
   </ItemGroup>

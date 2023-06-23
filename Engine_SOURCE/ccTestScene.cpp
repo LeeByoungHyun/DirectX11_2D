@@ -1,6 +1,8 @@
 #include "ccTestScene.h"
 #include "ccTransform.h"
 #include "ccMeshRenderer.h"
+#include "ccResourceManager.h"
+#include "ccMesh.h"
 
 namespace cc
 {
@@ -18,7 +20,9 @@ namespace cc
 	{
 		GameObject* player = new GameObject();
 		AddGameObject(eLayerType::Player, player);
-		player->AddComponent<MeshRenderer>();
+		MeshRenderer* mr = player->AddComponent<MeshRenderer>();
+		mr->SetMesh(ResourceManager::Find<Mesh>(L"RectMesh"));
+		mr->SetMaterial(ResourceManager::Find<Material>(L"SpriteMaterial"));
 
 		//GameObject* player2 = new GameObject();
 		//AddGameObject(eLayerType::Player, player2);
