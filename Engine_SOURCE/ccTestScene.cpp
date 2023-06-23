@@ -3,6 +3,7 @@
 #include "ccMeshRenderer.h"
 #include "ccResourceManager.h"
 #include "ccMesh.h"
+#include "ccCameraScript.h"
 
 namespace cc
 {
@@ -23,6 +24,8 @@ namespace cc
 		MeshRenderer* mr = player->AddComponent<MeshRenderer>();
 		mr->SetMesh(ResourceManager::Find<Mesh>(L"RectMesh"));
 		mr->SetMaterial(ResourceManager::Find<Material>(L"SpriteMaterial"));
+
+		player->AddComponent<CameraScript>();
 
 		//GameObject* player2 = new GameObject();
 		//AddGameObject(eLayerType::Player, player2);
