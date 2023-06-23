@@ -67,6 +67,9 @@
     <Filter Include="Resource\Texture">
       <UniqueIdentifier>{838fe3a8-7451-44a4-92b7-e252321721f3}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Component\Script\CameraScript">
+      <UniqueIdentifier>{eca71598-287b-4fc4-b9d3-c9abe5b07b90}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="$(MSBuildThisFileDirectory)CommonInclude.h">
@@ -148,6 +151,9 @@
     <ClInclude Include="$(MSBuildThisFileDirectory)ccTexture.h">
       <Filter>Resource\Texture</Filter>
     </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)ccCameraScript.h">
+      <Filter>Component\Script\CameraScript</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="$(MSBuildThisFileDirectory)ccEntity.cpp">
@@ -216,6 +222,9 @@
     </ClCompile>
     <ClCompile Include="$(MSBuildThisFileDirectory)ccTexture.cpp">
       <Filter>Resource\Texture</Filter>
+    </ClCompile>
+    <ClCompile Include="$(MSBuildThisFileDirectory)ccCameraScript.cpp">
+      <Filter>Component\Script\CameraScript</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>

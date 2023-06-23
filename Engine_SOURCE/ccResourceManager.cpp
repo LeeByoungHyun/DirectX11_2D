@@ -3,6 +3,6 @@
 
 namespace cc
 {
-	std::map<std::wstring, Resource*> ResourceManager::mResourceManager;
+	std::map<std::wstring, std::shared_ptr<Resource>> ResourceManager::mResourceManager;
 
 }

@@ -41,7 +41,7 @@ namespace renderer
 		arrLayout[2].SemanticName = "TEXCOORD";
 		arrLayout[2].SemanticIndex = 0;
 
-		Shader* shader = cc::ResourceManager::Find<Shader>(L"SpriteShader");
+		std::shared_ptr<Shader> shader = cc::ResourceManager::Find<Shader>(L"TriangleShader");
 		cc::graphics::GetDevice()->CreateInputLayout(arrLayout, 3
 			, shader->GetVSCode()
 			, shader->GetInputLayoutAddressOf());
@@ -68,7 +68,7 @@ namespace renderer
 	void LoadBuffer()
 	{
 		// Vertex Buffer
-		Mesh* mesh = new cc::Mesh();
+		std::shared_ptr<Mesh> mesh = std::make_shared<Mesh>();
 		ResourceManager::Insert(L"RectMesh", mesh);
 
 		mesh->CreateVertexBuffer(vertexes, 4);
@@ -89,20 +89,20 @@ namespace renderer
 
 	void LoadShader()
 	{
-		Shader* shader = new cc::Shader();
+		std::shared_ptr<Shader> shader = std::make_shared<Shader>();
 		shader->Create(eShaderStage::VS, L"TriangleVS.hlsl", "main");
 		shader->Create(eShaderStage::PS, L"TrianglePS.hlsl", "main");
 		cc::ResourceManager::Insert(L"TriangleShader", shader);
 
-		Shader* spriteShader = new cc::Shader();
+		std::shared_ptr<Shader> spriteShader = std::make_shared<Shader>();
 		spriteShader->Create(eShaderStage::VS, L"SpriteVS.hlsl", "main");
 		spriteShader->Create(eShaderStage::PS, L"SpritePS.hlsl", "main");
 		cc::ResourceManager::Insert(L"SpriteShader", spriteShader);
 
-		Texture* texture
+		std::shared_ptr<Texture> texture
 			= ResourceManager::Load<Texture>(L"Link", L"..\\Resources\\Texture\\Link.png");
 
-		Material* spriteMateiral = new cc::graphics::Material();
+		std::shared_ptr<Material> spriteMateiral = std::make_shared<Material>();
 		spriteMateiral->SetShader(spriteShader);
 		spriteMateiral->SetTexture(texture);
 		ResourceManager::Insert(L"SpriteMaterial", spriteMateiral);
@@ -130,7 +130,7 @@ namespace renderer
 		LoadShader();
 		SetupState();
 
-		Texture* texture
+		std::shared_ptr<Texture> texture
 			= ResourceManager::Load<Texture>(L"Smile", L"..\\Resources\\Texture\\Smile.png");
 
 		texture
