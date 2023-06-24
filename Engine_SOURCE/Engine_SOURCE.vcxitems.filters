@@ -70,6 +70,9 @@
     <Filter Include="Component\Script\CameraScript">
       <UniqueIdentifier>{eca71598-287b-4fc4-b9d3-c9abe5b07b90}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Component\Camere">
+      <UniqueIdentifier>{354de8ac-4b33-4e66-96de-bc6156d05e21}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="$(MSBuildThisFileDirectory)CommonInclude.h">
@@ -154,6 +157,9 @@
     <ClInclude Include="$(MSBuildThisFileDirectory)ccCameraScript.h">
       <Filter>Component\Script\CameraScript</Filter>
     </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)ccCamera.h">
+      <Filter>Component\Camere</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="$(MSBuildThisFileDirectory)ccEntity.cpp">
@@ -225,6 +231,9 @@
     </ClCompile>
     <ClCompile Include="$(MSBuildThisFileDirectory)ccCameraScript.cpp">
       <Filter>Component\Script\CameraScript</Filter>
+    </ClCompile>
+    <ClCompile Include="$(MSBuildThisFileDirectory)ccCamera.cpp">
+      <Filter>Component\Camere</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>

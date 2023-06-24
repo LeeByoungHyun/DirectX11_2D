@@ -84,7 +84,7 @@ namespace renderer
 
 		// Constant Buffer
 		constantBuffer[(UINT)eCBType::Transform] = new cc::graphics::ConstantBuffer(eCBType::Transform);
-		constantBuffer[(UINT)eCBType::Transform]->Create(sizeof(Vector4));
+		constantBuffer[(UINT)eCBType::Transform]->Create(sizeof(TransformCB));
 	}
 
 	void LoadShader()

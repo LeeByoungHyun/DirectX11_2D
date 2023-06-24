@@ -11,23 +11,43 @@ namespace cc
 		, mRotation(Vector3::Zero)
 		, mScale(Vector3::One)
 	{
+
 	}
 
 	Transform::~Transform()
 	{
+
 	}
 
 	void Transform::Initialize()
 	{
+
 	}
 
 	void Transform::Update()
 	{
+
 	}
 
 	void Transform::LateUpdate()
 	{
-		//BindConstantBuffer();
+		mWorld = Matrix::Identity;
+
+		Matrix scale = Matrix::CreateScale(mScale);
+
+		Matrix rotation;
+		rotation = Matrix::CreateRotationX(mRotation.x);
+		rotation *= Matrix::CreateRotationY(mRotation.y);
+		rotation *= Matrix::CreateRotationZ(mRotation.z);
+
+		Matrix position;
+		position.Translation(mPosition);
+
+		mWorld = scale * rotation * position;
+
+		mUp = Vector3::TransformNormal(Vector3::Up, rotation);
+		mFoward = Vector3::TransformNormal(Vector3::Forward, rotation);
+		mRight = Vector3::TransformNormal(Vector3::Right, rotation);
 	}
 
 	void Transform::Render()
@@ -37,9 +57,13 @@ namespace cc
 
 	void Transform::BindConstantBuffer()
 	{
+		renderer::TransformCB trCB = {};
+		trCB.mWorld = mWorld;
+		//trCB.mView = mWorld;
+		//trCB.mProjection = mWorld;
+
 		ConstantBuffer* cb = renderer::constantBuffer[(UINT)eCBType::Transform];
-		Vector4 position(mPosition.x, mPosition.y, mPosition.z, 1.0f);
-		cb->SetData(&position);
+		cb->SetData(&trCB);
 		cb->Bind(eShaderStage::VS);
 	}
 
