@@ -101,22 +101,52 @@ namespace renderer
 
 		{
 			std::shared_ptr<Texture> texture
-				= ResourceManager::Load<Texture>(L"Link", L"..\\Resources\\Texture\\Link.png");
+				= ResourceManager::Load<Texture>(L"title_words_black_001", L"..\\Resources\\Texture\\title_words_black_001.png");
 
 			std::shared_ptr<Material> spriteMateiral = std::make_shared<Material>();
 			spriteMateiral->SetShader(spriteShader);
 			spriteMateiral->SetTexture(texture);
-			ResourceManager::Insert(L"SpriteMaterial", spriteMateiral);
+			ResourceManager::Insert(L"TitleWords", spriteMateiral);
 		}
 
 		{
 			std::shared_ptr<Texture> texture
-				= ResourceManager::Load<Texture>(L"Smile", L"..\\Resources\\Texture\\Smile.png");
+				= ResourceManager::Load<Texture>(L"Win_Pic_Slinger_001", L"..\\Resources\\Texture\\Win_Pic_Slinger_001.png");
 
 			std::shared_ptr<Material> spriteMateiral = std::make_shared<Material>();
 			spriteMateiral->SetShader(spriteShader);
 			spriteMateiral->SetTexture(texture);
-			ResourceManager::Insert(L"SpriteMaterial02", spriteMateiral);
+			ResourceManager::Insert(L"TitleBG", spriteMateiral);
+		}
+
+		{
+			std::shared_ptr<Texture> texture
+				= ResourceManager::Load<Texture>(L"marine_idle_front_right_001", L"..\\Resources\\Texture\\marine_idle_front_right_001.png");
+
+			std::shared_ptr<Material> spriteMateiral = std::make_shared<Material>();
+			spriteMateiral->SetShader(spriteShader);
+			spriteMateiral->SetTexture(texture);
+			ResourceManager::Insert(L"marine", spriteMateiral);
+		}
+
+		{
+			std::shared_ptr<Texture> texture
+				= ResourceManager::Load<Texture>(L"blobuloid_idle_back_001", L"..\\Resources\\Texture\\blobuloid_idle_back_001.png");
+
+			std::shared_ptr<Material> spriteMateiral = std::make_shared<Material>();
+			spriteMateiral->SetShader(spriteShader);
+			spriteMateiral->SetTexture(texture);
+			ResourceManager::Insert(L"blobuloid_idle_back", spriteMateiral);
+		}
+
+		{
+			std::shared_ptr<Texture> texture
+				= ResourceManager::Load<Texture>(L"player_marine_card_001", L"..\\Resources\\Texture\\player_marine_card_001.png");
+
+			std::shared_ptr<Material> spriteMateiral = std::make_shared<Material>();
+			spriteMateiral->SetShader(spriteShader);
+			spriteMateiral->SetTexture(texture);
+			ResourceManager::Insert(L"player_marine_card", spriteMateiral);
 		}
 	}
 

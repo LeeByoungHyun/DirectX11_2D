@@ -25,8 +25,9 @@ namespace cc
 			AddGameObject(eLayerType::Player, player);
 			MeshRenderer* mr = player->AddComponent<MeshRenderer>();
 			mr->SetMesh(ResourceManager::Find<Mesh>(L"RectMesh"));
-			mr->SetMaterial(ResourceManager::Find<Material>(L"SpriteMaterial"));
-			player->GetComponent<Transform>()->SetPosition(Vector3(0.0f, 0.0f, 0.0f));
+			mr->SetMaterial(ResourceManager::Find<Material>(L"TitleWords"));
+			player->GetComponent<Transform>()->SetPosition(Vector3(0.0f, 2.0f, 0.0f));
+			player->GetComponent<Transform>()->SetScale(Vector3(8.72f, 2.78f, 0.0f));
 			//player->AddComponent<CameraScript>();
 		}
 
@@ -35,8 +36,9 @@ namespace cc
 			AddGameObject(eLayerType::Player, player);
 			MeshRenderer* mr = player->AddComponent<MeshRenderer>();
 			mr->SetMesh(ResourceManager::Find<Mesh>(L"RectMesh"));
-			mr->SetMaterial(ResourceManager::Find<Material>(L"SpriteMaterial02"));
-			player->GetComponent<Transform>()->SetPosition(Vector3(2.0f, 0.0f, 0.0f));
+			mr->SetMaterial(ResourceManager::Find<Material>(L"TitleBG"));
+			player->GetComponent<Transform>()->SetPosition(Vector3(0.0f, -1.0f, 0.0f));
+			player->GetComponent<Transform>()->SetScale(Vector3(11.5 * 2.0f, 7.1f * 2.0f, 0.0f));
 			//player->AddComponent<CameraScript>();
 		}
 

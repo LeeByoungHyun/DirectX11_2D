@@ -73,6 +73,12 @@
     <Filter Include="Component\Camere">
       <UniqueIdentifier>{354de8ac-4b33-4e66-96de-bc6156d05e21}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Scene\TitleScene">
+      <UniqueIdentifier>{a4e8ade5-8fdc-4953-8bca-126f37cf7700}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Scene\TutorialScene">
+      <UniqueIdentifier>{402885dd-9a31-400f-8cd1-3d7525d97d83}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="$(MSBuildThisFileDirectory)CommonInclude.h">
@@ -160,6 +166,12 @@
     <ClInclude Include="$(MSBuildThisFileDirectory)ccCamera.h">
       <Filter>Component\Camere</Filter>
     </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)ccTitleScene.h">
+      <Filter>Scene\TitleScene</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)ccTutorialScene.h">
+      <Filter>Scene\TutorialScene</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="$(MSBuildThisFileDirectory)ccEntity.cpp">
@@ -234,6 +246,12 @@
     </ClCompile>
     <ClCompile Include="$(MSBuildThisFileDirectory)ccCamera.cpp">
       <Filter>Component\Camere</Filter>
+    </ClCompile>
+    <ClCompile Include="$(MSBuildThisFileDirectory)ccTitleScene.cpp">
+      <Filter>Scene\TitleScene</Filter>
+    </ClCompile>
+    <ClCompile Include="$(MSBuildThisFileDirectory)ccTutorialScene.cpp">
+      <Filter>Scene\TutorialScene</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>

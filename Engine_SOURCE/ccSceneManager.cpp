@@ -1,5 +1,9 @@
 #include "ccSceneManager.h"
+#include "ccInput.h"
+
 #include "ccTestScene.h"
+#include "ccTitleScene.h"
+#include "ccTutorialScene.h"
 
 namespace cc
 {
@@ -8,15 +12,25 @@ namespace cc
 
 	void SceneManager::Initialize()
 	{
-		mActiveScene = new TestScene();
-		mScenes.insert(std::make_pair(L"TestScene", mActiveScene));
+		TitleScene* titleScene = new TitleScene();
+		mScenes.insert(std::make_pair(L"TitleScene", titleScene));
 
+		TutorialScene* tutorialScene = new TutorialScene();
+		mScenes.insert(std::make_pair(L"TutorialScene", tutorialScene));
+		tutorialScene->Initialize();
+
+		mActiveScene = titleScene;
 		mActiveScene->Initialize();
 	}
 
 	void SceneManager::Update()
 	{
 		mActiveScene->Update();
+
+		if (Input::GetKeyDown(eKeyCode::O))
+		{
+			LoadScene(L"TutorialScene");
+		}
 	}
 
 	void SceneManager::LateUpdate()

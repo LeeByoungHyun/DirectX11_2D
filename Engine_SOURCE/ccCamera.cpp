@@ -12,7 +12,7 @@ namespace cc
 
 	Camera::Camera()
 		: Component(eComponentType::Camera)
-		, mType(eProjectionType::OrthoGraphic)
+		, mType(eProjectionType::Perpective)
 		, mAspectRatio(1.0f)
 		, mNear(1.0f)
 		, mFar(1000.0f)
