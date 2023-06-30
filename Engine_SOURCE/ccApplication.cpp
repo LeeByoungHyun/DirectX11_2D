@@ -54,8 +54,8 @@ namespace cc
 		graphicDevice->ClearTarget();
 		graphicDevice->UpdateViewPort();
 
-		SceneManager::Render();
-		//renderer::Render();
+		//SceneManager::Render();
+		renderer::Render();
 		//graphicDevice->Draw();
 
 		graphicDevice->Present();

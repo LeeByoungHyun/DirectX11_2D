@@ -3,13 +3,16 @@
 #include "ccGameObject.h"
 #include "ccApplication.h"
 #include "ccRenderer.h"
+#include "ccScene.h"
+#include "ccSceneManager.h"
+#include "ccMeshRenderer.h"
 
 extern cc::Application application;
 
 namespace cc
 {
-	Matrix Camera::mView = Matrix::Identity;
-	Matrix Camera::mProjection = Matrix::Identity;
+	Matrix Camera::View = Matrix::Identity;
+	Matrix Camera::Projection = Matrix::Identity;
 
 	Camera::Camera()
 		: Component(eComponentType::Camera)
@@ -22,6 +25,8 @@ namespace cc
 		, mOpaqueGameObjects{}
 		, mCutOutGameObjects{}
 		, mTransparentGameObjects{}
+		, mView(Matrix::Identity)
+		, mProjection(Matrix::Identity)
 	{
 		EnableLayerMasks();
 	}
@@ -47,6 +52,9 @@ namespace cc
 
 	void Camera::Render()
 	{
+		View = mView;
+		Projection = mProjection;
+
 		SortGameObjects();
 
 		RenderOpaque();
@@ -114,8 +122,47 @@ namespace cc
 
 	void Camera::SortGameObjects()
 	{
-		//
+		mOpaqueGameObjects.clear();
+		mCutOutGameObjects.clear();
+		mTransparentGameObjects.clear();
 
+		Scene* scene = SceneManager::GetActiveScene();
+		for (size_t i = 0; i < (UINT)eLayerType::End; i++)
+		{
+			if (mLayerMask[i] == true)
+			{
+				Layer& layer = scene->GetLayer((eLayerType)i);
+				const std::vector<GameObject*> gameObjs
+					= layer.GetGameObjects();
+				// layer에 있는 게임오브젝트를 들고온다.
+
+				for (GameObject* obj : gameObjs)
+				{
+					//렌더러 컴포넌트가 없다면?
+					MeshRenderer* mr
+						= obj->GetComponent<MeshRenderer>();
+					if (mr == nullptr)
+						continue;
+
+					std::shared_ptr<Material> mt = mr->GetMaterial();
+					eRenderingMode mode = mt->GetRenderingMode();
+					switch (mode)
+					{
+					case cc::graphics::eRenderingMode::Opaque:
+						mOpaqueGameObjects.push_back(obj);
+						break;
+					case cc::graphics::eRenderingMode::CutOut:
+						mCutOutGameObjects.push_back(obj);
+						break;
+					case cc::graphics::eRenderingMode::Transparent:
+						mTransparentGameObjects.push_back(obj);
+						break;
+					default:
+						break;
+					}
+				}
+			}
+		}
 	}
 
 	void Camera::RenderOpaque()
