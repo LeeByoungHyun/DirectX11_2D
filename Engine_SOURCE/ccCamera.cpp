@@ -2,6 +2,7 @@
 #include "ccTransform.h"
 #include "ccGameObject.h"
 #include "ccApplication.h"
+#include "ccRenderer.h"
 
 extern cc::Application application;
 
@@ -17,7 +18,12 @@ namespace cc
 		, mNear(1.0f)
 		, mFar(1000.0f)
 		, mSize(5.0f)
+		, mLayerMask{}
+		, mOpaqueGameObjects{}
+		, mCutOutGameObjects{}
+		, mTransparentGameObjects{}
 	{
+		EnableLayerMasks();
 	}
 
 	Camera::~Camera()
@@ -36,10 +42,16 @@ namespace cc
 	{
 		CreateViewMatrix();
 		CreateProjectionMatrix(mType);
+		RegisterCameraInRenderer();
 	}
 
 	void Camera::Render()
 	{
+		SortGameObjects();
+
+		RenderOpaque();
+		RenderCutOut();
+		RenderTransparent();
 	}
 
 	bool Camera::CreateViewMatrix()
@@ -88,6 +100,55 @@ namespace cc
 
 
 		return true;
+	}
+
+	void Camera::RegisterCameraInRenderer()
+	{
+		renderer::cameras.push_back(this);
+	}
+
+	void Camera::TurnLayerMask(eLayerType type, bool enable)
+	{
+		mLayerMask.set((UINT)type, enable);
+	}
+
+	void Camera::SortGameObjects()
+	{
+		//
+
+	}
+
+	void Camera::RenderOpaque()
+	{
+		for (GameObject* gameObj : mOpaqueGameObjects)
+		{
+			if (gameObj == nullptr)
+				continue;
+
+			gameObj->Render();
+		}
+	}
+
+	void Camera::RenderCutOut()
+	{
+		for (GameObject* gameObj : mCutOutGameObjects)
+		{
+			if (gameObj == nullptr)
+				continue;
+
+			gameObj->Render();
+		}
+	}
+
+	void Camera::RenderTransparent()
+	{
+		for (GameObject* gameObj : mTransparentGameObjects)
+		{
+			if (gameObj == nullptr)
+				continue;
+
+			gameObj->Render();
+		}
 	}
 
 }

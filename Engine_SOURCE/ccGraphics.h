@@ -66,6 +66,14 @@ namespace cc::graphics
 		End,
 	};
 
+	enum class eRenderingMode
+	{
+		Opaque,
+		CutOut,
+		Transparent,
+		End,
+	};
+
 	struct GpuBuffer
 	{
 		Microsoft::WRL::ComPtr<ID3D11Buffer> buffer;

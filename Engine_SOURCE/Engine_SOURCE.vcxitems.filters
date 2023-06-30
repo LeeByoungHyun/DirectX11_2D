@@ -61,9 +61,6 @@
     <Filter Include="Resource\Texture">
       <UniqueIdentifier>{838fe3a8-7451-44a4-92b7-e252321721f3}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Component\Camere">
-      <UniqueIdentifier>{354de8ac-4b33-4e66-96de-bc6156d05e21}</UniqueIdentifier>
-    </Filter>
     <Filter Include="Scene\Layer">
       <UniqueIdentifier>{331e81c8-2199-44a9-be99-b6fe1f7f33b3}</UniqueIdentifier>
     </Filter>
@@ -75,6 +72,9 @@
     </Filter>
     <Filter Include="Graphics\Renderer">
       <UniqueIdentifier>{c3d8d90b-c48a-449e-bdee-755f69a3666e}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Component\Camera">
+      <UniqueIdentifier>{354de8ac-4b33-4e66-96de-bc6156d05e21}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
@@ -151,7 +151,7 @@
       <Filter>Resource\Texture</Filter>
     </ClInclude>
     <ClInclude Include="$(MSBuildThisFileDirectory)ccCamera.h">
-      <Filter>Component\Camere</Filter>
+      <Filter>Component\Camera</Filter>
     </ClInclude>
     <ClInclude Include="$(MSBuildThisFileDirectory)ccGraphicDevice_Dx11.h">
       <Filter>Graphics\GraphicDevice</Filter>
@@ -222,7 +222,7 @@
       <Filter>Resource\Texture</Filter>
     </ClCompile>
     <ClCompile Include="$(MSBuildThisFileDirectory)ccCamera.cpp">
-      <Filter>Component\Camere</Filter>
+      <Filter>Component\Camera</Filter>
     </ClCompile>
     <ClCompile Include="$(MSBuildThisFileDirectory)ccGraphicDevice_Dx11.cpp">
       <Filter>Graphics\GraphicDevice</Filter>
