@@ -44,7 +44,7 @@
     <UseDebugLibraries>true</UseDebugLibraries>
     <PlatformToolset>v143</PlatformToolset>
     <CharacterSet>Unicode</CharacterSet>
-    <EnableUnitySupport>true</EnableUnitySupport>
+    <EnableUnitySupport>false</EnableUnitySupport>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'" Label="Configuration">
     <ConfigurationType>StaticLibrary</ConfigurationType>
@@ -149,10 +149,19 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClInclude Include="ccCameraScript.h" />
+    <ClInclude Include="ccTestScene.h" />
+    <ClInclude Include="ccTitleScene.h" />
+    <ClInclude Include="ccTutorialScene.h" />
     <ClInclude Include="framework.h" />
+    <ClInclude Include="LoadScenes.h" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="ccCameraScript.cpp" />
     <ClCompile Include="CCEngine.cpp" />
+    <ClCompile Include="ccTestScene.cpp" />
+    <ClCompile Include="ccTitleScene.cpp" />
+    <ClCompile Include="ccTutorialScene.cpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

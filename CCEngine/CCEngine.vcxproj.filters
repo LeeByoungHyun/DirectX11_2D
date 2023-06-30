@@ -2,8 +2,54 @@
 <Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <ItemGroup>
     <ClCompile Include="CCEngine.cpp" />
+    <ClCompile Include="ccTestScene.cpp" />
+    <ClCompile Include="ccCameraScript.cpp">
+      <Filter>Content\Script\CameraScript</Filter>
+    </ClCompile>
+    <ClCompile Include="ccTitleScene.cpp">
+      <Filter>Content\Scene\TitleScene</Filter>
+    </ClCompile>
+    <ClCompile Include="ccTutorialScene.cpp">
+      <Filter>Content\Scene\TutorialScene</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="framework.h" />
+    <ClInclude Include="LoadScenes.h">
+      <Filter>Content\Load</Filter>
+    </ClInclude>
+    <ClInclude Include="ccTestScene.h" />
+    <ClInclude Include="ccCameraScript.h">
+      <Filter>Content\Script\CameraScript</Filter>
+    </ClInclude>
+    <ClInclude Include="ccTutorialScene.h">
+      <Filter>Content\Scene\TutorialScene</Filter>
+    </ClInclude>
+    <ClInclude Include="ccTitleScene.h">
+      <Filter>Content\Scene\TitleScene</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <Filter Include="Content">
+      <UniqueIdentifier>{fe884667-0cf1-4627-aa26-36e829f064e1}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Content\Load">
+      <UniqueIdentifier>{9e5f6cd3-f095-4c7a-a264-8ba7fb0fa15e}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Content\Scene">
+      <UniqueIdentifier>{79b506fd-63a8-4c94-8500-98b5f071ab9d}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Content\Script">
+      <UniqueIdentifier>{dc9b3062-92bd-48aa-99ab-e6ee97d31365}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Content\Script\CameraScript">
+      <UniqueIdentifier>{006622bc-cc86-4634-9186-d357aa706d4c}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Content\Scene\TitleScene">
+      <UniqueIdentifier>{97eab9b7-8201-4009-92c0-2d6dcdfc4606}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Content\Scene\TutorialScene">
+      <UniqueIdentifier>{3847dad7-5ce4-4912-b089-30823f41de21}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
 </Project>

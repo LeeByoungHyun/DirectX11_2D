@@ -1,9 +1,9 @@
 #include "ccSceneManager.h"
 #include "ccInput.h"
 
-#include "ccTestScene.h"
-#include "ccTitleScene.h"
-#include "ccTutorialScene.h"
+//#include "ccTestScene.h"
+//#include "ccTitleScene.h"
+//#include "ccTutorialScene.h"
 
 namespace cc
 {
@@ -12,15 +12,7 @@ namespace cc
 
 	void SceneManager::Initialize()
 	{
-		TitleScene* titleScene = new TitleScene();
-		mScenes.insert(std::make_pair(L"TitleScene", titleScene));
-
-		TutorialScene* tutorialScene = new TutorialScene();
-		mScenes.insert(std::make_pair(L"TutorialScene", tutorialScene));
-		tutorialScene->Initialize();
-
-		mActiveScene = titleScene;
-		mActiveScene->Initialize();
+		
 	}
 
 	void SceneManager::Update()
@@ -45,7 +37,7 @@ namespace cc
 
 	void SceneManager::Release()
 	{
-		for (auto iter : mScenes)
+		for (auto& iter : mScenes)
 		{
 			delete iter.second;
 			iter.second = nullptr;

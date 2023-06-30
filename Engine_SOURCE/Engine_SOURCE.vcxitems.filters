@@ -31,9 +31,6 @@
     <Filter Include="GameObject">
       <UniqueIdentifier>{bea8051c-34c2-49cc-8941-59ad14cb3b56}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Buffer">
-      <UniqueIdentifier>{16ae7e16-ee6a-44af-86c6-60655e5f8ddf}</UniqueIdentifier>
-    </Filter>
     <Filter Include="Component">
       <UniqueIdentifier>{1006c2ab-8610-4ee7-9902-56debc3ce002}</UniqueIdentifier>
     </Filter>
@@ -45,9 +42,6 @@
     </Filter>
     <Filter Include="Component\Script">
       <UniqueIdentifier>{a1eb7364-3ff8-4ea4-b8cf-83e743ca93cf}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Layer">
-      <UniqueIdentifier>{331e81c8-2199-44a9-be99-b6fe1f7f33b3}</UniqueIdentifier>
     </Filter>
     <Filter Include="Component\Transform">
       <UniqueIdentifier>{c41598da-7ae1-4011-80e0-dfd2ef56f1bb}</UniqueIdentifier>
@@ -67,17 +61,20 @@
     <Filter Include="Resource\Texture">
       <UniqueIdentifier>{838fe3a8-7451-44a4-92b7-e252321721f3}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Component\Script\CameraScript">
-      <UniqueIdentifier>{eca71598-287b-4fc4-b9d3-c9abe5b07b90}</UniqueIdentifier>
-    </Filter>
     <Filter Include="Component\Camere">
       <UniqueIdentifier>{354de8ac-4b33-4e66-96de-bc6156d05e21}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Scene\TitleScene">
-      <UniqueIdentifier>{a4e8ade5-8fdc-4953-8bca-126f37cf7700}</UniqueIdentifier>
+    <Filter Include="Scene\Layer">
+      <UniqueIdentifier>{331e81c8-2199-44a9-be99-b6fe1f7f33b3}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Scene\TutorialScene">
-      <UniqueIdentifier>{402885dd-9a31-400f-8cd1-3d7525d97d83}</UniqueIdentifier>
+    <Filter Include="Graphics\GraphicDevice">
+      <UniqueIdentifier>{38b79c56-b94d-4dc2-a6c7-6f51dcbaec19}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Graphics\ConstantBuffer">
+      <UniqueIdentifier>{16ae7e16-ee6a-44af-86c6-60655e5f8ddf}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Graphics\Renderer">
+      <UniqueIdentifier>{c3d8d90b-c48a-449e-bdee-755f69a3666e}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
@@ -99,9 +96,6 @@
     <ClInclude Include="$(MSBuildThisFileDirectory)ccTime.h">
       <Filter>Common\Time</Filter>
     </ClInclude>
-    <ClInclude Include="$(MSBuildThisFileDirectory)ccGraphicDevice_Dx11.h">
-      <Filter>Graphics</Filter>
-    </ClInclude>
     <ClInclude Include="$(MSBuildThisFileDirectory)ccGraphics.h">
       <Filter>Graphics</Filter>
     </ClInclude>
@@ -117,14 +111,11 @@
     <ClInclude Include="$(MSBuildThisFileDirectory)ccResourceManager.h">
       <Filter>Resource\ResourceManager</Filter>
     </ClInclude>
-    <ClInclude Include="$(MSBuildThisFileDirectory)ccRenderer.h">
-      <Filter>Graphics</Filter>
-    </ClInclude>
     <ClInclude Include="$(MSBuildThisFileDirectory)ccGameObject.h">
       <Filter>GameObject</Filter>
     </ClInclude>
     <ClInclude Include="$(MSBuildThisFileDirectory)ccConstantBuffer.h">
-      <Filter>Buffer</Filter>
+      <Filter>Graphics\ConstantBuffer</Filter>
     </ClInclude>
     <ClInclude Include="$(MSBuildThisFileDirectory)ccComponent.h">
       <Filter>Component</Filter>
@@ -139,9 +130,8 @@
       <Filter>Component\Script</Filter>
     </ClInclude>
     <ClInclude Include="$(MSBuildThisFileDirectory)ccLayer.h">
-      <Filter>Layer</Filter>
+      <Filter>Scene\Layer</Filter>
     </ClInclude>
-    <ClInclude Include="$(MSBuildThisFileDirectory)ccTestScene.h" />
     <ClInclude Include="$(MSBuildThisFileDirectory)ccMeshRenderer.h">
       <Filter>Component\MeshRenderer</Filter>
     </ClInclude>
@@ -160,17 +150,14 @@
     <ClInclude Include="$(MSBuildThisFileDirectory)ccTexture.h">
       <Filter>Resource\Texture</Filter>
     </ClInclude>
-    <ClInclude Include="$(MSBuildThisFileDirectory)ccCameraScript.h">
-      <Filter>Component\Script\CameraScript</Filter>
-    </ClInclude>
     <ClInclude Include="$(MSBuildThisFileDirectory)ccCamera.h">
       <Filter>Component\Camere</Filter>
     </ClInclude>
-    <ClInclude Include="$(MSBuildThisFileDirectory)ccTitleScene.h">
-      <Filter>Scene\TitleScene</Filter>
+    <ClInclude Include="$(MSBuildThisFileDirectory)ccGraphicDevice_Dx11.h">
+      <Filter>Graphics\GraphicDevice</Filter>
     </ClInclude>
-    <ClInclude Include="$(MSBuildThisFileDirectory)ccTutorialScene.h">
-      <Filter>Scene\TutorialScene</Filter>
+    <ClInclude Include="$(MSBuildThisFileDirectory)ccRenderer.h">
+      <Filter>Graphics\Renderer</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -182,9 +169,6 @@
     </ClCompile>
     <ClCompile Include="$(MSBuildThisFileDirectory)ccTime.cpp">
       <Filter>Common\Time</Filter>
-    </ClCompile>
-    <ClCompile Include="$(MSBuildThisFileDirectory)ccGraphicDevice_Dx11.cpp">
-      <Filter>Graphics</Filter>
     </ClCompile>
     <ClCompile Include="$(MSBuildThisFileDirectory)ccApplication.cpp">
       <Filter>High Level Interface</Filter>
@@ -198,14 +182,11 @@
     <ClCompile Include="$(MSBuildThisFileDirectory)ccResourceManager.cpp">
       <Filter>Resource\ResourceManager</Filter>
     </ClCompile>
-    <ClCompile Include="$(MSBuildThisFileDirectory)ccRenderer.cpp">
-      <Filter>Graphics</Filter>
-    </ClCompile>
     <ClCompile Include="$(MSBuildThisFileDirectory)ccGameObject.cpp">
       <Filter>GameObject</Filter>
     </ClCompile>
     <ClCompile Include="$(MSBuildThisFileDirectory)ccConstantBuffer.cpp">
-      <Filter>Buffer</Filter>
+      <Filter>Graphics\ConstantBuffer</Filter>
     </ClCompile>
     <ClCompile Include="$(MSBuildThisFileDirectory)ccComponent.cpp">
       <Filter>Component</Filter>
@@ -220,9 +201,8 @@
       <Filter>Component\Script</Filter>
     </ClCompile>
     <ClCompile Include="$(MSBuildThisFileDirectory)ccLayer.cpp">
-      <Filter>Layer</Filter>
+      <Filter>Scene\Layer</Filter>
     </ClCompile>
-    <ClCompile Include="$(MSBuildThisFileDirectory)ccTestScene.cpp" />
     <ClCompile Include="$(MSBuildThisFileDirectory)ccMeshRenderer.cpp">
       <Filter>Component\MeshRenderer</Filter>
     </ClCompile>
@@ -241,17 +221,14 @@
     <ClCompile Include="$(MSBuildThisFileDirectory)ccTexture.cpp">
       <Filter>Resource\Texture</Filter>
     </ClCompile>
-    <ClCompile Include="$(MSBuildThisFileDirectory)ccCameraScript.cpp">
-      <Filter>Component\Script\CameraScript</Filter>
-    </ClCompile>
     <ClCompile Include="$(MSBuildThisFileDirectory)ccCamera.cpp">
       <Filter>Component\Camere</Filter>
     </ClCompile>
-    <ClCompile Include="$(MSBuildThisFileDirectory)ccTitleScene.cpp">
-      <Filter>Scene\TitleScene</Filter>
+    <ClCompile Include="$(MSBuildThisFileDirectory)ccGraphicDevice_Dx11.cpp">
+      <Filter>Graphics\GraphicDevice</Filter>
     </ClCompile>
-    <ClCompile Include="$(MSBuildThisFileDirectory)ccTutorialScene.cpp">
-      <Filter>Scene\TutorialScene</Filter>
+    <ClCompile Include="$(MSBuildThisFileDirectory)ccRenderer.cpp">
+      <Filter>Graphics\Renderer</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>

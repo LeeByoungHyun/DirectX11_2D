@@ -4,6 +4,7 @@
 #include "ccMesh.h"
 #include "ccShader.h"
 #include "ccConstantBuffer.h"
+#include "ccCamera.h"
 
 using namespace cc::math;
 using namespace cc::graphics;
@@ -31,6 +32,9 @@ namespace renderer
 	extern Microsoft::WRL::ComPtr<ID3D11DepthStencilState> depthStencilStates[];
 	extern Microsoft::WRL::ComPtr<ID3D11BlendState> blendStates[];
 
+	extern std::vector<cc::Camera*> cameras;
+
 	void Initialize();
+	void Render();
 	void Release();
 }

@@ -16,7 +16,6 @@
   <ItemGroup>
     <ClCompile Include="$(MSBuildThisFileDirectory)ccApplication.cpp" />
     <ClCompile Include="$(MSBuildThisFileDirectory)ccCamera.cpp" />
-    <ClCompile Include="$(MSBuildThisFileDirectory)ccCameraScript.cpp" />
     <ClCompile Include="$(MSBuildThisFileDirectory)ccComponent.cpp" />
     <ClCompile Include="$(MSBuildThisFileDirectory)ccConstantBuffer.cpp" />
     <ClCompile Include="$(MSBuildThisFileDirectory)ccEntity.cpp" />
@@ -35,17 +34,13 @@
     <ClCompile Include="$(MSBuildThisFileDirectory)ccSceneManager.cpp" />
     <ClCompile Include="$(MSBuildThisFileDirectory)ccScript.cpp" />
     <ClCompile Include="$(MSBuildThisFileDirectory)ccShader.cpp" />
-    <ClCompile Include="$(MSBuildThisFileDirectory)ccTestScene.cpp" />
     <ClCompile Include="$(MSBuildThisFileDirectory)ccTexture.cpp" />
     <ClCompile Include="$(MSBuildThisFileDirectory)ccTime.cpp" />
-    <ClCompile Include="$(MSBuildThisFileDirectory)ccTitleScene.cpp" />
     <ClCompile Include="$(MSBuildThisFileDirectory)ccTransform.cpp" />
-    <ClCompile Include="$(MSBuildThisFileDirectory)ccTutorialScene.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="$(MSBuildThisFileDirectory)ccApplication.h" />
     <ClInclude Include="$(MSBuildThisFileDirectory)ccCamera.h" />
-    <ClInclude Include="$(MSBuildThisFileDirectory)ccCameraScript.h" />
     <ClInclude Include="$(MSBuildThisFileDirectory)ccComponent.h" />
     <ClInclude Include="$(MSBuildThisFileDirectory)ccConstantBuffer.h" />
     <ClInclude Include="$(MSBuildThisFileDirectory)CCEngine.h" />
@@ -67,12 +62,9 @@
     <ClInclude Include="$(MSBuildThisFileDirectory)ccSceneManager.h" />
     <ClInclude Include="$(MSBuildThisFileDirectory)ccScript.h" />
     <ClInclude Include="$(MSBuildThisFileDirectory)ccShader.h" />
-    <ClInclude Include="$(MSBuildThisFileDirectory)ccTestScene.h" />
     <ClInclude Include="$(MSBuildThisFileDirectory)ccTexture.h" />
     <ClInclude Include="$(MSBuildThisFileDirectory)ccTime.h" />
-    <ClInclude Include="$(MSBuildThisFileDirectory)ccTitleScene.h" />
     <ClInclude Include="$(MSBuildThisFileDirectory)ccTransform.h" />
-    <ClInclude Include="$(MSBuildThisFileDirectory)ccTutorialScene.h" />
     <ClInclude Include="$(MSBuildThisFileDirectory)CommonInclude.h" />
   </ItemGroup>
   <ItemGroup>

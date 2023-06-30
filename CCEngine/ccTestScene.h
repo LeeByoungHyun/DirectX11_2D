@@ -1,13 +1,14 @@
 #pragma once
-#include "ccScene.h"
+#include "..\Engine_SOURCE\ccScene.h"
+
 
 namespace cc
 {
-	class TitleScene : public Scene
+	class TestScene : public Scene
 	{
 	public:
-		TitleScene();
-		virtual ~TitleScene();
+		TestScene();
+		virtual ~TestScene();
 
 		virtual void Initialize() override;
 		virtual void Update() override;

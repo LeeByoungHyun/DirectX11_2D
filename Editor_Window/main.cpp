@@ -3,10 +3,18 @@
 
 #include "framework.h"
 #include "Editor_Window.h"
-#include "ccApplication.h"
-#include "ccRenderer.h"
-#include "ccResourceManager.h"
-#include "ccSceneManager.h"
+
+#include "..\Engine_SOURCE\ccApplication.h"
+#include "..\Engine_SOURCE\ccRenderer.h"
+#include "..\Engine_SOURCE\ccResourceManager.h"
+#include "LoadScenes.h"
+
+#ifdef _DEBUG
+#pragma comment(lib, "..\\x64\\Debug\\CCEngine.lib")
+#else
+#pragma comment(lib, "..\\x64\\Release\\CCEngine.lib")
+#endif
+
 
 cc::Application application;
 
@@ -85,7 +93,7 @@ int APIENTRY wWinMain(_In_ HINSTANCE hInstance,
 //
 ATOM MyRegisterClass(HINSTANCE hInstance)
 {
-    WNDCLASSEXW wcex;
+    WNDCLASSEXW wcex = {};
 
     wcex.cbSize = sizeof(WNDCLASSEX);
 
@@ -131,6 +139,7 @@ BOOL InitInstance(HINSTANCE hInstance, int nCmdShow)
    UpdateWindow(hWnd);
 
    application.Initialize();
+   cc::InitializeScenes();
 
    return TRUE;
 }
