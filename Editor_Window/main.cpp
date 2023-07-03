@@ -7,8 +7,7 @@
 #include "..\Engine_SOURCE\ccApplication.h"
 #include "..\Engine_SOURCE\ccRenderer.h"
 #include "..\Engine_SOURCE\ccResourceManager.h"
-#include "ccSceneManager.h"
-//#include "LoadScenes.h"
+#include "..\CCEngine\LoadScenes.h"
 
 #ifdef _DEBUG
 #pragma comment(lib, "..\\x64\\Debug\\CCEngine.lib")
@@ -140,7 +139,7 @@ BOOL InitInstance(HINSTANCE hInstance, int nCmdShow)
    UpdateWindow(hWnd);
 
    application.Initialize();
-   //cc::InitializeScenes();
+   cc::InitializeScenes();
 
    return TRUE;
 }
