@@ -26,6 +26,18 @@ namespace cc::math
     struct Quaternion;
     struct Plane;
 
+    const float PI = 3.141592;
+
+    float RadianToAngle(float radian)
+    {
+        return radian * 180 / PI;
+    }
+
+    float AngleToRadian(float angle)
+    {
+        angle* PI / 180;
+    }
+
     //------------------------------------------------------------------------------
     // 2D rectangle
     struct Rectangle
