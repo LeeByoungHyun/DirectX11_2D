@@ -150,6 +150,8 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClInclude Include="ccCameraScript.h" />
+    <ClInclude Include="ccMouseScript.h" />
+    <ClInclude Include="ccPlayerMoveScript.h" />
     <ClInclude Include="ccTestScene.h" />
     <ClInclude Include="ccTitleScene.h" />
     <ClInclude Include="ccTutorialScene.h" />
@@ -159,6 +161,8 @@
   <ItemGroup>
     <ClCompile Include="ccCameraScript.cpp" />
     <ClCompile Include="CCEngine.cpp" />
+    <ClCompile Include="ccMouseScript.cpp" />
+    <ClCompile Include="ccPlayerMoveScript.cpp" />
     <ClCompile Include="ccTestScene.cpp" />
     <ClCompile Include="ccTitleScene.cpp" />
     <ClCompile Include="ccTutorialScene.cpp" />

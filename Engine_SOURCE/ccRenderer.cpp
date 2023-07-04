@@ -213,6 +213,7 @@ namespace renderer
 			std::shared_ptr<Material> spriteMateiral = std::make_shared<Material>();
 			spriteMateiral->SetShader(spriteShader);
 			spriteMateiral->SetTexture(texture);
+			spriteMateiral->SetRenderingMode(eRenderingMode::Transparent);
 			ResourceManager::Insert(L"TitleWords", spriteMateiral);
 		}
 
@@ -255,6 +256,28 @@ namespace renderer
 			spriteMateiral->SetTexture(texture);
 			spriteMateiral->SetRenderingMode(eRenderingMode::Transparent);
 			ResourceManager::Insert(L"player_marine_card", spriteMateiral);
+		}
+
+		{
+			std::shared_ptr<Texture> texture
+				= ResourceManager::Load<Texture>(L"mapTest1", L"..\\Resources\\Texture\\MapTest.png");
+
+			std::shared_ptr<Material> spriteMateiral = std::make_shared<Material>();
+			spriteMateiral->SetShader(spriteShader);
+			spriteMateiral->SetTexture(texture);
+			spriteMateiral->SetRenderingMode(eRenderingMode::Opaque);
+			ResourceManager::Insert(L"mapTest", spriteMateiral);
+		}
+
+		{
+			std::shared_ptr<Texture> texture
+				= ResourceManager::Load<Texture>(L"Aim.png", L"..\\Resources\\Texture\\Aim.png");
+
+			std::shared_ptr<Material> spriteMateiral = std::make_shared<Material>();
+			spriteMateiral->SetShader(spriteShader);
+			spriteMateiral->SetTexture(texture);
+			spriteMateiral->SetRenderingMode(eRenderingMode::Transparent);
+			ResourceManager::Insert(L"Aim", spriteMateiral);
 		}
 	}
 

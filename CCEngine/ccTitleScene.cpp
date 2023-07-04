@@ -5,6 +5,8 @@
 #include "ccMesh.h"
 #include "ccCameraScript.h"
 #include "ccCamera.h"
+#include "ccInput.h"
+#include "ccSceneManager.h"
 
 namespace cc
 {
@@ -26,8 +28,8 @@ namespace cc
 			MeshRenderer* mr = object->AddComponent<MeshRenderer>();
 			mr->SetMesh(ResourceManager::Find<Mesh>(L"RectMesh"));
 			mr->SetMaterial(ResourceManager::Find<Material>(L"TitleWords"));
-			object->GetComponent<Transform>()->SetPosition(Vector3(0.0f, 2.0f, 0.0f));
-			object->GetComponent<Transform>()->SetScale(Vector3(8.72f, 2.78f, 0.0f));
+			object->GetComponent<Transform>()->SetPosition(Vector3(0.0f, 1.0f, 0.0f));
+			object->GetComponent<Transform>()->SetScale(Vector3(0.872f * 3.0f, 0.278f * 3.0f, 0.0f));
 		}
 
 		{
@@ -36,8 +38,8 @@ namespace cc
 			MeshRenderer* mr = object->AddComponent<MeshRenderer>();
 			mr->SetMesh(ResourceManager::Find<Mesh>(L"RectMesh"));
 			mr->SetMaterial(ResourceManager::Find<Material>(L"TitleBG"));
-			object->GetComponent<Transform>()->SetPosition(Vector3(0.0f, -1.0f, 0.0f));
-			object->GetComponent<Transform>()->SetScale(Vector3(11.5 * 1.9f, 7.1f * 1.9f, 0.0f));
+			object->GetComponent<Transform>()->SetPosition(Vector3(0.0f, 0.0f, 100.0f));
+			object->GetComponent<Transform>()->SetScale(Vector3(11.5 * 0.7f, 7.1f * 0.7f, 0.0f));
 
 		}
 
@@ -52,6 +54,11 @@ namespace cc
 	void TitleScene::Update()
 	{
 		Scene::Update();
+
+		if (Input::GetKeyDown(eKeyCode::P))
+		{
+			SceneManager::LoadScene(L"TutorialScene");
+		}
 	}
 
 	void TitleScene::LateUpdate()

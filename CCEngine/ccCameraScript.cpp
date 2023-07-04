@@ -11,6 +11,7 @@ namespace cc
 		Transform* tr = GetOwner()->GetComponent<Transform>();
 		Vector3 pos = tr->GetPosition();
 
+		/*
 		if (Input::GetKey(eKeyCode::W))
 		{
 			pos.z += 5.0f * Time::DeltaTime();
@@ -41,5 +42,6 @@ namespace cc
 			pos.y += 5.0f * Time::DeltaTime();
 			tr->SetPosition(pos);
 		}
+		*/
 	}
 }

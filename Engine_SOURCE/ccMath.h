@@ -28,14 +28,14 @@ namespace cc::math
 
     const float PI = 3.141592;
 
-    float RadianToAngle(float radian)
+    static float RadianToDegree(float radian)
     {
         return radian * 180 / PI;
     }
 
-    float AngleToRadian(float angle)
+    static float DegreeToRadian(float degree)
     {
-        angle* PI / 180;
+        return degree * PI / 180;
     }
 
     //------------------------------------------------------------------------------

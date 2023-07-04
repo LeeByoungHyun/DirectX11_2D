@@ -12,6 +12,12 @@
     <ClCompile Include="ccTutorialScene.cpp">
       <Filter>Content\Scene\TutorialScene</Filter>
     </ClCompile>
+    <ClCompile Include="ccMouseScript.cpp">
+      <Filter>Content\Script\MouseScript</Filter>
+    </ClCompile>
+    <ClCompile Include="ccPlayerMoveScript.cpp">
+      <Filter>Content\Script\PlayerMoveScript</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="framework.h" />
@@ -27,6 +33,12 @@
     </ClInclude>
     <ClInclude Include="ccTitleScene.h">
       <Filter>Content\Scene\TitleScene</Filter>
+    </ClInclude>
+    <ClInclude Include="ccMouseScript.h">
+      <Filter>Content\Script\MouseScript</Filter>
+    </ClInclude>
+    <ClInclude Include="ccPlayerMoveScript.h">
+      <Filter>Content\Script\PlayerMoveScript</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -50,6 +62,12 @@
     </Filter>
     <Filter Include="Content\Scene\TutorialScene">
       <UniqueIdentifier>{3847dad7-5ce4-4912-b089-30823f41de21}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Content\Script\MouseScript">
+      <UniqueIdentifier>{29b6fa70-5053-42cd-ae8f-fcd90b4b948e}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Content\Script\PlayerMoveScript">
+      <UniqueIdentifier>{9646427f-c161-4a5b-a7d8-430fbc28c058}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
 </Project>
