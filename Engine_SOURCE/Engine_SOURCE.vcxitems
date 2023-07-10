@@ -55,6 +55,7 @@
     <ClInclude Include="$(MSBuildThisFileDirectory)ccMath.h" />
     <ClInclude Include="$(MSBuildThisFileDirectory)ccMesh.h" />
     <ClInclude Include="$(MSBuildThisFileDirectory)ccMeshRenderer.h" />
+    <ClInclude Include="$(MSBuildThisFileDirectory)ccObject.h" />
     <ClInclude Include="$(MSBuildThisFileDirectory)ccRenderer.h" />
     <ClInclude Include="$(MSBuildThisFileDirectory)ccResource.h" />
     <ClInclude Include="$(MSBuildThisFileDirectory)ccResourceManager.h" />

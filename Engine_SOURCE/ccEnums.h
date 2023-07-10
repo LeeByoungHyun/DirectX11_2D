@@ -16,6 +16,7 @@ namespace cc::enums
 
 	enum class eLayerType
 	{
+		Grid,
 		Map,
 		Player,
 		Monster,

@@ -1,9 +1,4 @@
-
-//struct Vertex[3]
-//{
-//    Vector3 pos;
-//    Vector4 color;
-//};
+#include "globals.hlsli"
 
 struct VSIn
 {
@@ -18,14 +13,6 @@ struct VSOut
     float4 Color : COLOR;
     float2 UV : TEXCOORD;
 };
-
-cbuffer Transform : register(b0)
-{
-    float4 Position;
-    //float4 Rotation;
-    //float4 Scale;
-}
-
 
 VSOut main(VSIn In)
 {

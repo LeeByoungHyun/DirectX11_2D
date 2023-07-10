@@ -50,8 +50,13 @@ namespace renderer
 		cc::graphics::GetDevice()->CreateInputLayout(arrLayout, 3
 			, shader->GetVSCode()
 			, shader->GetInputLayoutAddressOf());
-		shader = cc::ResourceManager::Find<Shader>(L"SpriteShader");
 
+		shader = cc::ResourceManager::Find<Shader>(L"SpriteShader");
+		cc::graphics::GetDevice()->CreateInputLayout(arrLayout, 3
+			, shader->GetVSCode()
+			, shader->GetInputLayoutAddressOf());
+
+		shader = cc::ResourceManager::Find<Shader>(L"GridShader");
 		cc::graphics::GetDevice()->CreateInputLayout(arrLayout, 3
 			, shader->GetVSCode()
 			, shader->GetInputLayoutAddressOf());
@@ -172,6 +177,27 @@ namespace renderer
 
 	}
 
+	void LoadMesh()
+	{
+		//RECT
+		vertexes[0].pos = Vector3(-0.5f, 0.5f, 0.0f);
+		vertexes[0].color = Vector4(1.0f, 0.0f, 0.0f, 1.0f);
+		vertexes[0].uv = Vector2(0.0f, 0.0f);
+
+		vertexes[1].pos = Vector3(0.5f, 0.5f, 0.0f);
+		vertexes[1].color = Vector4(0.0f, 1.0f, 0.0f, 1.0f);
+		vertexes[1].uv = Vector2(1.0f, 0.0f);
+
+		vertexes[2].pos = Vector3(0.5f, -0.5f, 0.0f);
+		vertexes[2].color = Vector4(0.0f, 0.0f, 1.0f, 1.0f);
+		vertexes[2].uv = Vector2(1.0f, 1.0f);
+
+		vertexes[3].pos = Vector3(-0.5f, -0.5f, 0.0f);
+		vertexes[3].color = Vector4(1.0f, 1.0f, 1.0f, 1.0f);
+		vertexes[3].uv = Vector2(0.0f, 1.0f);
+	}
+
+
 	void LoadBuffer()
 	{
 		// Vertex Buffer
@@ -192,6 +218,10 @@ namespace renderer
 		// Constant Buffer
 		constantBuffer[(UINT)eCBType::Transform] = new cc::graphics::ConstantBuffer(eCBType::Transform);
 		constantBuffer[(UINT)eCBType::Transform]->Create(sizeof(TransformCB));
+
+		// Grid Buffer
+		constantBuffer[(UINT)eCBType::Grid] = new ConstantBuffer(eCBType::Grid);
+		constantBuffer[(UINT)eCBType::Grid]->Create(sizeof(TransformCB));
 	}
 
 	void LoadShader()
@@ -206,10 +236,32 @@ namespace renderer
 		spriteShader->Create(eShaderStage::PS, L"SpritePS.hlsl", "main");
 		cc::ResourceManager::Insert(L"SpriteShader", spriteShader);
 
+		std::shared_ptr<Shader> girdShader = std::make_shared<Shader>();
+		girdShader->Create(eShaderStage::VS, L"GridVS.hlsl", "main");
+		girdShader->Create(eShaderStage::PS, L"GridPS.hlsl", "main");
+		cc::ResourceManager::Insert(L"GridShader", girdShader);
+	}
+
+	void LoadMaterial()
+	{
+		std::shared_ptr<Shader> spriteShader
+			= ResourceManager::Find<Shader>(L"SpriteShader");
+
+		// Grid
+		{
+			std::shared_ptr<Shader> gridShader
+				= ResourceManager::Find<Shader>(L"GridShader");
+			std::shared_ptr<Material> material = std::make_shared<Material>();
+			material = std::make_shared<Material>();
+			material->SetShader(gridShader);
+			ResourceManager::Insert(L"GridMaterial", material);
+		}
+
+#pragma region Sprite Material
+		// Sprite
 		{
 			std::shared_ptr<Texture> texture
 				= ResourceManager::Load<Texture>(L"title_words_black_001", L"..\\Resources\\Texture\\title_words_black_001.png");
-
 			std::shared_ptr<Material> spriteMateiral = std::make_shared<Material>();
 			spriteMateiral->SetShader(spriteShader);
 			spriteMateiral->SetTexture(texture);
@@ -220,7 +272,6 @@ namespace renderer
 		{
 			std::shared_ptr<Texture> texture
 				= ResourceManager::Load<Texture>(L"Win_Pic_Slinger_001", L"..\\Resources\\Texture\\Win_Pic_Slinger_001.png");
-
 			std::shared_ptr<Material> spriteMateiral = std::make_shared<Material>();
 			spriteMateiral->SetShader(spriteShader);
 			spriteMateiral->SetTexture(texture);
@@ -230,7 +281,6 @@ namespace renderer
 		{
 			std::shared_ptr<Texture> texture
 				= ResourceManager::Load<Texture>(L"marine_idle_front_right_001", L"..\\Resources\\Texture\\marine_idle_front_right_001.png");
-
 			std::shared_ptr<Material> spriteMateiral = std::make_shared<Material>();
 			spriteMateiral->SetShader(spriteShader);
 			spriteMateiral->SetTexture(texture);
@@ -240,7 +290,6 @@ namespace renderer
 		{
 			std::shared_ptr<Texture> texture
 				= ResourceManager::Load<Texture>(L"blobuloid_idle_back_001", L"..\\Resources\\Texture\\blobuloid_idle_back_001.png");
-
 			std::shared_ptr<Material> spriteMateiral = std::make_shared<Material>();
 			spriteMateiral->SetShader(spriteShader);
 			spriteMateiral->SetTexture(texture);
@@ -250,7 +299,6 @@ namespace renderer
 		{
 			std::shared_ptr<Texture> texture
 				= ResourceManager::Load<Texture>(L"player_marine_card_001", L"..\\Resources\\Texture\\player_marine_card_001.png");
-
 			std::shared_ptr<Material> spriteMateiral = std::make_shared<Material>();
 			spriteMateiral->SetShader(spriteShader);
 			spriteMateiral->SetTexture(texture);
@@ -261,7 +309,6 @@ namespace renderer
 		{
 			std::shared_ptr<Texture> texture
 				= ResourceManager::Load<Texture>(L"mapTest1", L"..\\Resources\\Texture\\MapTest.png");
-
 			std::shared_ptr<Material> spriteMateiral = std::make_shared<Material>();
 			spriteMateiral->SetShader(spriteShader);
 			spriteMateiral->SetTexture(texture);
@@ -272,44 +319,24 @@ namespace renderer
 		{
 			std::shared_ptr<Texture> texture
 				= ResourceManager::Load<Texture>(L"Aim.png", L"..\\Resources\\Texture\\Aim.png");
-
 			std::shared_ptr<Material> spriteMateiral = std::make_shared<Material>();
 			spriteMateiral->SetShader(spriteShader);
 			spriteMateiral->SetTexture(texture);
 			spriteMateiral->SetRenderingMode(eRenderingMode::Transparent);
 			ResourceManager::Insert(L"Aim", spriteMateiral);
 		}
+#pragma endregion
+		
 	}
+
 
 	void Initialize()
 	{
-		vertexes[0].pos = Vector3(-0.5f, 0.5f, 0.0f);
-		vertexes[0].color = Vector4(1.0f, 0.0f, 0.0f, 1.0f);
-		vertexes[0].uv = Vector2(0.0f, 0.0f);
-
-		vertexes[1].pos = Vector3(0.5f, 0.5f, 0.0f);
-		vertexes[1].color = Vector4(0.0f, 1.0f, 0.0f, 1.0f);
-		vertexes[1].uv = Vector2(1.0f, 0.0f);
-
-		vertexes[2].pos = Vector3(0.5f, -0.5f, 0.0f);
-		vertexes[2].color = Vector4(0.0f, 0.0f, 1.0f, 1.0f);
-		vertexes[2].uv = Vector2(1.0f, 1.0f);
-
-		vertexes[3].pos = Vector3(-0.5f, -0.5f, 0.0f);
-		vertexes[3].color = Vector4(1.0f, 1.0f, 1.0f, 1.0f);
-		vertexes[3].uv = Vector2(0.0f, 1.0f);
-
+		LoadMesh();
 		LoadBuffer();
 		LoadShader();
 		SetupState();
-
-		std::shared_ptr<Texture> texture
-			= ResourceManager::Load<Texture>(L"Smile", L"..\\Resources\\Texture\\Smile.png");
-
-		texture
-			= ResourceManager::Load<Texture>(L"Link", L"..\\Resources\\Texture\\Link.png");
-
-		texture->BindShader(eShaderStage::PS, 0);
+		LoadMaterial();
 	}
 
 	void Render()

@@ -150,6 +150,8 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClInclude Include="ccCameraScript.h" />
+    <ClInclude Include="ccGridScript.h" />
+    <ClInclude Include="ccGunPositionScript.h" />
     <ClInclude Include="ccMouseScript.h" />
     <ClInclude Include="ccPlayerMoveScript.h" />
     <ClInclude Include="ccTestScene.h" />
@@ -157,15 +159,19 @@
     <ClInclude Include="ccTutorialScene.h" />
     <ClInclude Include="framework.h" />
     <ClInclude Include="LoadScenes.h" />
+    <ClInclude Include="Marine.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="ccCameraScript.cpp" />
     <ClCompile Include="CCEngine.cpp" />
+    <ClCompile Include="ccGridScript.cpp" />
+    <ClCompile Include="ccGunPositionScript.cpp" />
     <ClCompile Include="ccMouseScript.cpp" />
     <ClCompile Include="ccPlayerMoveScript.cpp" />
     <ClCompile Include="ccTestScene.cpp" />
     <ClCompile Include="ccTitleScene.cpp" />
     <ClCompile Include="ccTutorialScene.cpp" />
+    <ClCompile Include="Marine.cpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
