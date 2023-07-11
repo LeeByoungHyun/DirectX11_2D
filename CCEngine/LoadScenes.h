@@ -10,12 +10,10 @@
 #endif
 
 
-
 namespace cc
 {
 	void InitializeScenes()
 	{
-		//PlayScene* playScene = new PlayScene();
 		SceneManager::CreateScene<TitleScene>(L"TitleScene");
 		SceneManager::CreateScene<TutorialScene>(L"TutorialScene");
 

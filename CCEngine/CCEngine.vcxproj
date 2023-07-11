@@ -149,6 +149,7 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClInclude Include="AimCursor.h" />
     <ClInclude Include="ccCameraScript.h" />
     <ClInclude Include="ccGridScript.h" />
     <ClInclude Include="ccGunPositionScript.h" />
@@ -162,6 +163,7 @@
     <ClInclude Include="Marine.h" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="AimCursor.cpp" />
     <ClCompile Include="ccCameraScript.cpp" />
     <ClCompile Include="CCEngine.cpp" />
     <ClCompile Include="ccGridScript.cpp" />

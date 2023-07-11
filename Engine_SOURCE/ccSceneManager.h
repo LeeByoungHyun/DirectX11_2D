@@ -10,6 +10,7 @@ namespace cc
 		static void Update();
 		static void LateUpdate();
 		static void Render();
+		static void Destroy();
 		static void Release();
 
 		template <typename T>
@@ -31,6 +32,7 @@ namespace cc
 
 		static Scene* LoadScene(std::wstring name);
 		static Scene* GetActiveScene() { return mActiveScene; }
+		static void SetActiveScene(Scene* scene) { mActiveScene = scene; }
 
 	private:
 		static Scene* mActiveScene;

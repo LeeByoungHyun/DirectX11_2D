@@ -1,10 +1,6 @@
 #include "ccSceneManager.h"
 #include "ccInput.h"
 
-//#include "ccTestScene.h"
-//#include "ccTitleScene.h"
-//#include "ccTutorialScene.h"
-
 namespace cc
 {
 	Scene* SceneManager::mActiveScene = nullptr;
@@ -33,6 +29,11 @@ namespace cc
 	void SceneManager::Render()
 	{
 		mActiveScene->Render();
+	}
+
+	void SceneManager::Destroy()
+	{
+		mActiveScene->Destroy();
 	}
 
 	void SceneManager::Release()

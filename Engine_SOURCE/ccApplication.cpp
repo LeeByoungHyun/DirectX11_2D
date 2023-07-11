@@ -24,6 +24,7 @@ namespace cc
 		Update();
 		LateUpdate();
 		Render();
+		Destroy();
 	}
 
 	void Application::Initialize()
@@ -59,6 +60,11 @@ namespace cc
 		//graphicDevice->Draw();
 
 		graphicDevice->Present();
+	}
+
+	void Application::Destroy()
+	{
+		SceneManager::Destroy();
 	}
 
 	void Application::SetWindow(HWND hwnd, UINT width, UINT height)

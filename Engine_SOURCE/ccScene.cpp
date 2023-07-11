@@ -1,4 +1,5 @@
 #include "ccScene.h"
+#include "ccSceneManager.h"
 
 namespace cc
 {
@@ -14,7 +15,7 @@ namespace cc
 
 	void Scene::Initialize()
 	{
-		
+		SceneManager::SetActiveScene(this);
 	}
 
 	void Scene::Update()
@@ -38,6 +39,14 @@ namespace cc
 		for (Layer& layer : mLayers)
 		{
 			layer.Render();
+		}
+	}
+
+	void Scene::Destroy()
+	{
+		for (Layer& layer : mLayers)
+		{
+			layer.Destory();
 		}
 	}
 

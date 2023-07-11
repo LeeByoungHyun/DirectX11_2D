@@ -27,6 +27,9 @@
     <ClCompile Include="ccGridScript.cpp">
       <Filter>Content\Script\GridScript</Filter>
     </ClCompile>
+    <ClCompile Include="AimCursor.cpp">
+      <Filter>Content\GameObject\Aim Cursor</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="framework.h" />
@@ -57,6 +60,9 @@
     </ClInclude>
     <ClInclude Include="ccGridScript.h">
       <Filter>Content\Script\GridScript</Filter>
+    </ClInclude>
+    <ClInclude Include="AimCursor.h">
+      <Filter>Content\GameObject\Aim Cursor</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -98,6 +104,12 @@
     </Filter>
     <Filter Include="Content\Script\GridScript">
       <UniqueIdentifier>{05547ea3-f6e9-450c-81c8-eaed589dd8dc}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Content\GameObject\Aim Cursor">
+      <UniqueIdentifier>{a91997c8-6e02-443e-a088-deff4837a8a4}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Content\GameObject\TitleBG">
+      <UniqueIdentifier>{27de3780-9f24-4f85-896c-496a040a71d0}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
 </Project>

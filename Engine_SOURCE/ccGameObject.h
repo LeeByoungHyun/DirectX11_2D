@@ -9,7 +9,7 @@ namespace cc
 	class GameObject : public Entity
 	{
 	public:
-		enum eState
+		enum class eState
 		{
 			Active,
 			Puase,
@@ -69,10 +69,16 @@ namespace cc
 			return comp;
 		}
 
+		eState GetState() { return mState; }
+		void SetState(eState state) { mState = state; }
+		//eLayerType GetType() { return mType; }
+		//void SetType(eLayerType type) { mType = type; }
+
 	private:
 		eState mState;
 		std::vector<Component*> mComponents;
 		std::vector<Script*> mScripts;
+		//eLayerType mType;
 	};
 }
 

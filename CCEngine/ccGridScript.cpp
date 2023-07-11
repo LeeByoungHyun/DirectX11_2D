@@ -5,6 +5,8 @@
 #include "ccApplication.h"
 #include "ccGameObject.h"
 #include "ccRenderer.h"
+#include "ccTime.h"
+#include "ccObject.h"
 
 extern cc::Application application;
 
@@ -22,9 +24,16 @@ namespace cc
 	}
 	void GridScript::Update()
 	{
+		//static float chTime = 0.0f;
+		//chTime += Time::DeltaTime();
+
+		//if (chTime > 3.0f)
+		//{
+		//	object::Destroy(GetOwner());
+		//}
+
 		if (mCamera == nullptr)
 			return;
-
 
 		GameObject* gameObj = mCamera->GetOwner();
 

@@ -7,8 +7,12 @@
 #include "ccCamera.h"
 #include "ccMouseScript.h"
 #include "ccPlayerMoveScript.h"
-
 #include "ccInput.h"
+#include "ccObject.h"
+#include "ccSceneManager.h"
+
+#include "Marine.h"
+#include "AimCursor.h"
 
 namespace cc
 {
@@ -24,40 +28,25 @@ namespace cc
 
 	void TutorialScene::Initialize()
 	{
+		Scene::Initialize();
+		Scene* scene = SceneManager::GetActiveScene();
+
 		// Map
-		mapTest = new GameObject();
-		mapTest->SetName(L"MapTest");
-		AddGameObject(eLayerType::Map, mapTest);
+		mapTest = object::Instantiate<GameObject>(eLayerType::Map);
 		mapTest->AddComponent<MeshRenderer>();
 		mapTest->GetComponent<MeshRenderer>()->SetMesh(ResourceManager::Find<Mesh>(L"RectMesh"));
 		mapTest->GetComponent<MeshRenderer>()->SetMaterial(ResourceManager::Find<Material>(L"mapTest"));
 		mapTest->GetComponent<Transform>()->SetPosition(Vector3(0.0f, 0.0f, 100.0f));
 		mapTest->GetComponent<Transform>()->SetScale(Vector3(5.76f, 4.32f, 0.0f));
-		
+
 		// player
-		marine = new GameObject();
+		marine = object::Instantiate<Marine>(eLayerType::Player);
 		marine->SetName(L"Marine");
-		AddGameObject(eLayerType::Player, marine);
-		marine->AddComponent<MeshRenderer>();
-		marine->GetComponent<MeshRenderer>()->SetMesh(ResourceManager::Find<Mesh>(L"RectMesh"));
-		marine->GetComponent<MeshRenderer>()->SetMaterial(ResourceManager::Find<Material>(L"marine"));
-		marine->GetComponent<Transform>()->SetPosition(Vector3(0.0f, 0.0f, 0.0f));
-		marine->GetComponent<Transform>()->SetScale(Vector3(0.24f, 0.27f, 0.0f));
-		marine->AddComponent<PlayerMoveScript>();
-
-		// mouse cursur
-		mouse = new GameObject();
+		
+		// mouse cursor
+		mouse = object::Instantiate<AimCursor>(eLayerType::UI);
 		mouse->SetName(L"Mouse");
-		AddGameObject(eLayerType::UI, mouse);
-		mouse->AddComponent<MeshRenderer>();
-		mouse->GetComponent<MeshRenderer>()->SetMesh(ResourceManager::Find<Mesh>(L"RectMesh"));
-		mouse->GetComponent<MeshRenderer>()->SetMaterial(ResourceManager::Find<Material>(L"Aim"));
-		Vector2 mousePos = Input::GetMousePos();
-		mouse->GetComponent<Transform>()->SetPosition(Vector3(mousePos.x, mousePos.y, -100.0f));
-		//mouse->GetComponent<Transform>()->SetPosition(Vector3(1.0f, 1.0f, -100.0f));
-		mouse->GetComponent<Transform>()->SetScale(Vector3(0.2f, 0.2f, 0.0f));
-		mouse->AddComponent<MouseScript>();
-
+		
 		//Main Camera
 		camera = new GameObject();
 		AddGameObject(eLayerType::UI, camera);

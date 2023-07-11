@@ -15,9 +15,11 @@ namespace cc
 		virtual void Render() override;
 
 	private:
-		GameObject* mapTest;
-		GameObject* marine;
-		GameObject* mouse;
-		GameObject* camera;
+		class GameObject* mapTest;
+		class Marine* marine;
+		class GameObject* mouse;
+		class GameObject* camera;
+		//GameObject* gun;
+
 	};
 }
