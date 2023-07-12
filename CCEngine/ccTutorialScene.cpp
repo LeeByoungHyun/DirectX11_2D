@@ -10,6 +10,7 @@
 #include "ccInput.h"
 #include "ccObject.h"
 #include "ccSceneManager.h"
+#include "ccRenderer.h"
 
 #include "Marine.h"
 #include "AimCursor.h"
@@ -53,6 +54,7 @@ namespace cc
 		camera->GetComponent<Transform>()->SetPosition(Vector3(0.0f, 0.0f, -10.0f));
 		Camera* cameraComp = camera->AddComponent<Camera>();
 		camera->AddComponent<CameraScript>();
+		renderer::cameras.push_back(cameraComp);
 
 		/*
 		// 부모자식 테스트

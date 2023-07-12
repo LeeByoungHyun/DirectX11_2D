@@ -76,6 +76,15 @@
     <Filter Include="Component\Camera">
       <UniqueIdentifier>{354de8ac-4b33-4e66-96de-bc6156d05e21}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Component\Collider">
+      <UniqueIdentifier>{67704b8b-427b-4822-a1ef-7ff709df08bf}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Component\Collider\Collider2D">
+      <UniqueIdentifier>{89bbbb97-35d3-4b64-8892-8c2bb1de3209}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Component\Collider\Manager">
+      <UniqueIdentifier>{cb6d4ac5-427e-498d-9954-6f2e59b0c8cd}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="$(MSBuildThisFileDirectory)CommonInclude.h">
@@ -162,6 +171,12 @@
     <ClInclude Include="$(MSBuildThisFileDirectory)ccObject.h">
       <Filter>GameObject</Filter>
     </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)ccCollider2D.h">
+      <Filter>Component\Collider\Collider2D</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)ccCollisionManager.h">
+      <Filter>Component\Collider\Manager</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="$(MSBuildThisFileDirectory)ccEntity.cpp">
@@ -232,6 +247,12 @@
     </ClCompile>
     <ClCompile Include="$(MSBuildThisFileDirectory)ccRenderer.cpp">
       <Filter>Graphics\Renderer</Filter>
+    </ClCompile>
+    <ClCompile Include="$(MSBuildThisFileDirectory)ccCollider2D.cpp">
+      <Filter>Component\Collider\Collider2D</Filter>
+    </ClCompile>
+    <ClCompile Include="$(MSBuildThisFileDirectory)ccCollisionManager.cpp">
+      <Filter>Component\Collider\Manager</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>

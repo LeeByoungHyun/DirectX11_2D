@@ -200,6 +200,10 @@ namespace cc
 			if (gameObj == nullptr)
 				continue;
 
+			if (gameObj->GetState()
+				!= GameObject::eState::Active)
+				continue;
+
 			gameObj->Render();
 		}
 	}
@@ -211,6 +215,10 @@ namespace cc
 			if (gameObj == nullptr)
 				continue;
 
+			if (gameObj->GetState()
+				!= GameObject::eState::Active)
+				continue;
+
 			gameObj->Render();
 		}
 	}
@@ -220,6 +228,10 @@ namespace cc
 		for (GameObject* gameObj : mTransparentGameObjects)
 		{
 			if (gameObj == nullptr)
+				continue;
+
+			if (gameObj->GetState()
+				!= GameObject::eState::Active)
 				continue;
 
 			gameObj->Render();

@@ -59,6 +59,11 @@ namespace cc
 		renderer::Render();
 		//graphicDevice->Draw();
 
+		//graphicDevice->Present();
+	}
+
+	void Application::Present()
+	{
 		graphicDevice->Present();
 	}
 
