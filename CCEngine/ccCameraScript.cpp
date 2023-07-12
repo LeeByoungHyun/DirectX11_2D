@@ -3,13 +3,17 @@
 #include "ccGameObject.h"
 #include "ccTime.h"
 #include "ccinput.h"
+#include "Marine.h"
 
 namespace cc
 {
 	void CameraScript::Update()
 	{
+		Vector3 pos = Marine::GetInstance()->GetPos();
+		pos.z = -10;
+
 		Transform* tr = GetOwner()->GetComponent<Transform>();
-		Vector3 pos = tr->GetPosition();
+		tr->SetPosition(pos);
 
 		/*
 		if (Input::GetKey(eKeyCode::W))

@@ -84,11 +84,6 @@ namespace cc
 	void TutorialScene::LateUpdate()
 	{
 		Scene::LateUpdate();
-
-		// 카메라 위치 플레이어 위치로
-		// 나중에 카메라 스크립트로 이동 임시
-		Vector3 pos = marine->GetComponent<Transform>()->GetPosition();
-		camera->GetComponent<Transform>()->SetPosition(Vector3(pos.x, pos.y, -10.0f));
 	}
 
 	void TutorialScene::Render()

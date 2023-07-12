@@ -24,6 +24,8 @@ namespace cc
 		virtual void LateUpdate() override;
 		virtual void Render() override;
 
+		Vector3 GetPos() { return mTransform->GetPosition(); }
+
 	private:
 		static Marine* instance;
 
