@@ -41,8 +41,10 @@ namespace cc
 		mapTest->GetComponent<Transform>()->SetScale(Vector3(5.76f, 4.32f, 0.0f));
 
 		// player
-		marine = object::Instantiate<Marine>(eLayerType::Player);
+		//marine = object::Instantiate<Marine>(eLayerType::Player);
+		marine = Marine::GetInstance();
 		marine->SetName(L"Marine");
+		object::Instantiate(marine, eLayerType::Player);
 		
 		// mouse cursor
 		mouse = object::Instantiate<AimCursor>(eLayerType::UI);

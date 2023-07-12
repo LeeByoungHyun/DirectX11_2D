@@ -68,6 +68,15 @@ namespace cc::object
 		return gameObj;
 	}
 
+	template <typename T>
+	static void Instantiate(T* gameObj, enums::eLayerType layer)
+	{
+		Scene* scene = SceneManager::GetActiveScene();
+		scene->AddGameObject(layer, gameObj);
+
+		gameObj->Initialize();
+	}
+
 	static __forceinline void Destroy(GameObject* gameObj)
 	{
 		gameObj->SetState(cc::GameObject::eState::Dead);

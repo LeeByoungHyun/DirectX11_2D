@@ -4,6 +4,8 @@
 
 namespace cc
 {
+	Marine* Marine::instance = nullptr;
+
 	Marine::Marine()
 	{
 
