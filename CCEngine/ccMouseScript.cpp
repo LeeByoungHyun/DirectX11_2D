@@ -27,7 +27,7 @@ namespace cc
 		viewport.minDepth = 0.0f;
 		viewport.maxDepth = 1.0f;
 
-		p = viewport.Unproject(p, Camera::GetProjectionMatrix(), Camera::GetViewMatrix(), Matrix::Identity);
+		p = viewport.Unproject(p, Camera::GetGpuProjectionMatrix(), Camera::GetGpuViewMatrix(), Matrix::Identity);
 		tr->SetPosition(p);
 
 		/*

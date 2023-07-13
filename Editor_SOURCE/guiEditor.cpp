@@ -1,11 +1,13 @@
 #include "guiEditor.h"
-#include "ccMesh.h"
-#include "ccResourceManager.h"
-#include "ccTransform.h"
-#include "ccMeshRenderer.h"
-#include "ccMaterial.h"
-#include "ccRenderer.h"
-#include "../CCEngine/ccGridScript.h"
+#include "..\\Engine_SOURCE\\ccMesh.h"
+#include "..\\Engine_SOURCE\\ccMesh.h"
+#include "..\\Engine_SOURCE\\ccResourceManager.h"
+#include "..\\Engine_SOURCE\\ccTransform.h"
+#include "..\\Engine_SOURCE\\ccMeshRenderer.h"
+#include "..\\Engine_SOURCE\\ccMaterial.h"
+#include "..\\Engine_SOURCE\\ccRenderer.h"
+
+#include "..\\CCEngine\\ccGridScript.h"
 
 namespace gui
 {
@@ -82,7 +84,23 @@ namespace gui
 
 	void Editor::Release()
 	{
+		for (auto widget : mWidgets)
+		{
+			delete widget;
+			widget = nullptr;
+		}
 
+		for (auto editorObj : mEditorObjects)
+		{
+			delete editorObj;
+			editorObj = nullptr;
+		}
+
+		for (auto debugObj : mDebugObjects)
+		{
+			delete debugObj;
+			debugObj = nullptr;
+		}
 	}
 
 	void Editor::DebugRender(const cc::graphics::DebugMesh& mesh)
@@ -91,6 +109,25 @@ namespace gui
 
 		// 위치 크기 회전 정보를 받아와서
 		// 해당 게임오브젝트위에 그려주면된다.
+		cc::Transform* tr = debugObj->GetComponent<cc::Transform>();
+
+		Vector3 pos = mesh.position;
+		pos.z -= 0.01f;
+
+		tr->SetPosition(pos);
+		tr->SetScale(mesh.scale);
+		tr->SetRotation(mesh.rotation);
+
+		tr->LateUpdate();
+
+		/*ya::MeshRenderer * mr
+			= debugObj->GetComponent<ya::MeshRenderer>();*/
+			// main camera
+		cc::Camera* mainCamara = renderer::mainCamera;
+
+		cc::Camera::SetGpuViewMatrix(mainCamara->GetGpuViewMatrix());
+		cc::Camera::SetGpuProjectionMatrix(mainCamara->GetGpuProjectionMatrix());
+
 		debugObj->Render();
 	}
 }

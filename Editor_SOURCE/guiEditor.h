@@ -1,10 +1,10 @@
 #pragma once
-#include "CommonInclude.h"
-#include "CCEngine.h"
+#include "..\\Engine_SOURCE\\CommonInclude.h"
+#include "..\\Engine_SOURCE\\CCEngine.h"
+#include "..\\Engine_SOURCE\\ccGraphics.h"
 #include "guiWidget.h"
 #include "guiEditorObject.h"
 #include "guiDebugObject.h"
-#include "ccGraphics.h"
 
 namespace gui
 {

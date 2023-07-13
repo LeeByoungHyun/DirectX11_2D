@@ -1,6 +1,6 @@
 #pragma once
-#include <ccScript.h>
-#include "ccCamera.h"
+#include "..\\Engine_SOURCE\\ccScript.h"
+#include "..\\Engine_SOURCE\\ccCamera.h"
 
 namespace cc
 {

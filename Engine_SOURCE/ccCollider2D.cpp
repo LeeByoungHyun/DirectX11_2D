@@ -1,5 +1,6 @@
 #include "ccCollider2D.h"
 #include "ccGameObject.h"
+#include "ccRenderer.h"
 
 namespace cc
 {
@@ -29,7 +30,15 @@ namespace cc
 
 	void Collider2D::LateUpdate()
 	{
+		Transform* tr = GetOwner()->GetComponent<Transform>();
 
+		graphics::DebugMesh mesh = {};
+		mesh.position = tr->GetPosition();
+		mesh.scale = tr->GetScale();
+		mesh.rotation = tr->GetRotation();
+		mesh.type = eColliderType::Rect;
+
+		renderer::PushDebugMeshAttribute(mesh);
 	}
 
 	void Collider2D::Render()

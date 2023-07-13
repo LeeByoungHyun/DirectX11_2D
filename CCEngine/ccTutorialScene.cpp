@@ -48,8 +48,8 @@ namespace cc
 		object::Instantiate(marine, eLayerType::Player);
 
 		// Test Gun
-		testGun = object::Instantiate<TestGun>(eLayerType::Player);
-		testGun->SetName(L"TestGun");
+		//testGun = object::Instantiate<TestGun>(eLayerType::Player);
+		//testGun->SetName(L"TestGun");
 
 		// mouse cursor
 		mouse = object::Instantiate<AimCursor>(eLayerType::UI);
