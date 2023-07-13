@@ -14,6 +14,7 @@
 
 #include "Marine.h"
 #include "AimCursor.h"
+#include "TestGun.h"
 
 namespace cc
 {
@@ -45,7 +46,11 @@ namespace cc
 		marine = Marine::GetInstance();
 		marine->SetName(L"Marine");
 		object::Instantiate(marine, eLayerType::Player);
-		
+
+		// Test Gun
+		testGun = object::Instantiate<TestGun>(eLayerType::Player);
+		testGun->SetName(L"TestGun");
+
 		// mouse cursor
 		mouse = object::Instantiate<AimCursor>(eLayerType::UI);
 		mouse->SetName(L"Mouse");

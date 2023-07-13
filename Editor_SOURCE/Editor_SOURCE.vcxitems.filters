@@ -9,10 +9,16 @@
     <ClCompile Include="$(MSBuildThisFileDirectory)guiEditor.cpp">
       <Filter>Editor</Filter>
     </ClCompile>
+    <ClCompile Include="$(MSBuildThisFileDirectory)guiDebugObject.cpp" />
+    <ClCompile Include="$(MSBuildThisFileDirectory)guiEditorObject.cpp" />
+    <ClCompile Include="$(MSBuildThisFileDirectory)guiWidget.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="$(MSBuildThisFileDirectory)guiEditor.h">
       <Filter>Editor</Filter>
     </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)guiDebugObject.h" />
+    <ClInclude Include="$(MSBuildThisFileDirectory)guiEditorObject.h" />
+    <ClInclude Include="$(MSBuildThisFileDirectory)guiWidget.h" />
   </ItemGroup>
 </Project>

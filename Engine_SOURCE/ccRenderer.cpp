@@ -392,6 +392,16 @@ namespace renderer
 			spriteMateiral->SetRenderingMode(eRenderingMode::Transparent);
 			ResourceManager::Insert(L"Aim", spriteMateiral);
 		}
+
+		{
+			std::shared_ptr<Texture> texture
+				= ResourceManager::Load<Texture>(L"finished_gun_idle_001.png", L"..\\Resources\\Texture\\finished_gun_idle_001.png");
+			std::shared_ptr<Material> spriteMateiral = std::make_shared<Material>();
+			spriteMateiral->SetShader(spriteShader);
+			spriteMateiral->SetTexture(texture);
+			spriteMateiral->SetRenderingMode(eRenderingMode::Transparent);
+			ResourceManager::Insert(L"TestGun", spriteMateiral);
+		}
 #pragma endregion
 		
 	}

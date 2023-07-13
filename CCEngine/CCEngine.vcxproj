@@ -161,6 +161,8 @@
     <ClInclude Include="framework.h" />
     <ClInclude Include="LoadScenes.h" />
     <ClInclude Include="Marine.h" />
+    <ClInclude Include="TestGun.h" />
+    <ClInclude Include="TestGunScript.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="AimCursor.cpp" />
@@ -174,6 +176,8 @@
     <ClCompile Include="ccTitleScene.cpp" />
     <ClCompile Include="ccTutorialScene.cpp" />
     <ClCompile Include="Marine.cpp" />
+    <ClCompile Include="TestGun.cpp" />
+    <ClCompile Include="TestGunScript.cpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

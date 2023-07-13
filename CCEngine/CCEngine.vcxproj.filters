@@ -30,6 +30,12 @@
     <ClCompile Include="AimCursor.cpp">
       <Filter>Content\GameObject\Aim Cursor</Filter>
     </ClCompile>
+    <ClCompile Include="TestGun.cpp">
+      <Filter>Content\GameObject\Gun\Test</Filter>
+    </ClCompile>
+    <ClCompile Include="TestGunScript.cpp">
+      <Filter>Content\Script\TestGunScript</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="framework.h" />
@@ -63,6 +69,12 @@
     </ClInclude>
     <ClInclude Include="AimCursor.h">
       <Filter>Content\GameObject\Aim Cursor</Filter>
+    </ClInclude>
+    <ClInclude Include="TestGun.h">
+      <Filter>Content\GameObject\Gun\Test</Filter>
+    </ClInclude>
+    <ClInclude Include="TestGunScript.h">
+      <Filter>Content\Script\TestGunScript</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -110,6 +122,15 @@
     </Filter>
     <Filter Include="Content\GameObject\TitleBG">
       <UniqueIdentifier>{27de3780-9f24-4f85-896c-496a040a71d0}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Content\GameObject\Gun">
+      <UniqueIdentifier>{b77ce2d9-a7f3-43c6-bc9b-f8e2d27e041f}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Content\GameObject\Gun\Test">
+      <UniqueIdentifier>{4cd48b7f-1c57-4412-854a-95bb6807f029}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Content\Script\TestGunScript">
+      <UniqueIdentifier>{25aa688d-09d2-4f9b-99c9-ab04dae46791}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
 </Project>
