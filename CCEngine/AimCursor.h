@@ -11,12 +11,24 @@ namespace cc
 		AimCursor();
 		virtual ~AimCursor();
 
+		static AimCursor* GetInstance()
+		{
+			if (instance == nullptr)
+				instance = new AimCursor();
+
+			return instance;
+		}
+
 		virtual void Initialize() override;
 		virtual void Update() override;
 		virtual void LateUpdate() override;
 		virtual void Render() override;
 
+		Vector3 GetPos() { return mTransform->GetPosition(); }
+
 	private:
+		static AimCursor* instance;
+
 		MeshRenderer* mMeshRenderer;
 		Transform* mTransform;
 	};

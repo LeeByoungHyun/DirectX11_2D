@@ -48,21 +48,23 @@ namespace cc
 		marine->SetName(L"Marine");
 		object::Instantiate(marine, eLayerType::Player);
 
+		// mouse cursor
+		//mouse = object::Instantiate<AimCursor>(eLayerType::UI);
+		mouse = AimCursor::GetInstance();
+		mouse->SetName(L"Mouse");
+		object::Instantiate(mouse, eLayerType::UI);
+	
 		// Test Gun
 		testGun = object::Instantiate<TestGun>(eLayerType::Player);
 		testGun->SetName(L"TestGun");
 		testGun->GetComponent<Transform>()->SetPosition(Vector3(0.0f, 0.0f, 100.0f));
-
-		// mouse cursor
-		mouse = object::Instantiate<AimCursor>(eLayerType::UI);
-		mouse->SetName(L"Mouse");
 		
 		//Main Camera
 		camera = new GameObject();
 		AddGameObject(eLayerType::UI, camera);
 		camera->GetComponent<Transform>()->SetPosition(Vector3(0.0f, 0.0f, -10.0f));
 		Camera* cameraComp = camera->AddComponent<Camera>();
-		//camera->AddComponent<CameraScript>();
+		camera->AddComponent<CameraScript>();
 		renderer::cameras.push_back(cameraComp);
 
 		/*

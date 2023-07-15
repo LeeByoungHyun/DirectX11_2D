@@ -4,6 +4,8 @@
 
 namespace cc
 {
+	AimCursor* AimCursor::instance = nullptr;
+
 	AimCursor::AimCursor()
 	{
 
