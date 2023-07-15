@@ -1,6 +1,7 @@
 #include "Marine.h"
 #include "ccResourceManager.h"
 #include "ccPlayerMoveScript.h"
+#include "ccCollider2D.h"
 
 namespace cc
 {
@@ -28,7 +29,13 @@ namespace cc
 		mTransform->SetPosition(Vector3(0.0f, 0.0f, 0.0f));
 		mTransform->SetScale(Vector3(0.24f, 0.27f, 0.0f)); 
 		
+		Collider2D* cd = AddComponent<Collider2D>();
+		cd->SetType(eColliderType::Circle);
+		//cd->SetSize(Vector2(0.24f, 0.27f));
+
+		// Script
 		AddComponent<PlayerMoveScript>();
+
 	}
 
 	void Marine::Update()

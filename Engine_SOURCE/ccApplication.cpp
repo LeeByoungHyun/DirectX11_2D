@@ -3,6 +3,7 @@
 #include "ccTime.h"
 #include "ccRenderer.h"
 #include "ccSceneManager.h"
+#include "ccCollisionManager.h"
 
 namespace cc
 {
@@ -41,6 +42,7 @@ namespace cc
 		Time::Update();
 		Input::Update();
 		SceneManager::Update();
+		CollisionManager::Update();
 	}
 
 	void Application::LateUpdate()

@@ -26,6 +26,9 @@ namespace cc
 		mTransform->SetPosition(Vector3(0.0f, 0.0f, 0.0f));
 		mTransform->SetScale(Vector3(0.2f, 0.2f, 0.0f));
 
+		Collider2D* cd = AddComponent<Collider2D>();
+		cd->SetType(eColliderType::Circle);
+
 		// script
 		AddComponent<MouseScript>();
 	}

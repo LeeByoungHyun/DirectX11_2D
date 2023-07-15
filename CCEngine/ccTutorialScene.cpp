@@ -11,6 +11,7 @@
 #include "ccObject.h"
 #include "ccSceneManager.h"
 #include "ccRenderer.h"
+#include "ccCollisionManager.h"
 
 #include "Marine.h"
 #include "AimCursor.h"
@@ -48,8 +49,9 @@ namespace cc
 		object::Instantiate(marine, eLayerType::Player);
 
 		// Test Gun
-		//testGun = object::Instantiate<TestGun>(eLayerType::Player);
-		//testGun->SetName(L"TestGun");
+		testGun = object::Instantiate<TestGun>(eLayerType::Player);
+		testGun->SetName(L"TestGun");
+		testGun->GetComponent<Transform>()->SetPosition(Vector3(0.0f, 0.0f, 100.0f));
 
 		// mouse cursor
 		mouse = object::Instantiate<AimCursor>(eLayerType::UI);
@@ -60,7 +62,7 @@ namespace cc
 		AddGameObject(eLayerType::UI, camera);
 		camera->GetComponent<Transform>()->SetPosition(Vector3(0.0f, 0.0f, -10.0f));
 		Camera* cameraComp = camera->AddComponent<Camera>();
-		camera->AddComponent<CameraScript>();
+		//camera->AddComponent<CameraScript>();
 		renderer::cameras.push_back(cameraComp);
 
 		/*
@@ -94,5 +96,19 @@ namespace cc
 	void TutorialScene::Render()
 	{
 		Scene::Render();
+	}
+
+	void TutorialScene::OnEnter()
+	{
+		// CollisionManager
+		CollisionManager::SetLayer(eLayerType::Player, eLayerType::UI, true);
+		CollisionManager::SetLayer(eLayerType::Player, eLayerType::Player, true);
+		CollisionManager::SetLayer(eLayerType::UI, eLayerType::Player, true);
+		CollisionManager::SetLayer(eLayerType::Player, eLayerType::Player, true);
+	}
+
+	void TutorialScene::OnExit()
+	{
+
 	}
 }

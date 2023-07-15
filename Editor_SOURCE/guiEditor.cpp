@@ -20,6 +20,7 @@ namespace gui
 	{
 		mDebugObjects.resize((UINT)eColliderType::End);
 
+		// Rect
 		std::shared_ptr<cc::Mesh> mesh
 			= cc::ResourceManager::Find<cc::Mesh>(L"DebugRect");
 		std::shared_ptr<cc::Material> material
@@ -29,6 +30,16 @@ namespace gui
 		mDebugObjects[(UINT)eColliderType::Rect]->AddComponent<cc::Transform>();
 		cc::MeshRenderer* mr
 			= mDebugObjects[(UINT)eColliderType::Rect]->AddComponent<cc::MeshRenderer>();
+		mr->SetMaterial(material);
+		mr->SetMesh(mesh);
+
+		// Circle
+		mesh = cc::ResourceManager::Find<cc::Mesh>(L"DebugCircle");
+		material = cc::ResourceManager::Find<cc::Material>(L"DebugMaterial");
+
+		mDebugObjects[(UINT)eColliderType::Circle] = new DebugObject();
+		mDebugObjects[(UINT)eColliderType::Circle]->AddComponent<cc::Transform>();
+		mr = mDebugObjects[(UINT)eColliderType::Circle]->AddComponent<cc::MeshRenderer>();
 		mr->SetMaterial(material);
 		mr->SetMesh(mesh);
 
@@ -80,6 +91,8 @@ namespace gui
 		{
 			DebugRender(mesh);
 		}
+
+		renderer::debugMeshs.clear();
 	}
 
 	void Editor::Release()
