@@ -36,6 +36,12 @@
     <ClCompile Include="TestGunScript.cpp">
       <Filter>Content\Script\TestGunScript</Filter>
     </ClCompile>
+    <ClCompile Include="Heart.cpp">
+      <Filter>Content\GameObject\UI\Heart</Filter>
+    </ClCompile>
+    <ClCompile Include="Blank.cpp">
+      <Filter>Content\GameObject\UI\Blank</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="framework.h" />
@@ -75,6 +81,12 @@
     </ClInclude>
     <ClInclude Include="TestGunScript.h">
       <Filter>Content\Script\TestGunScript</Filter>
+    </ClInclude>
+    <ClInclude Include="Heart.h">
+      <Filter>Content\GameObject\UI\Heart</Filter>
+    </ClInclude>
+    <ClInclude Include="Blank.h">
+      <Filter>Content\GameObject\UI\Blank</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -131,6 +143,15 @@
     </Filter>
     <Filter Include="Content\Script\TestGunScript">
       <UniqueIdentifier>{25aa688d-09d2-4f9b-99c9-ab04dae46791}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Content\GameObject\UI">
+      <UniqueIdentifier>{bb8a3242-b6db-4229-b882-c82bd90fd5c5}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Content\GameObject\UI\Heart">
+      <UniqueIdentifier>{26f826a1-f4c6-4eb4-8864-335ba984737a}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Content\GameObject\UI\Blank">
+      <UniqueIdentifier>{427e454e-2509-472d-9e0b-86f9eb824cbb}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
 </Project>

@@ -38,6 +38,24 @@ namespace cc::math
         return degree * PI / 180;
     }
 
+    /*
+    static Vector2 getHeightVector(Vector3 scale, Vector3 rotate)
+    { 
+        Vector2 ret;
+        ret.x = scale.y * cos(rotate.z) / 2;
+        ret.y = scale.y * sin(rotate.z) / 2;
+        return ret;
+    }
+
+    static Vector2 GetWidthVector(Vector3 scale, Vector3 rotate)
+    {
+        Vector2 ret;
+        ret.x = scale.x * cos(rotate.z) / 2;
+        ret.y = scale.y * sin(rotate.z) / 2;
+        return ret;
+    }
+    */
+
     //------------------------------------------------------------------------------
     // 2D rectangle
     struct Rectangle

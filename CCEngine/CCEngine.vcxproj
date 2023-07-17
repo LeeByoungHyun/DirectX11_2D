@@ -150,6 +150,7 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClInclude Include="AimCursor.h" />
+    <ClInclude Include="Blank.h" />
     <ClInclude Include="ccCameraScript.h" />
     <ClInclude Include="ccGridScript.h" />
     <ClInclude Include="ccGunPositionScript.h" />
@@ -159,6 +160,7 @@
     <ClInclude Include="ccTitleScene.h" />
     <ClInclude Include="ccTutorialScene.h" />
     <ClInclude Include="framework.h" />
+    <ClInclude Include="Heart.h" />
     <ClInclude Include="LoadScenes.h" />
     <ClInclude Include="Marine.h" />
     <ClInclude Include="TestGun.h" />
@@ -166,6 +168,7 @@
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="AimCursor.cpp" />
+    <ClCompile Include="Blank.cpp" />
     <ClCompile Include="ccCameraScript.cpp" />
     <ClCompile Include="CCEngine.cpp" />
     <ClCompile Include="ccGridScript.cpp" />
@@ -175,6 +178,7 @@
     <ClCompile Include="ccTestScene.cpp" />
     <ClCompile Include="ccTitleScene.cpp" />
     <ClCompile Include="ccTutorialScene.cpp" />
+    <ClCompile Include="Heart.cpp" />
     <ClCompile Include="Marine.cpp" />
     <ClCompile Include="TestGun.cpp" />
     <ClCompile Include="TestGunScript.cpp" />

@@ -134,7 +134,20 @@ namespace cc
 
 			return false;
 		}
-		
+
+
+		// OBB
+		if (left->GetType() == eColliderType::Rect && right->GetType() == eColliderType::Rect)
+		{
+			// 두 물체 사이의 거리
+			Vector2 dist;
+			dist.x = left->GetPosition().x - right->GetPosition().x;
+			dist.y = left->GetPosition().y - right->GetPosition().y;
+
+			// 
+			Vector2 vec[4] = { };
+		}
+
 	}
 
 	void CollisionManager::SetLayer(eLayerType left, eLayerType right, bool enable)

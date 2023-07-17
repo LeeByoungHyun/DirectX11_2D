@@ -16,6 +16,8 @@
 #include "Marine.h"
 #include "AimCursor.h"
 #include "TestGun.h"
+#include "Heart.h"
+#include "Blank.h"
 
 namespace cc
 {
@@ -52,20 +54,62 @@ namespace cc
 		//mouse = object::Instantiate<AimCursor>(eLayerType::UI);
 		mouse = AimCursor::GetInstance();
 		mouse->SetName(L"Mouse");
-		object::Instantiate(mouse, eLayerType::UI);
+		object::Instantiate(mouse, eLayerType::Player);
 	
 		// Test Gun
 		testGun = object::Instantiate<TestGun>(eLayerType::Player);
 		testGun->SetName(L"TestGun");
-		testGun->GetComponent<Transform>()->SetPosition(Vector3(0.0f, 0.0f, 100.0f));
+		testGun->GetComponent<Transform>()->SetPosition(Vector3(0.0f, 0.0f, 0.0f));
+
+
+		// UI
+		// 매니저 만들어서 따로 관리해야 함 지금은 임시
+		Heart* heart1 = object::Instantiate<Heart>(eLayerType::UI);
+		heart1->GetComponent<Transform>()->SetPosition(Vector3(100000.0f - 3.8f, 100000.0f + 2.0f, 100.0f));
+		heart1->GetComponent<Transform>()->SetScale(Vector3(0.13f, 0.11f, 0.0f));
+
+		Heart* heart2 = object::Instantiate<Heart>(eLayerType::UI);
+		heart2->GetComponent<Transform>()->SetPosition(Vector3(100000.0f - 3.65f, 100000.0f + 2.0f, 100.0f));
+		heart2->GetComponent<Transform>()->SetScale(Vector3(0.13f, 0.11f, 0.0f));
+
+		Heart* heart3 = object::Instantiate<Heart>(eLayerType::UI);
+		heart3->GetComponent<Transform>()->SetPosition(Vector3(100000.0f - 3.50f, 100000.0f + 2.0f, 100.0f));
+		heart3->GetComponent<Transform>()->SetScale(Vector3(0.13f, 0.11f, 0.0f));
+
+		Blank* blank1 = object::Instantiate<Blank>(eLayerType::UI);
+		blank1->GetComponent<Transform>()->SetPosition(Vector3(100000.0f - 3.8f, 100000.0f + 1.85f, 100.0f));
+		blank1->GetComponent<Transform>()->SetScale(Vector3(0.12f, 0.12f, 0.0f));
 		
-		//Main Camera
-		camera = new GameObject();
-		AddGameObject(eLayerType::UI, camera);
-		camera->GetComponent<Transform>()->SetPosition(Vector3(0.0f, 0.0f, -10.0f));
-		Camera* cameraComp = camera->AddComponent<Camera>();
-		camera->AddComponent<CameraScript>();
-		renderer::cameras.push_back(cameraComp);
+		// Main Camera
+		//camera = new GameObject();
+		//AddGameObject(eLayerType::UI, camera);
+		//camera->GetComponent<Transform>()->SetPosition(Vector3(0.0f, 0.0f, -10.0f));
+		//Camera* cameraComp = camera->AddComponent<Camera>();
+		//camera->AddComponent<CameraScript>();
+		//renderer::cameras.push_back(cameraComp);
+
+		// Main Camera
+		Camera* cameraComp = nullptr;
+		{
+			GameObject* camera = new GameObject();
+			AddGameObject(eLayerType::UI, camera);
+			camera->GetComponent<Transform>()->SetPosition(Vector3(0.0f, 0.0f, -10.0f));
+			cameraComp = camera->AddComponent<Camera>();
+			cameraComp->TurnLayerMask(eLayerType::UI, false);
+			camera->AddComponent<CameraScript>();
+			renderer::cameras.push_back(cameraComp);
+			renderer::mainCamera = cameraComp;
+		}
+
+		// UI Camera
+		{
+			GameObject* camera = new GameObject();
+			AddGameObject(eLayerType::Player, camera);
+			camera->GetComponent<Transform>()->SetPosition(Vector3(100000.0f, 100000.0f, -10.0f));
+			Camera* cameraComp = camera->AddComponent<Camera>();
+			cameraComp->TurnLayerMask(eLayerType::Player, false);
+			//camera->AddComponent<CameraScript>();
+		}
 
 		/*
 		// 부모자식 테스트
