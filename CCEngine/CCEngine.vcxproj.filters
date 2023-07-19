@@ -69,6 +69,12 @@
     <ClCompile Include="TitleScene.cpp">
       <Filter>Content\Scene\TitleScene</Filter>
     </ClCompile>
+    <ClCompile Include="MenuTitle.cpp">
+      <Filter>Content\Scene\TitleScene\GameObject\menu_title</Filter>
+    </ClCompile>
+    <ClCompile Include="MenuTitleGal.cpp">
+      <Filter>Content\Scene\TitleScene\GameObject\menu_titlegal</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="framework.h" />
@@ -141,6 +147,12 @@
     </ClInclude>
     <ClInclude Include="TitleScene.h">
       <Filter>Content\Scene\TitleScene</Filter>
+    </ClInclude>
+    <ClInclude Include="MenuTitle.h">
+      <Filter>Content\Scene\TitleScene\GameObject\menu_title</Filter>
+    </ClInclude>
+    <ClInclude Include="MenuTitleGal.h">
+      <Filter>Content\Scene\TitleScene\GameObject\menu_titlegal</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -248,6 +260,12 @@
     </Filter>
     <Filter Include="Content\Scene\TitleScene\GameObject">
       <UniqueIdentifier>{db35a2d6-d85c-4494-80ec-94417193df6c}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Content\Scene\TitleScene\GameObject\menu_title">
+      <UniqueIdentifier>{c562747a-f8f3-4ab0-97a9-fea723ab9628}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Content\Scene\TitleScene\GameObject\menu_titlegal">
+      <UniqueIdentifier>{8db8e2dc-ed22-4122-ab2c-0af940099fa1}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
 </Project>

@@ -10,6 +10,9 @@
 #include "ccObject.h"
 #include "ccRenderer.h"
 
+#include "MenuTitle.h"
+#include "MenuTitleGal.h"
+
 namespace cc
 {
 	TitleScene::TitleScene()
@@ -25,6 +28,18 @@ namespace cc
 	void TitleScene::Initialize()
 	{
 		Scene* mActiveScene = SceneManager::GetActiveScene();
+
+		{
+			MenuTitle* title = object::Instantiate<MenuTitle>(eLayerType::BG);
+			title->SetName(L"menutitle");
+		}
+
+		{
+			MenuTitleGal* titlegal = object::Instantiate<MenuTitleGal>(eLayerType::BG);
+			titlegal->SetName(L"menuTitleGal");
+			Transform* tr = titlegal->GetComponent<Transform>();
+			tr->AddPosition(Vector3(-55.0f, -5.0f, 0.0f));
+		}
 
 		// Main Camera
 		Camera* cameraComp = nullptr;
