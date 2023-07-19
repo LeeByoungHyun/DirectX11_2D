@@ -75,6 +75,36 @@
     <ClCompile Include="MenuTitleGal.cpp">
       <Filter>Content\Scene\TitleScene\GameObject\menu_titlegal</Filter>
     </ClCompile>
+    <ClCompile Include="MenuScene.cpp">
+      <Filter>Content\Scene\MenuScene</Filter>
+    </ClCompile>
+    <ClCompile Include="MainDoorBack.cpp">
+      <Filter>Content\Scene\MenuScene\GameObject\main_doorback</Filter>
+    </ClCompile>
+    <ClCompile Include="MainDirt.cpp">
+      <Filter>Content\Scene\MenuScene\GameObject\main_dirt</Filter>
+    </ClCompile>
+    <ClCompile Include="MainDoorFrame.cpp">
+      <Filter>Content\Scene\MenuScene\GameObject\main_doorframe</Filter>
+    </ClCompile>
+    <ClCompile Include="MainFore2.cpp">
+      <Filter>Content\Scene\MenuScene\GameObject\main_fore2</Filter>
+    </ClCompile>
+    <ClCompile Include="MainFore1.cpp">
+      <Filter>Content\Scene\MenuScene\GameObject\main_fore1</Filter>
+    </ClCompile>
+    <ClCompile Include="MainFore11.cpp">
+      <Filter>Content\Scene\MenuScene\GameObject\main_fore_11</Filter>
+    </ClCompile>
+    <ClCompile Include="MainFore21.cpp">
+      <Filter>Content\Scene\MenuScene\GameObject\main_fore_21</Filter>
+    </ClCompile>
+    <ClCompile Include="MainFore22.cpp">
+      <Filter>Content\Scene\MenuScene\GameObject\main_fore_22</Filter>
+    </ClCompile>
+    <ClCompile Include="MainFore12.cpp">
+      <Filter>Content\Scene\MenuScene\GameObject\main_fore_12</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="framework.h" />
@@ -153,6 +183,36 @@
     </ClInclude>
     <ClInclude Include="MenuTitleGal.h">
       <Filter>Content\Scene\TitleScene\GameObject\menu_titlegal</Filter>
+    </ClInclude>
+    <ClInclude Include="MenuScene.h">
+      <Filter>Content\Scene\MenuScene</Filter>
+    </ClInclude>
+    <ClInclude Include="MainDoorBack.h">
+      <Filter>Content\Scene\MenuScene\GameObject\main_doorback</Filter>
+    </ClInclude>
+    <ClInclude Include="MainDirt.h">
+      <Filter>Content\Scene\MenuScene\GameObject\main_dirt</Filter>
+    </ClInclude>
+    <ClInclude Include="MainDoorFrame.h">
+      <Filter>Content\Scene\MenuScene\GameObject\main_doorframe</Filter>
+    </ClInclude>
+    <ClInclude Include="MainFore2.h">
+      <Filter>Content\Scene\MenuScene\GameObject\main_fore2</Filter>
+    </ClInclude>
+    <ClInclude Include="MainFore1.h">
+      <Filter>Content\Scene\MenuScene\GameObject\main_fore1</Filter>
+    </ClInclude>
+    <ClInclude Include="MainFore11.h">
+      <Filter>Content\Scene\MenuScene\GameObject\main_fore_11</Filter>
+    </ClInclude>
+    <ClInclude Include="MainFore21.h">
+      <Filter>Content\Scene\MenuScene\GameObject\main_fore_21</Filter>
+    </ClInclude>
+    <ClInclude Include="MainFore22.h">
+      <Filter>Content\Scene\MenuScene\GameObject\main_fore_22</Filter>
+    </ClInclude>
+    <ClInclude Include="MainFore12.h">
+      <Filter>Content\Scene\MenuScene\GameObject\main_fore_12</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -266,6 +326,39 @@
     </Filter>
     <Filter Include="Content\Scene\TitleScene\GameObject\menu_titlegal">
       <UniqueIdentifier>{8db8e2dc-ed22-4122-ab2c-0af940099fa1}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Content\Scene\MenuScene">
+      <UniqueIdentifier>{99a09cf6-5fb0-4c3b-8341-aa617cebf7f5}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Content\Scene\MenuScene\GameObject">
+      <UniqueIdentifier>{73260d2b-0fae-4e4e-a00a-42c6c8e419f4}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Content\Scene\MenuScene\GameObject\main_doorback">
+      <UniqueIdentifier>{d0027995-acce-4e5e-bebf-790a3f374ce9}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Content\Scene\MenuScene\GameObject\main_dirt">
+      <UniqueIdentifier>{f0081e3a-dd74-414c-915a-0df528584457}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Content\Scene\MenuScene\GameObject\main_doorframe">
+      <UniqueIdentifier>{98b92d9a-b7ea-45ae-8d6a-f4d8d0e9336f}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Content\Scene\MenuScene\GameObject\main_fore2">
+      <UniqueIdentifier>{a166b77c-0d90-4312-9e6b-601fddead0c0}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Content\Scene\MenuScene\GameObject\main_fore1">
+      <UniqueIdentifier>{a9c7f10c-3edd-4cb8-91be-0ac5241acd93}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Content\Scene\MenuScene\GameObject\main_fore_12">
+      <UniqueIdentifier>{853ba010-a0bf-4857-8523-c3dfc9b2c9d2}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Content\Scene\MenuScene\GameObject\main_fore_11">
+      <UniqueIdentifier>{8186fe0b-e985-44a9-8b30-b0337d6f4d4d}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Content\Scene\MenuScene\GameObject\main_fore_21">
+      <UniqueIdentifier>{39016042-c28b-4ce5-a4cf-0094eff77570}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Content\Scene\MenuScene\GameObject\main_fore_22">
+      <UniqueIdentifier>{291f2388-6fb7-442c-a713-db97f9af779b}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
 </Project>

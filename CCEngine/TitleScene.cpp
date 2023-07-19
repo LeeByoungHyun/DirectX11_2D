@@ -71,7 +71,7 @@ namespace cc
 
 		if (Input::GetKeyDown(eKeyCode::P))
 		{
-			//SceneManager::LoadScene(L"TutorialScene");
+			SceneManager::LoadScene(L"MenuScene");
 		}
 	}
 
