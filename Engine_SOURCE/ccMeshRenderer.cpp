@@ -34,6 +34,7 @@ namespace cc
 	void MeshRenderer::Render()
 	{
 		Transform* tr = GetOwner()->GetComponent<Transform>();
+		// offset+
 		tr->BindConstantBuffer();
 
 		mMesh->BindBuffer();

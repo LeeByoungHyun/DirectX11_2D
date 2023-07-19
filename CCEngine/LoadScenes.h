@@ -1,7 +1,8 @@
 #pragma once
 #include "..\Engine_SOURCE\ccSceneManager.h"
-#include "ccTitleScene.h"
-#include "ccTutorialScene.h"
+
+#include "SurfaceScene.h"
+#include "TitleScene.h"
 
 #ifdef _DEBUG
 #pragma comment(lib, "..\\x64\\Debug\\CCEngine.lib")
@@ -14,9 +15,9 @@ namespace cc
 {
 	void InitializeScenes()
 	{
+		SceneManager::CreateScene<SurfaceScene>(L"SurfaceScene");
 		SceneManager::CreateScene<TitleScene>(L"TitleScene");
-		SceneManager::CreateScene<TutorialScene>(L"TutorialScene");
 
-		SceneManager::LoadScene(L"TitleScene");
+		SceneManager::LoadScene(L"SurfaceScene");
 	}
 }

@@ -3,155 +3,251 @@
   <ItemGroup>
     <ClCompile Include="CCEngine.cpp" />
     <ClCompile Include="ccTestScene.cpp" />
-    <ClCompile Include="ccCameraScript.cpp">
-      <Filter>Content\Script\CameraScript</Filter>
-    </ClCompile>
     <ClCompile Include="ccTitleScene.cpp">
-      <Filter>Content\Scene\TitleScene</Filter>
+      <Filter>Content\Old\Scene\TitleScene</Filter>
     </ClCompile>
     <ClCompile Include="ccTutorialScene.cpp">
-      <Filter>Content\Scene\TutorialScene</Filter>
+      <Filter>Content\Old\Scene\TutorialScene</Filter>
     </ClCompile>
     <ClCompile Include="ccMouseScript.cpp">
-      <Filter>Content\Script\MouseScript</Filter>
+      <Filter>Content\Old\Script\MouseScript</Filter>
     </ClCompile>
     <ClCompile Include="ccPlayerMoveScript.cpp">
-      <Filter>Content\Script\PlayerMoveScript</Filter>
+      <Filter>Content\Old\Script\PlayerMoveScript</Filter>
     </ClCompile>
     <ClCompile Include="ccGunPositionScript.cpp">
-      <Filter>Content\Script\GunPositionScript</Filter>
+      <Filter>Content\Old\Script\GunPositionScript</Filter>
     </ClCompile>
     <ClCompile Include="Marine.cpp">
-      <Filter>Content\GameObject\Marine</Filter>
+      <Filter>Content\Old\GameObject\Marine</Filter>
     </ClCompile>
     <ClCompile Include="ccGridScript.cpp">
       <Filter>Content\Script\GridScript</Filter>
     </ClCompile>
     <ClCompile Include="AimCursor.cpp">
-      <Filter>Content\GameObject\Aim Cursor</Filter>
+      <Filter>Content\Old\GameObject\Aim Cursor</Filter>
     </ClCompile>
     <ClCompile Include="TestGun.cpp">
-      <Filter>Content\GameObject\Gun\Test</Filter>
+      <Filter>Content\Old\GameObject\Gun\Test</Filter>
     </ClCompile>
     <ClCompile Include="TestGunScript.cpp">
-      <Filter>Content\Script\TestGunScript</Filter>
+      <Filter>Content\Old\Script\TestGunScript</Filter>
     </ClCompile>
     <ClCompile Include="Heart.cpp">
-      <Filter>Content\GameObject\UI\Heart</Filter>
+      <Filter>Content\Old\GameObject\UI\Heart</Filter>
     </ClCompile>
     <ClCompile Include="Blank.cpp">
-      <Filter>Content\GameObject\UI\Blank</Filter>
+      <Filter>Content\Old\GameObject\UI\Blank</Filter>
+    </ClCompile>
+    <ClCompile Include="SurfaceScene.cpp">
+      <Filter>Content\Scene\SurfaceScene</Filter>
+    </ClCompile>
+    <ClCompile Include="BaseSkyNight.cpp">
+      <Filter>Content\Scene\SurfaceScene\GameObject\titleBG</Filter>
+    </ClCompile>
+    <ClCompile Include="ccCameraScript.cpp">
+      <Filter>Content\Script\CameraScript</Filter>
+    </ClCompile>
+    <ClCompile Include="BaseSurface01.cpp">
+      <Filter>Content\Scene\SurfaceScene\GameObject\surface_1</Filter>
+    </ClCompile>
+    <ClCompile Include="BaseSurface2_01.cpp">
+      <Filter>Content\Scene\SurfaceScene\GameObject\base_surface2_01</Filter>
+    </ClCompile>
+    <ClCompile Include="BaseSurface02.cpp">
+      <Filter>Content\Scene\SurfaceScene\GameObject\surface_2</Filter>
+    </ClCompile>
+    <ClCompile Include="BaseSurface03.cpp">
+      <Filter>Content\Scene\SurfaceScene\GameObject\surface_3</Filter>
+    </ClCompile>
+    <ClCompile Include="BaseSurface2_02.cpp">
+      <Filter>Content\Scene\SurfaceScene\GameObject\base_surface2_02</Filter>
+    </ClCompile>
+    <ClCompile Include="BaseSurface04.cpp">
+      <Filter>Content\Scene\SurfaceScene\GameObject\surface_4</Filter>
+    </ClCompile>
+    <ClCompile Include="TitleScene.cpp">
+      <Filter>Content\Scene\TitleScene</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="framework.h" />
     <ClInclude Include="LoadScenes.h">
-      <Filter>Content\Load</Filter>
+      <Filter>Load</Filter>
     </ClInclude>
     <ClInclude Include="ccTestScene.h" />
-    <ClInclude Include="ccCameraScript.h">
-      <Filter>Content\Script\CameraScript</Filter>
-    </ClInclude>
     <ClInclude Include="ccTutorialScene.h">
-      <Filter>Content\Scene\TutorialScene</Filter>
+      <Filter>Content\Old\Scene\TutorialScene</Filter>
     </ClInclude>
     <ClInclude Include="ccTitleScene.h">
-      <Filter>Content\Scene\TitleScene</Filter>
+      <Filter>Content\Old\Scene\TitleScene</Filter>
     </ClInclude>
     <ClInclude Include="ccMouseScript.h">
-      <Filter>Content\Script\MouseScript</Filter>
+      <Filter>Content\Old\Script\MouseScript</Filter>
     </ClInclude>
     <ClInclude Include="ccPlayerMoveScript.h">
-      <Filter>Content\Script\PlayerMoveScript</Filter>
+      <Filter>Content\Old\Script\PlayerMoveScript</Filter>
     </ClInclude>
     <ClInclude Include="ccGunPositionScript.h">
-      <Filter>Content\Script\GunPositionScript</Filter>
+      <Filter>Content\Old\Script\GunPositionScript</Filter>
     </ClInclude>
     <ClInclude Include="Marine.h">
-      <Filter>Content\GameObject\Marine</Filter>
+      <Filter>Content\Old\GameObject\Marine</Filter>
     </ClInclude>
     <ClInclude Include="ccGridScript.h">
       <Filter>Content\Script\GridScript</Filter>
     </ClInclude>
     <ClInclude Include="AimCursor.h">
-      <Filter>Content\GameObject\Aim Cursor</Filter>
+      <Filter>Content\Old\GameObject\Aim Cursor</Filter>
     </ClInclude>
     <ClInclude Include="TestGun.h">
-      <Filter>Content\GameObject\Gun\Test</Filter>
+      <Filter>Content\Old\GameObject\Gun\Test</Filter>
     </ClInclude>
     <ClInclude Include="TestGunScript.h">
-      <Filter>Content\Script\TestGunScript</Filter>
+      <Filter>Content\Old\Script\TestGunScript</Filter>
     </ClInclude>
     <ClInclude Include="Heart.h">
-      <Filter>Content\GameObject\UI\Heart</Filter>
+      <Filter>Content\Old\GameObject\UI\Heart</Filter>
     </ClInclude>
     <ClInclude Include="Blank.h">
-      <Filter>Content\GameObject\UI\Blank</Filter>
+      <Filter>Content\Old\GameObject\UI\Blank</Filter>
+    </ClInclude>
+    <ClInclude Include="SurfaceScene.h">
+      <Filter>Content\Scene\SurfaceScene</Filter>
+    </ClInclude>
+    <ClInclude Include="BaseSkyNight.h">
+      <Filter>Content\Scene\SurfaceScene\GameObject\titleBG</Filter>
+    </ClInclude>
+    <ClInclude Include="ccCameraScript.h">
+      <Filter>Content\Script\CameraScript</Filter>
+    </ClInclude>
+    <ClInclude Include="BaseSurface01.h">
+      <Filter>Content\Scene\SurfaceScene\GameObject\surface_1</Filter>
+    </ClInclude>
+    <ClInclude Include="BaseSurface2_01.h">
+      <Filter>Content\Scene\SurfaceScene\GameObject\base_surface2_01</Filter>
+    </ClInclude>
+    <ClInclude Include="BaseSurface02.h">
+      <Filter>Content\Scene\SurfaceScene\GameObject\surface_2</Filter>
+    </ClInclude>
+    <ClInclude Include="BaseSurface03.h">
+      <Filter>Content\Scene\SurfaceScene\GameObject\surface_3</Filter>
+    </ClInclude>
+    <ClInclude Include="BaseSurface2_02.h">
+      <Filter>Content\Scene\SurfaceScene\GameObject\base_surface2_02</Filter>
+    </ClInclude>
+    <ClInclude Include="BaseSurface04.h">
+      <Filter>Content\Scene\SurfaceScene\GameObject\surface_4</Filter>
+    </ClInclude>
+    <ClInclude Include="TitleScene.h">
+      <Filter>Content\Scene\TitleScene</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <Filter Include="Content">
       <UniqueIdentifier>{fe884667-0cf1-4627-aa26-36e829f064e1}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Content\Load">
-      <UniqueIdentifier>{9e5f6cd3-f095-4c7a-a264-8ba7fb0fa15e}</UniqueIdentifier>
+    <Filter Include="Content\Old">
+      <UniqueIdentifier>{beb21b99-50c5-4768-9640-bf88b44ac68c}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Content\Scene">
+    <Filter Include="Content\Old\GameObject">
+      <UniqueIdentifier>{af417b4e-5c7c-4c29-bc1f-62c8b2dcccec}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Content\Old\GameObject\Marine">
+      <UniqueIdentifier>{fdd5fff4-96db-40b4-b567-30db3ac8c520}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Content\Old\GameObject\Aim Cursor">
+      <UniqueIdentifier>{a91997c8-6e02-443e-a088-deff4837a8a4}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Content\Old\GameObject\TitleBG">
+      <UniqueIdentifier>{27de3780-9f24-4f85-896c-496a040a71d0}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Content\Old\GameObject\Gun">
+      <UniqueIdentifier>{b77ce2d9-a7f3-43c6-bc9b-f8e2d27e041f}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Content\Old\GameObject\Gun\Test">
+      <UniqueIdentifier>{4cd48b7f-1c57-4412-854a-95bb6807f029}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Content\Old\GameObject\UI">
+      <UniqueIdentifier>{bb8a3242-b6db-4229-b882-c82bd90fd5c5}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Content\Old\GameObject\UI\Heart">
+      <UniqueIdentifier>{26f826a1-f4c6-4eb4-8864-335ba984737a}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Content\Old\GameObject\UI\Blank">
+      <UniqueIdentifier>{427e454e-2509-472d-9e0b-86f9eb824cbb}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Content\Old\Scene">
       <UniqueIdentifier>{79b506fd-63a8-4c94-8500-98b5f071ab9d}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Content\Script">
+    <Filter Include="Content\Old\Scene\TitleScene">
+      <UniqueIdentifier>{97eab9b7-8201-4009-92c0-2d6dcdfc4606}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Content\Old\Scene\TutorialScene">
+      <UniqueIdentifier>{3847dad7-5ce4-4912-b089-30823f41de21}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Content\Old\Script">
       <UniqueIdentifier>{dc9b3062-92bd-48aa-99ab-e6ee97d31365}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Content\Old\Script\MouseScript">
+      <UniqueIdentifier>{29b6fa70-5053-42cd-ae8f-fcd90b4b948e}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Content\Old\Script\PlayerMoveScript">
+      <UniqueIdentifier>{9646427f-c161-4a5b-a7d8-430fbc28c058}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Content\Old\Script\GunPositionScript">
+      <UniqueIdentifier>{0982b034-d77b-48dc-b601-754960ef46a3}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Content\Old\Script\TestGunScript">
+      <UniqueIdentifier>{25aa688d-09d2-4f9b-99c9-ab04dae46791}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Content\Scene">
+      <UniqueIdentifier>{3eeedfad-1a15-4ea0-9592-aed20747fa84}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Load">
+      <UniqueIdentifier>{9e5f6cd3-f095-4c7a-a264-8ba7fb0fa15e}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Content\Script">
+      <UniqueIdentifier>{6c7c510e-7335-4305-842f-0203a5619d73}</UniqueIdentifier>
     </Filter>
     <Filter Include="Content\Script\CameraScript">
       <UniqueIdentifier>{006622bc-cc86-4634-9186-d357aa706d4c}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Content\Scene\TitleScene">
-      <UniqueIdentifier>{97eab9b7-8201-4009-92c0-2d6dcdfc4606}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Content\Scene\TutorialScene">
-      <UniqueIdentifier>{3847dad7-5ce4-4912-b089-30823f41de21}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Content\Script\MouseScript">
-      <UniqueIdentifier>{29b6fa70-5053-42cd-ae8f-fcd90b4b948e}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Content\Script\PlayerMoveScript">
-      <UniqueIdentifier>{9646427f-c161-4a5b-a7d8-430fbc28c058}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Content\Script\GunPositionScript">
-      <UniqueIdentifier>{0982b034-d77b-48dc-b601-754960ef46a3}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Content\GameObject">
-      <UniqueIdentifier>{af417b4e-5c7c-4c29-bc1f-62c8b2dcccec}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Content\GameObject\Marine">
-      <UniqueIdentifier>{fdd5fff4-96db-40b4-b567-30db3ac8c520}</UniqueIdentifier>
-    </Filter>
     <Filter Include="Content\Script\GridScript">
       <UniqueIdentifier>{05547ea3-f6e9-450c-81c8-eaed589dd8dc}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Content\GameObject\Aim Cursor">
-      <UniqueIdentifier>{a91997c8-6e02-443e-a088-deff4837a8a4}</UniqueIdentifier>
+    <Filter Include="Content\Scene\SurfaceScene">
+      <UniqueIdentifier>{bbf49826-1bab-40b8-8ad7-3b5b2cd5bd69}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Content\GameObject\TitleBG">
-      <UniqueIdentifier>{27de3780-9f24-4f85-896c-496a040a71d0}</UniqueIdentifier>
+    <Filter Include="Content\Scene\SurfaceScene\GameObject">
+      <UniqueIdentifier>{019edbbd-def1-45c2-bab1-eef356de388b}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Content\GameObject\Gun">
-      <UniqueIdentifier>{b77ce2d9-a7f3-43c6-bc9b-f8e2d27e041f}</UniqueIdentifier>
+    <Filter Include="Content\Scene\SurfaceScene\GameObject\titleBG">
+      <UniqueIdentifier>{b0c296ab-66fc-4508-9e01-964c3f49fe04}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Content\GameObject\Gun\Test">
-      <UniqueIdentifier>{4cd48b7f-1c57-4412-854a-95bb6807f029}</UniqueIdentifier>
+    <Filter Include="Content\Scene\SurfaceScene\GameObject\surface_2">
+      <UniqueIdentifier>{a447a5ba-f230-46a5-a6bd-1b921258ea19}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Content\Script\TestGunScript">
-      <UniqueIdentifier>{25aa688d-09d2-4f9b-99c9-ab04dae46791}</UniqueIdentifier>
+    <Filter Include="Content\Scene\SurfaceScene\GameObject\surface_1">
+      <UniqueIdentifier>{3189abe4-0102-414d-b527-b0f73abb67ad}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Content\GameObject\UI">
-      <UniqueIdentifier>{bb8a3242-b6db-4229-b882-c82bd90fd5c5}</UniqueIdentifier>
+    <Filter Include="Content\Scene\SurfaceScene\GameObject\surface_3">
+      <UniqueIdentifier>{85c0ba6c-8957-420a-82e8-b280ea9a5454}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Content\GameObject\UI\Heart">
-      <UniqueIdentifier>{26f826a1-f4c6-4eb4-8864-335ba984737a}</UniqueIdentifier>
+    <Filter Include="Content\Scene\SurfaceScene\GameObject\surface_4">
+      <UniqueIdentifier>{787422d6-0949-4494-b1ec-9c212cd1cc58}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Content\GameObject\UI\Blank">
-      <UniqueIdentifier>{427e454e-2509-472d-9e0b-86f9eb824cbb}</UniqueIdentifier>
+    <Filter Include="Content\Scene\SurfaceScene\GameObject\base_surface2_01">
+      <UniqueIdentifier>{11cae662-8449-47c5-90e5-fe69b8ed4208}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Content\Scene\SurfaceScene\GameObject\base_surface2_02">
+      <UniqueIdentifier>{e9aeb33b-9981-4db9-aae2-a3278231d380}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Content\Scene\TitleScene">
+      <UniqueIdentifier>{e7372b0e-9a27-43a4-856b-61513c705195}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Content\Scene\TitleScene\GameObject">
+      <UniqueIdentifier>{db35a2d6-d85c-4494-80ec-94417193df6c}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
 </Project>

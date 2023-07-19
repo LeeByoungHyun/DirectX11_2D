@@ -14,11 +14,6 @@ namespace cc
 	void SceneManager::Update()
 	{
 		mActiveScene->Update();
-
-		if (Input::GetKeyDown(eKeyCode::O))
-		{
-			LoadScene(L"TutorialScene");
-		}
 	}
 
 	void SceneManager::LateUpdate()

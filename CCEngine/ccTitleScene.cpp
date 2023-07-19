@@ -1,3 +1,4 @@
+/*
 #include "ccTitleScene.h"
 #include "ccTransform.h"
 #include "ccMeshRenderer.h"
@@ -71,3 +72,4 @@ namespace cc
 		Scene::Render();
 	}
 }
+*/

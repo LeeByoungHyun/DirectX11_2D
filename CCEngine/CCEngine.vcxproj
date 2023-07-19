@@ -150,6 +150,12 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClInclude Include="AimCursor.h" />
+    <ClInclude Include="BaseSurface01.h" />
+    <ClInclude Include="BaseSurface02.h" />
+    <ClInclude Include="BaseSurface03.h" />
+    <ClInclude Include="BaseSurface04.h" />
+    <ClInclude Include="BaseSurface2_01.h" />
+    <ClInclude Include="BaseSurface2_02.h" />
     <ClInclude Include="Blank.h" />
     <ClInclude Include="ccCameraScript.h" />
     <ClInclude Include="ccGridScript.h" />
@@ -165,9 +171,18 @@
     <ClInclude Include="Marine.h" />
     <ClInclude Include="TestGun.h" />
     <ClInclude Include="TestGunScript.h" />
+    <ClInclude Include="BaseSkyNight.h" />
+    <ClInclude Include="SurfaceScene.h" />
+    <ClInclude Include="TitleScene.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="AimCursor.cpp" />
+    <ClCompile Include="BaseSurface01.cpp" />
+    <ClCompile Include="BaseSurface02.cpp" />
+    <ClCompile Include="BaseSurface03.cpp" />
+    <ClCompile Include="BaseSurface04.cpp" />
+    <ClCompile Include="BaseSurface2_01.cpp" />
+    <ClCompile Include="BaseSurface2_02.cpp" />
     <ClCompile Include="Blank.cpp" />
     <ClCompile Include="ccCameraScript.cpp" />
     <ClCompile Include="CCEngine.cpp" />
@@ -182,6 +197,9 @@
     <ClCompile Include="Marine.cpp" />
     <ClCompile Include="TestGun.cpp" />
     <ClCompile Include="TestGunScript.cpp" />
+    <ClCompile Include="BaseSkyNight.cpp" />
+    <ClCompile Include="SurfaceScene.cpp" />
+    <ClCompile Include="TitleScene.cpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

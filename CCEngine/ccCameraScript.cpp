@@ -9,43 +9,42 @@ namespace cc
 {
 	void CameraScript::Update()
 	{
-		Vector3 pos = Marine::GetInstance()->GetPos();
-		pos.z = -10;
+		//Vector3 pos = Marine::GetInstance()->GetPos();
+		//pos.z = -10;
 
 		Transform* tr = GetOwner()->GetComponent<Transform>();
-		tr->SetPosition(pos);
+		Vector3 pos = tr->GetPosition();
+		//tr->SetPosition(pos);
 
-		/*
 		if (Input::GetKey(eKeyCode::W))
 		{
-			pos.z += 5.0f * Time::DeltaTime();
+			pos.z += 50.0f * Time::DeltaTime();
 			tr->SetPosition(pos);
 		}
 		else if (Input::GetKey(eKeyCode::S))
 		{
-			pos.z -= 5.0f * Time::DeltaTime();
+			pos.z -= 50.0f * Time::DeltaTime();
 			tr->SetPosition(pos);
 		}
 		else if (Input::GetKey(eKeyCode::A))
 		{
-			pos.x -= 5.0f * Time::DeltaTime();
+			pos.x -= 50.0f * Time::DeltaTime();
 			tr->SetPosition(pos);
 		}
 		else if (Input::GetKey(eKeyCode::D))
 		{
-			pos.x += 5.0f * Time::DeltaTime();
+			pos.x += 50.0f * Time::DeltaTime();
 			tr->SetPosition(pos);
 		}
 		else if (Input::GetKey(eKeyCode::Q))
 		{
-			pos.y -= 5.0f * Time::DeltaTime();
+			pos.y -= 50.0f * Time::DeltaTime();
 			tr->SetPosition(pos);
 		}
 		else if (Input::GetKey(eKeyCode::E))
 		{
-			pos.y += 5.0f * Time::DeltaTime();
+			pos.y += 50.0f * Time::DeltaTime();
 			tr->SetPosition(pos);
 		}
-		*/
 	}
 }

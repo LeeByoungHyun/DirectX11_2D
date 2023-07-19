@@ -19,8 +19,11 @@ namespace cc::enums
 	{
 		Grid,
 		Map,
-		Player,
+		BG,
+		BackObject,
 		Monster,
+		Player,
+		FrontObject,
 		UI,
 		End = 16,
 	};

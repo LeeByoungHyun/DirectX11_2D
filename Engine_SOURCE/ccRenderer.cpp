@@ -337,14 +337,14 @@ namespace renderer
 			ResourceManager::Insert(L"TitleWords", spriteMateiral);
 		}
 
-		{
-			std::shared_ptr<Texture> texture
-				= ResourceManager::Load<Texture>(L"Win_Pic_Slinger_001", L"..\\Resources\\Texture\\Win_Pic_Slinger_001.png");
-			std::shared_ptr<Material> spriteMateiral = std::make_shared<Material>();
-			spriteMateiral->SetShader(spriteShader);
-			spriteMateiral->SetTexture(texture);
-			ResourceManager::Insert(L"TitleBG", spriteMateiral);
-		}
+		//{
+		//	std::shared_ptr<Texture> texture
+		//		= ResourceManager::Load<Texture>(L"Win_Pic_Slinger_001", L"..\\Resources\\Texture\\Win_Pic_Slinger_001.png");
+		//	std::shared_ptr<Material> spriteMateiral = std::make_shared<Material>();
+		//	spriteMateiral->SetShader(spriteShader);
+		//	spriteMateiral->SetTexture(texture);
+		//	ResourceManager::Insert(L"TitleBG", spriteMateiral);
+		//}
 
 		{
 			std::shared_ptr<Texture> texture

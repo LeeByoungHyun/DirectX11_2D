@@ -1,4 +1,3 @@
-/*
 #pragma once
 #include "..\Engine_SOURCE\ccScene.h"
 
@@ -19,4 +18,3 @@ namespace cc
 
 	};
 }
-*/

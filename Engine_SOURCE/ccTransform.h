@@ -37,6 +37,8 @@ namespace cc
 
 		Matrix GetWorldMatrix() { return mWorld; }
 
+		void AddPosition(Vector3 pos) { mPosition += pos; }
+
 	private:
 		Vector3 mPosition;
 		Vector3 mRotation;
