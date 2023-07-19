@@ -105,6 +105,15 @@
     <ClCompile Include="MainFore12.cpp">
       <Filter>Content\Scene\MenuScene\GameObject\main_fore_12</Filter>
     </ClCompile>
+    <ClCompile Include="PlayScene.cpp">
+      <Filter>Content\Scene\PlayScene</Filter>
+    </ClCompile>
+    <ClCompile Include="CaveBG.cpp">
+      <Filter>Content\Scene\PlayScene\GameObject\caveBG</Filter>
+    </ClCompile>
+    <ClCompile Include="CaveDirt.cpp">
+      <Filter>Content\Scene\PlayScene\GameObject\dirt</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="framework.h" />
@@ -213,6 +222,15 @@
     </ClInclude>
     <ClInclude Include="MainFore12.h">
       <Filter>Content\Scene\MenuScene\GameObject\main_fore_12</Filter>
+    </ClInclude>
+    <ClInclude Include="PlayScene.h">
+      <Filter>Content\Scene\PlayScene</Filter>
+    </ClInclude>
+    <ClInclude Include="CaveBG.h">
+      <Filter>Content\Scene\PlayScene\GameObject\caveBG</Filter>
+    </ClInclude>
+    <ClInclude Include="CaveDirt.h">
+      <Filter>Content\Scene\PlayScene\GameObject\dirt</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -359,6 +377,18 @@
     </Filter>
     <Filter Include="Content\Scene\MenuScene\GameObject\main_fore_22">
       <UniqueIdentifier>{291f2388-6fb7-442c-a713-db97f9af779b}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Content\Scene\PlayScene">
+      <UniqueIdentifier>{7b4de5fa-0022-4a34-b801-d54245e0e018}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Content\Scene\PlayScene\GameObject">
+      <UniqueIdentifier>{c9d1976d-b628-49b7-946a-80935b22c760}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Content\Scene\PlayScene\GameObject\caveBG">
+      <UniqueIdentifier>{d0cbe371-dc6f-4c6f-9680-65fa1421e6d0}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Content\Scene\PlayScene\GameObject\dirt">
+      <UniqueIdentifier>{673d743c-bbe5-4b5c-9fdd-ba98186a0b17}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
 </Project>

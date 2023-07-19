@@ -157,6 +157,8 @@
     <ClInclude Include="BaseSurface2_01.h" />
     <ClInclude Include="BaseSurface2_02.h" />
     <ClInclude Include="Blank.h" />
+    <ClInclude Include="CaveBG.h" />
+    <ClInclude Include="CaveDirt.h" />
     <ClInclude Include="ccCameraScript.h" />
     <ClInclude Include="ccGridScript.h" />
     <ClInclude Include="ccGunPositionScript.h" />
@@ -181,6 +183,7 @@
     <ClInclude Include="MenuScene.h" />
     <ClInclude Include="MenuTitle.h" />
     <ClInclude Include="MenuTitleGal.h" />
+    <ClInclude Include="PlayScene.h" />
     <ClInclude Include="TestGun.h" />
     <ClInclude Include="TestGunScript.h" />
     <ClInclude Include="BaseSkyNight.h" />
@@ -196,6 +199,8 @@
     <ClCompile Include="BaseSurface2_01.cpp" />
     <ClCompile Include="BaseSurface2_02.cpp" />
     <ClCompile Include="Blank.cpp" />
+    <ClCompile Include="CaveBG.cpp" />
+    <ClCompile Include="CaveDirt.cpp" />
     <ClCompile Include="ccCameraScript.cpp" />
     <ClCompile Include="CCEngine.cpp" />
     <ClCompile Include="ccGridScript.cpp" />
@@ -219,6 +224,7 @@
     <ClCompile Include="MenuScene.cpp" />
     <ClCompile Include="MenuTitle.cpp" />
     <ClCompile Include="MenuTitleGal.cpp" />
+    <ClCompile Include="PlayScene.cpp" />
     <ClCompile Include="TestGun.cpp" />
     <ClCompile Include="TestGunScript.cpp" />
     <ClCompile Include="BaseSkyNight.cpp" />
