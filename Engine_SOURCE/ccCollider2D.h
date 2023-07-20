@@ -28,6 +28,7 @@ namespace cc
 
 		Vector3 GetPosition() { return mPosition; }
 		Vector3 GetScale() { return mScale; }
+		Vector2 GetSize() { return mSize; }
 
 	private:
 		static UINT mColliderNumber;
