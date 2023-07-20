@@ -114,6 +114,9 @@
     <ClCompile Include="CaveDirt.cpp">
       <Filter>Content\Scene\PlayScene\GameObject\dirt</Filter>
     </ClCompile>
+    <ClCompile Include="Wood.cpp">
+      <Filter>Content\Scene\PlayScene\GameObject\wood</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="framework.h" />
@@ -231,6 +234,9 @@
     </ClInclude>
     <ClInclude Include="CaveDirt.h">
       <Filter>Content\Scene\PlayScene\GameObject\dirt</Filter>
+    </ClInclude>
+    <ClInclude Include="Wood.h">
+      <Filter>Content\Scene\PlayScene\GameObject\wood</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -389,6 +395,9 @@
     </Filter>
     <Filter Include="Content\Scene\PlayScene\GameObject\dirt">
       <UniqueIdentifier>{673d743c-bbe5-4b5c-9fdd-ba98186a0b17}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Content\Scene\PlayScene\GameObject\wood">
+      <UniqueIdentifier>{fee26601-076c-44eb-bbd6-ce17dc531eda}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
 </Project>

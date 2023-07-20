@@ -115,7 +115,7 @@ namespace cc
 			cameraComp->TurnLayerMask(eLayerType::UI, false);
 			renderer::cameras.push_back(cameraComp);
 			renderer::mainCamera = cameraComp;
-			camera->AddComponent<CameraScript>();
+			//camera->AddComponent<CameraScript>();
 		}
 
 		// UI Camera
