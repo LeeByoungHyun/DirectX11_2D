@@ -5,11 +5,11 @@
 
 namespace cc
 {
-	class Wood : public Tile
+	class BorderTile : public Tile
 	{
 	public:
-		Wood();
-		virtual ~Wood();
+		BorderTile();
+		virtual ~BorderTile();
 
 		virtual void Initialize() override;
 		virtual void Update() override;
@@ -17,9 +17,12 @@ namespace cc
 		virtual void Render() override;
 
 		virtual void Masking() override;
+		
 
 	private:
-		MeshRenderer* mMeshRenderer;
-		Transform* mTransform;
+		//MeshRenderer* mMeshRenderer;
+		//Transform* mTransform;
+
+		class BorderMasking* maskPos[4];
 	};
 }

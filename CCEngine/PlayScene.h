@@ -8,6 +8,9 @@ class PlayScene
 
 namespace cc
 {
+	const int MAPCOLUMN = 36;
+	const int MAPROW = 44;
+
 	class PlayScene : public Scene
 	{
 	public:
@@ -20,8 +23,10 @@ namespace cc
 		virtual void Render() override;
 
 		void CreateMap();
+		void MaskingTile();
 
 	private:
-
+		std::vector<std::vector<int>> map;
+		std::vector<std::vector<class Tile*>> mapTile;
 	};
 }

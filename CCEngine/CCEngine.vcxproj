@@ -157,6 +157,8 @@
     <ClInclude Include="BaseSurface2_01.h" />
     <ClInclude Include="BaseSurface2_02.h" />
     <ClInclude Include="Blank.h" />
+    <ClInclude Include="BorderMasking.h" />
+    <ClInclude Include="BorderTile.h" />
     <ClInclude Include="CaveBG.h" />
     <ClInclude Include="CaveDirt.h" />
     <ClInclude Include="ccCameraScript.h" />
@@ -188,6 +190,7 @@
     <ClInclude Include="TestGunScript.h" />
     <ClInclude Include="BaseSkyNight.h" />
     <ClInclude Include="SurfaceScene.h" />
+    <ClInclude Include="Tile.h" />
     <ClInclude Include="TitleScene.h" />
     <ClInclude Include="Wood.h" />
   </ItemGroup>
@@ -200,6 +203,8 @@
     <ClCompile Include="BaseSurface2_01.cpp" />
     <ClCompile Include="BaseSurface2_02.cpp" />
     <ClCompile Include="Blank.cpp" />
+    <ClCompile Include="BorderMasking.cpp" />
+    <ClCompile Include="BorderTile.cpp" />
     <ClCompile Include="CaveBG.cpp" />
     <ClCompile Include="CaveDirt.cpp" />
     <ClCompile Include="ccCameraScript.cpp" />
@@ -230,6 +235,7 @@
     <ClCompile Include="TestGunScript.cpp" />
     <ClCompile Include="BaseSkyNight.cpp" />
     <ClCompile Include="SurfaceScene.cpp" />
+    <ClCompile Include="Tile.cpp" />
     <ClCompile Include="TitleScene.cpp" />
     <ClCompile Include="Wood.cpp" />
   </ItemGroup>

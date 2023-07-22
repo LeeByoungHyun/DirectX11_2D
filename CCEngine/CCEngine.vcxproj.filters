@@ -117,6 +117,15 @@
     <ClCompile Include="Wood.cpp">
       <Filter>Content\Scene\PlayScene\GameObject\wood</Filter>
     </ClCompile>
+    <ClCompile Include="BorderMasking.cpp">
+      <Filter>Content\Scene\PlayScene\GameObject\border\masking</Filter>
+    </ClCompile>
+    <ClCompile Include="BorderTile.cpp">
+      <Filter>Content\Scene\PlayScene\GameObject\border\tile</Filter>
+    </ClCompile>
+    <ClCompile Include="Tile.cpp">
+      <Filter>Content\Scene\PlayScene\GameObject</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="framework.h" />
@@ -237,6 +246,15 @@
     </ClInclude>
     <ClInclude Include="Wood.h">
       <Filter>Content\Scene\PlayScene\GameObject\wood</Filter>
+    </ClInclude>
+    <ClInclude Include="BorderMasking.h">
+      <Filter>Content\Scene\PlayScene\GameObject\border\masking</Filter>
+    </ClInclude>
+    <ClInclude Include="BorderTile.h">
+      <Filter>Content\Scene\PlayScene\GameObject\border\tile</Filter>
+    </ClInclude>
+    <ClInclude Include="Tile.h">
+      <Filter>Content\Scene\PlayScene\GameObject</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -398,6 +416,15 @@
     </Filter>
     <Filter Include="Content\Scene\PlayScene\GameObject\wood">
       <UniqueIdentifier>{fee26601-076c-44eb-bbd6-ce17dc531eda}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Content\Scene\PlayScene\GameObject\border">
+      <UniqueIdentifier>{096ce9c1-45dd-43b0-9f44-262ff45022c5}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Content\Scene\PlayScene\GameObject\border\tile">
+      <UniqueIdentifier>{e982155d-9912-4769-a8c0-67cfe49ce9ef}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Content\Scene\PlayScene\GameObject\border\masking">
+      <UniqueIdentifier>{88811402-151f-4ced-8f70-7f7d13060017}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
 </Project>

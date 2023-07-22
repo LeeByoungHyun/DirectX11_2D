@@ -54,4 +54,9 @@ namespace cc
 	{
 		GameObject::Render();
 	}
+
+	void CaveDirt::Masking()
+	{
+
+	}
 }

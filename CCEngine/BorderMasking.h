@@ -1,22 +1,22 @@
 #pragma once
-#include "Tile.h"
+#include "ccGameObject.h"
 #include "ccMeshRenderer.h"
 #include "ccTransform.h"
 
 namespace cc
 {
-	class Wood : public Tile
+	class BorderMasking : public GameObject
 	{
 	public:
-		Wood();
-		virtual ~Wood();
+		BorderMasking();
+		virtual ~BorderMasking();
 
 		virtual void Initialize() override;
 		virtual void Update() override;
 		virtual void LateUpdate() override;
 		virtual void Render() override;
 
-		virtual void Masking() override;
+		BorderMasking* Instantiate(int direct);
 
 	private:
 		MeshRenderer* mMeshRenderer;
