@@ -10,6 +10,7 @@
 #include "ccObject.h"
 #include "ccRenderer.h"
 
+#include "Player.h"
 #include "CaveBG.h"
 #include "CaveDirt.h"
 #include "Wood.h"
@@ -19,6 +20,9 @@ namespace cc
 {
 	const float TILESIZE = 15.36f;
 	const float BGSIZE = 61.44f;
+
+	const float BGDEPTH = 100.0f;
+	const float TILEDEPTH = 90.0f;
 
 	PlayScene::PlayScene()
 	{
@@ -37,6 +41,10 @@ namespace cc
 		// ¸Ê »ý¼º
 		CreateMap();
 
+		Player* player = Player::GetInstance();
+		player->SetName(L"Player");
+		object::Instantiate(player, eLayerType::Player);
+		
 		// Main Camera
 		Camera* cameraComp = nullptr;
 		{

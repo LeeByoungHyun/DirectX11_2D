@@ -2,6 +2,7 @@
 #include "ccGameObject.h"
 #include "ccTransform.h"
 #include "ccRenderer.h"
+#include "ccAnimator.h"
 
 namespace cc
 {
@@ -39,6 +40,13 @@ namespace cc
 
 		mMesh->BindBuffer();
 		mMaterial->Binds();
+
+		Animator* animator = GetOwner()->GetComponent<Animator>();
+		if (animator)
+		{
+			animator->Binds();
+		}
+
 		mMesh->Render();
 
 		mMaterial->Clear();

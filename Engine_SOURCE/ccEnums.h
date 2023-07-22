@@ -10,6 +10,7 @@ namespace cc::enums
 		Collider2D,
 		Particle,
 		MeshRenderer,
+		Animator,
 		Script,
 		Camera,
 		End,
@@ -34,6 +35,7 @@ namespace cc::enums
 		Shader,
 		Material,
 		Mesh,
+		Animation,
 		End,
 	};
 

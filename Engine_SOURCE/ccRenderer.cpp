@@ -68,6 +68,11 @@ namespace renderer
 			, shader->GetVSCode()
 			, shader->GetInputLayoutAddressOf());
 
+		shader = cc::ResourceManager::Find<Shader>(L"SpriteAnimationShader");
+		cc::graphics::GetDevice()->CreateInputLayout(arrLayout, 3
+			, shader->GetVSCode()
+			, shader->GetInputLayoutAddressOf());
+
 #pragma endregion
 
 #pragma region Sampler State
@@ -265,13 +270,17 @@ namespace renderer
 
 	void LoadBuffer()
 	{
-		// Constant Buffer
+		// Transform Buffer
 		constantBuffer[(UINT)eCBType::Transform] = new cc::graphics::ConstantBuffer(eCBType::Transform);
 		constantBuffer[(UINT)eCBType::Transform]->Create(sizeof(TransformCB));
 
 		// Grid Buffer
 		constantBuffer[(UINT)eCBType::Grid] = new ConstantBuffer(eCBType::Grid);
 		constantBuffer[(UINT)eCBType::Grid]->Create(sizeof(TransformCB));
+
+		// Animator Buffer
+		constantBuffer[(UINT)eCBType::Animator] = new ConstantBuffer(eCBType::Animator);
+		constantBuffer[(UINT)eCBType::Animator]->Create(sizeof(AnimatorCB));
 	}
 
 	void LoadShader()
@@ -297,6 +306,12 @@ namespace renderer
 		debugShader->SetTopology(D3D11_PRIMITIVE_TOPOLOGY::D3D_PRIMITIVE_TOPOLOGY_TRIANGLELIST);
 		debugShader->SetRSState(eRSType::WireframeNone);
 		cc::ResourceManager::Insert(L"DebugShader", debugShader);
+
+		std::shared_ptr<Shader> spriteAniShader = std::make_shared<Shader>();
+		spriteAniShader->Create(eShaderStage::VS, L"SpriteAnimationVS.hlsl", "main");
+		spriteAniShader->Create(eShaderStage::PS, L"SpriteAnimationPS.hlsl", "main");
+		cc::ResourceManager::Insert(L"SpriteAnimationShader", spriteAniShader);
+
 	}
 
 	void LoadMaterial()
@@ -324,6 +339,18 @@ namespace renderer
 			ResourceManager::Insert(L"DebugMaterial", material);
 		}
 
+		// Sprite Animaition
+		{
+			spriteShader
+				= ResourceManager::Find<Shader>(L"SpriteAnimationShader");
+			std::shared_ptr<Material> material = std::make_shared<Material>();
+			material = std::make_shared<Material>();
+			material->SetShader(spriteShader);
+			material->SetRenderingMode(eRenderingMode::Transparent);
+			ResourceManager::Insert(L"SpriteAnimationMaterial", material);
+		}
+
+
 #pragma region Sprite Material
 		// Sprite
 		{
@@ -347,7 +374,7 @@ namespace renderer
 
 		{
 			std::shared_ptr<Texture> texture
-				= ResourceManager::Load<Texture>(L"marine_idle_front_right_001", L"..\\Resources\\Texture\\marine_idle_front_right_001.png");
+				= ResourceManager::Load<Texture>(L"marine_idle_front_right_001", L"..\\Resources\\Texture\\Old\\marine_idle_front_right_001.png");
 			std::shared_ptr<Material> spriteMateiral = std::make_shared<Material>();
 			spriteMateiral->SetShader(spriteShader);
 			spriteMateiral->SetTexture(texture);

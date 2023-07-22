@@ -14,6 +14,8 @@
     <ProjectCapability Include="SourceItemsFromImports" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="$(MSBuildThisFileDirectory)ccAnimation.cpp" />
+    <ClCompile Include="$(MSBuildThisFileDirectory)ccAnimator.cpp" />
     <ClCompile Include="$(MSBuildThisFileDirectory)ccApplication.cpp" />
     <ClCompile Include="$(MSBuildThisFileDirectory)ccCamera.cpp" />
     <ClCompile Include="$(MSBuildThisFileDirectory)ccCollider2D.cpp" />
@@ -41,6 +43,8 @@
     <ClCompile Include="$(MSBuildThisFileDirectory)ccTransform.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="$(MSBuildThisFileDirectory)ccAnimation.h" />
+    <ClInclude Include="$(MSBuildThisFileDirectory)ccAnimator.h" />
     <ClInclude Include="$(MSBuildThisFileDirectory)ccApplication.h" />
     <ClInclude Include="$(MSBuildThisFileDirectory)ccCamera.h" />
     <ClInclude Include="$(MSBuildThisFileDirectory)ccCollider2D.h" />

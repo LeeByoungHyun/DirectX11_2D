@@ -126,6 +126,9 @@
     <ClCompile Include="Tile.cpp">
       <Filter>Content\Scene\PlayScene\GameObject</Filter>
     </ClCompile>
+    <ClCompile Include="Player.cpp">
+      <Filter>Content\GameObject\Player</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="framework.h" />
@@ -255,6 +258,9 @@
     </ClInclude>
     <ClInclude Include="Tile.h">
       <Filter>Content\Scene\PlayScene\GameObject</Filter>
+    </ClInclude>
+    <ClInclude Include="Player.h">
+      <Filter>Content\GameObject\Player</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -425,6 +431,12 @@
     </Filter>
     <Filter Include="Content\Scene\PlayScene\GameObject\border\masking">
       <UniqueIdentifier>{88811402-151f-4ced-8f70-7f7d13060017}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Content\GameObject">
+      <UniqueIdentifier>{6dfdabe8-5048-4f5b-b6b0-cab1cb9a03b6}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Content\GameObject\Player">
+      <UniqueIdentifier>{ebeeb320-04a5-4010-943d-d737e0848840}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
 </Project>

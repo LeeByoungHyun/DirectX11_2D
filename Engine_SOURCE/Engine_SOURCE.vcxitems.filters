@@ -85,6 +85,12 @@
     <Filter Include="Component\Collider\Manager">
       <UniqueIdentifier>{cb6d4ac5-427e-498d-9954-6f2e59b0c8cd}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Resource\Animation">
+      <UniqueIdentifier>{5f04fd18-b4bc-4b4a-94b1-df960af4ca50}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Component\Animator">
+      <UniqueIdentifier>{3e9fcafb-5aa4-4c55-a4ba-a34265594781}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="$(MSBuildThisFileDirectory)CommonInclude.h">
@@ -177,6 +183,12 @@
     <ClInclude Include="$(MSBuildThisFileDirectory)ccCollisionManager.h">
       <Filter>Component\Collider\Manager</Filter>
     </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)ccAnimation.h">
+      <Filter>Resource\Animation</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)ccAnimator.h">
+      <Filter>Component\Animator</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="$(MSBuildThisFileDirectory)ccEntity.cpp">
@@ -253,6 +265,12 @@
     </ClCompile>
     <ClCompile Include="$(MSBuildThisFileDirectory)ccCollisionManager.cpp">
       <Filter>Component\Collider\Manager</Filter>
+    </ClCompile>
+    <ClCompile Include="$(MSBuildThisFileDirectory)ccAnimation.cpp">
+      <Filter>Resource\Animation</Filter>
+    </ClCompile>
+    <ClCompile Include="$(MSBuildThisFileDirectory)ccAnimator.cpp">
+      <Filter>Component\Animator</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>

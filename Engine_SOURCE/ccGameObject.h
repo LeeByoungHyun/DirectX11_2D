@@ -46,7 +46,7 @@ namespace cc
 		}
 
 		template <typename T>
-		const std::vector<T*>& GetComponents()
+		const std::vector<T*> GetComponents()
 		{
 			std::vector<T*> comps;
 
@@ -88,6 +88,7 @@ namespace cc
 				mScripts.push_back(script);
 
 			comp->SetOwner(this);
+			comp->Initialize();
 
 			return comp;
 		}
