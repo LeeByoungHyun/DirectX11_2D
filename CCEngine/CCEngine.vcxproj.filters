@@ -129,6 +129,9 @@
     <ClCompile Include="Player.cpp">
       <Filter>Content\GameObject\Player</Filter>
     </ClCompile>
+    <ClCompile Include="PlayerMoveScrtpt.cpp">
+      <Filter>Content\GameObject\Player\Script</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="framework.h" />
@@ -261,6 +264,9 @@
     </ClInclude>
     <ClInclude Include="Player.h">
       <Filter>Content\GameObject\Player</Filter>
+    </ClInclude>
+    <ClInclude Include="PlayerMoveScrtpt.h">
+      <Filter>Content\GameObject\Player\Script</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -437,6 +443,9 @@
     </Filter>
     <Filter Include="Content\GameObject\Player">
       <UniqueIdentifier>{ebeeb320-04a5-4010-943d-d737e0848840}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Content\GameObject\Player\Script">
+      <UniqueIdentifier>{16fa8fb6-fada-4d02-bc57-43cb5f0becd8}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
 </Project>

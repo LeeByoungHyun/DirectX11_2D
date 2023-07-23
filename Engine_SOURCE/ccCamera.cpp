@@ -28,7 +28,7 @@ namespace cc
 		, mType(eProjectionType::Perpective)
 		, mAspectRatio(1.0f)
 		, mNear(1.0f)
-		, mFar(1000.0f)
+		, mFar(10000.0f)
 		, mSize(5.0f)
 		, mLayerMask{}
 		, mOpaqueGameObjects{}

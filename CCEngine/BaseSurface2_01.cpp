@@ -35,7 +35,7 @@ namespace cc
 
 		mTransform = GetComponent<Transform>();
 		mTransform->SetPosition(Vector3(0.0f, 0.0f, 99.0f));
-		mTransform->SetScale(Vector3(1024.0f, 512.0f, 0.0f) * 0.20f);
+		mTransform->SetScale(Vector3(1024.0f, 512.0f, 0.0f));
 
 		// script
 	}

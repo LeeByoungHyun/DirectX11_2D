@@ -41,7 +41,7 @@ namespace cc
 
 		mTransform = GetComponent<Transform>();
 		mTransform->SetPosition(Vector3(0.0f, 0.0f, 0.0f));
-		mTransform->SetScale(Vector3(128.0f, 128.0f, 0.0f) * 0.12f);
+		mTransform->SetScale(Vector3(128.0f, 128.0f, 0.0f));
 
 		// 배열 초기화
 		std::fill_n(masking, 4, false);

@@ -15,7 +15,20 @@ namespace cc
 		{
 			Idle,
 			Move,
-			
+			Jump,
+			Fall,
+			FallLong,
+			Attack,
+			Kneel,
+			Crawl,
+			OnEdge,
+			Ghost
+		};
+
+		enum class eDirection
+		{
+			Left,
+			Right
 		};
 
 		Player();
@@ -35,15 +48,37 @@ namespace cc
 		virtual void Render() override;
 
 	private:
+		// FSM
 		void idle();
 		void move();
+		void jump();
+		void fall();
+		void attack();
+		void kneel();
+		void crawl();
+		void ghost();
+
+		// Events
+		void AnimationComplete();
+		void WhipComplete();
+		void KneelDownEnd();
+		void KneelUpComplete();
+
+		void InitializeFlag();
 
 	private:
 		static Player* instance;
 		ePlayerState mState;
+		eDirection mDirection;
 
 		MeshRenderer* mMeshRenderer;
 		Transform* mTransform;
 		class Animator* mAnimator;
+
+		// flag
+		bool animationFlag;
+		bool kneelUpFlag;
+		bool kneelDownEndFlag;
+		bool crawlFlag;
 	};
 }

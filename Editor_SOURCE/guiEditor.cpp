@@ -53,7 +53,7 @@ namespace gui
 		cc::GridScript* gridSc = grid->AddComponent<cc::GridScript>();
 		gridSc->SetCamera(renderer::cameras[0]);
 
-		mEditorObjects.push_back(grid);
+		//mEditorObjects.push_back(grid);
 	}
 
 	void Editor::Run()

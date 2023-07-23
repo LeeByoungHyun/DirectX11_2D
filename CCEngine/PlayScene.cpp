@@ -18,8 +18,10 @@
 
 namespace cc
 {
-	const float TILESIZE = 15.36f;
-	const float BGSIZE = 61.44f;
+	//const float TILESIZE = 15.36f;
+	//const float BGSIZE = 61.44f;
+	const float TILESIZE = 128.0f;
+	const float BGSIZE = 512.0f;
 
 	const float BGDEPTH = 100.0f;
 	const float TILEDEPTH = 90.0f;
@@ -41,6 +43,7 @@ namespace cc
 		// ¸Ê »ý¼º
 		CreateMap();
 
+
 		Player* player = Player::GetInstance();
 		player->SetName(L"Player");
 		object::Instantiate(player, eLayerType::Player);
@@ -50,7 +53,7 @@ namespace cc
 		{
 			GameObject* camera = new GameObject();
 			AddGameObject(eLayerType::UI, camera);
-			camera->GetComponent<Transform>()->SetPosition(Vector3(0.0f, 0.0f, -10.0f));
+			camera->GetComponent<Transform>()->SetPosition(Vector3(0.0f, 0.0f, -1100.0f));
 			cameraComp = camera->AddComponent<Camera>();
 			cameraComp->TurnLayerMask(eLayerType::UI, false);
 			renderer::cameras.push_back(cameraComp);

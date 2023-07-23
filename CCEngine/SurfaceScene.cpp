@@ -46,14 +46,14 @@ namespace cc
 				BaseSurface02* surface02 = object::Instantiate<BaseSurface02>(eLayerType::BG);
 				surface02->SetName(L"Surface02_0");
 				Transform* tr = surface02->GetComponent<Transform>();
-				tr->AddPosition(Vector3(-60.0f, -10.0f, 0.0f));
+				tr->SetPosition(Vector3(-512.0f, -100.0f, 97.0f));
 			}
 
 			{
 				BaseSurface02* surface02 = object::Instantiate<BaseSurface02>(eLayerType::BG);
 				surface02->SetName(L"Surface02_1");
 				Transform* tr = surface02->GetComponent<Transform>();
-				tr->AddPosition(Vector3(93.5f, -10.0f, 0.0f));
+				tr->SetPosition(Vector3(-512.0f + 1024.0f, -100.0f, 97.0f));
 			}
 		}
 
@@ -62,14 +62,14 @@ namespace cc
 				BaseSurface03* surface03 = object::Instantiate<BaseSurface03>(eLayerType::BG);
 				surface03->SetName(L"Surface03_0");
 				Transform* tr = surface03->GetComponent<Transform>();
-				tr->AddPosition(Vector3(-60.0f, -20.0f, 0.0f));
+				tr->SetPosition(Vector3(-512.0f, -150.0f, 96.0f));
 			}
 
 			{
 				BaseSurface03* surface03 = object::Instantiate<BaseSurface03>(eLayerType::BG);
 				surface03->SetName(L"Surface03_1");
 				Transform* tr = surface03->GetComponent<Transform>();
-				tr->AddPosition(Vector3(93.5f, -20.0f, 0.0f));
+				tr->SetPosition(Vector3(-512.0f + 1024.0f, -150.0f, 96.0f));
 			}
 		}
 
@@ -77,7 +77,7 @@ namespace cc
 			BaseSurface2_02* bgStatue = object::Instantiate<BaseSurface2_02>(eLayerType::BG);
 			bgStatue->SetName(L"bgStatue");
 			Transform* tr = bgStatue->GetComponent<Transform>();
-			tr->AddPosition(Vector3(20.0f, -10.0f, 0.0f));
+			tr->SetPosition(Vector3(200.0f, -50.0f, 95.0f));
 		}
 
 		{
@@ -85,14 +85,14 @@ namespace cc
 				BaseSurface04* surface04 = object::Instantiate<BaseSurface04>(eLayerType::BG);
 				surface04->SetName(L"Surface04_0");
 				Transform* tr = surface04->GetComponent<Transform>();
-				tr->AddPosition(Vector3(-60.0f, -35.0f, 0.0f));
+				tr->SetPosition(Vector3(-512.0f, -300.0f, 94.0f));
 			}
 
 			{
 				BaseSurface04* surface04 = object::Instantiate<BaseSurface04>(eLayerType::BG);
 				surface04->SetName(L"Surface04_1");
 				Transform* tr = surface04->GetComponent<Transform>();
-				tr->AddPosition(Vector3(93.5f, -35.0f, 0.0f));
+				tr->SetPosition(Vector3(-512.0f + 1024.0f, -300.0f, 94.0f));
 			}
 		}
 
@@ -110,12 +110,12 @@ namespace cc
 		{
 			GameObject* camera = new GameObject();
 			AddGameObject(eLayerType::UI, camera);
-			camera->GetComponent<Transform>()->SetPosition(Vector3(0.0f, 0.0f, -10.0f));
+			camera->GetComponent<Transform>()->SetPosition(Vector3(0.0f, 0.0f, -660.0f));
 			cameraComp = camera->AddComponent<Camera>();
 			cameraComp->TurnLayerMask(eLayerType::UI, false);
 			renderer::cameras.push_back(cameraComp);
 			renderer::mainCamera = cameraComp;
-			//camera->AddComponent<CameraScript>();
+			camera->AddComponent<CameraScript>();
 		}
 
 		// UI Camera
