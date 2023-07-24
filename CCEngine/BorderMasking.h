@@ -17,6 +17,7 @@ namespace cc
 		virtual void Render() override;
 
 		BorderMasking* Instantiate(int direct);
+		void SetDirection(int dir);
 
 	private:
 		MeshRenderer* mMeshRenderer;

@@ -35,7 +35,7 @@ namespace cc
 
 	}
 
-	void Tile::Masking()
+	void Tile::Masking(int dir)
 	{
 
 	}

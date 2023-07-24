@@ -150,6 +150,10 @@ namespace cc
 		case cc::Player::ePlayerState::Crawl:
 			crawl();
 			break;
+
+		case cc::Player::ePlayerState::Ghost:
+			ghost();
+			break;
 			
 		default:
 			break;
@@ -380,31 +384,45 @@ namespace cc
 	{
 		if (animationFlag == false)
 		{
-			mAnimator->PlayAnimation(L"GhostIdle", true);
+			if (mDirection == eDirection::Left)
+				mAnimator->PlayAnimation(L"Idle/Ghost_l", true);
+			else if (mDirection == eDirection::Right)
+				mAnimator->PlayAnimation(L"Idle/Ghost_r", true);
 
 			animationFlag = true;
 		}
 
 		Vector3 pos = mTransform->GetPosition();
-		if (Input::GetKey(eKeyCode::W))
+		if (Input::GetKey(eKeyCode::UP))
 		{
 			pos.y += PLAYERWALKSPEED * Time::DeltaTime();
 			mTransform->SetPosition(pos);
 		}
-		if (Input::GetKey(eKeyCode::A))
+		if (Input::GetKey(eKeyCode::LEFT))
 		{
 			pos.x -= PLAYERWALKSPEED * Time::DeltaTime();
 			mTransform->SetPosition(pos);
 		}
-		if (Input::GetKey(eKeyCode::S))
+		if (Input::GetKey(eKeyCode::DOWN))
 		{
 			pos.y -= PLAYERWALKSPEED * Time::DeltaTime();
 			mTransform->SetPosition(pos);
 		}
-		if (Input::GetKey(eKeyCode::D))
+		if (Input::GetKey(eKeyCode::RIGHT))
 		{
 			pos.x += PLAYERWALKSPEED * Time::DeltaTime();
 			mTransform->SetPosition(pos);
+		}
+
+		if (Input::GetKeyDown(eKeyCode::LEFT))
+		{
+			mDirection = eDirection::Left;
+			animationFlag = false;
+		}
+		if (Input::GetKeyDown(eKeyCode::RIGHT))
+		{
+			mDirection = eDirection::Right;
+			animationFlag = false;
 		}
 	}
 

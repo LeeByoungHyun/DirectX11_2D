@@ -16,8 +16,9 @@ namespace cc
 		virtual void LateUpdate() override;
 		virtual void Render() override;
 
-		virtual void Masking();
+		virtual void Masking(int dir);
 		void SetMask(int direct, bool check) { masking[direct] = check; }
+		bool GetMask(int dir) { return masking[dir]; }
 
 	protected:
 		MeshRenderer* mMeshRenderer;

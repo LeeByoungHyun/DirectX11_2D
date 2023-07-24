@@ -55,7 +55,7 @@ namespace cc
 		GameObject::Render();
 	}
 
-	void CaveDirt::Masking()
+	void CaveDirt::Masking(int dir)
 	{
 
 	}

@@ -16,7 +16,7 @@ namespace cc
 		virtual void LateUpdate() override;
 		virtual void Render() override;
 
-		virtual void Masking() override;
+		virtual void Masking(int dir) override;
 
 	private:
 		MeshRenderer* mMeshRenderer;

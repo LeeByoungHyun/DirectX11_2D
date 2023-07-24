@@ -123,14 +123,14 @@
     <ClCompile Include="BorderTile.cpp">
       <Filter>Content\Scene\PlayScene\GameObject\border\tile</Filter>
     </ClCompile>
-    <ClCompile Include="Tile.cpp">
-      <Filter>Content\Scene\PlayScene\GameObject</Filter>
-    </ClCompile>
     <ClCompile Include="Player.cpp">
       <Filter>Content\GameObject\Player</Filter>
     </ClCompile>
     <ClCompile Include="PlayerMoveScrtpt.cpp">
       <Filter>Content\GameObject\Player\Script</Filter>
+    </ClCompile>
+    <ClCompile Include="Tile.cpp">
+      <Filter>Content\Scene\PlayScene</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -259,14 +259,14 @@
     <ClInclude Include="BorderTile.h">
       <Filter>Content\Scene\PlayScene\GameObject\border\tile</Filter>
     </ClInclude>
-    <ClInclude Include="Tile.h">
-      <Filter>Content\Scene\PlayScene\GameObject</Filter>
-    </ClInclude>
     <ClInclude Include="Player.h">
       <Filter>Content\GameObject\Player</Filter>
     </ClInclude>
     <ClInclude Include="PlayerMoveScrtpt.h">
       <Filter>Content\GameObject\Player\Script</Filter>
+    </ClInclude>
+    <ClInclude Include="Tile.h">
+      <Filter>Content\Scene\PlayScene</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

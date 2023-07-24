@@ -47,7 +47,8 @@ namespace cc
 		Player* player = Player::GetInstance();
 		player->SetName(L"Player");
 		object::Instantiate(player, eLayerType::Player);
-		
+		player->GetComponent<Transform>()->AddPosition(Vector3(TILESIZE * 20, -TILESIZE * 32, 0.0f));
+
 		// Main Camera
 		Camera* cameraComp = nullptr;
 		{
@@ -95,10 +96,12 @@ namespace cc
 	void PlayScene::CreateMap()
 	{
 		// BG
-		Vector3 bgStartPos = Vector3(-123.0f, 123.0f, 0.0f);	// LeftTop
-		for (UINT i = 0; i < 10; i++)
+		Vector3 bgStartPos = Vector3(-BGSIZE * 5, BGSIZE, 0.0f);	// LeftTop
+		Vector3 tileStartPos = Vector3(-TILESIZE * 5, TILESIZE, 0.0f);	// LeftTop
+
+		for (UINT i = 0; i < 30; i++)
 		{
-			for (UINT j = 0; j < 10; j++)
+			for (UINT j = 0; j < 30; j++)
 			{
 				CaveBG* bg = object::Instantiate<CaveBG>(eLayerType::BG);
 				bg->SetName(L"caveBG");
@@ -199,7 +202,7 @@ namespace cc
 						mapTile[col][row] = border;
 						border->SetName(L"border");
 						Transform* tr = border->GetComponent<Transform>();
-						tr->SetPosition(Vector3(bgStartPos.x + (TILESIZE * row), bgStartPos.y - (TILESIZE * col), 90.0f));
+						tr->SetPosition(Vector3(tileStartPos.x + (TILESIZE * row), tileStartPos.y - (TILESIZE * col), TILEDEPTH));
 					}
 
 					else if (map[col][row] == 1)	// dirt
@@ -207,7 +210,7 @@ namespace cc
 						CaveDirt* dirt = object::Instantiate<CaveDirt>(eLayerType::BackObject);
 						dirt->SetName(L"dirt");
 						Transform* tr = dirt->GetComponent<Transform>();
-						tr->SetPosition(Vector3(bgStartPos.x + (TILESIZE * row), bgStartPos.y - (TILESIZE * col), 90.0f));
+						tr->SetPosition(Vector3(tileStartPos.x + (TILESIZE * row), tileStartPos.y - (TILESIZE * col), TILEDEPTH));
 					}
 
 					else if (map[col][row] == 3)	// wood
@@ -215,7 +218,7 @@ namespace cc
 						Wood* wood = object::Instantiate<Wood>(eLayerType::BackObject);
 						wood->SetName(L"wood");
 						Transform* tr = wood->GetComponent<Transform>();
-						tr->SetPosition(Vector3(bgStartPos.x + (TILESIZE * row), bgStartPos.y - (TILESIZE * col), 90.0f));
+						tr->SetPosition(Vector3(tileStartPos.x + (TILESIZE * row), tileStartPos.y - (TILESIZE * col), TILEDEPTH));
 					}
 					
 				}
@@ -246,7 +249,7 @@ namespace cc
 						// right
 						checkCol = col;
 						checkRow = row + 1;
-						if (checkRow <= MAPROW)
+						if (checkRow >= MAPROW)
 							mapTile[col][row]->SetMask(1, true);
 						else if (map[checkCol][checkRow] != 9)
 							mapTile[col][row]->SetMask(1, true);
@@ -254,7 +257,7 @@ namespace cc
 						// bottom
 						checkCol = col + 1;
 						checkRow = row;
-						if (checkCol <= MAPCOLUMN)
+						if (checkCol >= MAPCOLUMN)
 							mapTile[col][row]->SetMask(2, true);
 						else if (map[checkCol][checkRow] != 9)
 							mapTile[col][row]->SetMask(2, true);
@@ -279,7 +282,14 @@ namespace cc
 				if (mapTile[col][row] == 0)
 					continue;
 
-				//mapTile[col][row]->Masking();
+				for (UINT dir = 0; dir < 4; dir++)
+				{
+					if (mapTile[col][row]->GetMask(dir) == true)
+					{
+						mapTile[col][row]->Masking(dir);
+					}
+				}
+				
 			}
 		}
 

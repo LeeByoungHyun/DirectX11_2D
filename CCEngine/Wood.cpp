@@ -54,7 +54,7 @@ namespace cc
 	{
 		GameObject::Render();
 	}
-	void Wood::Masking()
+	void Wood::Masking(int dir)
 	{
 	}
 }
