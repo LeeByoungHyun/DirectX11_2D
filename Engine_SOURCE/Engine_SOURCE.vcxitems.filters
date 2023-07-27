@@ -91,6 +91,9 @@
     <Filter Include="Component\Animator">
       <UniqueIdentifier>{3e9fcafb-5aa4-4c55-a4ba-a34265594781}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Component\Rigidbody">
+      <UniqueIdentifier>{9cc82cd8-e44c-45e2-858e-b2c08cf5891f}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="$(MSBuildThisFileDirectory)CommonInclude.h">
@@ -189,6 +192,9 @@
     <ClInclude Include="$(MSBuildThisFileDirectory)ccAnimator.h">
       <Filter>Component\Animator</Filter>
     </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)ccRigidbody.h">
+      <Filter>Component\Rigidbody</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="$(MSBuildThisFileDirectory)ccEntity.cpp">
@@ -271,6 +277,9 @@
     </ClCompile>
     <ClCompile Include="$(MSBuildThisFileDirectory)ccAnimator.cpp">
       <Filter>Component\Animator</Filter>
+    </ClCompile>
+    <ClCompile Include="$(MSBuildThisFileDirectory)ccRigidbody.cpp">
+      <Filter>Component\Rigidbody</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>

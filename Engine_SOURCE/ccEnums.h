@@ -8,6 +8,7 @@ namespace cc::enums
 		Transform,
 		Mesh,
 		Collider2D,
+		Rigidbody,
 		Particle,
 		MeshRenderer,
 		Animator,
