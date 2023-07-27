@@ -41,7 +41,10 @@ namespace cc
 		// amimator
 		{
 			std::shared_ptr<Texture> atlas
-				= ResourceManager::Load<Texture>(L"test.png", L"..\\Resources\\Texture\\player\\player.png");
+				= ResourceManager::Load<Texture>(L"player.png", L"..\\Resources\\Texture\\player\\player.png");
+
+			std::shared_ptr<Texture> test
+				= ResourceManager::Load<Texture>(L"test.png", L"..\\Resources\\Texture\\player\\char_yellow.png");
 
 			mAnimator = AddComponent<Animator>();
 			mAnimator->Create(L"Idle_r", atlas, Vector2(128.0f * 0, 128.0f * 0), Vector2(128.0f, 128.0f), 1);
@@ -96,6 +99,9 @@ namespace cc
 			mAnimator->Create(L"Ghost/Shoot_l", atlas, Vector2(128.0f * 0, 128.0f * 47), Vector2(128.0f, 128.0f), 6);
 			mAnimator->Create(L"Fall/Long_r", atlas, Vector2(128.0f * 0, 128.0f * 48), Vector2(128.0f, 128.0f), 6);
 			mAnimator->Create(L"Fall/Long_l", atlas, Vector2(128.0f * 0, 128.0f * 49), Vector2(128.0f, 128.0f), 6);
+
+			mAnimator->Create(L"Test", test, Vector2(128.0f * 10, 128.0f * 0), Vector2(128.0f, 128.0f), 6);
+
 
 			// events
 			mAnimator->CompleteEvent(L"Whip_r") = std::bind(&Player::WhipComplete, this);

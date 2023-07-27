@@ -111,9 +111,6 @@
     <ClCompile Include="CaveBG.cpp">
       <Filter>Content\Scene\PlayScene\GameObject\caveBG</Filter>
     </ClCompile>
-    <ClCompile Include="CaveDirt.cpp">
-      <Filter>Content\Scene\PlayScene\GameObject\dirt</Filter>
-    </ClCompile>
     <ClCompile Include="Wood.cpp">
       <Filter>Content\Scene\PlayScene\GameObject\wood</Filter>
     </ClCompile>
@@ -131,6 +128,12 @@
     </ClCompile>
     <ClCompile Include="Tile.cpp">
       <Filter>Content\Scene\PlayScene</Filter>
+    </ClCompile>
+    <ClCompile Include="DirtMasking.cpp">
+      <Filter>Content\Scene\PlayScene\GameObject\dirt\DirtMasking</Filter>
+    </ClCompile>
+    <ClCompile Include="CaveDirt.cpp">
+      <Filter>Content\Scene\PlayScene\GameObject\dirt\tile</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -247,9 +250,6 @@
     <ClInclude Include="CaveBG.h">
       <Filter>Content\Scene\PlayScene\GameObject\caveBG</Filter>
     </ClInclude>
-    <ClInclude Include="CaveDirt.h">
-      <Filter>Content\Scene\PlayScene\GameObject\dirt</Filter>
-    </ClInclude>
     <ClInclude Include="Wood.h">
       <Filter>Content\Scene\PlayScene\GameObject\wood</Filter>
     </ClInclude>
@@ -267,6 +267,12 @@
     </ClInclude>
     <ClInclude Include="Tile.h">
       <Filter>Content\Scene\PlayScene</Filter>
+    </ClInclude>
+    <ClInclude Include="DirtMasking.h">
+      <Filter>Content\Scene\PlayScene\GameObject\dirt\DirtMasking</Filter>
+    </ClInclude>
+    <ClInclude Include="CaveDirt.h">
+      <Filter>Content\Scene\PlayScene\GameObject\dirt\tile</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -446,6 +452,18 @@
     </Filter>
     <Filter Include="Content\GameObject\Player\Script">
       <UniqueIdentifier>{16fa8fb6-fada-4d02-bc57-43cb5f0becd8}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Content\Scene\PlayScene\GameObject\dirt\DirtMasking">
+      <UniqueIdentifier>{59c53ea0-5612-4f38-9096-fb04d8a85b55}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Content\Scene\PlayScene\GameObject\dirt\tile">
+      <UniqueIdentifier>{b7c42e72-18cd-4678-935b-027e58071234}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Content\GameObject\Player\Weapon">
+      <UniqueIdentifier>{e4ebbacf-f7c6-4140-9a08-0d050c488608}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Content\GameObject\Player\Weapon\Whip">
+      <UniqueIdentifier>{dacec97b-ef73-4b66-a360-44668f3ec650}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
 </Project>

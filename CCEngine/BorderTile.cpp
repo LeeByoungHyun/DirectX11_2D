@@ -23,7 +23,7 @@ namespace cc
 	{
 		GameObject::Initialize();
 
-		//
+#pragma region SpriteMaterial
 		{
 			std::shared_ptr<Shader> spriteShader
 				= ResourceManager::Find<Shader>(L"SpriteShader");
@@ -156,6 +156,7 @@ namespace cc
 			spriteMateiral->SetRenderingMode(eRenderingMode::Opaque);
 			ResourceManager::Insert(L"border_11", spriteMateiral);
 		}
+#pragma endregion
 
 		// 패턴 랜덤생성
 		std::random_device rd;
@@ -163,6 +164,7 @@ namespace cc
 		std::uniform_int_distribution<int> uniform_int_dist(0, 11);
 		int randomInt = uniform_int_dist(rng);
 
+#pragma region MeshRenderer
 		// 생성된 랜덤변수에 따라 패턴 결정
 		mMeshRenderer = AddComponent<MeshRenderer>();
 		mMeshRenderer->SetMesh(ResourceManager::Find<Mesh>(L"RectMesh"));
@@ -190,14 +192,11 @@ namespace cc
 			mMeshRenderer->SetMaterial(ResourceManager::Find<Material>(L"border_10"));
 		else if (randomInt == 11)
 			mMeshRenderer->SetMaterial(ResourceManager::Find<Material>(L"border_11"));
+#pragma endregion
 
 		mTransform = GetComponent<Transform>();
-		mTransform->SetPosition(Vector3(0.0f, 0.0f, 0.0f));
-		mTransform->SetScale(Vector3(128.0f, 128.0f, 0.0f));
-
-		// 배열 초기화
-		std::fill_n(masking, 4, false);
-		std::fill_n(masked, 4, false);
+		mTransform->SetPosition(Vector3(0.0f, 0.0f, TILEDEPTH));
+		mTransform->SetScale(Vector3(TILESIZE, TILESIZE, 0.0f));
 
 		// script
 	}
@@ -248,37 +247,5 @@ namespace cc
 
 		maskPos[dir] = borderMask;
 		masked[dir] = true;
-
-		/*
-		for (UINT i = 0; i < 4; i++)
-		{
-			// 0 = top
-			// 1 = right
-			// 2 = bottom
-			// 3 = left
-
-			if (masking[i] == true)
-			{
-				if (masked[i] == true)	// 이미 마스킹 되어있으면 continue
-					continue;
-
-				BorderMasking* borderMask = new BorderMasking();
-				borderMask->SetName(L"borderMask");
-				borderMask->Instantiate(i);
-
-				if (i == 0)
-					borderMask->GetComponent<Transform>()->SetPosition(mTransform->GetPosition().x, mTransform->GetPosition().y + (TILESIZE / 2.0f), 0.0f);
-				else if (i == 1)
-					borderMask->GetComponent<Transform>()->SetPosition(mTransform->GetPosition().x + (TILESIZE / 2.0f), mTransform->GetPosition().y, 0.0f);
-				else if (i == 2)
-					borderMask->GetComponent<Transform>()->SetPosition(mTransform->GetPosition().x, mTransform->GetPosition().y - (TILESIZE / 2.0f), 0.0f);
-				else if (i == 3)
-					borderMask->GetComponent<Transform>()->SetPosition(mTransform->GetPosition().x - (TILESIZE / 2.0f), mTransform->GetPosition().y, 0.0f);
-
-				maskPos[i] = borderMask;
-				masked[i] = true;
-			}
-		}
-		*/
 	}
 }

@@ -1,7 +1,5 @@
 #pragma once
 #include "Tile.h"
-#include "ccMeshRenderer.h"
-#include "ccTransform.h"
 
 namespace cc
 {
@@ -19,7 +17,6 @@ namespace cc
 		virtual void Masking(int dir) override;
 
 	private:
-		MeshRenderer* mMeshRenderer;
-		Transform* mTransform;
+		class DirtMasking* maskPos[4];
 	};
 }

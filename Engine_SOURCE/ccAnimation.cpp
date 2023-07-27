@@ -70,7 +70,7 @@ namespace cc
 		for (size_t i = 0; i < columnLength; i++)
 		{
 			Sprite sprite = {};
-			sprite.leftTop.x = leftTop.x + (i * size.x) / width;
+			sprite.leftTop.x = (leftTop.x + (i * size.x)) / width;
 			sprite.leftTop.y = leftTop.y / height;
 			sprite.size.x = size.x / width;
 			sprite.size.y = size.y / height;

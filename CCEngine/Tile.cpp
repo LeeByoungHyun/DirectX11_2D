@@ -4,10 +4,8 @@ namespace cc
 {
 	Tile::Tile()
 	{
-		masking[0] = false;
-		masking[1] = false;
-		masking[2] = false;
-		masking[3] = false;
+		std::fill_n(masking, 4, false);
+		std::fill_n(masked, 4, false);
 	}
 
 	Tile::~Tile()
@@ -17,7 +15,7 @@ namespace cc
 
 	void Tile::Initialize()
 	{
-
+		
 	}
 
 	void Tile::Update()

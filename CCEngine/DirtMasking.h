@@ -5,11 +5,11 @@
 
 namespace cc
 {
-	class BorderMasking : public GameObject
+	class DirtMasking : public GameObject
 	{
 	public:
-		BorderMasking();
-		virtual ~BorderMasking();
+		DirtMasking();
+		virtual ~DirtMasking();
 
 		virtual void Initialize() override;
 		virtual void Update() override;

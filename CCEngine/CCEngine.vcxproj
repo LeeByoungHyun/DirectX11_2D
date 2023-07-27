@@ -169,6 +169,7 @@
     <ClInclude Include="ccTestScene.h" />
     <ClInclude Include="ccTitleScene.h" />
     <ClInclude Include="ccTutorialScene.h" />
+    <ClInclude Include="DirtMasking.h" />
     <ClInclude Include="framework.h" />
     <ClInclude Include="Heart.h" />
     <ClInclude Include="LoadScenes.h" />
@@ -218,6 +219,7 @@
     <ClCompile Include="ccTestScene.cpp" />
     <ClCompile Include="ccTitleScene.cpp" />
     <ClCompile Include="ccTutorialScene.cpp" />
+    <ClCompile Include="DirtMasking.cpp" />
     <ClCompile Include="Heart.cpp" />
     <ClCompile Include="MainDirt.cpp" />
     <ClCompile Include="MainDoorBack.cpp" />
