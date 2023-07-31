@@ -14,7 +14,7 @@ namespace cc::object
 		T* gameObj = new T();
 		Scene* scene = SceneManager::GetActiveScene();
 		scene->AddGameObject(layer, gameObj);
-
+		gameObj->SetType(layer);
 		gameObj->Initialize();
 
 		return gameObj;
@@ -29,7 +29,7 @@ namespace cc::object
 
 		Scene* scene = SceneManager::GetActiveScene();
 		scene->AddGameObject(layer, gameObj);
-
+		gameObj->SetType(layer);
 		gameObj->Initialize();
 
 		return gameObj;
@@ -45,7 +45,7 @@ namespace cc::object
 
 		Scene* scene = SceneManager::GetActiveScene();
 		scene->AddGameObject(layer, gameObj);
-
+		gameObj->SetType(layer);
 		gameObj->Initialize();
 
 		return gameObj;
@@ -62,7 +62,7 @@ namespace cc::object
 
 		Scene* scene = SceneManager::GetActiveScene();
 		scene->AddGameObject(layer, gameObj);
-
+		gameObj->SetType(layer);
 		gameObj->Initialize();
 
 		return gameObj;
@@ -73,7 +73,7 @@ namespace cc::object
 	{
 		Scene* scene = SceneManager::GetActiveScene();
 		scene->AddGameObject(layer, gameObj);
-
+		gameObj->SetType(layer);
 		gameObj->Initialize();
 	}
 

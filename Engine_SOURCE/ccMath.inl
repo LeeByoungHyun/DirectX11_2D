@@ -369,14 +369,6 @@ inline void Vector2::Normalize() noexcept
     XMStoreFloat2(this, X);
 }
 
-inline void Vector2::Normalize(Vector2& result) const noexcept
-{
-    using namespace DirectX;
-    const XMVECTOR v1 = XMLoadFloat2(this);
-    const XMVECTOR X = XMVector2Normalize(v1);
-    XMStoreFloat2(&result, X);
-}
-
 inline void Vector2::Clamp(const Vector2& vmin, const Vector2& vmax) noexcept
 {
     using namespace DirectX;

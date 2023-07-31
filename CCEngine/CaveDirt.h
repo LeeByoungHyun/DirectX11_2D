@@ -17,6 +17,8 @@ namespace cc
 		virtual void Masking(int dir) override;
 
 	private:
+		class Collider2D* mCollider;
+
 		class DirtMasking* maskPos[4];
 	};
 }

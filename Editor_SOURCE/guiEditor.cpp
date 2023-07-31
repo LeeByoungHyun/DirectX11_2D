@@ -27,7 +27,7 @@ namespace gui
 			= cc::ResourceManager::Find<cc::Material>(L"DebugMaterial");
 
 		mDebugObjects[(UINT)eColliderType::Rect] = new DebugObject();
-		mDebugObjects[(UINT)eColliderType::Rect]->AddComponent<cc::Transform>();
+		//mDebugObjects[(UINT)eColliderType::Rect]->AddComponent<cc::Transform>();
 		cc::MeshRenderer* mr
 			= mDebugObjects[(UINT)eColliderType::Rect]->AddComponent<cc::MeshRenderer>();
 		mr->SetMaterial(material);
@@ -38,7 +38,6 @@ namespace gui
 		material = cc::ResourceManager::Find<cc::Material>(L"DebugMaterial");
 
 		mDebugObjects[(UINT)eColliderType::Circle] = new DebugObject();
-		mDebugObjects[(UINT)eColliderType::Circle]->AddComponent<cc::Transform>();
 		mr = mDebugObjects[(UINT)eColliderType::Circle]->AddComponent<cc::MeshRenderer>();
 		mr->SetMaterial(material);
 		mr->SetMesh(mesh);
@@ -133,9 +132,7 @@ namespace gui
 
 		tr->LateUpdate();
 
-		/*ya::MeshRenderer * mr
-			= debugObj->GetComponent<ya::MeshRenderer>();*/
-			// main camera
+		// main camera
 		cc::Camera* mainCamara = renderer::mainCamera;
 
 		cc::Camera::SetGpuViewMatrix(mainCamara->GetGpuViewMatrix());

@@ -1,13 +1,16 @@
 #include "BorderTile.h"
 #include "ccResourceManager.h"
-#include "BorderMasking.h"
 #include "ccObject.h"
 #include "ccGameObject.h"
+#include "ccCollider2D.h"
+
+#include "BorderMasking.h"
 
 namespace cc
 {
 	extern const float TILESIZE;
 	extern const float TILEDEPTH;
+	extern const float MASKINGDIST;
 
 	BorderTile::BorderTile()
 	{
@@ -198,6 +201,9 @@ namespace cc
 		mTransform->SetPosition(Vector3(0.0f, 0.0f, TILEDEPTH));
 		mTransform->SetScale(Vector3(TILESIZE, TILESIZE, 0.0f));
 
+		mCollider = AddComponent<Collider2D>();
+		//mCollider->SetSize(Vector2(1.2f, 1.2f));
+
 		// script
 	}
 
@@ -237,13 +243,13 @@ namespace cc
 		//borderMask->Instantiate(dir);
 
 		if (dir == 0)
-			borderMask->GetComponent<Transform>()->SetPosition(mTransform->GetPosition().x, mTransform->GetPosition().y + (TILESIZE / 2.0f + 5.0f), TILEDEPTH - 0.01f);
+			borderMask->GetComponent<Transform>()->SetPosition(mTransform->GetPosition().x, mTransform->GetPosition().y + (TILESIZE / 2.0f + MASKINGDIST), TILEDEPTH - 0.01f);
 		else if (dir == 1)
-			borderMask->GetComponent<Transform>()->SetPosition(mTransform->GetPosition().x + (TILESIZE / 2.0f + 5.0f), mTransform->GetPosition().y, TILEDEPTH - 0.01f);
+			borderMask->GetComponent<Transform>()->SetPosition(mTransform->GetPosition().x + (TILESIZE / 2.0f + MASKINGDIST), mTransform->GetPosition().y, TILEDEPTH - 0.01f);
 		else if (dir == 2)
-			borderMask->GetComponent<Transform>()->SetPosition(mTransform->GetPosition().x, mTransform->GetPosition().y - (TILESIZE / 2.0f + 5.0f), TILEDEPTH - 0.01f);
+			borderMask->GetComponent<Transform>()->SetPosition(mTransform->GetPosition().x, mTransform->GetPosition().y - (TILESIZE / 2.0f + MASKINGDIST), TILEDEPTH - 0.01f);
 		else if (dir == 3)
-			borderMask->GetComponent<Transform>()->SetPosition(mTransform->GetPosition().x - (TILESIZE / 2.0f + 5.0f), mTransform->GetPosition().y, TILEDEPTH - 0.01f);
+			borderMask->GetComponent<Transform>()->SetPosition(mTransform->GetPosition().x - (TILESIZE / 2.0f + MASKINGDIST), mTransform->GetPosition().y, TILEDEPTH - 0.01f);
 
 		maskPos[dir] = borderMask;
 		masked[dir] = true;

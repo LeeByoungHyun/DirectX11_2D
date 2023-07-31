@@ -1,6 +1,7 @@
 #pragma once
 #include "..\Engine_SOURCE\ccSceneManager.h"
 
+#include "ccTestScene.h"
 #include "SurfaceScene.h"
 #include "TitleScene.h"
 #include "MenuScene.h"
@@ -17,11 +18,14 @@ namespace cc
 {
 	void InitializeScenes()
 	{
+		SceneManager::CreateScene<TestScene>(L"TestScene");
+
 		SceneManager::CreateScene<SurfaceScene>(L"SurfaceScene");
 		SceneManager::CreateScene<TitleScene>(L"TitleScene");
 		SceneManager::CreateScene<MenuScene>(L"MenuScene");
 		SceneManager::CreateScene<PlayScene>(L"PlayScene");
 
 		SceneManager::LoadScene(L"SurfaceScene");
+		//SceneManager::LoadScene(L"TestScene");
 	}
 }

@@ -3,6 +3,8 @@
 
 namespace cc
 {
+	extern const float BGDEPTH;
+
 	CaveBG::CaveBG()
 	{
 
@@ -34,8 +36,9 @@ namespace cc
 		mMeshRenderer->SetMaterial(ResourceManager::Find<Material>(L"CaveBG"));
 
 		mTransform = GetComponent<Transform>();
-		mTransform->SetPosition(Vector3(0.0f, 0.0f, 100.0f));
-		mTransform->SetScale(Vector3(512.0f, 512.0f, 0.0f));
+		mTransform->SetPosition(Vector3(0.0f, 0.0f, BGDEPTH));
+		mTransform->SetScale(Vector3(4.0f, 4.0f, 0.0f));
+		//mTransform->SetScale(Vector3(512.0f, 512.0f, 0.0f));
 
 		// script
 	}

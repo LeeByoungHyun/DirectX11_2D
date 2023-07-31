@@ -165,7 +165,7 @@ namespace cc
 
 		mTransform = GetComponent<Transform>();
 		mTransform->SetPosition(Vector3(0.0f, 0.0f, TILEDEPTH - 0.01f));
-		mTransform->SetScale(Vector3(128.0f, 128.0f, 0.0f));
+		//mTransform->SetScale(Vector3(128.0f, 128.0f, 0.0f));
 
 		std::random_device rd;
 		std::mt19937 rng(rd());

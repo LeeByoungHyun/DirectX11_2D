@@ -1,12 +1,15 @@
 #include "CaveDirt.h"
 #include "ccResourceManager.h"
 #include "ccObject.h"
+#include "ccCollider2D.h"
+
 #include "DirtMasking.h"
 
 namespace cc
 {
 	extern const float TILESIZE;
 	extern const float TILEDEPTH;
+	extern const float MASKINGDIST;
 
 	CaveDirt::CaveDirt()
 	{
@@ -366,6 +369,9 @@ namespace cc
 		mTransform->SetPosition(Vector3(0.0f, 0.0f, TILEDEPTH));
 		mTransform->SetScale(Vector3(TILESIZE, TILESIZE, 0.0f));
 
+		mCollider = AddComponent<Collider2D>();
+		//mCollider->SetSize(Vector2(2.0f, 2.0f));
+
 		// script
 	}
 
@@ -405,13 +411,13 @@ namespace cc
 		//borderMask->Instantiate(dir);
 
 		if (dir == 0)
-			dirtMask->GetComponent<Transform>()->SetPosition(mTransform->GetPosition().x, mTransform->GetPosition().y + (TILESIZE / 2.0f + 5.0f), TILEDEPTH - 0.01f);
+			dirtMask->GetComponent<Transform>()->SetPosition(mTransform->GetPosition().x, mTransform->GetPosition().y + (TILESIZE / 2.0f + MASKINGDIST), TILEDEPTH - 0.01f);
 		else if (dir == 1)
-			dirtMask->GetComponent<Transform>()->SetPosition(mTransform->GetPosition().x + (TILESIZE / 2.0f + 5.0f), mTransform->GetPosition().y, TILEDEPTH - 0.01f);
+			dirtMask->GetComponent<Transform>()->SetPosition(mTransform->GetPosition().x + (TILESIZE / 2.0f + MASKINGDIST), mTransform->GetPosition().y, TILEDEPTH - 0.01f);
 		else if (dir == 2)
-			dirtMask->GetComponent<Transform>()->SetPosition(mTransform->GetPosition().x, mTransform->GetPosition().y - (TILESIZE / 2.0f + 5.0f), TILEDEPTH - 0.01f);
+			dirtMask->GetComponent<Transform>()->SetPosition(mTransform->GetPosition().x, mTransform->GetPosition().y - (TILESIZE / 2.0f + MASKINGDIST), TILEDEPTH - 0.01f);
 		else if (dir == 3)
-			dirtMask->GetComponent<Transform>()->SetPosition(mTransform->GetPosition().x - (TILESIZE / 2.0f + 5.0f), mTransform->GetPosition().y, TILEDEPTH - 0.01f);
+			dirtMask->GetComponent<Transform>()->SetPosition(mTransform->GetPosition().x - (TILESIZE / 2.0f + MASKINGDIST), mTransform->GetPosition().y, TILEDEPTH - 0.01f);
 
 		maskPos[dir] = dirtMask;
 		masked[dir] = true;

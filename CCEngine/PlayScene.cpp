@@ -9,22 +9,28 @@
 #include "ccSceneManager.h"
 #include "ccObject.h"
 #include "ccRenderer.h"
+#include "ccCollisionManager.h"
 
 #include "Player.h"
 #include "CaveBG.h"
 #include "CaveDirt.h"
 #include "Wood.h"
 #include "BorderTile.h"
+#include "Whip.h"
+#include "CaveMan.h"
 
 namespace cc
 {
 	//const float TILESIZE = 15.36f;
 	//const float BGSIZE = 61.44f;
-	const float TILESIZE = 128.0f;
-	const float BGSIZE = 512.0f;
+	const float TILESIZE = 1.0f;
+	const float BGSIZE = 4.0f;
 
-	const float BGDEPTH = 100.0f;
-	const float TILEDEPTH = 90.0f;
+	const float BGDEPTH = 1.0f;
+	const float TILEDEPTH = 0.0f;
+
+	const float PLAYERDEPTH = 0.0f;
+	const float MASKINGDIST = 0.025f;
 
 	PlayScene::PlayScene()
 	{
@@ -38,23 +44,22 @@ namespace cc
 
 	void PlayScene::Initialize()
 	{
-		Scene* mActiveScene = SceneManager::GetActiveScene();
+		Scene::Initialize();
 
 		// ¸Ê »ý¼º
 		CreateMap();
 
-
 		Player* player = Player::GetInstance();
 		player->SetName(L"Player");
 		object::Instantiate(player, eLayerType::Player);
-		player->GetComponent<Transform>()->AddPosition(Vector3(TILESIZE * 20, -TILESIZE * 32, 0.0f));
+		player->GetComponent<Transform>()->AddPosition(Vector3(TILESIZE * 20, -TILESIZE * 31, 0.0f));
 
 		// Main Camera
 		Camera* cameraComp = nullptr;
 		{
 			GameObject* camera = new GameObject();
 			AddGameObject(eLayerType::UI, camera);
-			camera->GetComponent<Transform>()->SetPosition(Vector3(0.0f, 0.0f, -1100.0f));
+			camera->GetComponent<Transform>()->SetPosition(Vector3(0.0f, 0.0f, -10.0f));
 			cameraComp = camera->AddComponent<Camera>();
 			cameraComp->TurnLayerMask(eLayerType::UI, false);
 			renderer::cameras.push_back(cameraComp);
@@ -69,7 +74,6 @@ namespace cc
 			camera->GetComponent<Transform>()->SetPosition(Vector3(100000.0f, 100000.0f, -10.0f));
 			Camera* cameraComp = camera->AddComponent<Camera>();
 			cameraComp->TurnLayerMask(eLayerType::Player, false);
-			//camera->AddComponent<CameraScript>();
 		}
 	}
 	
@@ -79,7 +83,7 @@ namespace cc
 
 		if (Input::GetKeyDown(eKeyCode::P))
 		{
-			//SceneManager::LoadScene(L"TutorialScene");
+			SceneManager::LoadScene(L"TestScene");
 		}
 	}
 
@@ -91,6 +95,22 @@ namespace cc
 	void PlayScene::Render()
 	{
 		Scene::Render();
+	}
+
+	void PlayScene::Destroy()
+	{
+		Scene::Destroy();
+	}
+
+	void PlayScene::OnEnter()
+	{
+		CollisionManager::SetLayer(eLayerType::Player, eLayerType::Tile, true);
+		CollisionManager::SetLayer(eLayerType::Weapon, eLayerType::Monster, true);
+	}
+
+	void PlayScene::OnExit()
+	{
+
 	}
 
 	void PlayScene::CreatePath()
@@ -132,13 +152,13 @@ namespace cc
 
 	void PlayScene::CreateMap()
 	{
-		Vector3 bgStartPos = Vector3(-BGSIZE * 5, BGSIZE, 0.0f);	// BG LeftTop
-		Vector3 tileStartPos = Vector3(-TILESIZE * 5, TILESIZE, 0.0f);	// Tile LeftTop
+		Vector3 bgStartPos = Vector3(-BGSIZE * 10, BGSIZE, 0.0f);	// BG LeftTop
+		Vector3 tileStartPos = Vector3(-TILESIZE * 10, TILESIZE, 0.0f);	// Tile LeftTop
 
 		// BG
-		for (UINT i = 0; i < 30; i++)
+		for (UINT i = 0; i < 20; i++)
 		{
-			for (UINT j = 0; j < 30; j++)
+			for (UINT j = 0; j < 20; j++)
 			{
 				CaveBG* bg = object::Instantiate<CaveBG>(eLayerType::BG);
 				bg->SetName(L"caveBG");
@@ -156,7 +176,7 @@ namespace cc
 		// 3 = »ç´Ù¸®
 		// 4 = ÇÃ·§Æû
 		// 5 = ¶³¾îÁö´Â ¹Ú½º
-		// 6 = 
+		// 6 = caveman
 		// 9 = border
 
 		// test
@@ -201,10 +221,10 @@ namespace cc
 			{ 9, 9, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 9, 9 },
 			{ 9, 9, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 9, 9 },
 			{ 9, 9, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 9, 9 },
-			{ 9, 9, 0, 0, 0, 0, 0, 1, 1, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 9, 9 },
-			{ 9, 9, 0, 0, 0, 0, 0, 1, 1, 0, 0, 1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 9, 9 },
-			{ 9, 9, 0, 0, 0, 0, 0, 0, 1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 9, 9 },
+			{ 9, 9, 0, 0, 0, 0, 0, 1, 1, 1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 9, 9 },
+			{ 9, 9, 0, 0, 0, 0, 0, 1, 1, 1, 0, 1, 1, 0, 1, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 9, 9 },
 			{ 9, 9, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 9, 9 },
+			{ 9, 9, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 6, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 9, 9 },
 			{ 9, 9, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 9, 9 },
 			{ 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9 },
 			{ 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9 },
@@ -238,7 +258,7 @@ namespace cc
 				{
 					if (map[col][row] == 9)	// border
 					{
-						BorderTile* border = object::Instantiate<BorderTile>(eLayerType::BackObject);
+						BorderTile* border = object::Instantiate<BorderTile>(eLayerType::Tile);
 						mapTile[col][row] = border;
 						border->SetName(L"border");
 						Transform* tr = border->GetComponent<Transform>();
@@ -247,7 +267,7 @@ namespace cc
 
 					else if (map[col][row] == 1)	// dirt
 					{
-						CaveDirt* dirt = object::Instantiate<CaveDirt>(eLayerType::BackObject);
+						CaveDirt* dirt = object::Instantiate<CaveDirt>(eLayerType::Tile);
 						dirt->SetName(L"dirt");
 						mapTile[col][row] = dirt;
 						Transform* tr = dirt->GetComponent<Transform>();
@@ -256,10 +276,18 @@ namespace cc
 
 					else if (map[col][row] == 3)	// wood
 					{
-						Wood* wood = object::Instantiate<Wood>(eLayerType::BackObject);
+						Wood* wood = object::Instantiate<Wood>(eLayerType::Tile);
 						wood->SetName(L"wood");
 						Transform* tr = wood->GetComponent<Transform>();
 						tr->SetPosition(Vector3(tileStartPos.x + (TILESIZE * row), tileStartPos.y - (TILESIZE * col), TILEDEPTH));
+					}
+
+					else if (map[col][row] == 6)	// caveman
+					{
+						CaveMan* caveman = object::Instantiate<CaveMan>(eLayerType::Monster);
+						caveman->SetName(L"caveman");
+						Transform* tr = caveman->GetComponent<Transform>();
+						tr->SetPosition(Vector3(tileStartPos.x + (TILESIZE * row), tileStartPos.y - (TILESIZE * col), PLAYERDEPTH));
 					}
 					
 				}

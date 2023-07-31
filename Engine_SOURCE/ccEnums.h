@@ -22,9 +22,10 @@ namespace cc::enums
 		Grid,
 		Map,
 		BG,
-		BackObject,
+		Tile,
 		Monster,
 		Player,
+		Weapon,
 		FrontObject,
 		UI,
 		End = 16,
@@ -47,5 +48,11 @@ namespace cc::enums
 		Sphere,
 		Cube,
 		End,
+	};
+
+	enum class eDirection
+	{
+		Left,
+		Right
 	};
 }

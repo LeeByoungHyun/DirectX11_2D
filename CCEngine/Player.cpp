@@ -3,16 +3,21 @@
 #include "ccCollider2D.h"
 #include "ccInput.h"
 #include "ccTime.h"
+#include "ccRigidbody.h"
+#include "ccObject.h"
+
+#include "PlayerCollisionScript.h"
+#include "Whip.h"
 
 namespace cc
 {
 	Player* Player::instance = nullptr;
 
 	extern const float TILEDEPTH;
-	const float PLAYERDEPTH = -400.0f;
-	const float PLAYERWALKSPEED = 500.0f;
-	const float PLAYERRUNSPEED = 750.0f;
-	const float PLAYERCRAWLSPEED = 250.0f;
+	extern const float PLAYERDEPTH;
+	const float PLAYERWALKSPEED = 5.0f;
+	const float PLAYERRUNSPEED = 7.5f;
+	const float PLAYERCRAWLSPEED = 2.5f;
 
 	Player::Player()
 	{
@@ -34,18 +39,18 @@ namespace cc
 
 		mTransform = GetComponent<Transform>();
 		mTransform->SetPosition(Vector3(0.0f, 0.0f, PLAYERDEPTH));
-		mTransform->SetScale(Vector3(128.0f, 128.0f, 0.0f));
+		mTransform->SetScale(Vector3(2.0f, 2.0f, 0.0f));
 
-		//mTransform->SetRotation(Vector3(0.0f, math::DegreeToRadian(180.0f), 0.0f));
+		mCollider = AddComponent<Collider2D>();
+
+		//mRigidbody = AddComponent<Rigidbody>();
+		//mRigidbody->SetGravity(Vector2(0.0f, 1.0f));
 
 		// amimator
 		{
 			std::shared_ptr<Texture> atlas
-				= ResourceManager::Load<Texture>(L"player.png", L"..\\Resources\\Texture\\player\\player.png");
-
-			std::shared_ptr<Texture> test
-				= ResourceManager::Load<Texture>(L"test.png", L"..\\Resources\\Texture\\player\\char_yellow.png");
-
+				= ResourceManager::Load<Texture>(L"player.png", L"..\\Resources\\Texture\\Player\\player.png");
+		
 			mAnimator = AddComponent<Animator>();
 			mAnimator->Create(L"Idle_r", atlas, Vector2(128.0f * 0, 128.0f * 0), Vector2(128.0f, 128.0f), 1);
 			mAnimator->Create(L"Idle_l", atlas, Vector2(128.0f * 0, 128.0f * 1), Vector2(128.0f, 128.0f), 1);
@@ -71,8 +76,8 @@ namespace cc
 			mAnimator->Create(L"Idle_Hanging_l", atlas, Vector2(128.0f * 0, 128.0f * 21), Vector2(128.0f, 128.0f), 1);
 			mAnimator->Create(L"Idle_Hanging_r", atlas, Vector2(128.0f * 0, 128.0f * 20), Vector2(128.0f, 128.0f), 1);
 			mAnimator->Create(L"Idle_Hanging_l", atlas, Vector2(128.0f * 0, 128.0f * 21), Vector2(128.0f, 128.0f), 1);
-			mAnimator->Create(L"Whip_r", atlas, Vector2(128.0f * 0, 128.0f * 22), Vector2(128.0f, 128.0f), 6, Vector2::Zero, 0.05f);
-			mAnimator->Create(L"Whip_l", atlas, Vector2(128.0f * 0, 128.0f * 23), Vector2(128.0f, 128.0f), 6, Vector2::Zero, 0.05f);
+			mAnimator->Create(L"PlayerWhip_r", atlas, Vector2(128.0f * 0, 128.0f * 22), Vector2(128.0f, 128.0f), 6, Vector2::Zero, 0.05f);
+			mAnimator->Create(L"PlayerWhip_l", atlas, Vector2(128.0f * 0, 128.0f * 23), Vector2(128.0f, 128.0f), 6, Vector2::Zero, 0.05f);
 			mAnimator->Create(L"Throw_r", atlas, Vector2(128.0f * 0, 128.0f * 24), Vector2(128.0f, 128.0f), 5);
 			mAnimator->Create(L"Throw_l", atlas, Vector2(128.0f * 0, 128.0f * 25), Vector2(128.0f, 128.0f), 5);
 			mAnimator->Create(L"Enter", atlas, Vector2(128.0f * 0, 128.0f * 26), Vector2(128.0f, 128.0f), 6);
@@ -87,10 +92,10 @@ namespace cc
 			mAnimator->Create(L"LookUp_l", atlas, Vector2(128.0f * 0, 128.0f * 35), Vector2(128.0f, 128.0f), 4);
 			mAnimator->Create(L"LookDown_r", atlas, Vector2(128.0f * 0, 128.0f * 36), Vector2(128.0f, 128.0f), 3);
 			mAnimator->Create(L"LookDown_l", atlas, Vector2(128.0f * 0, 128.0f * 37), Vector2(128.0f, 128.0f), 3);
-			mAnimator->Create(L"Jump_r", atlas, Vector2(128.0f * 0, 128.0f * 38), Vector2(128.0f, 128.0f), 8);
-			mAnimator->Create(L"Jump_l", atlas, Vector2(128.0f * 0, 128.0f * 39), Vector2(128.0f, 128.0f), 8);
-			mAnimator->Create(L"Fall_r", atlas, Vector2(128.0f * 0, 128.0f * 40), Vector2(128.0f, 128.0f), 4);
-			mAnimator->Create(L"Fall_l", atlas, Vector2(128.0f * 0, 128.0f * 41), Vector2(128.0f, 128.0f), 4);
+			mAnimator->Create(L"Jump_r", atlas, Vector2(128.0f * 0, 128.0f * 38), Vector2(128.0f, 128.0f), 8, Vector2::Zero, 0.05f);
+			mAnimator->Create(L"Jump_l", atlas, Vector2(128.0f * 0, 128.0f * 39), Vector2(128.0f, 128.0f), 8, Vector2::Zero, 0.05f);
+			mAnimator->Create(L"Fall_r", atlas, Vector2(128.0f * 0, 128.0f * 40), Vector2(128.0f, 128.0f), 4, Vector2::Zero, 0.05f);
+			mAnimator->Create(L"Fall_l", atlas, Vector2(128.0f * 0, 128.0f * 41), Vector2(128.0f, 128.0f), 4, Vector2::Zero, 0.05f);
 			mAnimator->Create(L"Idle/Ghost_r", atlas, Vector2(128.0f * 0, 128.0f * 42), Vector2(128.0f, 128.0f), 4);
 			mAnimator->Create(L"Idle/Ghost_l", atlas, Vector2(128.0f * 0, 128.0f * 43), Vector2(128.0f, 128.0f), 4);
 			mAnimator->Create(L"Ghost/Charging_r", atlas, Vector2(128.0f * 0, 128.0f * 44), Vector2(128.0f, 128.0f), 6);
@@ -99,23 +104,22 @@ namespace cc
 			mAnimator->Create(L"Ghost/Shoot_l", atlas, Vector2(128.0f * 0, 128.0f * 47), Vector2(128.0f, 128.0f), 6);
 			mAnimator->Create(L"Fall/Long_r", atlas, Vector2(128.0f * 0, 128.0f * 48), Vector2(128.0f, 128.0f), 6);
 			mAnimator->Create(L"Fall/Long_l", atlas, Vector2(128.0f * 0, 128.0f * 49), Vector2(128.0f, 128.0f), 6);
-
-			mAnimator->Create(L"Test", test, Vector2(128.0f * 10, 128.0f * 0), Vector2(128.0f, 128.0f), 6);
-
-
+		
 			// events
-			mAnimator->CompleteEvent(L"Whip_r") = std::bind(&Player::WhipComplete, this);
-			mAnimator->CompleteEvent(L"Whip_l") = std::bind(&Player::WhipComplete, this);
+			mAnimator->CompleteEvent(L"PlayerWhip_r") = std::bind(&Player::WhipComplete, this);
+			mAnimator->CompleteEvent(L"PlayerWhip_l") = std::bind(&Player::WhipComplete, this);
 			mAnimator->CompleteEvent(L"KneelUp_r") = std::bind(&Player::KneelUpComplete, this);
 			mAnimator->CompleteEvent(L"KneelUp_l") = std::bind(&Player::KneelUpComplete, this);
 			mAnimator->EndEvent(L"KneelDown_r") = std::bind(&Player::KneelDownEnd, this);
 			mAnimator->EndEvent(L"KneelDown_l") = std::bind(&Player::KneelDownEnd, this);
-
 		}
 		
 		mState = ePlayerState::Idle;
 
 		InitializeFlag();
+
+		// script
+		//AddComponent<PlayerCollisionScript>();
 	}
 
 	void Player::Update()
@@ -178,6 +182,8 @@ namespace cc
 
 	void Player::idle()
 	{
+		InitializeFlag();
+
 		if (animationFlag == false)
 		{
 			if (mDirection == eDirection::Left)
@@ -212,6 +218,13 @@ namespace cc
 		if (Input::GetKey(eKeyCode::O))
 		{
 			mState = ePlayerState::Ghost;
+
+			animationFlag = false;
+		}
+
+		if (Input::GetKeyDown(eKeyCode::SPACE))
+		{
+			mState = ePlayerState::Jump;
 
 			animationFlag = false;
 		}
@@ -261,10 +274,33 @@ namespace cc
 
 			animationFlag = false;
 		}
+
+		if (Input::GetKeyDown(eKeyCode::SPACE))
+		{
+			mState = ePlayerState::Jump;
+
+			animationFlag = false;
+		}
 	}
 
 	void Player::jump()
 	{
+		if (animationFlag == false)
+		{
+			if (mDirection == eDirection::Left)
+				mAnimator->PlayAnimation(L"Jump_l", false);
+			else if (mDirection == eDirection::Right)
+				mAnimator->PlayAnimation(L"Jump_r", false);
+
+			animationFlag = true;
+
+			Vector2 velocity = mRigidbody->GetVelocity();
+			velocity.y -= 1000.0f;
+			mRigidbody->SetVelocity(velocity);
+			mRigidbody->SetGround(false);
+		}
+
+		
 	}
 
 	void Player::fall()
@@ -273,17 +309,23 @@ namespace cc
 
 	void Player::attack()
 	{
+		Vector3 pos = mTransform->GetPosition();
+
 		if (animationFlag == false)
 		{
 			if (mDirection == eDirection::Left)
-				mAnimator->PlayAnimation(L"Whip_l", true);
+				mAnimator->PlayAnimation(L"PlayerWhip_l", true);
 			else if (mDirection == eDirection::Right)
-				mAnimator->PlayAnimation(L"Whip_r", true);
+				mAnimator->PlayAnimation(L"PlayerWhip_r", true);
+
+			Scene* sdf = SceneManager::GetActiveScene();
+			object::Instantiate<Whip>(enums::eLayerType::Weapon);
 
 			animationFlag = true;
 		}
 
-		Vector3 pos = mTransform->GetPosition();
+
+
 		if (Input::GetKey(eKeyCode::LEFT))
 		{
 			pos.x -= PLAYERWALKSPEED * Time::DeltaTime();

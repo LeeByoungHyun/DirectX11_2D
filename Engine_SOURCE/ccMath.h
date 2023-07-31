@@ -38,6 +38,15 @@ namespace cc::math
         return degree * PI / 180;
     }
 
+    //static math::Vector2& Normalize(math::Vector2& vec)
+    //{
+    //    float length = sqrtf(vec.x * vec.x + vec.y * vec.y);
+    //    vec.x /= length;
+    //    vec.y /= length;
+    //
+    //    return vec;
+    //}
+
     /*
     static Vector2 getHeightVector(Vector3 scale, Vector3 rotate)
     { 

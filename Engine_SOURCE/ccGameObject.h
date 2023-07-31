@@ -93,16 +93,27 @@ namespace cc
 			return comp;
 		}
 
-		eState GetState() { return mState; }
+		eState GetState() 
+		{ 
+			try
+			{
+				return mState;
+			}
+			catch (const std::exception& e)
+			{
+				return eState::Dead;
+			}
+		}
+
 		void SetState(eState state) { mState = state; }
-		//eLayerType GetType() { return mType; }
-		//void SetType(eLayerType type) { mType = type; }
+		eLayerType GetType() { return mType; }
+		void SetType(eLayerType type) { mType = type; }
 
 	private:
 		eState mState;
 		std::vector<Component*> mComponents;
 		std::vector<Script*> mScripts;
-		//eLayerType mType;
+		eLayerType mType;
 	};
 }
 

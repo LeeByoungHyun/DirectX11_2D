@@ -4,6 +4,7 @@
 #include "ccTime.h"
 #include "ccinput.h"
 #include "Player.h"
+#include "PlayerCollisionScript.h"
 
 namespace cc
 {

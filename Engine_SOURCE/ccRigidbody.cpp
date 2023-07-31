@@ -12,11 +12,13 @@ namespace cc
 		, mAccelation(Vector2::Zero)
 		, mVelocity(Vector2::Zero)
 	{
-		mLimitedVelocity.x = 1000.0f;
-		mLimitedVelocity.y = 400.0f;
+		mLimitedVelocity.x = 200.0f;
+		mLimitedVelocity.y = 200.0f;
 		mbGround = false;
-		mGravity = Vector2(0.0f, 800.0f);
+		mGravity = Vector2(0.0f, 1000.0f);
 		mFriction = 100.0f;
+		mActive = true;
+		mMass = 1.0f;
 	}
 
 	Rigidbody::~Rigidbody()
@@ -79,7 +81,7 @@ namespace cc
 				//속도에 반대방향으로 마찰력이 적용된다.
 				Vector2 friction = -mVelocity;
 				friction.Normalize();
-				friction *= mFriction * mMass * Time::DeltaTime();
+				friction = friction * mFriction * mMass * Time::DeltaTime();
 
 				//마찰력으로 인한 속도 감소가 현재 속도보다 큰 경우
 				if (mVelocity.Length() < friction.Length())
@@ -96,7 +98,7 @@ namespace cc
 			Transform* tr = GetOwner()->GetComponent<Transform>();
 			Vector3 pos = tr->GetPosition();
 			pos.x = pos.x + mVelocity.x * Time::DeltaTime();
-			pos.y = pos.y + mVelocity.y * Time::DeltaTime();
+			pos.y = pos.y - mVelocity.y * Time::DeltaTime();
 			tr->SetPosition(pos);
 			mForce = Vector2::Zero;
 		}

@@ -31,8 +31,8 @@ namespace cc
 			if (gameObj->GetState()
 				!= GameObject::eState::Active)
 				continue;
-
-			gameObj->Update();
+		
+			gameObj->Update();	
 		}
 	}
 

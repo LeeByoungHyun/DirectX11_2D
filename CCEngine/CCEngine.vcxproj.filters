@@ -105,9 +105,6 @@
     <ClCompile Include="MainFore12.cpp">
       <Filter>Content\Scene\MenuScene\GameObject\main_fore_12</Filter>
     </ClCompile>
-    <ClCompile Include="PlayScene.cpp">
-      <Filter>Content\Scene\PlayScene</Filter>
-    </ClCompile>
     <ClCompile Include="CaveBG.cpp">
       <Filter>Content\Scene\PlayScene\GameObject\caveBG</Filter>
     </ClCompile>
@@ -126,14 +123,35 @@
     <ClCompile Include="PlayerMoveScrtpt.cpp">
       <Filter>Content\GameObject\Player\Script</Filter>
     </ClCompile>
-    <ClCompile Include="Tile.cpp">
-      <Filter>Content\Scene\PlayScene</Filter>
-    </ClCompile>
     <ClCompile Include="DirtMasking.cpp">
       <Filter>Content\Scene\PlayScene\GameObject\dirt\DirtMasking</Filter>
     </ClCompile>
     <ClCompile Include="CaveDirt.cpp">
       <Filter>Content\Scene\PlayScene\GameObject\dirt\tile</Filter>
+    </ClCompile>
+    <ClCompile Include="PlayerCollisionScript.cpp">
+      <Filter>Content\GameObject\Player\Script\CollisionScript</Filter>
+    </ClCompile>
+    <ClCompile Include="Whip.cpp">
+      <Filter>Content\GameObject\Player\Weapon\Whip</Filter>
+    </ClCompile>
+    <ClCompile Include="WhipColliderScript.cpp">
+      <Filter>Content\GameObject\Player\Weapon\Whip\Script</Filter>
+    </ClCompile>
+    <ClCompile Include="CaveMan.cpp">
+      <Filter>Content\GameObject\CaveMan</Filter>
+    </ClCompile>
+    <ClCompile Include="TileColliderScript.cpp">
+      <Filter>Content\Script\TileColliderScript</Filter>
+    </ClCompile>
+    <ClCompile Include="CaveManColliderScript.cpp">
+      <Filter>Content\GameObject\CaveMan\Script</Filter>
+    </ClCompile>
+    <ClCompile Include="PlayScene.cpp">
+      <Filter>Content\Scene\PlayScene</Filter>
+    </ClCompile>
+    <ClCompile Include="Tile.cpp">
+      <Filter>Content\GameObject</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -265,14 +283,32 @@
     <ClInclude Include="PlayerMoveScrtpt.h">
       <Filter>Content\GameObject\Player\Script</Filter>
     </ClInclude>
-    <ClInclude Include="Tile.h">
-      <Filter>Content\Scene\PlayScene</Filter>
-    </ClInclude>
     <ClInclude Include="DirtMasking.h">
       <Filter>Content\Scene\PlayScene\GameObject\dirt\DirtMasking</Filter>
     </ClInclude>
     <ClInclude Include="CaveDirt.h">
       <Filter>Content\Scene\PlayScene\GameObject\dirt\tile</Filter>
+    </ClInclude>
+    <ClInclude Include="PlayerCollisionScript.h">
+      <Filter>Content\GameObject\Player\Script\CollisionScript</Filter>
+    </ClInclude>
+    <ClInclude Include="Whip.h">
+      <Filter>Content\GameObject\Player\Weapon\Whip</Filter>
+    </ClInclude>
+    <ClInclude Include="WhipColliderScript.h">
+      <Filter>Content\GameObject\Player\Weapon\Whip\Script</Filter>
+    </ClInclude>
+    <ClInclude Include="CaveMan.h">
+      <Filter>Content\GameObject\CaveMan</Filter>
+    </ClInclude>
+    <ClInclude Include="TileColliderScript.h">
+      <Filter>Content\Script\TileColliderScript</Filter>
+    </ClInclude>
+    <ClInclude Include="CaveManColliderScript.h">
+      <Filter>Content\GameObject\CaveMan\Script</Filter>
+    </ClInclude>
+    <ClInclude Include="Tile.h">
+      <Filter>Content\GameObject</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -464,6 +500,21 @@
     </Filter>
     <Filter Include="Content\GameObject\Player\Weapon\Whip">
       <UniqueIdentifier>{dacec97b-ef73-4b66-a360-44668f3ec650}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Content\GameObject\Player\Script\CollisionScript">
+      <UniqueIdentifier>{2c8a9ae4-c6f7-42f8-bedb-988dd1a3994d}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Content\GameObject\Player\Weapon\Whip\Script">
+      <UniqueIdentifier>{d2c08f6c-68f5-4f40-bfa3-3bfb523d8685}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Content\GameObject\CaveMan">
+      <UniqueIdentifier>{dd0377d2-56cc-4ecb-b7ad-f2e3b91c4f71}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Content\Script\TileColliderScript">
+      <UniqueIdentifier>{1b59e709-4a67-4186-800c-1159632be348}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Content\GameObject\CaveMan\Script">
+      <UniqueIdentifier>{f2bf4219-9ba9-45df-89fb-a5dfb5aed921}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
 </Project>

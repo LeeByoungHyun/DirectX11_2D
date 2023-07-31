@@ -25,12 +25,6 @@ namespace cc
 			Ghost
 		};
 
-		enum class eDirection
-		{
-			Left,
-			Right
-		};
-
 		Player();
 		~Player();
 
@@ -46,6 +40,10 @@ namespace cc
 		virtual void Update() override;
 		virtual void LateUpdate() override;
 		virtual void Render() override;
+
+		void SetPlayerState(ePlayerState state) { mState = state; }
+		void SetAnimationFlag(bool flag) { animationFlag = flag; }
+		eDirection GetPlayerDirection() { return mDirection; }
 
 	private:
 		// FSM
@@ -74,6 +72,8 @@ namespace cc
 		MeshRenderer* mMeshRenderer;
 		Transform* mTransform;
 		class Animator* mAnimator;
+		class Collider2D* mCollider;
+		class Rigidbody* mRigidbody;
 
 		// flag
 		bool animationFlag;
