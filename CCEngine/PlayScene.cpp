@@ -32,6 +32,9 @@ namespace cc
 	const float PLAYERDEPTH = 0.0f;
 	const float MASKINGDIST = 0.025f;
 
+	const int MAPCOLUMN = 36;
+	const int MAPROW = 44;
+
 	PlayScene::PlayScene()
 	{
 
@@ -49,10 +52,10 @@ namespace cc
 		// ¸Ê »ý¼º
 		CreateMap();
 
-		Player* player = Player::GetInstance();
-		player->SetName(L"Player");
-		object::Instantiate(player, eLayerType::Player);
-		player->GetComponent<Transform>()->AddPosition(Vector3(TILESIZE * 20, -TILESIZE * 31, 0.0f));
+		//Player* player = Player::GetInstance();
+		//player->SetName(L"Player");
+		//object::Instantiate(player, eLayerType::Player);
+		//player->GetComponent<Transform>()->AddPosition(Vector3(TILESIZE * 20, -TILESIZE * 31, 0.0f));
 
 		// Main Camera
 		Camera* cameraComp = nullptr;

@@ -8,8 +8,7 @@ class PlayScene
 
 namespace cc
 {
-	const int MAPCOLUMN = 36;
-	const int MAPROW = 44;
+	
 
 	class PlayScene : public Scene
 	{

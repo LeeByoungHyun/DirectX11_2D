@@ -15,7 +15,16 @@ namespace cc
 		virtual void LateUpdate() override;
 		virtual void Render() override;
 
-	private:
+		virtual void OnEnter() override;
+		virtual void OnExit() override;
 
+		void CreatePath();
+		void CreateMap();
+		void MaskingTile();
+
+	private:
+		std::vector<std::vector<int>> map;
+		std::vector<std::vector<class Tile*>> mapTile;
+		std::vector<std::vector<int>> mapPath;
 	};
 }

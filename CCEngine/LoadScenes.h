@@ -25,7 +25,7 @@ namespace cc
 		SceneManager::CreateScene<MenuScene>(L"MenuScene");
 		SceneManager::CreateScene<PlayScene>(L"PlayScene");
 
-		SceneManager::LoadScene(L"SurfaceScene");
-		//SceneManager::LoadScene(L"TestScene");
+		//SceneManager::LoadScene(L"SurfaceScene");
+		SceneManager::LoadScene(L"TestScene");
 	}
 }

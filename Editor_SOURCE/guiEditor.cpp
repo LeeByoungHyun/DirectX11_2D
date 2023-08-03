@@ -137,6 +137,8 @@ namespace gui
 
 		cc::Camera::SetGpuViewMatrix(mainCamara->GetGpuViewMatrix());
 		cc::Camera::SetGpuProjectionMatrix(mainCamara->GetGpuProjectionMatrix());
+		//cc::Camera::SetGpuViewMatrix(mainCamara->GetViewMatrix());
+		//cc::Camera::SetGpuProjectionMatrix(mainCamara->GetProjectionMatrix());
 
 		debugObj->Render();
 	}

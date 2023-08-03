@@ -2,7 +2,6 @@
 <Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <ItemGroup>
     <ClCompile Include="CCEngine.cpp" />
-    <ClCompile Include="ccTestScene.cpp" />
     <ClCompile Include="ccTitleScene.cpp">
       <Filter>Content\Old\Scene\TitleScene</Filter>
     </ClCompile>
@@ -153,13 +152,15 @@
     <ClCompile Include="Tile.cpp">
       <Filter>Content\GameObject</Filter>
     </ClCompile>
+    <ClCompile Include="ccTestScene.cpp">
+      <Filter>Content\Scene\TestScene</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="framework.h" />
     <ClInclude Include="LoadScenes.h">
       <Filter>Load</Filter>
     </ClInclude>
-    <ClInclude Include="ccTestScene.h" />
     <ClInclude Include="ccTutorialScene.h">
       <Filter>Content\Old\Scene\TutorialScene</Filter>
     </ClInclude>
@@ -309,6 +310,9 @@
     </ClInclude>
     <ClInclude Include="Tile.h">
       <Filter>Content\GameObject</Filter>
+    </ClInclude>
+    <ClInclude Include="ccTestScene.h">
+      <Filter>Content\Scene\TestScene</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -515,6 +519,9 @@
     </Filter>
     <Filter Include="Content\GameObject\CaveMan\Script">
       <UniqueIdentifier>{f2bf4219-9ba9-45df-89fb-a5dfb5aed921}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Content\Scene\TestScene">
+      <UniqueIdentifier>{7648e48a-65db-4952-a34c-639b12eb8dc6}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
 </Project>
