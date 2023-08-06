@@ -5,6 +5,7 @@
 #include "ccCollider2D.h"
 
 #include "BorderMasking.h"
+#include "TileColliderScript.h"
 
 namespace cc
 {
@@ -205,6 +206,7 @@ namespace cc
 		//mCollider->SetSize(Vector2(1.2f, 1.2f));
 
 		// script
+		AddComponent<TileColliderScript>();
 	}
 
 	void BorderTile::Update()

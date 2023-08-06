@@ -4,6 +4,7 @@
 #include "ccCollider2D.h"
 
 #include "DirtMasking.h"
+#include "TileColliderScript.h"
 
 namespace cc
 {
@@ -373,6 +374,7 @@ namespace cc
 		//mCollider->SetSize(Vector2(2.0f, 2.0f));
 
 		// script
+		AddComponent<TileColliderScript>();
 	}
 
 	void CaveDirt::Update()

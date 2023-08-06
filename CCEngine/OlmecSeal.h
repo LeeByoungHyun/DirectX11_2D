@@ -1,37 +1,41 @@
 #pragma once
+class OlmecSeal
+{
+};
+
+#pragma once
 #include "ccGameObject.h"
 
 namespace cc
 {
-	class CaveMan : public GameObject
+	class OlmecSeal : public GameObject
 	{
 	public:
-		enum class eCaveManState
+		enum class eOlmecSealState
 		{
 			Idle,
-			Move,
-			Chase, 
+			Awake01,
+			Awake02,
 			Death
 		};
 
-		CaveMan();
-		~CaveMan();
+		OlmecSeal();
+		~OlmecSeal();
 
 		virtual void Initialize() override;
 		virtual void Update() override;
 		virtual void LateUpdate() override;
 		virtual void Render() override;
 
-		void SetCaveManState(eCaveManState state) { mState = state; }
+		void SetOlmecSealState(eOlmecSealState state) { mState = state; }
+		eOlmecSealState GetOlmecSealState() { return mState; }
 		void SetAnimationFlag(bool flag) { animationFlag = flag; }
-		void SetHp(int hp) { mHp = hp; }
-		int GetHp() { return mHp; }
 
 	private:
 		// FSM
 		void idle();
-		void move();
-		void chase();
+		void awake01();
+		void awake02();
 		void death();
 
 		// Events
@@ -40,17 +44,11 @@ namespace cc
 		void InitializeFlag();
 
 	private:
-		eCaveManState mState;
-		eDirection mDirection;
+		eOlmecSealState mState;
 		double mTime;
-
-		int mHp;
 
 		class MeshRenderer* mMeshRenderer;
 		class Transform* mTransform;
-		class Animator* mAnimator;
-		class Collider2D* mCollider;
-		class Rigidbody* mRigidbody;
 
 		// flag
 		bool animationFlag;

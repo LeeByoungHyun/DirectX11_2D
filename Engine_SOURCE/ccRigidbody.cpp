@@ -7,18 +7,17 @@ namespace cc
 {
 	Rigidbody::Rigidbody()
 		: Component(eComponentType::Rigidbody)
-		, mMass(0.0f)
+		, mMass(1.0f)
 		, mForce(Vector2::Zero)
 		, mAccelation(Vector2::Zero)
 		, mVelocity(Vector2::Zero)
+		, mActive(true)
 	{
-		mLimitedVelocity.x = 200.0f;
-		mLimitedVelocity.y = 200.0f;
+		mLimitedVelocity.x = 10.0f;
+		mLimitedVelocity.y = 10.0f;
 		mbGround = false;
-		mGravity = Vector2(0.0f, 1000.0f);
-		mFriction = 100.0f;
-		mActive = true;
-		mMass = 1.0f;
+		mGravity = Vector2(0.0f, 10.0f);
+		mFriction = 5.0f;
 	}
 
 	Rigidbody::~Rigidbody()

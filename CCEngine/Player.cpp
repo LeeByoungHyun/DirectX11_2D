@@ -21,6 +21,10 @@ namespace cc
 
 	Player::Player()
 	{
+		mCollider = AddComponent<Collider2D>();
+		mMeshRenderer = AddComponent<MeshRenderer>();
+		mTransform = GetComponent<Transform>();
+		mRigidbody = AddComponent<Rigidbody>();
 
 	}
 
@@ -33,18 +37,15 @@ namespace cc
 	{
 		GameObject::Initialize();
 
-		mMeshRenderer = AddComponent<MeshRenderer>();
 		mMeshRenderer->SetMesh(ResourceManager::Find<Mesh>(L"RectMesh"));
 		mMeshRenderer->SetMaterial(ResourceManager::Find<Material>(L"SpriteAnimationMaterial"));
 
-		mTransform = GetComponent<Transform>();
 		mTransform->SetPosition(Vector3(0.0f, 0.0f, PLAYERDEPTH));
 		mTransform->SetScale(Vector3(2.0f, 2.0f, 0.0f));
 
-		mCollider = AddComponent<Collider2D>();
+		mCollider->SetSize(Vector2(0.45f, 0.45f));
 
-		//mRigidbody = AddComponent<Rigidbody>();
-		//mRigidbody->SetGravity(Vector2(0.0f, 1.0f));
+		//mRigidbody->SetGround(true);
 
 		// amimator
 		{
@@ -295,7 +296,7 @@ namespace cc
 			animationFlag = true;
 
 			Vector2 velocity = mRigidbody->GetVelocity();
-			velocity.y -= 1000.0f;
+			velocity.y -= 10.0f;
 			mRigidbody->SetVelocity(velocity);
 			mRigidbody->SetGround(false);
 		}

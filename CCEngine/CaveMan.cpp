@@ -26,6 +26,9 @@ namespace cc
 		mTransform = GetComponent<Transform>();
 		mMeshRenderer = AddComponent<MeshRenderer>();
 		mAnimator = AddComponent<Animator>();
+		mRigidbody = AddComponent<Rigidbody>();
+		mCollider = AddComponent<Collider2D>();
+
 	}
 
 	CaveMan::~CaveMan()
@@ -36,14 +39,13 @@ namespace cc
 	void CaveMan::Initialize()
 	{
 		GameObject::Initialize();
-
 		
 		mMeshRenderer->SetMesh(ResourceManager::Find<Mesh>(L"RectMesh"));
 		mMeshRenderer->SetMaterial(ResourceManager::Find<Material>(L"SpriteAnimationMaterial"));
 
 		mTransform->SetScale(Vector3(2.0f, 2.0f, 0.0f));
 
-		mCollider = AddComponent<Collider2D>();
+		mCollider->SetSize(Vector2(0.45f, 0.45f));
 
 		// amimator
 		{

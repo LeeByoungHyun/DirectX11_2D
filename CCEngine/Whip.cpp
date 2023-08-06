@@ -37,6 +37,7 @@ namespace cc
 		//mTransform->SetParent(Player::GetInstance()->GetComponent<Transform>());
 
 		mCollider = AddComponent<Collider2D>();
+		mCollider->SetSize(Vector2(0.5f, 0.5f));
 
 		mDirection = Player::GetInstance()->GetPlayerDirection();
 

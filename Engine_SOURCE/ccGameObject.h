@@ -108,12 +108,16 @@ namespace cc
 		void SetState(eState state) { mState = state; }
 		eLayerType GetType() { return mType; }
 		void SetType(eLayerType type) { mType = type; }
+		void SetCollisionFlag(bool flag) { collisionFlag = flag; }
+		bool GetCollisionFlag() { return collisionFlag; }
 
 	private:
 		eState mState;
 		std::vector<Component*> mComponents;
 		std::vector<Script*> mScripts;
 		eLayerType mType;
+
+		bool collisionFlag;
 	};
 }
 

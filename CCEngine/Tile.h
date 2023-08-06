@@ -19,6 +19,7 @@ namespace cc
 		virtual void Masking(int dir);
 		void SetMask(int direct, bool check) { masking[direct] = check; }
 		bool GetMask(int dir) { return masking[dir]; }
+		void DestroyTile();
 
 	protected:
 		MeshRenderer* mMeshRenderer;
@@ -26,5 +27,6 @@ namespace cc
 
 		bool masking[4];
 		bool masked[4];
+		bool destructible;
 	};
 }

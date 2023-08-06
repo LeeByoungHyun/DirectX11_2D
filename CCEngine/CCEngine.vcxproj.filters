@@ -141,7 +141,7 @@
       <Filter>Content\GameObject\CaveMan</Filter>
     </ClCompile>
     <ClCompile Include="TileColliderScript.cpp">
-      <Filter>Content\Script\TileColliderScript</Filter>
+      <Filter>Content\GameObject\Tile\Script</Filter>
     </ClCompile>
     <ClCompile Include="CaveManColliderScript.cpp">
       <Filter>Content\GameObject\CaveMan\Script</Filter>
@@ -149,11 +149,23 @@
     <ClCompile Include="PlayScene.cpp">
       <Filter>Content\Scene\PlayScene</Filter>
     </ClCompile>
-    <ClCompile Include="Tile.cpp">
-      <Filter>Content\GameObject</Filter>
-    </ClCompile>
     <ClCompile Include="ccTestScene.cpp">
       <Filter>Content\Scene\TestScene</Filter>
+    </ClCompile>
+    <ClCompile Include="PhysxScene.cpp">
+      <Filter>Content\Physx</Filter>
+    </ClCompile>
+    <ClCompile Include="Olmec.cpp">
+      <Filter>Content\GameObject\Olmec</Filter>
+    </ClCompile>
+    <ClCompile Include="OlmecSeal.cpp">
+      <Filter>Content\GameObject\Olmec\Seal</Filter>
+    </ClCompile>
+    <ClCompile Include="Tile.cpp">
+      <Filter>Content\GameObject\Tile</Filter>
+    </ClCompile>
+    <ClCompile Include="OlmecCollisionScript.cpp">
+      <Filter>Content\GameObject\Olmec\Script</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -303,16 +315,28 @@
       <Filter>Content\GameObject\CaveMan</Filter>
     </ClInclude>
     <ClInclude Include="TileColliderScript.h">
-      <Filter>Content\Script\TileColliderScript</Filter>
+      <Filter>Content\GameObject\Tile\Script</Filter>
     </ClInclude>
     <ClInclude Include="CaveManColliderScript.h">
       <Filter>Content\GameObject\CaveMan\Script</Filter>
     </ClInclude>
-    <ClInclude Include="Tile.h">
-      <Filter>Content\GameObject</Filter>
-    </ClInclude>
     <ClInclude Include="ccTestScene.h">
       <Filter>Content\Scene\TestScene</Filter>
+    </ClInclude>
+    <ClInclude Include="PhysxScene.h">
+      <Filter>Content\Physx</Filter>
+    </ClInclude>
+    <ClInclude Include="Olmec.h">
+      <Filter>Content\GameObject\Olmec</Filter>
+    </ClInclude>
+    <ClInclude Include="OlmecSeal.h">
+      <Filter>Content\GameObject\Olmec\Seal</Filter>
+    </ClInclude>
+    <ClInclude Include="Tile.h">
+      <Filter>Content\GameObject\Tile</Filter>
+    </ClInclude>
+    <ClInclude Include="OlmecCollisionScript.h">
+      <Filter>Content\GameObject\Olmec\Script</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -514,14 +538,29 @@
     <Filter Include="Content\GameObject\CaveMan">
       <UniqueIdentifier>{dd0377d2-56cc-4ecb-b7ad-f2e3b91c4f71}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Content\Script\TileColliderScript">
-      <UniqueIdentifier>{1b59e709-4a67-4186-800c-1159632be348}</UniqueIdentifier>
-    </Filter>
     <Filter Include="Content\GameObject\CaveMan\Script">
       <UniqueIdentifier>{f2bf4219-9ba9-45df-89fb-a5dfb5aed921}</UniqueIdentifier>
     </Filter>
     <Filter Include="Content\Scene\TestScene">
       <UniqueIdentifier>{7648e48a-65db-4952-a34c-639b12eb8dc6}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Content\Physx">
+      <UniqueIdentifier>{10d0a0a2-518f-4ea3-ae48-0c3af3e6ff8a}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Content\GameObject\Olmec">
+      <UniqueIdentifier>{28926562-3c17-44ea-a530-860e3bff910a}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Content\GameObject\Olmec\Seal">
+      <UniqueIdentifier>{56e0310f-8925-4717-9717-d8763d4bcb03}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Content\GameObject\Tile">
+      <UniqueIdentifier>{12be36f9-183b-4391-887c-4e4131ae4c87}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Content\GameObject\Tile\Script">
+      <UniqueIdentifier>{1b59e709-4a67-4186-800c-1159632be348}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Content\GameObject\Olmec\Script">
+      <UniqueIdentifier>{962c72a8-efd4-4f47-83a2-bb8e22cb78a7}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
 </Project>

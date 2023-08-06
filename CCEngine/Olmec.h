@@ -3,56 +3,60 @@
 
 namespace cc
 {
-	class CaveMan : public GameObject
+	class Olmec : public GameObject
 	{
 	public:
-		enum class eCaveManState
+		enum class eOlmecState
 		{
 			Idle,
-			Move,
-			Chase, 
+			Awake,
+			Jump,
+			Crash,
+			Find,
 			Death
 		};
 
-		CaveMan();
-		~CaveMan();
+		Olmec();
+		~Olmec();
 
 		virtual void Initialize() override;
 		virtual void Update() override;
 		virtual void LateUpdate() override;
 		virtual void Render() override;
 
-		void SetCaveManState(eCaveManState state) { mState = state; }
+		void SetOlmecState(eOlmecState state) { mState = state; }
+		eOlmecState GetOlmecState() { return mState; }
 		void SetAnimationFlag(bool flag) { animationFlag = flag; }
-		void SetHp(int hp) { mHp = hp; }
-		int GetHp() { return mHp; }
+		void InitializeState();
 
 	private:
 		// FSM
 		void idle();
-		void move();
-		void chase();
+		void awake();
+		void jump();
+		void crash();
 		void death();
 
 		// Events
 
 		// 
-		void InitializeFlag();
+		
 
 	private:
-		eCaveManState mState;
+		eOlmecState mState;
 		eDirection mDirection;
 		double mTime;
-
-		int mHp;
+		class OlmecSeal* seal;
 
 		class MeshRenderer* mMeshRenderer;
 		class Transform* mTransform;
-		class Animator* mAnimator;
 		class Collider2D* mCollider;
 		class Rigidbody* mRigidbody;
 
 		// flag
 		bool animationFlag;
+		bool awakeFlag;
+		bool jumpFlag;
+		bool checkTime;
 	};
 }

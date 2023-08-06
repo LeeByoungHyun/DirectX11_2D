@@ -9,6 +9,7 @@ namespace cc
 		: mState(eState::Active)
 	{
 		AddComponent<Transform>();
+		collisionFlag = false;
 	}
 
 	GameObject::~GameObject()

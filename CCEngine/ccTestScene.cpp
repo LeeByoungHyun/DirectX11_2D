@@ -12,9 +12,6 @@
 #include "ccObject.h"
 #include "ccCollisionManager.h"
 
-#pragma warning(disable:4996)
-#include "PxPhysicsAPI.h"
-
 #include "Player.h"
 #include "CaveBG.h"
 #include "CaveDirt.h"
@@ -22,6 +19,8 @@
 #include "BorderTile.h"
 #include "Whip.h"
 #include "CaveMan.h"
+#include "OlmecSeal.h"
+#include "Olmec.h"
 
 namespace cc
 {
@@ -59,32 +58,6 @@ namespace cc
 
 	void TestScene::Initialize()
 	{
-		//{
-		//	GameObject* player = new GameObject();
-		//	player->SetName(L"Zelda");
-		//	AddGameObject(eLayerType::Player, player);
-		//	MeshRenderer* mr = player->AddComponent<MeshRenderer>();
-		//	mr->SetMesh(ResourceManager::Find<Mesh>(L"RectMesh"));
-		//	mr->SetMaterial(ResourceManager::Find<Material>(L"rink"));
-		//	player->GetComponent<Transform>()->SetPosition(Vector3(0.0f, 0.0f, 0.0f));
-		//	player->GetComponent<Transform>()->SetScale(Vector3(2.0f, 2.0f, 0.0f));
-		//	Collider2D* cd = player->AddComponent<Collider2D>();
-		//	cd->SetSize(Vector2(2.0f, 2.0f));
-		//	//player->AddComponent<CameraScript>();
-		//}
-
-		//Whip* sdf = object::Instantiate<Whip>(eLayerType::Weapon);
-		//sdf->GetComponent<Transform>()->SetPosition(0.0f, 0.0f, 0.0f);
-
-		//Player* asdas = Player::GetInstance();
-		//object::Instantiate(asdas, eLayerType::Player);
-		//asdas->GetComponent<Transform>()->SetPosition(0.0f, 0.0f, 0.0f);
-		//asdas->GetComponent<Transform>()->SetScale(1.0f, 1.0f, 1.0f);
-
-		//CaveBG* bg = object::Instantiate<CaveBG>(eLayerType::BG);
-		//bg->AddComponent<Collider2D>();
-		//bg->SetName(L"caveBG");
-
 		Scene::Initialize();
 
 		// ¸Ê »ý¼º
@@ -93,9 +66,12 @@ namespace cc
 		Player* player = Player::GetInstance();
 		player->SetName(L"Player");
 		object::Instantiate(player, eLayerType::Player);
-		player->GetComponent<Transform>()->AddPosition(Vector3(TILESIZE * 20, -TILESIZE * 31, 0.0f));
+		player->GetComponent<Transform>()->AddPosition(Vector3(TILESIZE * 20, -TILESIZE * 25, 0.0f));
 
-		//// Main Camera
+		Olmec* test = object::Instantiate<Olmec>(eLayerType::Monster);
+		test->GetComponent<Transform>()->SetPosition(Vector3(TILESIZE * 18, -TILESIZE * 29, 0.0f));
+		test->GetComponent<Transform>()->AddPosition(Vector3(0.0f, -TILESIZE / 2.0f, 0.0f));
+		// Main Camera
 		Camera* cameraComp = nullptr;
 		{
 			GameObject* camera = new GameObject();
@@ -152,6 +128,7 @@ namespace cc
 	void TestScene::OnEnter()
 	{
 		CollisionManager::SetLayer(eLayerType::Player, eLayerType::Tile, true);
+		CollisionManager::SetLayer(eLayerType::Monster, eLayerType::Tile, true);
 		CollisionManager::SetLayer(eLayerType::Weapon, eLayerType::Monster, true);
 	}
 	void TestScene::OnExit()

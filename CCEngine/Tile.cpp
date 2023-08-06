@@ -6,6 +6,7 @@ namespace cc
 	{
 		std::fill_n(masking, 4, false);
 		std::fill_n(masked, 4, false);
+		destructible = false;
 	}
 
 	Tile::~Tile()
@@ -15,7 +16,7 @@ namespace cc
 
 	void Tile::Initialize()
 	{
-		
+
 	}
 
 	void Tile::Update()
@@ -35,6 +36,14 @@ namespace cc
 
 	void Tile::Masking(int dir)
 	{
+
+	}
+
+	void Tile::DestroyTile()
+	{
+		if (destructible == false)
+			return;
+
 
 	}
 }
