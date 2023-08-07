@@ -108,13 +108,13 @@
       <Filter>Content\Scene\PlayScene\GameObject\caveBG</Filter>
     </ClCompile>
     <ClCompile Include="Wood.cpp">
-      <Filter>Content\Scene\PlayScene\GameObject\wood</Filter>
+      <Filter>Content\GameObject\Tile\wood</Filter>
     </ClCompile>
     <ClCompile Include="BorderMasking.cpp">
-      <Filter>Content\Scene\PlayScene\GameObject\border\masking</Filter>
+      <Filter>Content\GameObject\Tile\border\masking</Filter>
     </ClCompile>
     <ClCompile Include="BorderTile.cpp">
-      <Filter>Content\Scene\PlayScene\GameObject\border\tile</Filter>
+      <Filter>Content\GameObject\Tile\border\tile</Filter>
     </ClCompile>
     <ClCompile Include="Player.cpp">
       <Filter>Content\GameObject\Player</Filter>
@@ -123,10 +123,10 @@
       <Filter>Content\GameObject\Player\Script</Filter>
     </ClCompile>
     <ClCompile Include="DirtMasking.cpp">
-      <Filter>Content\Scene\PlayScene\GameObject\dirt\DirtMasking</Filter>
+      <Filter>Content\GameObject\Tile\dirt\DirtMasking</Filter>
     </ClCompile>
     <ClCompile Include="CaveDirt.cpp">
-      <Filter>Content\Scene\PlayScene\GameObject\dirt\tile</Filter>
+      <Filter>Content\GameObject\Tile\dirt\tile</Filter>
     </ClCompile>
     <ClCompile Include="PlayerCollisionScript.cpp">
       <Filter>Content\GameObject\Player\Script\CollisionScript</Filter>
@@ -282,13 +282,13 @@
       <Filter>Content\Scene\PlayScene\GameObject\caveBG</Filter>
     </ClInclude>
     <ClInclude Include="Wood.h">
-      <Filter>Content\Scene\PlayScene\GameObject\wood</Filter>
+      <Filter>Content\GameObject\Tile\wood</Filter>
     </ClInclude>
     <ClInclude Include="BorderMasking.h">
-      <Filter>Content\Scene\PlayScene\GameObject\border\masking</Filter>
+      <Filter>Content\GameObject\Tile\border\masking</Filter>
     </ClInclude>
     <ClInclude Include="BorderTile.h">
-      <Filter>Content\Scene\PlayScene\GameObject\border\tile</Filter>
+      <Filter>Content\GameObject\Tile\border\tile</Filter>
     </ClInclude>
     <ClInclude Include="Player.h">
       <Filter>Content\GameObject\Player</Filter>
@@ -297,10 +297,10 @@
       <Filter>Content\GameObject\Player\Script</Filter>
     </ClInclude>
     <ClInclude Include="DirtMasking.h">
-      <Filter>Content\Scene\PlayScene\GameObject\dirt\DirtMasking</Filter>
+      <Filter>Content\GameObject\Tile\dirt\DirtMasking</Filter>
     </ClInclude>
     <ClInclude Include="CaveDirt.h">
-      <Filter>Content\Scene\PlayScene\GameObject\dirt\tile</Filter>
+      <Filter>Content\GameObject\Tile\dirt\tile</Filter>
     </ClInclude>
     <ClInclude Include="PlayerCollisionScript.h">
       <Filter>Content\GameObject\Player\Script\CollisionScript</Filter>
@@ -493,21 +493,6 @@
     <Filter Include="Content\Scene\PlayScene\GameObject\caveBG">
       <UniqueIdentifier>{d0cbe371-dc6f-4c6f-9680-65fa1421e6d0}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Content\Scene\PlayScene\GameObject\dirt">
-      <UniqueIdentifier>{673d743c-bbe5-4b5c-9fdd-ba98186a0b17}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Content\Scene\PlayScene\GameObject\wood">
-      <UniqueIdentifier>{fee26601-076c-44eb-bbd6-ce17dc531eda}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Content\Scene\PlayScene\GameObject\border">
-      <UniqueIdentifier>{096ce9c1-45dd-43b0-9f44-262ff45022c5}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Content\Scene\PlayScene\GameObject\border\tile">
-      <UniqueIdentifier>{e982155d-9912-4769-a8c0-67cfe49ce9ef}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Content\Scene\PlayScene\GameObject\border\masking">
-      <UniqueIdentifier>{88811402-151f-4ced-8f70-7f7d13060017}</UniqueIdentifier>
-    </Filter>
     <Filter Include="Content\GameObject">
       <UniqueIdentifier>{6dfdabe8-5048-4f5b-b6b0-cab1cb9a03b6}</UniqueIdentifier>
     </Filter>
@@ -516,12 +501,6 @@
     </Filter>
     <Filter Include="Content\GameObject\Player\Script">
       <UniqueIdentifier>{16fa8fb6-fada-4d02-bc57-43cb5f0becd8}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Content\Scene\PlayScene\GameObject\dirt\DirtMasking">
-      <UniqueIdentifier>{59c53ea0-5612-4f38-9096-fb04d8a85b55}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Content\Scene\PlayScene\GameObject\dirt\tile">
-      <UniqueIdentifier>{b7c42e72-18cd-4678-935b-027e58071234}</UniqueIdentifier>
     </Filter>
     <Filter Include="Content\GameObject\Player\Weapon">
       <UniqueIdentifier>{e4ebbacf-f7c6-4140-9a08-0d050c488608}</UniqueIdentifier>
@@ -561,6 +540,27 @@
     </Filter>
     <Filter Include="Content\GameObject\Olmec\Script">
       <UniqueIdentifier>{962c72a8-efd4-4f47-83a2-bb8e22cb78a7}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Content\GameObject\Tile\dirt">
+      <UniqueIdentifier>{673d743c-bbe5-4b5c-9fdd-ba98186a0b17}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Content\GameObject\Tile\dirt\DirtMasking">
+      <UniqueIdentifier>{59c53ea0-5612-4f38-9096-fb04d8a85b55}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Content\GameObject\Tile\dirt\tile">
+      <UniqueIdentifier>{b7c42e72-18cd-4678-935b-027e58071234}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Content\GameObject\Tile\border">
+      <UniqueIdentifier>{096ce9c1-45dd-43b0-9f44-262ff45022c5}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Content\GameObject\Tile\border\tile">
+      <UniqueIdentifier>{e982155d-9912-4769-a8c0-67cfe49ce9ef}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Content\GameObject\Tile\border\masking">
+      <UniqueIdentifier>{88811402-151f-4ced-8f70-7f7d13060017}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Content\GameObject\Tile\wood">
+      <UniqueIdentifier>{fee26601-076c-44eb-bbd6-ce17dc531eda}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
 </Project>

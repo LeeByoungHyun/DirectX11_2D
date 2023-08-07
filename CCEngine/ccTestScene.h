@@ -21,6 +21,11 @@ namespace cc
 		void CreatePath();
 		void CreateMap();
 		void MaskingTile();
+		void RemoveMapTile(int col, int row) 
+		{ 
+			map[col][row] = 0; 
+			mapTile[col][row] = 0;
+		}
 
 	private:
 		std::vector<std::vector<int>> map;

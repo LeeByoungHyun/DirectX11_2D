@@ -38,7 +38,39 @@ namespace cc
 
 	void TileColliderScript::OnCollisionEnter(Collider2D* other)
 	{
-		
+		//if (other->GetOwner()->GetCollisionFlag() == false)
+		//{
+		//	Collider2D* tileCol = this->GetOwner()->GetComponent<Collider2D>();
+		//	Collider2D* otherCol = other->GetOwner()->GetComponent<Collider2D>();
+		//
+		//	Vector3 tileColPos = tileCol->GetPosition();
+		//	Vector3 otherColPos = otherCol->GetPosition();
+		//
+		//	float lenX = 0.0f;
+		//	float lenY = 0.0f;
+		//
+		//	// 충돌체가 겹친 부분의 x길이 계산
+		//	if (tileColPos.x <= otherColPos.x)
+		//		lenX = (tileColPos.x + (tileCol->GetScale().x / 2)) - (otherColPos.x - (otherCol->GetScale().x / 2)) + 0.01f;
+		//	else
+		//		lenX = (tileColPos.x - (tileCol->GetScale().x / 2)) - (otherColPos.x + (otherCol->GetScale().x / 2)) - 0.01f;
+		//
+		//	// 충돌체가 겹친 부분의 y길이 계산																				  
+		//	if (tileColPos.y <= otherColPos.y)
+		//		lenY = (tileColPos.y + (tileCol->GetScale().y / 2)) - (otherColPos.y - (otherCol->GetScale().y / 2)) + 0.01f;
+		//	else
+		//		lenY = (tileColPos.y - (tileCol->GetScale().y / 2)) - (otherColPos.y + (otherCol->GetScale().y / 2)) - 0.01f;
+		//
+		//	// 겹친 부분만큼 밀어냄
+		//	if (abs(lenX) > abs(lenY))
+		//	{
+		//		other->GetOwner()->GetComponent<Transform>()->AddPosition(Vector3(0.0f, lenY, 0.0f));
+		//		other->GetOwner()->GetComponent<Rigidbody>()->SetGround(true);
+		//	}
+		//
+		//	else
+		//		other->GetOwner()->GetComponent<Transform>()->AddPosition(Vector3(lenX, 0.0f, 0.0f));
+		//}
 	}
 
 	void TileColliderScript::OnCollisionStay(Collider2D* other)
@@ -56,15 +88,15 @@ namespace cc
 
 			// 충돌체가 겹친 부분의 x길이 계산
 			if (tileColPos.x <= otherColPos.x)
-				lenX = (tileColPos.x + (tileCol->GetScale().x / 2)) - (otherColPos.x - (otherCol->GetScale().x / 2)) + 0.01f;
+				lenX = (tileColPos.x + (tileCol->GetScale().x / 2)) - (otherColPos.x - (otherCol->GetScale().x / 2)) + 0.00f;
 			else																										  
-				lenX = (tileColPos.x - (tileCol->GetScale().x / 2)) - (otherColPos.x + (otherCol->GetScale().x / 2)) - 0.01f;
+				lenX = (tileColPos.x - (tileCol->GetScale().x / 2)) - (otherColPos.x + (otherCol->GetScale().x / 2)) - 0.00f;
 																														  
 			// 충돌체가 겹친 부분의 y길이 계산																				  
 			if (tileColPos.y <= otherColPos.y)																			  
-				lenY = (tileColPos.y + (tileCol->GetScale().y / 2)) - (otherColPos.y - (otherCol->GetScale().y / 2)) + 0.01f;
+				lenY = (tileColPos.y + (tileCol->GetScale().y / 2)) - (otherColPos.y - (otherCol->GetScale().y / 2)) + 0.00f;
 			else																										  
-				lenY = (tileColPos.y - (tileCol->GetScale().y / 2)) - (otherColPos.y + (otherCol->GetScale().y / 2)) - 0.01f;
+				lenY = (tileColPos.y - (tileCol->GetScale().y / 2)) - (otherColPos.y + (otherCol->GetScale().y / 2)) - 0.00f;
 
 			//
 			//if (abs(lenX) > tileCol->GetScale().x * 0.5f)
@@ -81,20 +113,20 @@ namespace cc
 			if (abs(lenX) > abs(lenY))
 			{
 				other->GetOwner()->GetComponent<Transform>()->AddPosition(Vector3(0.0f, lenY, 0.0f));
-				other->GetOwner()->GetComponent<Rigidbody>()->SetGround(true);
+				//other->GetOwner()->GetComponent<Rigidbody>()->SetGround(true);
 			}
 
 			else
 				other->GetOwner()->GetComponent<Transform>()->AddPosition(Vector3(lenX, 0.0f, 0.0f));
-
-		
-			//other->GetOwner()->GetComponent<Transform>()->AddPosition(Vector3(lenX, lenY, 0.0f));
-			//other->GetOwner()->SetCollisionFlag(true);
 		}
 	}
 
 	void TileColliderScript::OnCollisionExit(Collider2D* other)
 	{
 		other->GetOwner()->SetCollisionFlag(false);
+		if (other->GetOwner()->GetComponent<Rigidbody>())
+		{
+			//other->GetOwner()->GetComponent<Rigidbody>()->SetGround(false);
+		}
 	}
 }

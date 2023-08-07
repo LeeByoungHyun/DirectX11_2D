@@ -441,6 +441,8 @@ namespace cc
 			animationFlag = true;
 		}
 
+		mRigidbody->SetGround(true);
+
 		Vector3 pos = mTransform->GetPosition();
 		if (Input::GetKey(eKeyCode::UP))
 		{

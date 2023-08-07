@@ -128,6 +128,7 @@ namespace cc
 	void TestScene::OnEnter()
 	{
 		CollisionManager::SetLayer(eLayerType::Player, eLayerType::Tile, true);
+		CollisionManager::SetLayer(eLayerType::Player, eLayerType::Monster, true);
 		CollisionManager::SetLayer(eLayerType::Monster, eLayerType::Tile, true);
 		CollisionManager::SetLayer(eLayerType::Weapon, eLayerType::Monster, true);
 	}
@@ -247,6 +248,8 @@ namespace cc
 					{
 						BorderTile* border = object::Instantiate<BorderTile>(eLayerType::Tile);
 						mapTile[col][row] = border;
+						border->SetColPos(col);
+						border->SetRowPos(row);
 						border->SetName(L"border");
 						Transform* tr = border->GetComponent<Transform>();
 						tr->SetPosition(Vector3(tileStartPos.x + (TILESIZE * row), tileStartPos.y - (TILESIZE * col), TILEDEPTH));
@@ -257,6 +260,8 @@ namespace cc
 						CaveDirt* dirt = object::Instantiate<CaveDirt>(eLayerType::Tile);
 						dirt->SetName(L"dirt");
 						mapTile[col][row] = dirt;
+						dirt->SetColPos(col);
+						dirt->SetRowPos(row);
 						Transform* tr = dirt->GetComponent<Transform>();
 						tr->SetPosition(Vector3(tileStartPos.x + (TILESIZE * row), tileStartPos.y - (TILESIZE * col), TILEDEPTH));
 					}
@@ -265,6 +270,8 @@ namespace cc
 					{
 						Wood* wood = object::Instantiate<Wood>(eLayerType::Tile);
 						wood->SetName(L"wood");
+						wood->SetColPos(col);
+						wood->SetRowPos(row);
 						Transform* tr = wood->GetComponent<Transform>();
 						tr->SetPosition(Vector3(tileStartPos.x + (TILESIZE * row), tileStartPos.y - (TILESIZE * col), TILEDEPTH));
 					}
@@ -281,6 +288,11 @@ namespace cc
 			}
 		}
 
+		MaskingTile();
+	}
+
+	void TestScene::MaskingTile()
+	{
 		// masking check
 		for (UINT col = 0; col < MAPCOLUMN; col++)
 		{
@@ -380,8 +392,5 @@ namespace cc
 				}
 			}
 		}
-	}
-	void TestScene::MaskingTile()
-	{
 	}
 }

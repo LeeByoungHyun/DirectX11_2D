@@ -2,7 +2,10 @@
 #include "ccResourceManager.h"
 #include "ccObject.h"
 #include "ccCollider2D.h"
+#include "ccSceneManager.h"
+#include "ccScene.h"
 
+#include "ccTestScene.h"
 #include "DirtMasking.h"
 #include "TileColliderScript.h"
 
@@ -14,7 +17,7 @@ namespace cc
 
 	CaveDirt::CaveDirt()
 	{
-
+		destructible = true;
 	}
 
 	CaveDirt::~CaveDirt()
@@ -423,5 +426,24 @@ namespace cc
 
 		maskPos[dir] = dirtMask;
 		masked[dir] = true;
+	}
+
+	void CaveDirt::DestroyTile()
+	{
+		if (destructible == false)
+			return;
+
+		for (UINT i = 0; i < 4; i++)
+			if (maskPos[i])
+				object::Destroy(maskPos[i]);
+		object::Destroy(this);
+
+		Scene* scene = SceneManager::GetActiveScene();
+		TestScene* test = dynamic_cast<TestScene*>(scene);
+		test->RemoveMapTile(colpos, rowpos);
+		if (test)
+		{
+			test->MaskingTile();
+		}
 	}
 }

@@ -17,9 +17,12 @@ namespace cc
 		virtual void Render() override;
 
 		virtual void Masking(int dir);
+		virtual void DestroyTile();
+
 		void SetMask(int direct, bool check) { masking[direct] = check; }
 		bool GetMask(int dir) { return masking[dir]; }
-		void DestroyTile();
+		void SetColPos(int col) { colpos = col; }
+		void SetRowPos(int row) { rowpos = row; }
 
 	protected:
 		MeshRenderer* mMeshRenderer;
@@ -28,5 +31,7 @@ namespace cc
 		bool masking[4];
 		bool masked[4];
 		bool destructible;
+		int colpos;
+		int rowpos;
 	};
 }

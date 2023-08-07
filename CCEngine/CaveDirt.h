@@ -15,6 +15,7 @@ namespace cc
 		virtual void Render() override;
 
 		virtual void Masking(int dir) override;
+		virtual void DestroyTile() override;
 
 	private:
 		class Collider2D* mCollider;
