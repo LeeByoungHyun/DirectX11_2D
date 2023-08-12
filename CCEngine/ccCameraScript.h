@@ -7,6 +7,7 @@ namespace cc
 	{
 	public:
 		virtual void Update() override;
+		virtual void LateUpdate() override;
 
 	private:
 

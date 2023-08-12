@@ -130,7 +130,8 @@ namespace gui
 		tr->SetScale(mesh.scale);
 		tr->SetRotation(mesh.rotation);
 
-		tr->LateUpdate();
+		//tr->LateUpdate();
+		tr->Update();
 
 		// main camera
 		cc::Camera* mainCamara = renderer::mainCamera;

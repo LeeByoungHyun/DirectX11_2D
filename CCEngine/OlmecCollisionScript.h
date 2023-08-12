@@ -19,6 +19,11 @@ namespace cc
 		virtual void OnCollisionExit(Collider2D* other) override;
 
 	private:
+		void PushObject(Collider2D* other);
+		void PushOlmec(Collider2D* other);
+		void collisionCheck(Collider2D* other);
 
+		double mTime;
+		bool crashFlag;
 	};
 }

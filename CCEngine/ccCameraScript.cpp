@@ -9,12 +9,12 @@ namespace cc
 {
 	void CameraScript::Update()
 	{
-		Vector3 playerPos = Player::GetInstance()->GetComponent<Transform>()->GetPosition();
-		Transform* tr = GetOwner()->GetComponent<Transform>();
-		Vector3 pos = tr->GetPosition();
-		pos.x = playerPos.x;
-		pos.y = playerPos.y;
-		tr->SetPosition(pos);
+		//Vector3 playerPos = Player::GetInstance()->GetComponent<Transform>()->GetPosition();
+		//Transform* tr = GetOwner()->GetComponent<Transform>();
+		//Vector3 pos = tr->GetPosition();
+		//pos.x = playerPos.x;
+		//pos.y = playerPos.y;
+		//tr->SetPosition(pos);
 
 		/*
 		Transform* tr = GetOwner()->GetComponent<Transform>();
@@ -52,5 +52,14 @@ namespace cc
 			tr->SetPosition(pos);
 		}
 		*/
+	}
+	void CameraScript::LateUpdate()
+	{
+		Vector3 playerPos = Player::GetInstance()->GetComponent<Transform>()->GetPosition();
+		Transform* tr = GetOwner()->GetComponent<Transform>();
+		Vector3 pos = tr->GetPosition();
+		pos.x = playerPos.x;
+		pos.y = playerPos.y;
+		tr->SetPosition(pos);
 	}
 }

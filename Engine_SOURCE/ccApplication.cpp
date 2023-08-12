@@ -13,7 +13,7 @@ namespace cc
 		, mWidth(-1)
 		, mHeight(-1)
 	{
-
+		mTime = 0.0f;
 	}
 
 	Application::~Application()
@@ -22,7 +22,14 @@ namespace cc
 
 	void Application::Run()
 	{
+		mTime += Time::DeltaTime();
+		
 		Update();
+		if (mTime >= 1.0f / 60.0f)
+		{
+			FixedUpdate();
+			mTime = 0.0f;
+		}
 		LateUpdate();
 		Render();
 		Destroy();
@@ -41,13 +48,18 @@ namespace cc
 	{
 		Time::Update();
 		Input::Update();
-		CollisionManager::Update();
+		//CollisionManager::Update();
 		SceneManager::Update();
 	}
 
 	void Application::LateUpdate()
 	{
 		SceneManager::LateUpdate();
+	}
+
+	void Application::FixedUpdate()
+	{
+		CollisionManager::Update();
 	}
 
 	void Application::Render()

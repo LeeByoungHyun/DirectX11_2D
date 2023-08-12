@@ -22,6 +22,7 @@ namespace cc
 		animationFlag = false;
 		mDirection = eDirection::Left;
 		mState = eOlmecState::Awake; 
+		idleFlag = false;
 		awakeFlag = false;
 		jumpFlag = false;
 		seal = nullptr;
@@ -114,12 +115,19 @@ namespace cc
 
 	void Olmec::idle()
 	{
+		if (idleFlag == false)
+		{
+			idleFlag = true;
+			mTime = 0.0f;
+		}
+
 		mTime += Time::DeltaTime();
 		if (mTime >= 1.5f)
 		{
 			mState = eOlmecState::Jump; 
 			mTime = 0.0f;
-			InitializeState();
+			//InitializeState();
+			idleFlag = false;
 		}
 	}
 
@@ -151,7 +159,7 @@ namespace cc
 			else
 				mDirection = eDirection::Right;
 
-			mRigidbody->AddForce(Vector2(0.0f, -1000.0f));
+			mRigidbody->AddForce(Vector2(0.0f, -500.0f));
 			mRigidbody->SetGround(false);
 
 			checkTime = false;
@@ -213,6 +221,7 @@ namespace cc
 		mTime = 0.0f;
 		mRigidbody->SetVelocity(Vector2::Zero);
 
+		idleFlag = false;
 		jumpFlag = false;
 	}
 }

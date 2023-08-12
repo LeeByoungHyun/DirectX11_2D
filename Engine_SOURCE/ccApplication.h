@@ -16,6 +16,7 @@ namespace cc
 		void Initialize();
 		void Update();
 		void LateUpdate();
+		void FixedUpdate();
 		void Render();
 		void Present();
 		void Destroy();
@@ -33,5 +34,7 @@ namespace cc
 		HWND mHwnd;
 		UINT mWidth;
 		UINT mHeight;
+
+		double mTime;
 	};
 }

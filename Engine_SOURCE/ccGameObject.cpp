@@ -49,6 +49,8 @@ namespace cc
 		{
 			script->Update();
 		}
+
+		collisionFlag = false;
 	}
 
 	void GameObject::LateUpdate()

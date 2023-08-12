@@ -22,6 +22,7 @@ namespace cc
 		Vector2 GetVelocity() { return mVelocity; }
 		bool GetGround() { return mbGround; }
 		void SetActive(bool state) { mActive = state; }
+		void SetDirLock(eDirection dir, bool lock) { dirLock[(UINT)dir] = lock; }
 
 	private:
 		float mMass;
@@ -34,5 +35,7 @@ namespace cc
 		float mFriction;
 		bool mbGround;
 		bool mActive;
+
+		bool dirLock[4];
 	};
 }

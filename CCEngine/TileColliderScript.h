@@ -19,6 +19,6 @@ namespace cc
 		virtual void OnCollisionExit(Collider2D* other) override;
 
 	private:
-
+		void Push(Collider2D* other);
 	};
 }

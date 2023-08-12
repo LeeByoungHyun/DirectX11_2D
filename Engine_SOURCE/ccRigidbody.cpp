@@ -18,6 +18,8 @@ namespace cc
 		mbGround = false;
 		mGravity = Vector2(0.0f, 10.0f);
 		mFriction = 5.0f;
+		for (UINT i = 0; i < 4; i++)
+			dirLock[i] = false;
 	}
 
 	Rigidbody::~Rigidbody()
@@ -93,6 +95,16 @@ namespace cc
 				}
 			}
 
+			// dirLock가 true일 경우 이동하지 않아야 함
+			if (dirLock[(UINT)eDirection::Up] == true && mVelocity.y > 0.0f)
+				mVelocity.y = 0.0f;
+			if (dirLock[(UINT)eDirection::Down] == true && mVelocity.y < 0.0f)
+				mVelocity.y = 0.0f;
+			if (dirLock[(UINT)eDirection::Left] == true && mVelocity.x < 0.0f)
+				mVelocity.x = 0.0f;
+			if (dirLock[(UINT)eDirection::Right] == true && mVelocity.x > 0.0f)
+				mVelocity.x = 0.0f;
+			
 			// 속도에 맞게끔 물체를 이동시킨다.
 			Transform* tr = GetOwner()->GetComponent<Transform>();
 			Vector3 pos = tr->GetPosition();

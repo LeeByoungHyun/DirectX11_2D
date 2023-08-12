@@ -42,19 +42,23 @@ namespace cc
 		virtual void Render() override;
 
 		void SetPlayerState(ePlayerState state) { mState = state; }
+		ePlayerState GetPlayerState() { return mState; }
 		void SetAnimationFlag(bool flag) { animationFlag = flag; }
 		eDirection GetPlayerDirection() { return mDirection; }
 
 	private:
 		// FSM
 		void idle();
-		void move();
+		void walk();
 		void jump();
 		void fall();
 		void attack();
 		void kneel();
 		void crawl();
 		void ghost();
+
+		//
+		void move();
 
 		// Events
 		void AnimationComplete();

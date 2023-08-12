@@ -19,6 +19,8 @@ namespace cc
 		virtual void OnCollisionExit(Collider2D* other) override;
 
 	private:
+		void collisionCheck(Collider2D* other);
+
 		bool onTile;
 	};
 }

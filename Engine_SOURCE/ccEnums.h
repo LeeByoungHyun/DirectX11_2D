@@ -52,7 +52,9 @@ namespace cc::enums
 
 	enum class eDirection
 	{
+		Up,
+		Down,
 		Left,
-		Right
+		Right,
 	};
 }

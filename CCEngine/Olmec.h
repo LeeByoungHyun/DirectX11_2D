@@ -55,6 +55,7 @@ namespace cc
 
 		// flag
 		bool animationFlag;
+		bool idleFlag;
 		bool awakeFlag;
 		bool jumpFlag;
 		bool checkTime;

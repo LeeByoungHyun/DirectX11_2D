@@ -27,11 +27,6 @@ namespace cc
 
 	void Transform::Update()
 	{
-
-	}
-
-	void Transform::LateUpdate()
-	{
 		mWorld = Matrix::Identity;
 
 		Matrix scale = Matrix::CreateScale(mScale);
@@ -54,6 +49,33 @@ namespace cc
 		{
 			mWorld *= mParent->mWorld;
 		}
+	}
+
+	void Transform::LateUpdate()
+	{	/*
+		mWorld = Matrix::Identity;
+
+		Matrix scale = Matrix::CreateScale(mScale);
+
+		Matrix rotation;
+		rotation = Matrix::CreateRotationX(mRotation.x);
+		rotation *= Matrix::CreateRotationY(mRotation.y);
+		rotation *= Matrix::CreateRotationZ(mRotation.z);
+
+		Matrix position;
+		position.Translation(mPosition);
+
+		mWorld = scale * rotation * position;
+
+		mUp = Vector3::TransformNormal(Vector3::Up, rotation);
+		mFoward = Vector3::TransformNormal(Vector3::Forward, rotation);
+		mRight = Vector3::TransformNormal(Vector3::Right, rotation);
+
+		if (mParent)
+		{
+			mWorld *= mParent->mWorld;
+		}
+		*/
 	}
 
 	void Transform::Render()

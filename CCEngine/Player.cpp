@@ -25,7 +25,7 @@ namespace cc
 		mMeshRenderer = AddComponent<MeshRenderer>();
 		mTransform = GetComponent<Transform>();
 		mRigidbody = AddComponent<Rigidbody>();
-
+		mDirection = eDirection::Right;
 	}
 
 	Player::~Player()
@@ -45,7 +45,8 @@ namespace cc
 
 		mCollider->SetSize(Vector2(0.45f, 0.45f));
 
-		//mRigidbody->SetGround(true);
+		mRigidbody->SetGravity(Vector2(0.0f, 20.0f));
+		mRigidbody->SetGround(true);
 
 		// amimator
 		{
@@ -120,7 +121,7 @@ namespace cc
 		InitializeFlag();
 
 		// script
-		//AddComponent<PlayerCollisionScript>();
+		AddComponent<PlayerCollisionScript>();
 	}
 
 	void Player::Update()
@@ -139,7 +140,7 @@ namespace cc
 			break;
 
 		case cc::Player::ePlayerState::Move:
-			move();
+			walk();
 			break;
 
 		case cc::Player::ePlayerState::Jump:
@@ -231,7 +232,7 @@ namespace cc
 		}
 	}
 
-	void Player::move()
+	void Player::walk()
 	{
 		if (animationFlag == false)
 		{
@@ -243,24 +244,7 @@ namespace cc
 			animationFlag = true;
 		}
 
-		Vector3 pos = mTransform->GetPosition();
-		if (Input::GetKey(eKeyCode::LEFT))
-		{
-			if (Input::GetKey(eKeyCode::LSHIFT))
-				pos.x -= PLAYERRUNSPEED * Time::DeltaTime();
-			else
-				pos.x -= PLAYERWALKSPEED * Time::DeltaTime();
-
-			mTransform->SetPosition(pos);
-		}
-		if (Input::GetKey(eKeyCode::RIGHT))
-		{
-			if (Input::GetKey(eKeyCode::LSHIFT))
-				pos.x += PLAYERRUNSPEED * Time::DeltaTime();
-			else
-				pos.x += PLAYERWALKSPEED * Time::DeltaTime();
-			mTransform->SetPosition(pos);
-		}
+		move();
 
 		if (Input::GetKeyUp(eKeyCode::LEFT) || Input::GetKeyUp(eKeyCode::RIGHT))
 		{
@@ -295,17 +279,17 @@ namespace cc
 
 			animationFlag = true;
 
-			Vector2 velocity = mRigidbody->GetVelocity();
-			velocity.y -= 10.0f;
-			mRigidbody->SetVelocity(velocity);
 			mRigidbody->SetGround(false);
+			mRigidbody->AddForce(Vector2(0.0f, -200.0f));
+			
 		}
 
-		
+		move();
 	}
 
 	void Player::fall()
 	{
+		move();
 	}
 
 	void Player::attack()
@@ -325,18 +309,7 @@ namespace cc
 			animationFlag = true;
 		}
 
-
-
-		if (Input::GetKey(eKeyCode::LEFT))
-		{
-			pos.x -= PLAYERWALKSPEED * Time::DeltaTime();
-			mTransform->SetPosition(pos);
-		}
-		if (Input::GetKey(eKeyCode::RIGHT))
-		{
-			pos.x += PLAYERWALKSPEED * Time::DeltaTime();
-			mTransform->SetPosition(pos);
-		}
+		move();
 	}
 
 	void Player::kneel()
@@ -441,29 +414,11 @@ namespace cc
 			animationFlag = true;
 		}
 
-		mRigidbody->SetGround(true);
+		mRigidbody->SetGround(false);
+		mRigidbody->SetVelocity(Vector2::Zero);
+		mRigidbody->SetGravity(Vector2::Zero);
 
-		Vector3 pos = mTransform->GetPosition();
-		if (Input::GetKey(eKeyCode::UP))
-		{
-			pos.y += PLAYERWALKSPEED * Time::DeltaTime();
-			mTransform->SetPosition(pos);
-		}
-		if (Input::GetKey(eKeyCode::LEFT))
-		{
-			pos.x -= PLAYERWALKSPEED * Time::DeltaTime();
-			mTransform->SetPosition(pos);
-		}
-		if (Input::GetKey(eKeyCode::DOWN))
-		{
-			pos.y -= PLAYERWALKSPEED * Time::DeltaTime();
-			mTransform->SetPosition(pos);
-		}
-		if (Input::GetKey(eKeyCode::RIGHT))
-		{
-			pos.x += PLAYERWALKSPEED * Time::DeltaTime();
-			mTransform->SetPosition(pos);
-		}
+		move();
 
 		if (Input::GetKeyDown(eKeyCode::LEFT))
 		{
@@ -475,6 +430,60 @@ namespace cc
 			mDirection = eDirection::Right;
 			animationFlag = false;
 		}
+	}
+
+	void Player::move()
+	{
+		Vector3 pos = mTransform->GetPosition();
+
+		// 
+		if (mState == ePlayerState::Move
+			|| mState == ePlayerState::Attack
+			|| mState == ePlayerState::Jump
+			|| mState == ePlayerState::Fall
+			|| mState == ePlayerState::FallLong)
+		{
+			if (Input::GetKey(eKeyCode::LEFT))
+			{
+				if (Input::GetKey(eKeyCode::LSHIFT))
+					pos.x -= PLAYERRUNSPEED * Time::DeltaTime();
+				else
+					pos.x -= PLAYERWALKSPEED * Time::DeltaTime();
+
+			}
+			if (Input::GetKey(eKeyCode::RIGHT))
+			{
+				if (Input::GetKey(eKeyCode::LSHIFT))
+					pos.x += PLAYERRUNSPEED * Time::DeltaTime();
+				else
+					pos.x += PLAYERWALKSPEED * Time::DeltaTime();
+			}
+
+			mTransform->SetPosition(pos);
+		}
+		else if (mState == ePlayerState::Ghost)
+		{
+			Vector2 pos = Vector2::Zero;
+			if (Input::GetKey(eKeyCode::UP))
+			{
+				pos += Vector2(0.0f, -5.0f);
+			}
+			if (Input::GetKey(eKeyCode::LEFT))
+			{
+				pos += Vector2(-5.0f, 0.0f);
+			}
+			if (Input::GetKey(eKeyCode::DOWN))
+			{
+				pos += Vector2(0.0f, 5.0f);
+			}
+			if (Input::GetKey(eKeyCode::RIGHT))
+			{
+				pos += Vector2(5.0f, 0.0f);
+			}
+
+			mRigidbody->SetVelocity(pos);
+		}
+		
 	}
 
 	void Player::AnimationComplete()
