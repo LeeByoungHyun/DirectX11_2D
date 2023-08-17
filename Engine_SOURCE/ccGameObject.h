@@ -12,7 +12,7 @@ namespace cc
 		enum class eState
 		{
 			Active,
-			Puase,
+			Pause,
 			Dead,
 		};
 

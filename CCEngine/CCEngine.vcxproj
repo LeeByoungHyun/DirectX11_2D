@@ -163,6 +163,7 @@
     <ClInclude Include="Blank.h" />
     <ClInclude Include="BorderMasking.h" />
     <ClInclude Include="BorderTile.h" />
+    <ClInclude Include="MainCamera.h" />
     <ClInclude Include="CaveBG.h" />
     <ClInclude Include="CaveDirt.h" />
     <ClInclude Include="CaveMan.h" />
@@ -200,6 +201,7 @@
     <ClInclude Include="PlayerCollisionScript.h" />
     <ClInclude Include="PlayerMoveScrtpt.h" />
     <ClInclude Include="PlayScene.h" />
+    <ClInclude Include="ScreenCollider.h" />
     <ClInclude Include="TestGun.h" />
     <ClInclude Include="TestGunScript.h" />
     <ClInclude Include="BaseSkyNight.h" />
@@ -207,6 +209,7 @@
     <ClInclude Include="Tile.h" />
     <ClInclude Include="TileColliderScript.h" />
     <ClInclude Include="TitleScene.h" />
+    <ClInclude Include="UICamera.h" />
     <ClInclude Include="Whip.h" />
     <ClInclude Include="WhipColliderScript.h" />
     <ClInclude Include="Wood.h" />
@@ -222,6 +225,7 @@
     <ClCompile Include="Blank.cpp" />
     <ClCompile Include="BorderMasking.cpp" />
     <ClCompile Include="BorderTile.cpp" />
+    <ClCompile Include="MainCamera.cpp" />
     <ClCompile Include="CaveBG.cpp" />
     <ClCompile Include="CaveDirt.cpp" />
     <ClCompile Include="CaveMan.cpp" />
@@ -258,6 +262,7 @@
     <ClCompile Include="PlayerCollisionScript.cpp" />
     <ClCompile Include="PlayerMoveScrtpt.cpp" />
     <ClCompile Include="PlayScene.cpp" />
+    <ClCompile Include="ScreenCollider.cpp" />
     <ClCompile Include="TestGun.cpp" />
     <ClCompile Include="TestGunScript.cpp" />
     <ClCompile Include="BaseSkyNight.cpp" />
@@ -265,6 +270,7 @@
     <ClCompile Include="Tile.cpp" />
     <ClCompile Include="TileColliderScript.cpp" />
     <ClCompile Include="TitleScene.cpp" />
+    <ClCompile Include="UICamera.cpp" />
     <ClCompile Include="Whip.cpp" />
     <ClCompile Include="WhipColliderScript.cpp" />
     <ClCompile Include="Wood.cpp" />

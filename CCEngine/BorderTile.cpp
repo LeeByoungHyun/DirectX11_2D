@@ -12,6 +12,8 @@ namespace cc
 	extern const float TILESIZE;
 	extern const float TILEDEPTH;
 	extern const float MASKINGDIST;
+	extern Vector3 cameraPos;
+	extern Vector2 screenSize;
 
 	BorderTile::BorderTile()
 	{
@@ -203,7 +205,6 @@ namespace cc
 		mTransform->SetScale(Vector3(TILESIZE, TILESIZE, 0.0f));
 
 		mCollider = AddComponent<Collider2D>();
-		//mCollider->SetSize(Vector2(1.2f, 1.2f));
 
 		// script
 		AddComponent<TileColliderScript>();
@@ -221,7 +222,13 @@ namespace cc
 
 	void BorderTile::Render()
 	{
-		GameObject::Render();
+		// 설정한 범위에 포함될 경우에만 render
+		Vector3 mPos = mTransform->GetPosition();
+		if (cameraPos.x - screenSize.x <= mPos.x && mPos.x <= cameraPos.x + screenSize.x
+			&& cameraPos.y - screenSize.y <= mPos.y && mPos.y <= cameraPos.y + screenSize.y)
+		{
+			GameObject::Render();
+		}
 	}
 
 	void BorderTile::Masking(int dir)

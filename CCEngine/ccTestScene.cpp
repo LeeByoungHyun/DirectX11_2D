@@ -21,6 +21,9 @@
 #include "CaveMan.h"
 #include "OlmecSeal.h"
 #include "Olmec.h"
+#include "ScreenCollider.h"
+#include "MainCamera.h"
+#include "UICamera.h"
 
 namespace cc
 {
@@ -71,40 +74,33 @@ namespace cc
 		Olmec* test = object::Instantiate<Olmec>(eLayerType::Monster);
 		test->GetComponent<Transform>()->SetPosition(Vector3(TILESIZE * 15, -TILESIZE * 10, 0.0f));
 		test->GetComponent<Transform>()->AddPosition(Vector3(0.0f, -TILESIZE / 2.0f, 0.0f));
+
+		//ScreenCollider* screenCol = object::Instantiate<ScreenCollider>(eLayerType::UI);
+		//screenCol->SetName(L"screenCol");
 		
-		// Main Camera
-		Camera* cameraComp = nullptr;
-		{
-			GameObject* camera = new GameObject();
-			AddGameObject(eLayerType::UI, camera);
-			camera->GetComponent<Transform>()->SetPosition(Vector3(0.0f, 0.0f, -10.0f));
-			cameraComp = camera->AddComponent<Camera>();
-			cameraComp->TurnLayerMask(eLayerType::UI, false);
-			renderer::cameras.push_back(cameraComp);
-			renderer::mainCamera = cameraComp;
+		// Camera
+		object::Instantiate<MainCamera>(eLayerType::UI);
+		object::Instantiate<UICamera>(eLayerType::Player);
 
-			camera->AddComponent<CameraScript>();
-		}
-		{
-			//GameObject* camera = new GameObject();
-			//AddGameObject(eLayerType::Player, camera);
-			//camera->GetComponent<Transform>()->SetPosition(Vector3(0.0f, 0.0f, -10.0f));
-			//Camera* cameraComp = camera->AddComponent<Camera>();
-			//cameraComp->TurnLayerMask(eLayerType::UI, false);
-			//renderer::cameras.push_back(cameraComp);
-			//renderer::mainCamera = cameraComp;
-			//
-			//camera->AddComponent<CameraScript>();
-		}
-
+		//Camera* cameraComp = nullptr;
+		//{
+		//	GameObject* camera = new GameObject();
+		//	AddGameObject(eLayerType::UI, camera);
+		//	camera->GetComponent<Transform>()->SetPosition(Vector3(0.0f, 0.0f, -10.0f));
+		//	cameraComp = camera->AddComponent<Camera>();
+		//	cameraComp->TurnLayerMask(eLayerType::UI, false);
+		//	renderer::cameras.push_back(cameraComp);
+		//	renderer::mainCamera = cameraComp;
+		//	camera->AddComponent<CameraScript>();
+		//}
 		// UI Camera
-		{
-			GameObject* camera = new GameObject();
-			AddGameObject(eLayerType::Player, camera);
-			camera->GetComponent<Transform>()->SetPosition(Vector3(10000.0f, 10000.0f, -10.0f));
-			Camera* cameraComp = camera->AddComponent<Camera>();
-			cameraComp->TurnLayerMask(eLayerType::Player, false);
-		}
+		//{
+		//	GameObject* camera = new GameObject();
+		//	AddGameObject(eLayerType::Player, camera);
+		//	camera->GetComponent<Transform>()->SetPosition(Vector3(10000.0f, 10000.0f, -10.0f));
+		//	Camera* cameraComp = camera->AddComponent<Camera>();
+		//	cameraComp->TurnLayerMask(eLayerType::Player, false);
+		//}
 	}
 
 	void TestScene::Update()

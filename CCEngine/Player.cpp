@@ -280,8 +280,8 @@ namespace cc
 			animationFlag = true;
 
 			mRigidbody->SetGround(false);
-			mRigidbody->AddForce(Vector2(0.0f, -200.0f));
-			
+			//mRigidbody->AddForce(Vector2(0.0f, -200.0f));
+			mRigidbody->SetVelocity(Vector2(0.0f, -10.0f));
 		}
 
 		move();

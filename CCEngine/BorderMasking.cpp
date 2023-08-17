@@ -5,6 +5,8 @@
 namespace cc
 {
 	extern const float TILEDEPTH;
+	extern Vector3 cameraPos;
+	extern Vector2 screenSize;
 
 	BorderMasking::BorderMasking()
 	{
@@ -35,7 +37,13 @@ namespace cc
 
 	void BorderMasking::Render()
 	{
-		GameObject::Render();
+		// 설정한 범위에 포함될 경우에만 render
+		Vector3 mPos = mTransform->GetPosition();
+		if (cameraPos.x - screenSize.x <= mPos.x && mPos.x <= cameraPos.x + screenSize.x
+			&& cameraPos.y - screenSize.y <= mPos.y && mPos.y <= cameraPos.y + screenSize.y)
+		{
+			GameObject::Render();
+		}
 	}
 
 	void BorderMasking::SetDirection(int dir)

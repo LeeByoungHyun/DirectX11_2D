@@ -28,9 +28,9 @@ namespace cc
 	{
 		for (GameObject* gameObj : mGameObjects)
 		{
-			if (gameObj->GetState()
-				!= GameObject::eState::Active)
-				continue;
+			//if (gameObj->GetState()
+			//	!= GameObject::eState::Active)
+			//	continue;
 		
 			gameObj->Update();	
 		}
@@ -40,9 +40,9 @@ namespace cc
 	{
 		for (GameObject* gameObj : mGameObjects)
 		{
-			if (gameObj->GetState()
-				!= GameObject::eState::Active)
-				continue;
+			//if (gameObj->GetState()
+			//	!= GameObject::eState::Active)
+			//	continue;
 
 			gameObj->LateUpdate();
 		}
@@ -52,9 +52,9 @@ namespace cc
 	{
 		for (GameObject* gameObj : mGameObjects)
 		{
-			if (gameObj->GetState()
-				!= GameObject::eState::Active)
-				continue;
+			//if (gameObj->GetState()
+			//	!= GameObject::eState::Active)
+			//	continue;
 
 			gameObj->Render();
 		}

@@ -3,6 +3,7 @@
 #include "ccMeshRenderer.h"
 #include "ccTransform.h"
 #include "ccAnimator.h"
+#include "ccRigidbody.h"
 
 namespace cc
 {

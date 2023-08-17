@@ -159,7 +159,7 @@ namespace cc
 			else
 				mDirection = eDirection::Right;
 
-			mRigidbody->AddForce(Vector2(0.0f, -500.0f));
+			mRigidbody->SetVelocity(Vector2(0.0f, -12.0f));
 			mRigidbody->SetGround(false);
 
 			checkTime = false;

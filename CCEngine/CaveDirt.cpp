@@ -14,6 +14,8 @@ namespace cc
 	extern const float TILESIZE;
 	extern const float TILEDEPTH;
 	extern const float MASKINGDIST;
+	extern Vector3 cameraPos;
+	extern Vector2 screenSize;
 
 	CaveDirt::CaveDirt()
 	{
@@ -374,7 +376,6 @@ namespace cc
 		mTransform->SetScale(Vector3(TILESIZE, TILESIZE, 0.0f));
 
 		mCollider = AddComponent<Collider2D>();
-		//mCollider->SetSize(Vector2(2.0f, 2.0f));
 
 		// script
 		AddComponent<TileColliderScript>();
@@ -392,7 +393,13 @@ namespace cc
 
 	void CaveDirt::Render()
 	{
-		GameObject::Render();
+		// 설정한 범위에 포함될 경우에만 render
+		Vector3 mPos = mTransform->GetPosition();
+		if (cameraPos.x - screenSize.x <= mPos.x && mPos.x <= cameraPos.x + screenSize.x
+			&& cameraPos.y - screenSize.y <= mPos.y && mPos.y <= cameraPos.y + screenSize.y)
+		{
+			GameObject::Render();
+		}
 	}
 
 	void CaveDirt::Masking(int dir)

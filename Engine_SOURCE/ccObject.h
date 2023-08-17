@@ -4,10 +4,14 @@
 #include "ccScene.h"
 #include "ccSceneManager.h"
 #include "ccTransform.h"
+#include "..//CCEngine//MainCamera.h"
 
 
 namespace cc::object
 {
+	//extern Vector3 cameraPos;
+	//extern Vector2 screenSize;
+
 	template <typename T>
 	static __forceinline T* Instantiate(enums::eLayerType layer)
 	{
@@ -80,5 +84,17 @@ namespace cc::object
 	static __forceinline void Destroy(GameObject* gameObj)
 	{
 		gameObj->SetState(cc::GameObject::eState::Dead);
+	}
+
+	static void CheckActive(GameObject* gameObj)
+	{
+		//Vector3 mPos = gameObj->GetComponent<Transform>()->GetPosition();
+		//Vector3 cameraPos = MainCamera::GatCameraPos();
+		//Vector2 screenSize = MainCamera::screenSize;
+		//if (cameraPos.x - screenSize.x <= mPos.x && mPos.x <= cameraPos.x + screenSize.x
+		//	&& cameraPos.y - screenSize.y <= mPos.y && mPos.y <= cameraPos.y + screenSize.y)
+		//	gameObj->SetState(GameObject::eState::Active);
+		//else
+		//	gameObj->SetState(GameObject::eState::Pause);
 	}
 }
