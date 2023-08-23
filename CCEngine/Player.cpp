@@ -26,6 +26,9 @@ namespace cc
 		mTransform = GetComponent<Transform>();
 		mRigidbody = AddComponent<Rigidbody>();
 		mDirection = eDirection::Right;
+
+		isFalling = false;
+		isOnGround = false;
 	}
 
 	Player::~Player()
@@ -175,6 +178,21 @@ namespace cc
 	void Player::LateUpdate()
 	{
 		GameObject::LateUpdate();
+
+		// Player가 현재 공중에 있는지 체크
+		if (isFalling == true)
+		{
+			mRigidbody->SetGround(false);
+
+			// 특정 state가 아닐 때 낙하 state로 변경
+			if (mState != ePlayerState::Attack 
+				|| mState != ePlayerState::Fall
+				|| mState != ePlayerState::FallLong
+				|| mState != ePlayerState::Jump)
+			{
+				mState = ePlayerState::Fall;
+			}
+		}
 	}
 
 	void Player::Render()

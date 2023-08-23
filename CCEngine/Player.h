@@ -47,6 +47,9 @@ namespace cc
 		void SetAnimationFlag(bool flag) { animationFlag = flag; }
 		eDirection GetPlayerDirection() { return mDirection; }
 
+		void SetIsFalling(bool state) { isFalling = state; }
+		void SetIsOnGround(bool state) { isOnGround = state; }
+
 	private:
 		// FSM
 		void idle();
@@ -85,5 +88,8 @@ namespace cc
 		bool kneelUpFlag;
 		bool kneelDownEndFlag;
 		bool crawlFlag;
+
+		bool isFalling;
+		bool isOnGround;
 	};
 }

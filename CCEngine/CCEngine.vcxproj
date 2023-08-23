@@ -198,6 +198,8 @@
     <ClInclude Include="OlmecSeal.h" />
     <ClInclude Include="PhysxScene.h" />
     <ClInclude Include="Player.h" />
+    <ClInclude Include="PlayerCheckGroundCollider.h" />
+    <ClInclude Include="PlayerCheckGroundScript.h" />
     <ClInclude Include="PlayerCollisionScript.h" />
     <ClInclude Include="PlayerMoveScrtpt.h" />
     <ClInclude Include="PlayScene.h" />
@@ -259,6 +261,8 @@
     <ClCompile Include="OlmecSeal.cpp" />
     <ClCompile Include="PhysxScene.cpp" />
     <ClCompile Include="Player.cpp" />
+    <ClCompile Include="PlayerCheckGroundCollider.cpp" />
+    <ClCompile Include="PlayerCheckGroundScript.cpp" />
     <ClCompile Include="PlayerCollisionScript.cpp" />
     <ClCompile Include="PlayerMoveScrtpt.cpp" />
     <ClCompile Include="PlayScene.cpp" />

@@ -24,6 +24,7 @@
 #include "ScreenCollider.h"
 #include "MainCamera.h"
 #include "UICamera.h"
+#include "PlayerCheckGroundCollider.h"
 
 namespace cc
 {
@@ -70,6 +71,7 @@ namespace cc
 		player->SetName(L"Player");
 		object::Instantiate(player, eLayerType::Player);
 		player->GetComponent<Transform>()->AddPosition(Vector3(TILESIZE * 5, -TILESIZE * 12, 0.0f));
+		PlayerCheckPosition* pcgc = object::Instantiate<PlayerCheckPosition>(eLayerType::PlayerCheck);
 
 		Olmec* test = object::Instantiate<Olmec>(eLayerType::Monster);
 		test->GetComponent<Transform>()->SetPosition(Vector3(TILESIZE * 15, -TILESIZE * 10, 0.0f));
@@ -128,6 +130,9 @@ namespace cc
 		CollisionManager::SetLayer(eLayerType::Player, eLayerType::Monster, true);
 		CollisionManager::SetLayer(eLayerType::Monster, eLayerType::Tile, true);
 		CollisionManager::SetLayer(eLayerType::Weapon, eLayerType::Monster, true);
+		CollisionManager::SetLayer(eLayerType::Tile, eLayerType::PlayerCheck, true);
+		CollisionManager::SetLayer(eLayerType::PlayerCheck, eLayerType::Tile, true);
+
 	}
 	void TestScene::OnExit()
 	{

@@ -3,11 +3,11 @@
 
 namespace cc
 {
-	class PlayerCollisionScript : public Script
+	class PlayerCheckGroundScript : public Script
 	{
 	public:
-		PlayerCollisionScript();
-		~PlayerCollisionScript();
+		PlayerCheckGroundScript();
+		~PlayerCheckGroundScript();
 
 		virtual void Initialize() override;
 		virtual void Update() override;
@@ -19,10 +19,12 @@ namespace cc
 		virtual void OnCollisionExit(Collider2D* other) override;
 
 	private:
-		Player* player;
 
-		void collisionCheck(Collider2D* other);
+		bool IsFalling();
+		bool IsOnGround();
 
-		bool onTile;
+
+		bool onGround;
+		bool onAir;
 	};
 }

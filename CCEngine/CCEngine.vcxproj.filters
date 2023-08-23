@@ -176,6 +176,12 @@
     <ClCompile Include="UICamera.cpp">
       <Filter>Content\GameObject\Camera</Filter>
     </ClCompile>
+    <ClCompile Include="PlayerCheckGroundCollider.cpp">
+      <Filter>Content\GameObject\Player\CheckGround</Filter>
+    </ClCompile>
+    <ClCompile Include="PlayerCheckGroundScript.cpp">
+      <Filter>Content\GameObject\Player\CheckGround</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="framework.h" />
@@ -355,6 +361,12 @@
     </ClInclude>
     <ClInclude Include="UICamera.h">
       <Filter>Content\GameObject\Camera</Filter>
+    </ClInclude>
+    <ClInclude Include="PlayerCheckGroundCollider.h">
+      <Filter>Content\GameObject\Player\CheckGround</Filter>
+    </ClInclude>
+    <ClInclude Include="PlayerCheckGroundScript.h">
+      <Filter>Content\GameObject\Player\CheckGround</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -585,6 +597,9 @@
     </Filter>
     <Filter Include="Content\GameObject\Camera">
       <UniqueIdentifier>{5e954f7d-07dd-4177-a055-a87f249e0f92}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Content\GameObject\Player\CheckGround">
+      <UniqueIdentifier>{9f58a559-82b4-4a76-b79a-609b6cc16003}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
 </Project>

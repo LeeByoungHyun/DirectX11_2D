@@ -43,7 +43,11 @@ namespace cc
 		if (olmec != nullptr)
 			return;
 
-		Push(other);
+		if (other->GetOwner()->GetType() != eLayerType::PlayerCheck)
+		{
+			Push(other);
+		}
+		
 	}
 
 	void TileColliderScript::OnCollisionStay(Collider2D* other)
@@ -56,7 +60,10 @@ namespace cc
 				return;
 		}
 
-		Push(other);
+		if (other->GetOwner()->GetType() != eLayerType::PlayerCheck)
+		{
+			Push(other);
+		}
 	}
 
 	void TileColliderScript::OnCollisionExit(Collider2D* other)
@@ -66,10 +73,10 @@ namespace cc
 		{
 			//other->GetOwner()->GetComponent<Rigidbody>()->SetGround(false);
 
-			other->GetOwner()->GetComponent<Rigidbody>()->SetDirLock(eDirection::Up, false);
-			other->GetOwner()->GetComponent<Rigidbody>()->SetDirLock(eDirection::Right, false);
-			other->GetOwner()->GetComponent<Rigidbody>()->SetDirLock(eDirection::Down, false);
-			other->GetOwner()->GetComponent<Rigidbody>()->SetDirLock(eDirection::Left, false);
+			//other->GetOwner()->GetComponent<Rigidbody>()->SetDirLock(eDirection::Up, false);
+			//other->GetOwner()->GetComponent<Rigidbody>()->SetDirLock(eDirection::Right, false);
+			//other->GetOwner()->GetComponent<Rigidbody>()->SetDirLock(eDirection::Down, false);
+			//other->GetOwner()->GetComponent<Rigidbody>()->SetDirLock(eDirection::Left, false);
 		}
 	}
 

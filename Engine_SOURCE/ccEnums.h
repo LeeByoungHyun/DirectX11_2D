@@ -25,6 +25,7 @@ namespace cc::enums
 		Tile,
 		Monster,
 		Player,
+		PlayerCheck,
 		Weapon,
 		FrontObject,
 		UI,

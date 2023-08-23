@@ -25,11 +25,12 @@ namespace cc
 		mTime += Time::DeltaTime();
 		
 		Update();
-		if (mTime >= 1.0f / 60.0f)
-		{
-			FixedUpdate();
-			mTime = 0.0f;
-		}
+		//if (mTime >= 1.0f / 60.0f)
+		//{
+		//	FixedUpdate();
+		//	mTime = 0.0f;
+		//}
+		FixedUpdate();
 		LateUpdate();
 		Render();
 		Destroy();
