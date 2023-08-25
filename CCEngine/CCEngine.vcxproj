@@ -163,6 +163,8 @@
     <ClInclude Include="Blank.h" />
     <ClInclude Include="BorderMasking.h" />
     <ClInclude Include="BorderTile.h" />
+    <ClInclude Include="CaveEntrance.h" />
+    <ClInclude Include="CaveExit.h" />
     <ClInclude Include="MainCamera.h" />
     <ClInclude Include="CaveBG.h" />
     <ClInclude Include="CaveDirt.h" />
@@ -227,6 +229,8 @@
     <ClCompile Include="Blank.cpp" />
     <ClCompile Include="BorderMasking.cpp" />
     <ClCompile Include="BorderTile.cpp" />
+    <ClCompile Include="CaveEntrance.cpp" />
+    <ClCompile Include="CaveExit.cpp" />
     <ClCompile Include="MainCamera.cpp" />
     <ClCompile Include="CaveBG.cpp" />
     <ClCompile Include="CaveDirt.cpp" />

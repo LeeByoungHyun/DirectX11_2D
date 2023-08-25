@@ -22,6 +22,8 @@ namespace cc::enums
 		Grid,
 		Map,
 		BG,
+		BackObject,
+		Entrance,
 		Tile,
 		Monster,
 		Player,
