@@ -85,6 +85,14 @@ namespace cc
 
 		// flag
 		bool animationFlag;
+
+		// stateFlag
+		bool idleFlag;
+		bool moveFlag;
+		bool jumpFlag;
+		bool fallFlag;
+		bool falllongFlag;
+		bool attackFlag;
 		bool kneelUpFlag;
 		bool kneelDownEndFlag;
 		bool crawlFlag;

@@ -168,11 +168,15 @@ namespace cc
 		else if (dir == (UINT)eDirection::Down)	// 하
 		{
 			// 
-
 			if (Player::GetInstance()->GetComponent<Rigidbody>()->GetGround() == false)
 			{
 				Player::GetInstance()->GetComponent<Rigidbody>()->SetGround(true);
-				Player::GetInstance()->SetPlayerState(Player::ePlayerState::Idle);
+
+				// tile에 착지했을 때 특정 state가 아니라면 idle
+				if (Player::GetInstance()->GetPlayerState() != Player::ePlayerState::Attack)
+				{
+					Player::GetInstance()->SetPlayerState(Player::ePlayerState::Idle);
+				}
 			}
 
 			//Player::GetInstance()->GetComponent<Rigidbody>()->SetGround(true);

@@ -52,7 +52,7 @@ namespace cc
 
 		mRigidbody->SetGround(true);
 		mRigidbody->SetMass(2.0f);
-		mRigidbody->SetGravity(Vector2(0.0f, 15.0f));
+		mRigidbody->SetGravity(Vector2(0.0f, 30.0f));
 
 		// texture
 		{
@@ -159,7 +159,7 @@ namespace cc
 			else
 				mDirection = eDirection::Right;
 
-			mRigidbody->SetVelocity(Vector2(0.0f, -12.0f));
+			mRigidbody->SetVelocity(Vector2(0.0f, -20.0f));
 			mRigidbody->SetGround(false);
 
 			checkTime = false;
@@ -191,11 +191,11 @@ namespace cc
 
 			if (mDirection == eDirection::Left)
 			{
-				mRigidbody->SetVelocity(Vector2(-5.0f, mVelocity.y));
+				mRigidbody->SetVelocity(Vector2(-8.0f, mVelocity.y));
 			}
 			else
 			{
-				mRigidbody->SetVelocity(Vector2(5.0f, mVelocity.y));
+				mRigidbody->SetVelocity(Vector2(8.0f, mVelocity.y));
 			}
 		}
 

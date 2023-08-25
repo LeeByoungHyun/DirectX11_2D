@@ -15,9 +15,9 @@ namespace cc
 
 	extern const float TILEDEPTH;
 	extern const float PLAYERDEPTH;
-	const float PLAYERWALKSPEED = 5.0f;
-	const float PLAYERRUNSPEED = 7.5f;
-	const float PLAYERCRAWLSPEED = 2.5f;
+	const float PLAYERWALKSPEED = 8.0f;
+	const float PLAYERRUNSPEED = 12.0f;
+	const float PLAYERCRAWLSPEED = 4.0f;
 
 	Player::Player()
 	{
@@ -25,7 +25,20 @@ namespace cc
 		mMeshRenderer = AddComponent<MeshRenderer>();
 		mTransform = GetComponent<Transform>();
 		mRigidbody = AddComponent<Rigidbody>();
+		mAnimator = AddComponent<Animator>();
 		mDirection = eDirection::Right;
+		mState = ePlayerState::Idle;
+
+		animationFlag = false;
+		idleFlag = false;
+		moveFlag = false;
+		jumpFlag = false;
+		fallFlag = false;
+		falllongFlag = false;
+		attackFlag = false;
+		kneelUpFlag = false;
+		kneelDownEndFlag = false;
+		crawlFlag = false;
 
 		isFalling = false;
 		isOnGround = false;
@@ -48,7 +61,7 @@ namespace cc
 
 		mCollider->SetSize(Vector2(0.45f, 0.45f));
 
-		mRigidbody->SetGravity(Vector2(0.0f, 20.0f));
+		mRigidbody->SetGravity(Vector2(0.0f, 40.0f));
 		mRigidbody->SetGround(true);
 
 		// amimator
@@ -56,7 +69,6 @@ namespace cc
 			std::shared_ptr<Texture> atlas
 				= ResourceManager::Load<Texture>(L"player.png", L"..\\Resources\\Texture\\Player\\player.png");
 		
-			mAnimator = AddComponent<Animator>();
 			mAnimator->Create(L"Idle_r", atlas, Vector2(128.0f * 0, 128.0f * 0), Vector2(128.0f, 128.0f), 1);
 			mAnimator->Create(L"Idle_l", atlas, Vector2(128.0f * 0, 128.0f * 1), Vector2(128.0f, 128.0f), 1);
 			mAnimator->Create(L"Wark_r", atlas, Vector2(128.0f * 0, 128.0f * 2), Vector2(128.0f, 128.0f), 8);
@@ -119,7 +131,7 @@ namespace cc
 			mAnimator->EndEvent(L"KneelDown_l") = std::bind(&Player::KneelDownEnd, this);
 		}
 		
-		mState = ePlayerState::Idle;
+		
 
 		InitializeFlag();
 
@@ -186,11 +198,14 @@ namespace cc
 
 			// 특정 state가 아닐 때 낙하 state로 변경
 			if (mState != ePlayerState::Attack 
-				|| mState != ePlayerState::Fall
-				|| mState != ePlayerState::FallLong
-				|| mState != ePlayerState::Jump)
+				&& mState != ePlayerState::Fall
+				&& mState != ePlayerState::FallLong
+				&& mState != ePlayerState::Jump
+				&& mState != ePlayerState::Ghost)
 			{
-				mState = ePlayerState::Fall;
+  				mState = ePlayerState::Fall;
+
+				InitializeFlag();
 			}
 		}
 	}
@@ -204,62 +219,62 @@ namespace cc
 	{
 		InitializeFlag();
 
-		if (animationFlag == false)
+		if (idleFlag == false)
 		{
 			if (mDirection == eDirection::Left)
 				mAnimator->PlayAnimation(L"Idle_l", true);
 			else if (mDirection == eDirection::Right)
 				mAnimator->PlayAnimation(L"Idle_r", true);
 
-			animationFlag = true;
+			idleFlag = true;
 		}
 
 		if (Input::GetKey(eKeyCode::LEFT) || Input::GetKey(eKeyCode::RIGHT))
 		{
 			mState = ePlayerState::Move;
 
-			animationFlag = false;
+			idleFlag = false;
 		}
 
 		if (Input::GetKey(eKeyCode::DOWN))
 		{
 			mState = ePlayerState::Kneel;
 
-			animationFlag = false;
+			idleFlag = false;
 		}
 
 		if (Input::GetKeyDown(eKeyCode::Q))
 		{
 			mState = ePlayerState::Attack;
 
-			animationFlag = false;
+			idleFlag = false;
 		}
 
 		if (Input::GetKey(eKeyCode::O))
 		{
 			mState = ePlayerState::Ghost;
 
-			animationFlag = false;
+			idleFlag = false;
 		}
 
 		if (Input::GetKeyDown(eKeyCode::SPACE))
 		{
 			mState = ePlayerState::Jump;
 
-			animationFlag = false;
+			idleFlag = false;
 		}
 	}
 
 	void Player::walk()
 	{
-		if (animationFlag == false)
+		if (moveFlag == false)
 		{
 			if (mDirection == eDirection::Left)
 				mAnimator->PlayAnimation(L"Wark_l", true);
 			else if (mDirection == eDirection::Right)
 				mAnimator->PlayAnimation(L"Wark_r", true);
 
-			animationFlag = true;
+			moveFlag = true;
 		}
 
 		move();
@@ -268,38 +283,45 @@ namespace cc
 		{
 			mState = ePlayerState::Idle;
 
-			animationFlag = false;
+			moveFlag = false;
 		}
 
 		if (Input::GetKeyDown(eKeyCode::Q))
 		{
 			mState = ePlayerState::Attack;
 
-			animationFlag = false;
+			moveFlag = false;
 		}
 
 		if (Input::GetKeyDown(eKeyCode::SPACE))
 		{
 			mState = ePlayerState::Jump;
 
-			animationFlag = false;
+			moveFlag = false;
 		}
 	}
 
 	void Player::jump()
 	{
-		if (animationFlag == false)
+		if (jumpFlag == false)
 		{
 			if (mDirection == eDirection::Left)
 				mAnimator->PlayAnimation(L"Jump_l", false);
 			else if (mDirection == eDirection::Right)
 				mAnimator->PlayAnimation(L"Jump_r", false);
 
-			animationFlag = true;
+			jumpFlag = true;
 
 			mRigidbody->SetGround(false);
 			//mRigidbody->AddForce(Vector2(0.0f, -200.0f));
-			mRigidbody->SetVelocity(Vector2(0.0f, -10.0f));
+			mRigidbody->SetVelocity(Vector2(0.0f, -15.0f));
+		}
+
+		if (Input::GetKeyDown(eKeyCode::Q))
+		{
+			mState = ePlayerState::Attack;
+
+			jumpFlag = false;
 		}
 
 		move();
@@ -307,6 +329,25 @@ namespace cc
 
 	void Player::fall()
 	{
+		if (fallFlag == false)
+		{
+			if (mDirection == eDirection::Left)
+				mAnimator->PlayAnimation(L"Fall_l", false);
+			else if (mDirection == eDirection::Right)
+				mAnimator->PlayAnimation(L"Fall_r", false);
+
+			fallFlag = true;
+
+			mRigidbody->SetGround(false);
+		}
+
+		if (Input::GetKeyDown(eKeyCode::Q))
+		{
+			mState = ePlayerState::Attack;
+
+			jumpFlag = false;
+		}
+
 		move();
 	}
 
@@ -314,7 +355,7 @@ namespace cc
 	{
 		Vector3 pos = mTransform->GetPosition();
 
-		if (animationFlag == false)
+		if (attackFlag == false)
 		{
 			if (mDirection == eDirection::Left)
 				mAnimator->PlayAnimation(L"PlayerWhip_l", true);
@@ -324,7 +365,7 @@ namespace cc
 			Scene* sdf = SceneManager::GetActiveScene();
 			object::Instantiate<Whip>(enums::eLayerType::Weapon);
 
-			animationFlag = true;
+			attackFlag = true;
 		}
 
 		move();
@@ -535,9 +576,14 @@ namespace cc
 	void Player::InitializeFlag()
 	{
 		animationFlag = false;
+		idleFlag = false;
+		moveFlag = false;
+		jumpFlag = false;
+		fallFlag = false;
+		falllongFlag = false;
+		attackFlag = false;
 		kneelUpFlag = false;
 		kneelDownEndFlag = false;
 		crawlFlag = false;
 	}
-
 }
