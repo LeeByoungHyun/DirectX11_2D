@@ -33,10 +33,6 @@ namespace cc
 	{
 		Script::LateUpdate();
 
-		if (onTile == false)
-		{
-			this->GetOwner()->GetComponent<Rigidbody>()->SetGround(false);
-		}
 	}
 
 	void PlayerCollisionScript::Render()
@@ -56,8 +52,6 @@ namespace cc
 		case eLayerType::Tile:
 			if (player->GetPlayerState() == Player::ePlayerState::Ghost)
 				return;
-
-			onTile = true;
 
 			collisionCheck(other);
 
@@ -175,25 +169,23 @@ namespace cc
 
 		if (dir == (UINT)eDirection::Up)	// 상
 		{
-			//Vector2 vel = Player::GetInstance()->GetComponent<Rigidbody>()->GetVelocity();
-			//Player::GetInstance()->GetComponent<Rigidbody>()->SetVelocity(vel);
+			
 		}
 		else if (dir == (UINT)eDirection::Down)	// 하
 		{
-			// 
-			if (Player::GetInstance()->GetComponent<Rigidbody>()->GetGround() == false)
-			{
-				Player::GetInstance()->GetComponent<Rigidbody>()->SetGround(true);
-
 				// tile에 착지했을 때 특정 state가 아니라면 idle
 				if (Player::GetInstance()->GetPlayerState() != Player::ePlayerState::Attack)
 				{
+					Player::GetInstance()->GetComponent<Rigidbody>()->SetGround(true);
 					Player::GetInstance()->SetPlayerState(Player::ePlayerState::Idle);
 				}
-			}
-
-			//Player::GetInstance()->GetComponent<Rigidbody>()->SetGround(true);
-			//Player::GetInstance()->SetPlayerState(Player::ePlayerState::Idle);
+				else
+				{
+					if (Player::GetInstance()->GetComponent<Rigidbody>()->GetVelocity().y >= 0.0f)
+					{
+						Player::GetInstance()->GetComponent<Rigidbody>()->SetGround(true);
+					}
+				}
 		}
 		else if (dir == (UINT)eDirection::Left)	// 좌
 		{

@@ -41,6 +41,11 @@ namespace cc
 	void PlayerCheckPosition::LateUpdate()
 	{
 		GameObject::LateUpdate();
+
+		if (Player::GetInstance()->GetIsFalling() == true)
+			mCollider->SetSize(Vector2(0.5f, 1.0f));
+		else
+			mCollider->SetSize(Vector2(0.9f, 1.0f));
 	}
 
 	void PlayerCheckPosition::Render()

@@ -217,6 +217,21 @@ namespace cc
 				InitializeFlag();
 			}
 		}
+
+		if (isOnGround == true
+			&& mRigidbody->GetVelocity().y > 0.0f)
+		{
+			mRigidbody->SetGround(true);
+
+			if (mState != ePlayerState::Idle
+				&& mState != ePlayerState::Move
+				&& mState != ePlayerState::Attack
+				&& mState != ePlayerState::Ghost
+				&& mState != ePlayerState::Enter)
+			{
+				mState = ePlayerState::Idle;
+			}
+		}
 	}
 
 	void Player::Render()

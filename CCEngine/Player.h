@@ -50,6 +50,7 @@ namespace cc
 
 		void SetIsFalling(bool state) { isFalling = state; }
 		void SetIsOnGround(bool state) { isOnGround = state; }
+		bool GetIsFalling() { return isFalling; }
 
 		void SetExitPos(Vector2 pos) { exitPos = pos; }
 

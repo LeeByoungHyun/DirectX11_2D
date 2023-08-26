@@ -19,10 +19,9 @@ namespace cc
 		virtual void OnCollisionExit(Collider2D* other) override;
 
 	private:
-
 		bool IsFalling();
 		bool IsOnGround();
-
+		void collisionCheck(Collider2D* other);
 
 		bool onGround;
 		bool onAir;
