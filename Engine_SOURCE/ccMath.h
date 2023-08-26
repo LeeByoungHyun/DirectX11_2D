@@ -38,6 +38,16 @@ namespace cc::math
         return degree * PI / 180;
     }
 
+    // 선형보간법
+    static float Lerp(float p1, float p2, float d1) 
+    {
+        // p1 == 시작점 
+        // p2 == 도착점
+        // d1 == 현재 지나간 시간 / 목적지까지 걸리는 시간
+
+        return (((1 - d1) * p1) + (d1 * p2));
+    }
+
     //static math::Vector2& Normalize(math::Vector2& vec)
     //{
     //    float length = sqrtf(vec.x * vec.x + vec.y * vec.y);

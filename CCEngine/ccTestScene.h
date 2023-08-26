@@ -19,7 +19,8 @@ namespace cc
 		virtual void OnExit() override;
 
 		void CreatePath();
-		void CreateMap();
+		void CreateLevel();
+		void ResetMap();
 		void MaskingTile();
 		void RemoveMapTile(int col, int row) 
 		{ 

@@ -39,9 +39,14 @@ namespace cc
 		kneelUpFlag = false;
 		kneelDownEndFlag = false;
 		crawlFlag = false;
+		exitFlag = false;
 
 		isFalling = false;
 		isOnGround = false;
+
+		startPos = Vector2::Zero;
+		exitPos = Vector2::Zero;
+		mTime = 0.0f;
 	}
 
 	Player::~Player()
@@ -176,6 +181,10 @@ namespace cc
 
 		case cc::Player::ePlayerState::Crawl:
 			crawl();
+			break;
+
+		case cc::Player::ePlayerState::Enter:
+			enter();
 			break;
 
 		case cc::Player::ePlayerState::Ghost:
@@ -461,6 +470,49 @@ namespace cc
 
 	}
 
+	void Player::enter()
+	{
+		if (exitFlag == false)
+		{
+			exitFlag = true;
+
+			// 출구와 완전히 겹쳐있지 않으면 겹칠때까지 이동
+			if (mTransform->GetPosition().x != exitPos.x)
+			{
+				startPos = Vector2(mTransform->GetPosition().x, mTransform->GetPosition().y);
+			}
+
+			// 방향 체크
+			if (mTransform->GetPosition().x - exitPos.x > 0.0f)
+				mAnimator->PlayAnimation(L"Wark_l", true);
+			else
+				mAnimator->PlayAnimation(L"Wark_r", true);
+		}
+
+		mTime += Time::DeltaTime();
+		if (mTime < 0.66f)
+		{
+			// 선형 보간법을 활용하여 출구까지 이동
+			float t = mTime / 0.66f;
+			float x = Lerp(startPos.x, exitPos.x, t);
+
+			Vector3 mPos = mTransform->GetPosition();
+			mTransform->SetPosition(x, mPos.y, mPos.z);
+		}
+
+		if (mTime >= 0.66f)
+		{
+			mAnimator->PlayAnimation(L"Enter", true);
+		}
+
+		// NextLevel 씬으로 이동 후 맵 초기화
+		if (mTime >= 2.0f)
+		{
+			mState = ePlayerState::Idle;
+			InitializeFlag();
+		}
+	}
+
 	void Player::ghost()
 	{
 		if (animationFlag == false)
@@ -585,5 +637,8 @@ namespace cc
 		kneelUpFlag = false;
 		kneelDownEndFlag = false;
 		crawlFlag = false;
+		exitFlag = false;
+
+		mTime = 0.0f;
 	}
 }

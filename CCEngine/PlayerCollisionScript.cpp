@@ -1,6 +1,7 @@
 #include "PlayerCollisionScript.h"
 #include "ccGameObject.h"
 #include "ccRigidbody.h"
+#include "ccInput.h"
 #include "Player.h"
 
 namespace cc
@@ -72,13 +73,25 @@ namespace cc
 		switch (otherType)
 		{
 		case eLayerType::Tile:
-			//this->GetOwner()->GetComponent<Rigidbody>()->SetGround(false);
-			//onTile = true;
 
 			collisionCheck(other);
+			break;
+
+		case eLayerType::Entrance:
+
+			// 출구와 충돌중 UP입력시 Player State = Enter
+			if (Input::GetKeyDown(eKeyCode::UP))
+			{
+				Player::GetInstance()->SetPlayerState(Player::ePlayerState::Enter);
+
+				// 출구 중심의 좌표를 플레이어에게 전달
+				Player::GetInstance()->SetExitPos(Vector2(other->GetPosition().x, other->GetPosition().y));
+			}
 
 			break;
 
+		default:
+			break;
 		}
 	}
 

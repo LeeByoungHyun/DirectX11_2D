@@ -40,6 +40,8 @@ namespace cc
 		}
 		Layer& GetLayer(eLayerType type) { return mLayers[(UINT)type]; }
 
+		std::vector<Layer> GetLayers() { return mLayers; }
+
 	private:
 		std::vector<Layer> mLayers;
 	};

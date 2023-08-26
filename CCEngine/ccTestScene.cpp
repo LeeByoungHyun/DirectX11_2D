@@ -67,24 +67,7 @@ namespace cc
 		Scene::Initialize();
 
 		// 맵 생성
-		CreateMap();
-
-		// object
-		Player* player = Player::GetInstance();
-		player->SetName(L"Player");
-		object::Instantiate(player, eLayerType::Player);
-		player->GetComponent<Transform>()->AddPosition(Vector3(TILESIZE * 5, -TILESIZE * 12, 0.0f));
-		PlayerCheckPosition* pcgc = object::Instantiate<PlayerCheckPosition>(eLayerType::PlayerCheck);
-
-		//Olmec* test = object::Instantiate<Olmec>(eLayerType::Monster);
-		//test->GetComponent<Transform>()->SetPosition(Vector3(TILESIZE * 15, -TILESIZE * 10, 0.0f));
-		//test->GetComponent<Transform>()->AddPosition(Vector3(0.0f, -TILESIZE / 2.0f, 0.0f));
-
-		CaveEntrance* testEntrance = object::Instantiate<CaveEntrance>(eLayerType::Entrance);
-		testEntrance->GetComponent<Transform>()->SetPosition(Vector3(TILESIZE * 5, -TILESIZE * 12 + (TILESIZE / 2), 0.0f));
-
-		CaveExit* testExit = object::Instantiate<CaveExit>(eLayerType::Entrance);
-		testExit->GetComponent<Transform>()->SetPosition(Vector3(TILESIZE * 10, -TILESIZE * 12 + (TILESIZE / 2), 0.0f));
+		CreateLevel();
 
 		// Camera
 		object::Instantiate<MainCamera>(eLayerType::UI);
@@ -130,23 +113,29 @@ namespace cc
 	{
 		Scene::Render();
 	}
+
 	void TestScene::OnEnter()
 	{
 		CollisionManager::SetLayer(eLayerType::Player, eLayerType::Tile, true);
 		CollisionManager::SetLayer(eLayerType::Player, eLayerType::Monster, true);
+		CollisionManager::SetLayer(eLayerType::Player, eLayerType::Entrance, true);
 		CollisionManager::SetLayer(eLayerType::Monster, eLayerType::Tile, true);
 		CollisionManager::SetLayer(eLayerType::Weapon, eLayerType::Monster, true);
 		CollisionManager::SetLayer(eLayerType::Tile, eLayerType::PlayerCheck, true);
 		CollisionManager::SetLayer(eLayerType::PlayerCheck, eLayerType::Tile, true);
-
 	}
+
 	void TestScene::OnExit()
 	{
+
 	}
+
 	void TestScene::CreatePath()
 	{
+		// 경로 생성 알고리즘 
 	}
-	void TestScene::CreateMap()
+
+	void TestScene::CreateLevel()
 	{
 		Vector3 bgStartPos = Vector3(-BGSIZE * 10, BGSIZE, 0.0f);	// BG LeftTop
 		Vector3 tileStartPos = Vector3(-TILESIZE * 10, TILESIZE, 0.0f);	// Tile LeftTop
@@ -168,12 +157,13 @@ namespace cc
 
 		// 0 = 빈칸
 		// 1 = 흙
-		// 3 = 나무
+		// 2 = 나무
 		// 3 = 사다리
 		// 4 = 플랫폼
 		// 5 = 떨어지는 박스
 		// 6 = caveman
 		// 9 = border
+
 
 		// test
 
@@ -297,6 +287,43 @@ namespace cc
 		}
 
 		MaskingTile();
+
+		// test
+		Player* player = Player::GetInstance();
+		player->SetName(L"Player");
+		object::Instantiate(player, eLayerType::Player);
+		player->GetComponent<Transform>()->AddPosition(Vector3(TILESIZE * 5, -TILESIZE * 12, 0.0f));
+		PlayerCheckPosition* pcgc = object::Instantiate<PlayerCheckPosition>(eLayerType::PlayerCheck);
+
+		//Olmec* test = object::Instantiate<Olmec>(eLayerType::Monster);
+		//test->GetComponent<Transform>()->SetPosition(Vector3(TILESIZE * 15, -TILESIZE * 10, 0.0f));
+		//test->GetComponent<Transform>()->AddPosition(Vector3(0.0f, -TILESIZE / 2.0f, 0.0f));
+
+		CaveEntrance* testEntrance = object::Instantiate<CaveEntrance>(eLayerType::Entrance);
+		testEntrance->GetComponent<Transform>()->SetPosition(Vector3(TILESIZE * 5, -TILESIZE * 12 + (TILESIZE / 2), 0.0f));
+
+		CaveExit* testExit = object::Instantiate<CaveExit>(eLayerType::Entrance);
+		testExit->GetComponent<Transform>()->SetPosition(Vector3(TILESIZE * 10, -TILESIZE * 12 + (TILESIZE / 2), 0.0f));
+
+	}
+
+	void TestScene::ResetMap()
+	{
+		// 현재 씬에 존재하는 모든 오브젝트 제거
+		// 다시 CreateMap 호출하여 새로운 Level 생성
+
+		// 오브젝트 제거
+		for (Layer layer : GetLayers())
+		{
+			auto gameObjs = layer.GetGameObjects();
+			for (GameObject* obj : gameObjs)
+			{
+				object::Destroy(obj);
+			}
+		}
+
+		// 새로운 Level 생성
+
 	}
 
 	void TestScene::MaskingTile()

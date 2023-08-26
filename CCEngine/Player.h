@@ -23,6 +23,7 @@ namespace cc
 			Kneel,
 			Crawl,
 			OnEdge,
+			Enter,
 			Ghost
 		};
 
@@ -50,6 +51,8 @@ namespace cc
 		void SetIsFalling(bool state) { isFalling = state; }
 		void SetIsOnGround(bool state) { isOnGround = state; }
 
+		void SetExitPos(Vector2 pos) { exitPos = pos; }
+
 	private:
 		// FSM
 		void idle();
@@ -59,6 +62,7 @@ namespace cc
 		void attack();
 		void kneel();
 		void crawl();
+		void enter();
 		void ghost();
 
 		//
@@ -96,8 +100,13 @@ namespace cc
 		bool kneelUpFlag;
 		bool kneelDownEndFlag;
 		bool crawlFlag;
+		bool exitFlag;
 
 		bool isFalling;
 		bool isOnGround;
+
+		Vector2 startPos;
+		Vector2 exitPos;
+		float mTime;
 	};
 }
