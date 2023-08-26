@@ -82,6 +82,9 @@ namespace cc
 
 	void TileColliderScript::Push(Collider2D* other)
 	{
+		other->GetOwner()->GetComponent<Transform>()->Update();
+		other->GetOwner()->GetComponent<Collider2D>()->Update();
+
 		Collider2D* tileCol = this->GetOwner()->GetComponent<Collider2D>();
 		Collider2D* otherCol = other->GetOwner()->GetComponent<Collider2D>();
 
@@ -165,5 +168,9 @@ namespace cc
 			other->GetOwner()->GetComponent<Transform>()->AddPosition(Vector3(lenX, 0.0f, 0.0f));
 			//other->GetOwner()->GetComponent<Rigidbody>()->SetDirLock(eDirection::Right, true);
 		}
+
+		other->GetOwner()->GetComponent<Transform>()->Update();
+		other->GetOwner()->GetComponent<Collider2D>()->Update();
+
 	}
 }
