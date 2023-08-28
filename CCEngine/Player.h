@@ -109,5 +109,7 @@ namespace cc
 		Vector2 startPos;
 		Vector2 exitPos;
 		float mTime;
+
+		bool nextFlag;
 	};
 }

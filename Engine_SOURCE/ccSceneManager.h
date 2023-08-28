@@ -11,6 +11,7 @@ namespace cc
 		static void LateUpdate();
 		static void Render();
 		static void Destroy();
+		static void Subjoin();
 		static void Release();
 
 		template <typename T>
@@ -31,11 +32,14 @@ namespace cc
 		}
 
 		static Scene* LoadScene(std::wstring name);
+		static Scene* ChangeScene();
+		static Scene* GetNextScene() { return nextScene; }
 		static Scene* GetActiveScene() { return mActiveScene; }
 		static void SetActiveScene(Scene* scene) { mActiveScene = scene; }
 
 	private:
 		static Scene* mActiveScene;
+		static Scene* nextScene;
 		static std::map<std::wstring, Scene*> mScenes;
 	};
 }

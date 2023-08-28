@@ -8,6 +8,8 @@
 
 #include "PlayerCollisionScript.h"
 #include "Whip.h"
+#include "NextLevelScene.h"
+#include "ccTestScene.h"
 
 namespace cc
 {
@@ -43,6 +45,8 @@ namespace cc
 
 		isFalling = false;
 		isOnGround = false;
+
+		nextFlag = false;
 
 		startPos = Vector2::Zero;
 		exitPos = Vector2::Zero;
@@ -525,6 +529,17 @@ namespace cc
 		{
 			mState = ePlayerState::Idle;
 			InitializeFlag();
+
+			if (nextFlag == false)
+			{
+				SceneManager::LoadScene(L"NextLevelScene");
+				nextFlag = true;
+			}
+			else
+			{
+				SceneManager::LoadScene(L"TestScene");
+				nextFlag = false;
+			}
 		}
 	}
 

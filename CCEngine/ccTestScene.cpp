@@ -44,17 +44,8 @@ namespace cc
 
 	TestScene::TestScene()
 	{
-		{
-			std::shared_ptr<Shader> spriteShader
-				= ResourceManager::Find<Shader>(L"SpriteShader");
-			std::shared_ptr<Texture> texture
-				= ResourceManager::Load<Texture>(L"rink.png", L"..\\Resources\\Texture\\Old\\link.png");
-			std::shared_ptr<Material> spriteMateiral = std::make_shared<Material>();
-			spriteMateiral->SetShader(spriteShader);
-			spriteMateiral->SetTexture(texture);
-			spriteMateiral->SetRenderingMode(eRenderingMode::Transparent);
-			ResourceManager::Insert(L"rink", spriteMateiral);
-		}
+		mainCamera = nullptr;
+		TileDestroyedFlag = false;
 	}
 
 	TestScene::~TestScene()
@@ -68,39 +59,17 @@ namespace cc
 
 		// 맵 생성
 		CreateLevel();
-
-		// Camera
-		object::Instantiate<MainCamera>(eLayerType::UI);
-		object::Instantiate<UICamera>(eLayerType::Player);
-
-		//Camera* cameraComp = nullptr;
-		//{
-		//	GameObject* camera = new GameObject();
-		//	AddGameObject(eLayerType::UI, camera);
-		//	camera->GetComponent<Transform>()->SetPosition(Vector3(0.0f, 0.0f, -10.0f));
-		//	cameraComp = camera->AddComponent<Camera>();
-		//	cameraComp->TurnLayerMask(eLayerType::UI, false);
-		//	renderer::cameras.push_back(cameraComp);
-		//	renderer::mainCamera = cameraComp;
-		//	camera->AddComponent<CameraScript>();
-		//}
-		// UI Camera
-		//{
-		//	GameObject* camera = new GameObject();
-		//	AddGameObject(eLayerType::Player, camera);
-		//	camera->GetComponent<Transform>()->SetPosition(Vector3(10000.0f, 10000.0f, -10.0f));
-		//	Camera* cameraComp = camera->AddComponent<Camera>();
-		//	cameraComp->TurnLayerMask(eLayerType::Player, false);
-		//}
 	}
 
 	void TestScene::Update()
 	{
 		Scene::Update();
 
-		if (Input::GetKeyDown(eKeyCode::P))
+		// 이전 프레임에서 타일이 파괴되었으면 타일 마스킹
+		if (TileDestroyedFlag == true)
 		{
-			//SceneManager::LoadScene(L"PlayScene");
+			TileDestroyedFlag = false; 
+			MaskingTile();
 		}
 	}
 
@@ -123,16 +92,23 @@ namespace cc
 		CollisionManager::SetLayer(eLayerType::Weapon, eLayerType::Monster, true);
 		CollisionManager::SetLayer(eLayerType::Tile, eLayerType::PlayerCheck, true);
 		CollisionManager::SetLayer(eLayerType::PlayerCheck, eLayerType::Tile, true);
+
+
+		Player::GetInstance()->GetComponent<Transform>()->SetPosition(Vector3(TILESIZE * 5, -TILESIZE * 12, 0.0f));
+		mainCamera->GetComponent<Transform>()->SetPosition(Vector3(TILESIZE * 5, -TILESIZE * 12, -10.0f));
 	}
 
 	void TestScene::OnExit()
 	{
-
+		ResetMap();
+		CreateLevel();
 	}
 
 	void TestScene::CreatePath()
 	{
 		// 경로 생성 알고리즘 
+
+
 	}
 
 	void TestScene::CreateLevel()
@@ -295,9 +271,9 @@ namespace cc
 		player->GetComponent<Transform>()->AddPosition(Vector3(TILESIZE * 5, -TILESIZE * 12, 0.0f));
 		PlayerCheckPosition* pcgc = object::Instantiate<PlayerCheckPosition>(eLayerType::PlayerCheck);
 
-		//Olmec* test = object::Instantiate<Olmec>(eLayerType::Monster);
-		//test->GetComponent<Transform>()->SetPosition(Vector3(TILESIZE * 15, -TILESIZE * 10, 0.0f));
-		//test->GetComponent<Transform>()->AddPosition(Vector3(0.0f, -TILESIZE / 2.0f, 0.0f));
+		Olmec* olmec = object::Instantiate<Olmec>(eLayerType::Monster);
+		olmec->GetComponent<Transform>()->SetPosition(Vector3(TILESIZE * 15, -TILESIZE * 10, 0.0f));
+		olmec->GetComponent<Transform>()->AddPosition(Vector3(0.0f, -TILESIZE / 2.0f, 0.0f));
 
 		CaveEntrance* testEntrance = object::Instantiate<CaveEntrance>(eLayerType::Entrance);
 		testEntrance->GetComponent<Transform>()->SetPosition(Vector3(TILESIZE * 5, -TILESIZE * 12 + (TILESIZE / 2), 0.0f));
@@ -305,6 +281,10 @@ namespace cc
 		CaveExit* testExit = object::Instantiate<CaveExit>(eLayerType::Entrance);
 		testExit->GetComponent<Transform>()->SetPosition(Vector3(TILESIZE * 10, -TILESIZE * 12 + (TILESIZE / 2), 0.0f));
 
+		// Camera
+		mainCamera = object::Instantiate<MainCamera>(eLayerType::UI);
+		mainCamera->AddComponent<CameraScript>();
+		object::Instantiate<UICamera>(eLayerType::Player);
 	}
 
 	void TestScene::ResetMap()
@@ -312,18 +292,23 @@ namespace cc
 		// 현재 씬에 존재하는 모든 오브젝트 제거
 		// 다시 CreateMap 호출하여 새로운 Level 생성
 
+		GameObject* test;
+		std::vector<Layer>& layers = GetLayers();
 		// 오브젝트 제거
-		for (Layer layer : GetLayers())
+		for (Layer& layer : layers)
 		{
-			auto gameObjs = layer.GetGameObjects();
-			for (GameObject* obj : gameObjs)
-			{
-				object::Destroy(obj);
-			}
+			//auto gameObjs = layer.GetGameObjects();
+			//for (GameObject* obj : gameObjs)
+			//{
+			//	test = obj;
+			//	object::Destroy(obj);
+			//}
+
+			layer.ClearGameObject();
 		}
 
 		// 새로운 Level 생성
-
+		int a = 0;
 	}
 
 	void TestScene::MaskingTile()

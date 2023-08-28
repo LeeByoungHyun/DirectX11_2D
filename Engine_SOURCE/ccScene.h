@@ -15,6 +15,7 @@ namespace cc
 		virtual void LateUpdate();
 		virtual void Render();
 		virtual void Destroy();
+		virtual void Subjoin();
 
 		virtual void OnEnter();
 		virtual void OnExit();
@@ -40,7 +41,7 @@ namespace cc
 		}
 		Layer& GetLayer(eLayerType type) { return mLayers[(UINT)type]; }
 
-		std::vector<Layer> GetLayers() { return mLayers; }
+		std::vector<Layer>& GetLayers() { return mLayers; }
 
 	private:
 		std::vector<Layer> mLayers;

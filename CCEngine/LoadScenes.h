@@ -6,6 +6,7 @@
 #include "TitleScene.h"
 #include "MenuScene.h"
 #include "PlayScene.h"
+#include "NextLevelScene.h"
 
 #ifdef _DEBUG
 #pragma comment(lib, "..\\x64\\Debug\\CCEngine.lib")
@@ -24,6 +25,7 @@ namespace cc
 		SceneManager::CreateScene<TitleScene>(L"TitleScene");
 		SceneManager::CreateScene<MenuScene>(L"MenuScene");
 		SceneManager::CreateScene<PlayScene>(L"PlayScene");
+		SceneManager::CreateScene<NextLevelScene>(L"NextLevelScene");
 
 		//SceneManager::LoadScene(L"SurfaceScene");
 		SceneManager::LoadScene(L"TestScene");

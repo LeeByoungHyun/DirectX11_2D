@@ -50,6 +50,14 @@ namespace cc
 		}
 	}
 
+	void Scene::Subjoin()
+	{
+		for (Layer& layer : mLayers)
+		{
+			layer.Subjoin();
+		}
+	}
+
 	void Scene::OnEnter()
 	{
 

@@ -14,11 +14,14 @@ namespace cc
 		virtual void LateUpdate();
 		virtual void Render();
 		virtual void Destory();
+		virtual void Subjoin();
 
 		void AddGameObject(GameObject* gameObj);
 		const std::vector<GameObject*> GetGameObjects() { return mGameObjects; }
+		void ClearGameObject();
 
 	private:
 		std::vector<GameObject*> mGameObjects;
+		std::set<GameObject*> addGameObj;
 	};
 }

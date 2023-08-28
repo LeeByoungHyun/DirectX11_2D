@@ -4,7 +4,7 @@ namespace cc
 {
 	Layer::Layer()
 	{
-
+		addGameObj = {};
 	}
 
 	Layer::~Layer()
@@ -13,7 +13,7 @@ namespace cc
 		{
 			if (gameObj == nullptr)
 				continue;
-
+		
 			delete gameObj;
 			gameObj = nullptr;
 		}
@@ -31,6 +31,9 @@ namespace cc
 			//if (gameObj->GetState()
 			//	!= GameObject::eState::Active)
 			//	continue;
+
+			if (gameObj == nullptr)
+				continue;
 		
 			gameObj->Update();	
 		}
@@ -44,6 +47,9 @@ namespace cc
 			//	!= GameObject::eState::Active)
 			//	continue;
 
+			if (gameObj == nullptr)
+				continue;
+
 			gameObj->LateUpdate();
 		}
 	}
@@ -55,6 +61,9 @@ namespace cc
 			//if (gameObj->GetState()
 			//	!= GameObject::eState::Active)
 			//	continue;
+
+			if (gameObj == nullptr)
+				continue;
 
 			gameObj->Render();
 		}
@@ -98,6 +107,24 @@ namespace cc
 
 	void Layer::AddGameObject(GameObject* gameObj)
 	{
-		mGameObjects.push_back(gameObj);
+		//mGameObjects.push_back(gameObj);
+
+		addGameObj.insert(gameObj);
+	}
+
+	void Layer::Subjoin()
+	{
+		for (GameObject* gameObj : addGameObj)
+		{
+			mGameObjects.push_back(gameObj);
+		}
+
+		addGameObj.clear();
+	}
+	void Layer::ClearGameObject()
+	{
+		mGameObjects.clear();
+		mGameObjects.resize(0);
+		mGameObjects.shrink_to_fit();
 	}
 }

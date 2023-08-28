@@ -34,6 +34,11 @@ namespace cc
 		LateUpdate();
 		Render();
 		Destroy();
+
+		if (SceneManager::GetNextScene() != nullptr)
+		{
+			SceneManager::ChangeScene();
+		}
 	}
 
 	void Application::Initialize()
@@ -85,6 +90,7 @@ namespace cc
 	void Application::Destroy()
 	{
 		SceneManager::Destroy();
+		SceneManager::Subjoin();
 	}
 
 	void Application::SetWindow(HWND hwnd, UINT width, UINT height)

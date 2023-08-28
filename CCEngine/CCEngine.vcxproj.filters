@@ -188,6 +188,9 @@
     <ClCompile Include="CaveExit.cpp">
       <Filter>Content\GameObject\CaveExit</Filter>
     </ClCompile>
+    <ClCompile Include="NextLevelScene.cpp">
+      <Filter>Content\Scene\NextLevelScene</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="framework.h" />
@@ -379,6 +382,9 @@
     </ClInclude>
     <ClInclude Include="CaveExit.h">
       <Filter>Content\GameObject\CaveExit</Filter>
+    </ClInclude>
+    <ClInclude Include="NextLevelScene.h">
+      <Filter>Content\Scene\NextLevelScene</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -592,15 +598,6 @@
     <Filter Include="Content\GameObject\Tile\dirt\tile">
       <UniqueIdentifier>{b7c42e72-18cd-4678-935b-027e58071234}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Content\GameObject\Tile\border">
-      <UniqueIdentifier>{096ce9c1-45dd-43b0-9f44-262ff45022c5}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Content\GameObject\Tile\border\tile">
-      <UniqueIdentifier>{e982155d-9912-4769-a8c0-67cfe49ce9ef}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Content\GameObject\Tile\border\masking">
-      <UniqueIdentifier>{88811402-151f-4ced-8f70-7f7d13060017}</UniqueIdentifier>
-    </Filter>
     <Filter Include="Content\GameObject\Tile\wood">
       <UniqueIdentifier>{fee26601-076c-44eb-bbd6-ce17dc531eda}</UniqueIdentifier>
     </Filter>
@@ -621,6 +618,18 @@
     </Filter>
     <Filter Include="Content\Scene\OlmecScene">
       <UniqueIdentifier>{b8a7f52b-bc33-4b00-98b3-5f96b855af42}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Content\Scene\NextLevelScene">
+      <UniqueIdentifier>{1b64a017-00ba-4c91-9754-b82bc5fb3158}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Content\GameObject\Tile\border">
+      <UniqueIdentifier>{096ce9c1-45dd-43b0-9f44-262ff45022c5}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Content\GameObject\Tile\border\tile">
+      <UniqueIdentifier>{e982155d-9912-4769-a8c0-67cfe49ce9ef}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Content\GameObject\Tile\border\masking">
+      <UniqueIdentifier>{88811402-151f-4ced-8f70-7f7d13060017}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
 </Project>

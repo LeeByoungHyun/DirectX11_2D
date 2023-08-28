@@ -4,6 +4,7 @@
 namespace cc
 {
 	Scene* SceneManager::mActiveScene = nullptr;
+	Scene* SceneManager::nextScene = nullptr;
 	std::map<std::wstring, Scene*> SceneManager::mScenes;
 
 	void SceneManager::Initialize()
@@ -31,6 +32,11 @@ namespace cc
 		mActiveScene->Destroy();
 	}
 
+	void SceneManager::Subjoin()
+	{
+		mActiveScene->Subjoin();
+	}
+
 	void SceneManager::Release()
 	{
 		for (auto& iter : mScenes)
@@ -44,14 +50,27 @@ namespace cc
 	{
 		std::map<std::wstring, Scene*>::iterator iter
 			= mScenes.find(name);
-
+		
 		if (iter == mScenes.end())
 			return nullptr;
+		
+		//mActiveScene->OnExit();
+		//mActiveScene = iter->second;
+		//mActiveScene->OnEnter();
 
+		nextScene = iter->second;
+		
+		return iter->second;
+	}
+
+	Scene* SceneManager::ChangeScene()
+	{
 		mActiveScene->OnExit();
-		mActiveScene = iter->second;
+		mActiveScene = nextScene;
 		mActiveScene->OnEnter();
 
-		return iter->second;
+		nextScene = nullptr;
+
+		return mActiveScene;
 	}
 }

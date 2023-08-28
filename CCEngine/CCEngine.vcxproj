@@ -195,6 +195,7 @@
     <ClInclude Include="MenuScene.h" />
     <ClInclude Include="MenuTitle.h" />
     <ClInclude Include="MenuTitleGal.h" />
+    <ClInclude Include="NextLevelScene.h" />
     <ClInclude Include="Olmec.h" />
     <ClInclude Include="OlmecCollisionScript.h" />
     <ClInclude Include="OlmecSeal.h" />
@@ -260,6 +261,7 @@
     <ClCompile Include="MenuScene.cpp" />
     <ClCompile Include="MenuTitle.cpp" />
     <ClCompile Include="MenuTitleGal.cpp" />
+    <ClCompile Include="NextLevelScene.cpp" />
     <ClCompile Include="Olmec.cpp" />
     <ClCompile Include="OlmecCollisionScript.cpp" />
     <ClCompile Include="OlmecSeal.cpp" />

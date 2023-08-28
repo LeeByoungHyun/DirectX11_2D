@@ -448,9 +448,13 @@ namespace cc
 		Scene* scene = SceneManager::GetActiveScene();
 		TestScene* test = dynamic_cast<TestScene*>(scene);
 		test->RemoveMapTile(colpos, rowpos);
-		if (test)
-		{
-			test->MaskingTile();
-		}
+
+		// Å¸ÀÏ ÆÄ±« Flag true
+		test->SetTileDestroyedFlag(true);
+
+		//if (test)
+		//{
+		//	test->MaskingTile();
+		//}
 	}
 }

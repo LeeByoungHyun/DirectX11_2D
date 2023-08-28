@@ -31,7 +31,7 @@ namespace cc
 		mTransform->SetPosition(Vector3(0.0f, 0.0f, -10.0f));
 		renderer::cameras.push_back(mCamera);
 		renderer::mainCamera = mCamera;
-		AddComponent<CameraScript>();
+		//AddComponent<CameraScript>();
 	}
 
 	void MainCamera::Update()
