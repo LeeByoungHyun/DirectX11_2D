@@ -17,9 +17,9 @@
 mono_crash.*
 
 # Build results
-[Dd]ebug/
+[Dd]ebug/**
 [Dd]ebugPublic/
-[Rr]elease/
+[Rr]elease/**
 [Rr]eleases/
 x64/
 x86/
@@ -32,6 +32,8 @@ bld/
 [Oo]ut/
 [Ll]og/
 [Ll]ogs/
+![Dd]ebug/*.lib
+![Rr]elease/*.lib
 
 # Visual Studio 2015/2017 cache/options directory
 .vs/
@@ -361,3 +363,5 @@ MigrationBackup/
 
 # Fody - auto-generated XML schema
 FodyWeavers.xsd
+
+!DirectXTex.lib
