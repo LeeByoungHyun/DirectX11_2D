@@ -200,9 +200,13 @@
     <ClInclude Include="OlmecCollisionScript.h" />
     <ClInclude Include="OlmecSeal.h" />
     <ClInclude Include="PhysxScene.h" />
+    <ClInclude Include="Platform.h" />
+    <ClInclude Include="PlatformColliderScript.h" />
     <ClInclude Include="Player.h" />
     <ClInclude Include="PlayerCheckGroundCollider.h" />
     <ClInclude Include="PlayerCheckGroundScript.h" />
+    <ClInclude Include="PlayerCheckOnPlatformCollider.h" />
+    <ClInclude Include="PlayerCheckOnPlatformScript.h" />
     <ClInclude Include="PlayerCollisionScript.h" />
     <ClInclude Include="PlayerMoveScrtpt.h" />
     <ClInclude Include="PlayScene.h" />
@@ -266,9 +270,13 @@
     <ClCompile Include="OlmecCollisionScript.cpp" />
     <ClCompile Include="OlmecSeal.cpp" />
     <ClCompile Include="PhysxScene.cpp" />
+    <ClCompile Include="Platform.cpp" />
+    <ClCompile Include="PlatformColliderScript.cpp" />
     <ClCompile Include="Player.cpp" />
     <ClCompile Include="PlayerCheckGroundCollider.cpp" />
     <ClCompile Include="PlayerCheckGroundScript.cpp" />
+    <ClCompile Include="PlayerCheckOnPlatformCollider.cpp" />
+    <ClCompile Include="PlayerCheckOnPlatformScript.cpp" />
     <ClCompile Include="PlayerCollisionScript.cpp" />
     <ClCompile Include="PlayerMoveScrtpt.cpp" />
     <ClCompile Include="PlayScene.cpp" />

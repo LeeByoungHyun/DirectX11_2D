@@ -67,7 +67,7 @@ namespace cc
 
         // Camera
         MainCamera* mainCamera = object::Instantiate<MainCamera>(eLayerType::UI);
-        mainCamera->GetComponent<Transform>()->SetPosition(Vector3(0.0f, -5.0f, -10.0f));
+        mainCamera->GetComponent<Transform>()->SetPosition(Vector3(0.0f + TILESIZE / 2, -5.0f, -10.0f));
         object::Instantiate<UICamera>(eLayerType::Player);
     }
 
@@ -192,7 +192,6 @@ namespace cc
         Player* player = Player::GetInstance();
         player->SetName(L"Player");
         object::Instantiate(player, eLayerType::Player);
-        //player->GetComponent<Transform>()->AddPosition(Vector3(TILESIZE * 5, -TILESIZE * 8, 0.0f));
         PlayerCheckPosition* pcgc = object::Instantiate<PlayerCheckPosition>(eLayerType::PlayerCheck);
 
         CaveEntrance* testEntrance = object::Instantiate<CaveEntrance>(eLayerType::Entrance);

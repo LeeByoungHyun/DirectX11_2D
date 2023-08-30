@@ -50,7 +50,9 @@ namespace cc
 
 		void SetIsFalling(bool state) { isFalling = state; }
 		void SetIsOnGround(bool state) { isOnGround = state; }
+		void SetIsOnPlatform(bool state) { isOnPlatform = state; }
 		bool GetIsFalling() { return isFalling; }
+		bool GetIsOnPlatform() { return isOnPlatform; }
 
 		void SetExitPos(Vector2 pos) { exitPos = pos; }
 
@@ -105,6 +107,7 @@ namespace cc
 
 		bool isFalling;
 		bool isOnGround;
+		bool isOnPlatform;
 
 		Vector2 startPos;
 		Vector2 exitPos;

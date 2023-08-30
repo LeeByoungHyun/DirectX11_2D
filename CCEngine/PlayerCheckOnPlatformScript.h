@@ -1,13 +1,18 @@
 #pragma once
+class PlayerCheckOnPlatformScript
+{
+};
+
+#pragma once
 #include "ccScript.h"
 
 namespace cc
 {
-	class PlayerCheckGroundScript : public Script
+	class PlayerCheckOnPlatformScript : public Script
 	{
 	public:
-		PlayerCheckGroundScript();
-		~PlayerCheckGroundScript();
+		PlayerCheckOnPlatformScript();
+		~PlayerCheckOnPlatformScript();
 
 		virtual void Initialize() override;
 		virtual void Update() override;
@@ -19,12 +24,6 @@ namespace cc
 		virtual void OnCollisionExit(Collider2D* other) override;
 
 	private:
-		bool IsFalling();
-		bool IsOnGround();
-		void collisionCheck(Collider2D* other);
-
-		bool onGround;
-		bool onAir;
 		bool onPlatform;
 	};
 }

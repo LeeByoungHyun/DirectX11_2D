@@ -53,9 +53,6 @@ namespace cc
 		Script::OnCollisionEnter(other);
 
 		collisionCheck(other);
-
-		//Player::GetInstance()->SetIsFalling(false);
-		//onGround = true;
 	}
 
 	void PlayerCheckGroundScript::OnCollisionStay(Collider2D* other)
@@ -63,9 +60,6 @@ namespace cc
 		Script::OnCollisionStay(other);
 
 		collisionCheck(other);
-
-		//Player::GetInstance()->SetIsFalling(false);
-		//onGround = true;
 	}
 
 	void PlayerCheckGroundScript::OnCollisionExit(Collider2D* other)
@@ -85,6 +79,10 @@ namespace cc
 
 	void PlayerCheckGroundScript::collisionCheck(Collider2D* other)
 	{
+		// tile 이외의 object와 충돌시 return
+		if (other->GetOwner()->GetType() != eLayerType::Tile)
+			return;
+
 		Collider2D* playerCol = this->GetOwner()->GetComponent<Collider2D>();
 		Collider2D* otherCol = other->GetOwner()->GetComponent<Collider2D>();
 

@@ -25,8 +25,10 @@
 #include "MainCamera.h"
 #include "UICamera.h"
 #include "PlayerCheckGroundCollider.h"
+#include "PlayerCheckOnPlatformCollider.h"
 #include "CaveEntrance.h"
 #include "CaveExit.h"
+#include "Platform.h"
 
 namespace cc
 {
@@ -46,6 +48,8 @@ namespace cc
 	{
 		mainCamera = nullptr;
 		TileDestroyedFlag = false;
+
+		entrancePos = Vector2::Zero;
 	}
 
 	TestScene::~TestScene()
@@ -86,16 +90,18 @@ namespace cc
 	void TestScene::OnEnter()
 	{
 		CollisionManager::SetLayer(eLayerType::Player, eLayerType::Tile, true);
+		CollisionManager::SetLayer(eLayerType::Player, eLayerType::Platform, true);
 		CollisionManager::SetLayer(eLayerType::Player, eLayerType::Monster, true);
 		CollisionManager::SetLayer(eLayerType::Player, eLayerType::Entrance, true);
 		CollisionManager::SetLayer(eLayerType::Monster, eLayerType::Tile, true);
 		CollisionManager::SetLayer(eLayerType::Weapon, eLayerType::Monster, true);
 		CollisionManager::SetLayer(eLayerType::Tile, eLayerType::PlayerCheck, true);
 		CollisionManager::SetLayer(eLayerType::PlayerCheck, eLayerType::Tile, true);
+		CollisionManager::SetLayer(eLayerType::PlayerCheck, eLayerType::Platform, true);
 
-
-		Player::GetInstance()->GetComponent<Transform>()->SetPosition(Vector3(TILESIZE * 5, -TILESIZE * 12, 0.0f));
-		mainCamera->GetComponent<Transform>()->SetPosition(Vector3(TILESIZE * 5, -TILESIZE * 12, -10.0f));
+		// 시작 위치로 플레이어 위치 설정
+		Player::GetInstance()->GetComponent<Transform>()->SetPosition(Vector3(entrancePos.x, entrancePos.y - TILESIZE / 2, PLAYERDEPTH));
+		mainCamera->GetComponent<Transform>()->SetPosition(Vector3(entrancePos.x, entrancePos.y - TILESIZE / 2, -10.0f));
 	}
 
 	void TestScene::OnExit()
@@ -139,7 +145,8 @@ namespace cc
 		// 5 = 떨어지는 박스
 		// 6 = caveman
 		// 9 = border
-
+		// 98 = entrence
+		// 99 = exit
 
 		// test
 
@@ -167,7 +174,7 @@ namespace cc
 			{ 9, 9, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 9, 9 },
 			{ 9, 9, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 9, 9 },
 			{ 9, 9, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 9, 9 },
-			{ 9, 9, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 9, 9 },
+			{ 9, 9, 0, 0, 98, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 9, 9 },
 			{ 9, 9, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 9, 9 },
 			{ 9, 9, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 9, 9 },
 			{ 9, 9, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 9, 9 },
@@ -184,7 +191,7 @@ namespace cc
 			{ 9, 9, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 9, 9 },
 			{ 9, 9, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 9, 9 },
 			{ 9, 9, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 9, 9 },
-			{ 9, 9, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 9, 9 },
+			{ 9, 9, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 99, 0, 0, 9, 9 },
 			{ 9, 9, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 9, 9 },
 			{ 9, 9, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 9, 9 },
 			{ 9, 9, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 9, 9 },
@@ -258,6 +265,30 @@ namespace cc
 						tr->SetPosition(Vector3(tileStartPos.x + (TILESIZE * row), tileStartPos.y - (TILESIZE * col), PLAYERDEPTH));
 					}
 
+					else if (map[col][row] == 98)	// entrence
+					{
+						CaveEntrance* entrance = object::Instantiate<CaveEntrance>(eLayerType::Entrance);
+						entrance->SetName(L"entrance");
+						Transform* tr = entrance->GetComponent<Transform>();
+						tr->SetPosition(Vector3(tileStartPos.x + (TILESIZE * row), tileStartPos.y - (TILESIZE * col) + (TILESIZE / 2), 0.0f));
+
+						// 플랫폼 생성
+						//Platform* platform = object::Instantiate<Platform>(eLayerType::Platform);
+						//tr = platform->GetComponent<Transform>();
+						//tr->SetPosition(Vector3(tileStartPos.x + (TILESIZE * row), tileStartPos.y - (TILESIZE * col) + (TILESIZE / 2), -0.01f));
+
+						// 시작위치 저장
+						entrancePos.x = tr->GetPosition().x;
+						entrancePos.y = tr->GetPosition().y;
+					}
+
+					else if (map[col][row] == 99)	// exit
+					{
+						CaveExit* exit = object::Instantiate<CaveExit>(eLayerType::Entrance);
+						exit->SetName(L"entrance");
+						Transform* tr = exit->GetComponent<Transform>();
+						tr->SetPosition(Vector3(tileStartPos.x + (TILESIZE * row), tileStartPos.y - (TILESIZE * col) + (TILESIZE / 2), 0.0f));
+					}
 				}
 			}
 		}
@@ -269,17 +300,12 @@ namespace cc
 		player->SetName(L"Player");
 		object::Instantiate(player, eLayerType::Player);
 		player->GetComponent<Transform>()->AddPosition(Vector3(TILESIZE * 5, -TILESIZE * 12, 0.0f));
-		PlayerCheckPosition* pcgc = object::Instantiate<PlayerCheckPosition>(eLayerType::PlayerCheck);
+		object::Instantiate<PlayerCheckPosition>(eLayerType::PlayerCheck);
+		object::Instantiate<PlayerCheckOnPlatformCollider>(eLayerType::PlayerCheck);
 
 		Olmec* olmec = object::Instantiate<Olmec>(eLayerType::Monster);
 		olmec->GetComponent<Transform>()->SetPosition(Vector3(TILESIZE * 15, -TILESIZE * 10, 0.0f));
 		olmec->GetComponent<Transform>()->AddPosition(Vector3(0.0f, -TILESIZE / 2.0f, 0.0f));
-
-		CaveEntrance* testEntrance = object::Instantiate<CaveEntrance>(eLayerType::Entrance);
-		testEntrance->GetComponent<Transform>()->SetPosition(Vector3(TILESIZE * 5, -TILESIZE * 12 + (TILESIZE / 2), 0.0f));
-
-		CaveExit* testExit = object::Instantiate<CaveExit>(eLayerType::Entrance);
-		testExit->GetComponent<Transform>()->SetPosition(Vector3(TILESIZE * 10, -TILESIZE * 12 + (TILESIZE / 2), 0.0f));
 
 		// Camera
 		mainCamera = object::Instantiate<MainCamera>(eLayerType::UI);

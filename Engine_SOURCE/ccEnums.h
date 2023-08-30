@@ -24,6 +24,7 @@ namespace cc::enums
 		BG,
 		BackObject,
 		Entrance,
+		Platform,
 		Tile,
 		Monster,
 		Player,

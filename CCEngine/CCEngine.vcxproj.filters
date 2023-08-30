@@ -108,13 +108,13 @@
       <Filter>Content\Scene\PlayScene\GameObject\caveBG</Filter>
     </ClCompile>
     <ClCompile Include="Wood.cpp">
-      <Filter>Content\GameObject\Tile\wood</Filter>
+      <Filter>Content\GameObject\Cave\wood</Filter>
     </ClCompile>
     <ClCompile Include="BorderMasking.cpp">
-      <Filter>Content\GameObject\Tile\border\masking</Filter>
+      <Filter>Content\GameObject\Cave\border\masking</Filter>
     </ClCompile>
     <ClCompile Include="BorderTile.cpp">
-      <Filter>Content\GameObject\Tile\border\tile</Filter>
+      <Filter>Content\GameObject\Cave\border\tile</Filter>
     </ClCompile>
     <ClCompile Include="Player.cpp">
       <Filter>Content\GameObject\Player</Filter>
@@ -123,10 +123,10 @@
       <Filter>Content\GameObject\Player\Script</Filter>
     </ClCompile>
     <ClCompile Include="DirtMasking.cpp">
-      <Filter>Content\GameObject\Tile\dirt\DirtMasking</Filter>
+      <Filter>Content\GameObject\Cave\dirt\DirtMasking</Filter>
     </ClCompile>
     <ClCompile Include="CaveDirt.cpp">
-      <Filter>Content\GameObject\Tile\dirt\tile</Filter>
+      <Filter>Content\GameObject\Cave\dirt\tile</Filter>
     </ClCompile>
     <ClCompile Include="PlayerCollisionScript.cpp">
       <Filter>Content\GameObject\Player\Script\CollisionScript</Filter>
@@ -141,7 +141,7 @@
       <Filter>Content\GameObject\CaveMan</Filter>
     </ClCompile>
     <ClCompile Include="TileColliderScript.cpp">
-      <Filter>Content\GameObject\Tile\Script</Filter>
+      <Filter>Content\GameObject\TileColliderScript</Filter>
     </ClCompile>
     <ClCompile Include="CaveManColliderScript.cpp">
       <Filter>Content\GameObject\CaveMan\Script</Filter>
@@ -177,19 +177,31 @@
       <Filter>Content\GameObject\Camera</Filter>
     </ClCompile>
     <ClCompile Include="PlayerCheckGroundCollider.cpp">
-      <Filter>Content\GameObject\Player\CheckGround</Filter>
+      <Filter>Content\GameObject\Player\CheckOnGround</Filter>
     </ClCompile>
     <ClCompile Include="PlayerCheckGroundScript.cpp">
-      <Filter>Content\GameObject\Player\CheckGround</Filter>
+      <Filter>Content\GameObject\Player\CheckOnGround</Filter>
     </ClCompile>
     <ClCompile Include="CaveEntrance.cpp">
-      <Filter>Content\GameObject\CaveEntrance</Filter>
+      <Filter>Content\GameObject\Cave\CaveEntrance</Filter>
     </ClCompile>
     <ClCompile Include="CaveExit.cpp">
-      <Filter>Content\GameObject\CaveExit</Filter>
+      <Filter>Content\GameObject\Cave\CaveExit</Filter>
     </ClCompile>
     <ClCompile Include="NextLevelScene.cpp">
       <Filter>Content\Scene\NextLevelScene</Filter>
+    </ClCompile>
+    <ClCompile Include="Platform.cpp">
+      <Filter>Content\GameObject\Cave\Platform</Filter>
+    </ClCompile>
+    <ClCompile Include="PlayerCheckOnPlatformCollider.cpp">
+      <Filter>Content\GameObject\Player\CheckOnPlatform</Filter>
+    </ClCompile>
+    <ClCompile Include="PlayerCheckOnPlatformScript.cpp">
+      <Filter>Content\GameObject\Player\CheckOnPlatform</Filter>
+    </ClCompile>
+    <ClCompile Include="PlatformColliderScript.cpp">
+      <Filter>Content\GameObject\Cave\Platform</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -306,13 +318,13 @@
       <Filter>Content\Scene\PlayScene\GameObject\caveBG</Filter>
     </ClInclude>
     <ClInclude Include="Wood.h">
-      <Filter>Content\GameObject\Tile\wood</Filter>
+      <Filter>Content\GameObject\Cave\wood</Filter>
     </ClInclude>
     <ClInclude Include="BorderMasking.h">
-      <Filter>Content\GameObject\Tile\border\masking</Filter>
+      <Filter>Content\GameObject\Cave\border\masking</Filter>
     </ClInclude>
     <ClInclude Include="BorderTile.h">
-      <Filter>Content\GameObject\Tile\border\tile</Filter>
+      <Filter>Content\GameObject\Cave\border\tile</Filter>
     </ClInclude>
     <ClInclude Include="Player.h">
       <Filter>Content\GameObject\Player</Filter>
@@ -321,10 +333,10 @@
       <Filter>Content\GameObject\Player\Script</Filter>
     </ClInclude>
     <ClInclude Include="DirtMasking.h">
-      <Filter>Content\GameObject\Tile\dirt\DirtMasking</Filter>
+      <Filter>Content\GameObject\Cave\dirt\DirtMasking</Filter>
     </ClInclude>
     <ClInclude Include="CaveDirt.h">
-      <Filter>Content\GameObject\Tile\dirt\tile</Filter>
+      <Filter>Content\GameObject\Cave\dirt\tile</Filter>
     </ClInclude>
     <ClInclude Include="PlayerCollisionScript.h">
       <Filter>Content\GameObject\Player\Script\CollisionScript</Filter>
@@ -339,7 +351,7 @@
       <Filter>Content\GameObject\CaveMan</Filter>
     </ClInclude>
     <ClInclude Include="TileColliderScript.h">
-      <Filter>Content\GameObject\Tile\Script</Filter>
+      <Filter>Content\GameObject\TileColliderScript</Filter>
     </ClInclude>
     <ClInclude Include="CaveManColliderScript.h">
       <Filter>Content\GameObject\CaveMan\Script</Filter>
@@ -372,19 +384,31 @@
       <Filter>Content\GameObject\Camera</Filter>
     </ClInclude>
     <ClInclude Include="PlayerCheckGroundCollider.h">
-      <Filter>Content\GameObject\Player\CheckGround</Filter>
+      <Filter>Content\GameObject\Player\CheckOnGround</Filter>
     </ClInclude>
     <ClInclude Include="PlayerCheckGroundScript.h">
-      <Filter>Content\GameObject\Player\CheckGround</Filter>
+      <Filter>Content\GameObject\Player\CheckOnGround</Filter>
     </ClInclude>
     <ClInclude Include="CaveEntrance.h">
-      <Filter>Content\GameObject\CaveEntrance</Filter>
+      <Filter>Content\GameObject\Cave\CaveEntrance</Filter>
     </ClInclude>
     <ClInclude Include="CaveExit.h">
-      <Filter>Content\GameObject\CaveExit</Filter>
+      <Filter>Content\GameObject\Cave\CaveExit</Filter>
     </ClInclude>
     <ClInclude Include="NextLevelScene.h">
       <Filter>Content\Scene\NextLevelScene</Filter>
+    </ClInclude>
+    <ClInclude Include="Platform.h">
+      <Filter>Content\GameObject\Cave\Platform</Filter>
+    </ClInclude>
+    <ClInclude Include="PlayerCheckOnPlatformCollider.h">
+      <Filter>Content\GameObject\Player\CheckOnPlatform</Filter>
+    </ClInclude>
+    <ClInclude Include="PlayerCheckOnPlatformScript.h">
+      <Filter>Content\GameObject\Player\CheckOnPlatform</Filter>
+    </ClInclude>
+    <ClInclude Include="PlatformColliderScript.h">
+      <Filter>Content\GameObject\Cave\Platform</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -583,23 +607,8 @@
     <Filter Include="Content\GameObject\Tile">
       <UniqueIdentifier>{12be36f9-183b-4391-887c-4e4131ae4c87}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Content\GameObject\Tile\Script">
-      <UniqueIdentifier>{1b59e709-4a67-4186-800c-1159632be348}</UniqueIdentifier>
-    </Filter>
     <Filter Include="Content\GameObject\Olmec\Script">
       <UniqueIdentifier>{962c72a8-efd4-4f47-83a2-bb8e22cb78a7}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Content\GameObject\Tile\dirt">
-      <UniqueIdentifier>{673d743c-bbe5-4b5c-9fdd-ba98186a0b17}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Content\GameObject\Tile\dirt\DirtMasking">
-      <UniqueIdentifier>{59c53ea0-5612-4f38-9096-fb04d8a85b55}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Content\GameObject\Tile\dirt\tile">
-      <UniqueIdentifier>{b7c42e72-18cd-4678-935b-027e58071234}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Content\GameObject\Tile\wood">
-      <UniqueIdentifier>{fee26601-076c-44eb-bbd6-ce17dc531eda}</UniqueIdentifier>
     </Filter>
     <Filter Include="Content\GameObject\ScreenCollider">
       <UniqueIdentifier>{147befba-a312-4fc0-b198-51932d3d351c}</UniqueIdentifier>
@@ -607,29 +616,56 @@
     <Filter Include="Content\GameObject\Camera">
       <UniqueIdentifier>{5e954f7d-07dd-4177-a055-a87f249e0f92}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Content\GameObject\Player\CheckGround">
-      <UniqueIdentifier>{9f58a559-82b4-4a76-b79a-609b6cc16003}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Content\GameObject\CaveEntrance">
-      <UniqueIdentifier>{1a761479-07c6-4bdd-bf05-655e62f59028}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Content\GameObject\CaveExit">
-      <UniqueIdentifier>{c8b2149b-aff7-41bd-94f9-094e9c8fa235}</UniqueIdentifier>
-    </Filter>
     <Filter Include="Content\Scene\OlmecScene">
       <UniqueIdentifier>{b8a7f52b-bc33-4b00-98b3-5f96b855af42}</UniqueIdentifier>
     </Filter>
     <Filter Include="Content\Scene\NextLevelScene">
       <UniqueIdentifier>{1b64a017-00ba-4c91-9754-b82bc5fb3158}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Content\GameObject\Tile\border">
+    <Filter Include="Content\GameObject\Cave">
+      <UniqueIdentifier>{7d29c739-7f14-4aed-abdf-7961d4b72669}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Content\GameObject\Cave\CaveEntrance">
+      <UniqueIdentifier>{1a761479-07c6-4bdd-bf05-655e62f59028}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Content\GameObject\Cave\CaveExit">
+      <UniqueIdentifier>{c8b2149b-aff7-41bd-94f9-094e9c8fa235}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Content\GameObject\Cave\dirt">
+      <UniqueIdentifier>{673d743c-bbe5-4b5c-9fdd-ba98186a0b17}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Content\GameObject\Cave\dirt\DirtMasking">
+      <UniqueIdentifier>{59c53ea0-5612-4f38-9096-fb04d8a85b55}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Content\GameObject\Cave\dirt\tile">
+      <UniqueIdentifier>{b7c42e72-18cd-4678-935b-027e58071234}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Content\GameObject\Cave\border">
       <UniqueIdentifier>{096ce9c1-45dd-43b0-9f44-262ff45022c5}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Content\GameObject\Tile\border\tile">
+    <Filter Include="Content\GameObject\Cave\border\tile">
       <UniqueIdentifier>{e982155d-9912-4769-a8c0-67cfe49ce9ef}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Content\GameObject\Tile\border\masking">
+    <Filter Include="Content\GameObject\Cave\border\masking">
       <UniqueIdentifier>{88811402-151f-4ced-8f70-7f7d13060017}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Content\GameObject\Cave\wood">
+      <UniqueIdentifier>{fee26601-076c-44eb-bbd6-ce17dc531eda}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Content\GameObject\Cave\Platform">
+      <UniqueIdentifier>{510884bd-cde4-43e8-b80e-31ea345c5f1f}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Content\Script\PlatformColliderScript">
+      <UniqueIdentifier>{dd2fdfe6-c794-45a6-851d-594f776f2ef1}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Content\GameObject\Player\CheckOnPlatform">
+      <UniqueIdentifier>{28456e3c-f00c-46f3-b99c-0b9b0ed1e6b6}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Content\GameObject\Player\CheckOnGround">
+      <UniqueIdentifier>{9f58a559-82b4-4a76-b79a-609b6cc16003}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Content\GameObject\TileColliderScript">
+      <UniqueIdentifier>{1b59e709-4a67-4186-800c-1159632be348}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
 </Project>

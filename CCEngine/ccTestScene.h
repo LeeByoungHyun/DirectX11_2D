@@ -37,6 +37,8 @@ namespace cc
 
 		class MainCamera* mainCamera;
 
+		Vector2 entrancePos;
+
 		bool TileDestroyedFlag;
 	};
 }
